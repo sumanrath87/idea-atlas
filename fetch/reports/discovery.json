@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-09T01:02:27+00:00",
+  "run_at": "2026-11-09T01:06:53+00:00",
   "sources": [
     {
       "id": "idea_child_count",
@@ -72,7 +72,7 @@
     {
       "id": "idea_exiting",
       "name": "IDEA Part B exiting, by district (LEA)",
-      "expected_year": "2022-23",
+      "expected_year": "2023-24",
       "checked": [
         {
           "kind": "page",
@@ -2472,7 +2472,7 @@
     {
       "id": "f33",
       "name": "School District Finance Survey (F-33)",
-      "expected_year": "FY2023",
+      "expected_year": "FY2024",
       "checked": [
         {
           "kind": "page",
@@ -4836,8 +4836,8 @@
         {
           "kind": "page",
           "target": "https://sites.ed.gov/idea/idea-files/",
-          "ok": false,
-          "error": "500 Server Error: Internal Server Error for url: https://sites.ed.gov/idea/idea-files/"
+          "ok": true,
+          "count": 0
         },
         {
           "kind": "browser",

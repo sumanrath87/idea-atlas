@@ -1,6 +1,6 @@
 # Discovery report
 
-Run: 2026-11-09T01:02:27+00:00
+Run: 2026-11-09T01:06:53+00:00
 
 ## IDEA Part B child count, by district (LEA)
 Expected year: 2024-25. Files found: 1.
@@ -17,7 +17,7 @@ Expected year: 2024-25. Files found: 1.
   - beducationalenvironmentslea2024-25.csv: https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv (2.1 MB)
 
 ## IDEA Part B exiting, by district (LEA)
-Expected year: 2022-23. Files found: 0.
+Expected year: 2023-24. Files found: 0.
 - checked page `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
 - checked browser `https://data.ed.gov/dataset/idea-section-618-lea-part-b-exiting`: 0 links
 - checked browser `https://data.ed.gov/dataset/idea-section-618-data-products`: 0 links
@@ -85,7 +85,7 @@ Expected year: 2024-25. Files found: 463.
   - 2025 - 2026 | Local Education Agency (School District) Universe Survey Data | SPSS Read Program (9 KB): https://nces.ed.gov/ccd/data/txt/Code_to_create_LEA_Directory_File_2025-26_0a.txt (0.0 MB)
 
 ## School District Finance Survey (F-33)
-Expected year: FY2023. Files found: 234.
+Expected year: FY2024. Files found: 234.
 - checked page `https://nces.ed.gov/ccd/f33agency.asp`: 130 links
 - checked json `https://nces.ed.gov/ccd/datatables/api/File/1/5/0/5/0/0`: 159 links
 - checked page `https://nces.ed.gov/ccd/f33agency.asp`: 130 links
@@ -196,6 +196,6 @@ Expected year: SY2024-25. Files found: 13.
 
 ## IDEA state determinations
 Expected year: 2026. Files found: 0.
-- checked page `https://sites.ed.gov/idea/idea-files/`: failed: 500 Server Error: Internal Server Error for url: https://sites.ed.gov/idea/idea-files/
+- checked page `https://sites.ed.gov/idea/idea-files/`: 0 links
 - checked browser `https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files`: 0 links
 - checked browser `https://sites.ed.gov/idea/idea-files/`: 0 links
