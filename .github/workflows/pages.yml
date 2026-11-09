@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       preview:
-        description: "Keep search engines out (yes during review, no at launch)"
+        description: "Keep search engines out (yes only for a private review)"
         required: true
-        default: "yes"
+        default: "no"
 
 permissions:
   contents: read
@@ -44,7 +44,7 @@ jobs:
           ATLAS_ORIGIN: https://atlas.sumanrath.org
         run: |
           # Search engines stay out until launch is approved (change the default below at launch).
-          if [ "${{ github.event.inputs.preview || 'yes' }}" = "no" ]; then python build/site.py; else python build/site.py --preview; fi
+          if [ "${{ github.event.inputs.preview || 'no' }}" = "no" ]; then python build/site.py; else python build/site.py --preview; fi
           N=$(ls site/district | wc -l); echo "district pages: $N"; test "$N" -gt 15000
       - uses: actions/upload-pages-artifact@v3
         with:
