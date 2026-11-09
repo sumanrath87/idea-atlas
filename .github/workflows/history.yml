@@ -31,8 +31,11 @@ jobs:
       - name: Download more (2018 onward)
         if: inputs.step == 'more'
         run: python fetch/history/download_more.py
+      - name: State measures
+        if: inputs.step == 'state'
+        run: python fetch/history/download_state.py
       - name: Keep the extra files
-        if: inputs.step == 'more'
+        if: inputs.step == 'more' || inputs.step == 'state'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
