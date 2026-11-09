@@ -365,6 +365,7 @@ Todas las cifras vienen de datos federales públicos.</p>
   sobre quiénes reciben servicios de educación especial, dónde aprenden, cómo terminan la escuela, la disciplina, los fondos y la pobreza infantil, con gráficos y explicaciones.
   Las cifras describen lo que los distritos y los estados informaron. No son calificaciones y no pueden mostrar la calidad de los servicios de un distrito.
   La experiencia de su familia y los informes del propio distrito agregan lo que los números no pueden.</p>
+  <p class="more-path"><a href="{BASE}es/informe/">Cree un informe</a> para imprimir sobre cualquier distrito, escrito para una familia, un líder escolar o un investigador.</p>
   <p class="more-path">Vea también <a href="{BASE}es/historia/">cincuenta años de educación especial</a>, desde 1975 hasta hoy, para el país y cada estado.</p>
 </section>
 <section aria-labelledby="words-h">

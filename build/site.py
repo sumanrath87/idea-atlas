@@ -491,6 +491,8 @@ Every figure comes from public federal data.</p>
     <li><span class="depth" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
       <a href="#q">Start simple</a><span>Search for your district. Its page opens with a few plain sentences, and you can open the numbers and the full detail whenever you like.</span></li>
     <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+      <a href="{BASE}report/">Make a report</a><span>Answer a few questions and get a printable report about a district, written for a family, a school leader, or a researcher.</span></li>
+    <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span>
       <a href="{BASE}compare/">Compare districts</a><span>Put two to four districts side by side.</span></li>
     <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
       <a href="{BASE}table/">Explore a whole state</a><span>Sort every district in a state by any measure, or choose your own columns.</span></li>
