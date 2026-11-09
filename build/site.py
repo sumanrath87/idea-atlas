@@ -83,6 +83,13 @@ ZERO_TEXT = {"oos_nodis": "No students without disabilities received an out-of-s
              "oos_idea": "No students with IEPs received an out-of-school suspension."}
 
 
+def figs(text: str) -> str:
+    """Escape a plain sentence and give its figures quiet emphasis; the state comparison in brackets stays soft."""
+    h = E(text)
+    h = re.sub(r"(?<!\()(\$[\d,]+|\b\d[\d,]*\.\d\b)", r'<span class="fig">\1</span>', h)
+    return re.sub(r"\((\$?[\d,]+(?:\.\d)?)\)", r'<span class="med">(\1)</span>', h)
+
+
 def plain_lines(r, keys, st_med) -> str:
     """Layer 1: one friendly sentence per measure, with a gentle comparison to the typical district in the state."""
     unit = {m[0]: m[4] for m in MEASURES}
@@ -113,7 +120,7 @@ def plain_lines(r, keys, st_med) -> str:
     if zeros:
         lst = zeros[0] if len(zeros) == 1 else ", ".join(zeros[:-1]) + (", or " if len(zeros) > 2 else " or ") + zeros[-1]
         out.append(f"No students with IEPs were {lst}.")
-    return '<ul class="plain">' + "".join(f"<li>{E(x)}</li>" for x in out) + "</ul>"
+    return '<ul class="plain">' + "".join(f"<li>{figs(x)}</li>" for x in out) + "</ul>"
 
 
 # ---------------------------------------------------------------- page frame
@@ -328,12 +335,16 @@ Every figure comes from public federal data.</p>
 
 <section aria-labelledby="paths-h">
   <h2 id="paths-h">Choose how deep to go</h2>
+  <p class="hint">From simplest to most detailed.</p>
   <ul class="paths">
-    <li><a href="#find-h"><strong>Start simple.</strong></a> Search for your district. Its page opens with a few plain sentences,
-      and you can open the numbers and the full detail when you want them.</li>
-    <li><a href="{BASE}compare/"><strong>Compare districts.</strong></a> Put two to four districts side by side.</li>
-    <li><a href="{BASE}table/"><strong>Explore a whole state.</strong></a> Sort every district in a state by any measure, or choose your own columns.</li>
-    <li><a href="{BASE}download/"><strong>Work with the data.</strong></a> Download the full file, and read the <a href="{BASE}methods/">methods and sources</a>.</li>
+    <li><span class="depth" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
+      <a href="#q">Start simple</a><span>Search for your district. Its page opens with a few plain sentences, and you can open the numbers and the full detail whenever you like.</span></li>
+    <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span>
+      <a href="{BASE}compare/">Compare districts</a><span>Put two to four districts side by side.</span></li>
+    <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+      <a href="{BASE}table/">Explore a whole state</a><span>Sort every district in a state by any measure, or choose your own columns.</span></li>
+    <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+      <a href="{BASE}download/">Work with the data</a><span>Download the full file and read how every figure is made.</span></li>
   </ul>
 </section>
 
@@ -615,14 +626,14 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     unit = {m[0]: m[4] for m in MEASURES}
     meta = []
     if isinstance(r.city, str) and r.city:
-        meta.append(f"{r.city.title()}, {r.state_name.title()}")
+        meta.append(("Location", f"{r.city.title()}, {r.state_name.title()}"))
     if isinstance(r.district_type, str):
-        meta.append(TYPE_PLAIN.get(r.district_type, r.district_type))
+        meta.append(("Type", TYPE_PLAIN.get(r.district_type, r.district_type)))
     if isinstance(r.grade_low, str) and isinstance(r.grade_high, str):
-        meta.append(f"Grades {r.grade_low} to {r.grade_high}")
+        meta.append(("Grades", f"{r.grade_low} to {r.grade_high}"))
     if pd.notna(r.enrollment):
-        meta.append(f"{r.enrollment:,.0f} students enrolled (2024–25)")
-    meta.append(f"NCES district ID {r.leaid}")
+        meta.append(("Students, 2024–25", f"{r.enrollment:,.0f}"))
+    meta.append(("NCES district ID", str(r.leaid)))
     parent = ""
     if isinstance(r.part_of, str) and r.part_of in by_id.index:
         p = by_id.loc[r.part_of]
@@ -647,7 +658,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
         glance.append(f"In 2023–24, {fmt(r.oos_idea, 'per100')} of every 100 students with IEPs received an out-of-school suspension, "
                       f"compared with {fmt(r.oos_nodis, 'per100')} of every 100 students without disabilities.")
     glance_html = ("<section aria-labelledby=\"g-h\" class=\"glance\"><h2 id=\"g-h\">At a glance</h2><ul>"
-                   + "".join(f"<li>{E(x)}</li>" for x in glance) + "</ul>" + explain("iep", "per100") + "</section>") if glance else ""
+                   + "".join(f"<li>{figs(x)}</li>" for x in glance) + "</ul>" + explain("iep", "per100") + "</section>") if glance else ""
     howto = ('<p class="howto">Each topic below starts in plain words. Open <strong>The numbers</strong> to see this district beside the state and the nation, '
              'and <strong>Full detail</strong> for every count behind the figures. Questions such as <em>What is a median?</em> open a short explanation.</p>')
 
@@ -680,7 +691,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     state_note = f'<p class="note">{E(STATE_NOTES[r.state])}</p>' if r.state in STATE_NOTES else ""
     body = f"""
 <h1>{E(name)}</h1>
-<p class="meta">{E(' · '.join(meta))}</p>
+<dl class="facts">{''.join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in meta)}</dl>
 <div class="page-tools"><button type="button" data-print>Print this page</button>
   <button type="button" data-expand>Show all detail</button>
   <a class="button secondary" href="{BASE}compare/?ids={r.leaid}">Compare with other districts</a></div>
