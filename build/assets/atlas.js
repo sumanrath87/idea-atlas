@@ -388,6 +388,18 @@
     }).catch(function () {});
   }
 
+  // History: swap the state chart and its sentence; the full table of every state stays one click away.
+  function initHistory() {
+    var sel = document.getElementById("h-st"); if (!sel) return;
+    var box = document.getElementById("h-st-chart"), say = document.getElementById("h-st-say");
+    var base = box.innerHTML, baseSay = say.textContent;
+    sel.addEventListener("change", function () {
+      var t = sel.value && document.querySelector('template[data-state="' + sel.value.replace(/"/g, '\\"') + '"]');
+      box.innerHTML = t ? t.innerHTML : base;
+      say.textContent = t ? t.getAttribute("data-say") : baseSay;
+    });
+  }
+
   function initCharts() {
     fillTerms();
     var el = document.getElementById("chart-data"); if (!el) return;
@@ -515,5 +527,5 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); });
+  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); });
 })();

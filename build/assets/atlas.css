@@ -288,6 +288,23 @@ ul.hbars .hv { text-align: right; font-weight: 700; font-variant-numeric: tabula
 @media (max-width: 640px) { ul.hbars li { grid-template-columns: 9rem 1fr 2.6rem; } }
 @media (forced-colors: active) { .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band { forced-color-adjust: none; } }
 
+/* ---------- history ---------- */
+figure.chart.wide { max-width: 52rem; }
+svg.hchart { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+svg.hchart .ax { font-size: 12px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+svg.hchart .mk { font-size: 11px; fill: var(--muted); }
+svg.hchart .el { font-size: 12.5px; }
+svg.hchart .el .ev { font-weight: 700; font-variant-numeric: tabular-nums; }
+.k-line { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+ol.timeline { list-style: none; padding: 0; margin: 1rem 0; max-width: 46rem; border-left: 2px solid var(--rule); }
+ol.timeline li { position: relative; padding: 0 0 1.1rem 1.4rem; display: grid; grid-template-columns: 4.2rem 1fr; gap: .6rem; }
+ol.timeline li::before { content: ""; position: absolute; left: -6px; top: .55rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--paper); }
+.tl-y { font-family: var(--serif); font-size: 1.35rem; color: var(--ink); line-height: 1.2; font-variant-numeric: lining-nums; }
+.tl-t { color: var(--ink-2); }
+.plain-one { font-variant-numeric: lining-nums; font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; max-width: var(--measure); }
+.more-path { color: var(--ink-2); margin-top: 1.2rem; }
+template { display: none; }
+
 /* ---------- print: clean, readable, every detail open ---------- */
 @page { margin: 16mm 14mm 18mm; }
 @media print {

@@ -191,6 +191,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
         <li><a href="{BASE}">Map and search</a></li>
         <li><a href="{BASE}table/">Table</a></li>
         <li><a href="{BASE}compare/">Compare</a></li>
+        <li><a href="{BASE}history/">History</a></li>
         <li><a href="{BASE}methods/">Methods and sources</a></li>
         <li><a href="{SITE}/tools/">All tools</a></li>
       </ul>
@@ -347,6 +348,9 @@ def main() -> int:
     write("index.html", home_page(len(d)))
     write("table/index.html", table_page())
     write("methods/index.html", methods_page())
+    import history_page
+    if (Path(__file__).resolve().parent / "history" / "national.json").exists():
+        write("history/index.html", history_page.render(page, explain, BASE))
     write("compare/index.html", compare_page())
     children = d[d.part_of.notna()].groupby("part_of")
     kids_of = {k: g for k, g in children}
@@ -404,6 +408,7 @@ Every figure comes from public federal data.</p>
     <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
       <a href="{BASE}download/">Work with the data</a><span>Download the full file and read how every figure is made.</span></li>
   </ul>
+  <p class="more-path">Or see <a href="{BASE}history/">fifty years of special education</a>, from 1975 to today, for the nation and every state.</p>
 </section>
 
 <section aria-labelledby="map-h" class="panel">
