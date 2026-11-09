@@ -39,11 +39,12 @@ jobs:
           mkdir -p ../bundles
           tar -czf ../bundles/digest.tgz digest_* || true
           tar -czf ../bundles/saipe.tgz saipe_* || true
-          tar -czf ../bundles/crdc.tgz *crdc-data.zip || true
+          cp *crdc-data.zip ../bundles/ || true
           tar -czf ../bundles/finance.tgz sdf* Sdf* SDF* elsec* || true
           tar -czf ../bundles/ccd.tgz pau* ag* ccdagn* ccd_* CCD_* *Layout* || true
           ls -la ../bundles
-          for f in ../bundles/*.tgz; do gh release upload "$TAG" "$f" --clobber; sleep 5; done
+          set +e
+          for f in ../bundles/*; do gh release upload "$TAG" "$f" --clobber || echo "upload failed: $f"; sleep 5; done
       - name: Save the report
         if: always()
         run: |
