@@ -517,3 +517,4 @@ dl.rpt-rights dt { font-weight: 700; margin-top: .7rem; } dl.rpt-rights dd { mar
 .rpt-app select { font: inherit; padding: .45rem .6rem; border: 1px solid #8f8a80; border-radius: var(--radius); min-height: 2.75rem; max-width: 100%; background: #fff; }
 .rpt-said { flex-basis: 100%; margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
 @media print { section.rpt-sec.short { break-before: auto; margin-top: 18pt; } .rpt-mine { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+table.rpt-t td.yr { white-space: nowrap; }

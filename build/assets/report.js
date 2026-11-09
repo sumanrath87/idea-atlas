@@ -461,9 +461,9 @@
       '</th><th scope="col">' + esc(ctx.cd.st) + '</th>' + (S.nat ? '<th scope="col">' + tr("All states (median)", "Todos los estados (mediana)") + "</th>" : "") + '<th scope="col">' + tr("Year", "Año") + "</th></tr></thead><tbody>" +
       items.map(function (k) {
         var v = row[k.k];
-        return '<tr><th scope="row">' + esc(ES ? k.es : k.en) + "</th><td>" + f(v[0], k.u) + "</td>" + (S.nat ? "<td>" + (S.nat[k.k] != null ? f(S.nat[k.k], k.u) : "—") + "</td>" : "") + "<td>" + esc(v[1]) + "</td></tr>";
+        return '<tr><th scope="row">' + esc(ES ? k.es : k.en) + "</th><td>" + f(v[0], k.u) + "</td>" + (S.nat ? "<td>" + (S.nat[k.k] != null ? f(S.nat[k.k], k.u) : "—") + "</td>" : "") + "<td class=\"yr\">" + esc(v[1]) + "</td></tr>";
       }).join("") + "</tbody></table>" +
-      list(items.filter(function (k) { return k.note; }).map(function (k) { return "<strong>" + esc(ES ? k.es : k.en) + ":</strong> " + esc(ES ? k.note_es : k.note); })) +
+      list(items.filter(function (k) { return k.note; }).map(function (k) { return "<strong>" + esc(ES ? k.nl_es : k.nl) + ":</strong> " + esc(ES ? k.note_es : k.note); })) +
       '<p class="source">' + esc(ES ? S.source_es : S.source) + "</p>";
   }
 

@@ -214,6 +214,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
 <title>{E(title)} | {u["suffix"]}</title>
 <meta name="description" content="{E(desc)}">
 {robots}
@@ -408,6 +409,9 @@ def main() -> int:
         write("history/index.html", history_page.render(page, explain, BASE))
         write("es/historia/index.html", history_page.render_es(page, lambda *k: es_site.explain_es(BASE, *k, full=True), BASE, es_site.STATE_ES))
     write("compare/index.html", compare_page())
+    sm = Path(__file__).resolve().parent / "history" / "state_measures.json"
+    if sm.exists():
+        shutil.copy(sm, OUT / "data" / "state_measures.json")
     write("report/index.html", report_page())
     write("es/informe/index.html", es_site.report_es(BASE=BASE, page=page))
     children = d[d.part_of.notna()].groupby("part_of")
