@@ -1,0 +1,33 @@
+name: Find data files
+
+# Runs when the source list or the fetch scripts change, or by hand.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "config/sources.yml"
+      - "fetch/*.py"
+      - ".github/workflows/discover.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pyyaml
+      - run: python fetch/discover.py
+      - name: Save the report
+        run: |
+          git config user.name "IDEA Atlas bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fetch/reports
+          git diff --cached --quiet || git commit -m "Discovery report [skip ci]"
+          git push
