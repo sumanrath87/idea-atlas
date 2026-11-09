@@ -147,6 +147,11 @@ def main() -> int:
                "state_name": kids.state_name.iloc[0], "city": cmb["city"],
                "district_type": f"Combined record of {len(kids)} districts", "charter": "Not a charter district",
                "status": "Open", "enrollment": kids.enrollment.sum(min_count=1), "enrollment_status": "ok"}
+        old = base[base.leaid == cmb["leaid"]]
+        if len(old):   # the directory lists the central office under the same ID; the combined record replaces it
+            for c in ("zip", "website", "grade_low", "grade_high"):
+                row[c] = old.iloc[0][c]
+            base = base[base.leaid != cmb["leaid"]]
         base = pd.concat([base, pd.DataFrame([row])], ignore_index=True)
         Q.append(f"- Combined record: {cmb['name']} ({cmb['leaid']}) adds up {len(kids)} component districts "
                  f"for enrollment and IDEA counts; other sources report it as one district.")

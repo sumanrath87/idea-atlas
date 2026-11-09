@@ -9,16 +9,16 @@
 - Finance FY2024: 14,077 districts; federal IDEA revenue total $13.65 billion
 - Child poverty 2024: 12,897 districts from 51 state files
 - ZIP lookup: 33,789 ZIP code areas; 20,724 cover more than one district (the site will list all of them, largest share first)
-- Map shapes 2024-25: 13,368 districts with a boundary; 13,224 of 19,631 listed districts have one (charter and specialty districts usually do not)
+- Map shapes 2024-25: 13,368 districts with a boundary; 13,224 of 19,630 listed districts have one (charter and specialty districts usually do not)
 
 ## Match rates (open districts)
-Open or active districts: 19,401
-- IDEA child count: ok 17,235, not_reported 1,865, hidden 242, quality 59
-- Environments: ok 13,758, hidden 2,767, not_reported 1,956, small_group 493, none 420, quality 7
-- Exiting: not_reported 5,559, ok 5,246, small_group 3,475, hidden 3,207, none 1,542, quality 372
-- Civil rights: ok 16,408, not_reported 1,883, small_group 689, none 419, hidden 2
-- Finance: ok 13,135, not_reported 5,387, small_group 879
-- Child poverty: ok 12,777, not_reported 6,557, small_group 64, none 3
+Open or active districts: 19,400
+- IDEA child count: ok 17,234, not_reported 1,865, hidden 242, quality 59
+- Environments: ok 13,757, hidden 2,767, not_reported 1,956, small_group 493, none 420, quality 7
+- Exiting: not_reported 5,559, ok 5,245, small_group 3,475, hidden 3,207, none 1,542, quality 372
+- Civil rights: ok 16,407, not_reported 1,883, small_group 689, none 419, hidden 2
+- Finance: ok 13,134, not_reported 5,387, small_group 879
+- Child poverty: ok 12,776, not_reported 6,557, small_group 64, none 3
 
 ## Unusual values to look at
 - Identification rate above 50 per 100 (often schools for the deaf or blind, or online schools): 159 (e.g. Arizona Department of Corrections (8336), AZ; Maricopa County Sheriffs Office (79540), AZ; Arizona State Schools for the Deaf and the Blind (6393), AZ; Edkey Inc. - Sequoia School for the Deaf and Hard (81050), AZ; Arizona Autism Charter Schools Inc. (91958), AZ)
