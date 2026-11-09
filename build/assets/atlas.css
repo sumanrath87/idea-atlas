@@ -125,6 +125,24 @@ fieldset.cols legend { font-weight: 600; padding: 0 .3rem; }
 .colgroup-h { font-weight: 600; margin: .2rem 0; font-family: Vollkorn, Georgia, serif; }
 .colgroup label { display: block; font-weight: 400; padding: .15rem 0; }
 .print-only { display: none; }
+/* layers: plain words, then the numbers, then full detail; explainers sit beside the term */
+ul.plain { padding-left: 1.2rem; margin: .4rem 0 .6rem; max-width: 48rem; }
+ul.plain li { margin: .3rem 0; }
+.howto { color: var(--ink-2); max-width: 48rem; }
+.explainers { display: flex; flex-wrap: wrap; gap: .3rem .5rem; margin: .4rem 0 .8rem; align-items: flex-start; }
+details.explain { font-size: .94rem; }
+details.explain > summary { cursor: pointer; color: var(--accent); text-decoration: underline; text-underline-offset: .15em; padding: .15rem .1rem; list-style: none; }
+details.explain > summary::-webkit-details-marker { display: none; }
+details.explain > summary::before { content: "?"; display: inline-block; width: 1.15em; height: 1.15em; line-height: 1.15em; text-align: center;
+  border: 1px solid currentColor; border-radius: 50%; font-size: .8em; margin-right: .35em; text-decoration: none; }
+details.explain[open] { flex-basis: 100%; background: #f6f2e8; border-radius: var(--radius); padding: .2rem .8rem .1rem; }
+details.explain p { margin: .3rem 0 .6rem; max-width: 46rem; color: var(--ink); }
+details.numbers { margin: .5rem 0 .75rem; border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; padding: .2rem .9rem; }
+details.numbers > summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+details.numbers[open] > summary { border-bottom: 1px solid var(--rule); margin-bottom: .3rem; }
+ul.paths { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .8rem; }
+ul.paths li { background: #fff; border: 1px solid var(--rule); border-radius: 10px; padding: .8rem 1rem; color: var(--ink-2); }
+ul.paths li > a:first-child { display: block; margin-bottom: .2rem; }
 
 /* ---------- print: clean, readable, every detail open ---------- */
 @page { margin: 16mm 14mm 18mm; }
@@ -152,7 +170,12 @@ fieldset.cols legend { font-weight: 600; padding: 0 .3rem; }
   thead { display: table-header-group; }
   thead th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   tr { break-inside: avoid; page-break-inside: avoid; }
-  details.full { border: none; padding: 0; break-inside: auto; }
+  details.full, details.numbers { border: none; padding: 0; break-inside: auto; }
+  details.numbers > summary { display: none; }
+  details.explain:not([open]), .howto, ul.paths, #paths-h { display: none !important; }
+  details.explain[open] { background: none; border-left: 2pt solid #000; border-radius: 0; }
+  details.explain > summary::before { display: none; }
+  details.explain > summary { color: #000; text-decoration: none; font-weight: 600; }
   details.full > summary { list-style: none; font-size: 11pt; border-bottom: none; padding: 6pt 0 0; }
   details.full > summary::-webkit-details-marker { display: none; }
   details.kids ul { columns: 3; font-size: 9pt; }

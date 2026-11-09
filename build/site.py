@@ -23,7 +23,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from measures import (ATLAS_ORIGIN, BASE, CATEGORIES, MAP_MEASURES, MEASURES, SITE, SOURCES, STATUS,  # noqa: E402
-                      STATE_NOTES, STATUS_TEXT, VERSION)
+                      STATE_NOTES, STATUS_TEXT, VERSION, TERMS, PLAIN)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / BASE.strip("/")
@@ -68,6 +68,52 @@ def cell(v, status: str, unit: str) -> str:
     if code == "1":
         return f"at least {fmt(v, unit)}"
     return text
+
+
+def explain(*keys: str) -> str:
+    """Short "What is ...?" explainers: closed by default, one click to open, read well with a screen reader."""
+    items = "".join(f'<details class="explain"><summary>{E(TERMS[k][0])}</summary><p>{E(TERMS[k][1])}</p></details>' for k in keys)
+    return f'<div class="explainers">{items}</div>'
+
+
+ZERO_VERB = {"expulsion_idea": "expelled", "restraint_physical_idea": "physically restrained", "restraint_mechanical_idea": "mechanically restrained",
+             "seclusion_idea": "secluded", "referral_idea": "referred to law enforcement", "arrest_idea": "arrested at school"}
+ZERO_TEXT = {"oos_nodis": "No students without disabilities received an out-of-school suspension.",
+             "oos_504": "No students with Section 504 plans received an out-of-school suspension.",
+             "oos_idea": "No students with IEPs received an out-of-school suspension."}
+
+
+def plain_lines(r, keys, st_med) -> str:
+    """Layer 1: one friendly sentence per measure, with a gentle comparison to the typical district in the state."""
+    unit = {m[0]: m[4] for m in MEASURES}
+    short = {m[0]: m[3] for m in MEASURES}
+    state = r.state_name.title() if isinstance(r.state_name, str) else "the state"
+    out, zeros = [], []
+    for k in keys:
+        v, st = r[k], str(r[k + "_status"])
+        code, text = STATUS.get(st, ("5", "Not reported"))
+        if code in ("0", "1") and pd.notna(v):
+            if code == "0" and v == 0 and k in ZERO_VERB:
+                zeros.append(ZERO_VERB[k]); continue
+            fv = fmt(v, unit[k])
+            sent = ZERO_TEXT[k] if (code == "0" and v == 0 and k in ZERO_TEXT) else PLAIN[k].format(v=fv)
+            if code == "1":
+                sent = sent.replace("About " + fv, "At least " + fv).replace("about " + fv, "at least " + fv)
+            sm = st_med[k].get(r.state, np.nan)
+            if code == "0" and pd.notna(sm):
+                if sm == 0:
+                    sent += f" In the typical district in {state}, it was 0." if v else f" The same is true of the typical district in {state}."
+                else:
+                    tol = max(0.1 * abs(sm), 0.5 if unit[k] == "per100" else 50)
+                    word = "about the same as" if abs(v - sm) <= tol else ("higher than" if v > sm else "lower than")
+                    sent += f" That is {word} the typical district in {state} ({fmt(sm, unit[k])})."
+            out.append(sent)
+        else:
+            out.append(f"{short[k]}: {text.lower() if text else 'not reported'}.".capitalize())
+    if zeros:
+        lst = zeros[0] if len(zeros) == 1 else ", ".join(zeros[:-1]) + (", or " if len(zeros) > 2 else " or ") + zeros[-1]
+        out.append(f"No students with IEPs were {lst}.")
+    return '<ul class="plain">' + "".join(f"<li>{E(x)}</li>" for x in out) + "</ul>"
 
 
 # ---------------------------------------------------------------- page frame
@@ -263,8 +309,9 @@ def main() -> int:
 def home_page(n: int) -> str:
     body = f"""
 <h1>IDEA Atlas</h1>
-<p class="lede">Special education data for every U.S. school district, from public federal sources.
-Search for a district by ZIP code or name, or explore the map. Every figure links to its source.</p>
+<p class="lede">Look up any U.S. public school district and see, in plain words, how it serves students with disabilities.
+Every figure comes from public federal data.</p>
+{explain("idea", "iep", "504")}
 
 <section aria-labelledby="find-h" class="panel">
   <h2 id="find-h">Find a district</h2>
@@ -279,6 +326,17 @@ Search for a district by ZIP code or name, or explore the map. Every figure link
   <div id="results" aria-live="polite"></div>
 </section>
 
+<section aria-labelledby="paths-h">
+  <h2 id="paths-h">Choose how deep to go</h2>
+  <ul class="paths">
+    <li><a href="#find-h"><strong>Start simple.</strong></a> Search for your district. Its page opens with a few plain sentences,
+      and you can open the numbers and the full detail when you want them.</li>
+    <li><a href="{BASE}compare/"><strong>Compare districts.</strong></a> Put two to four districts side by side.</li>
+    <li><a href="{BASE}table/"><strong>Explore a whole state.</strong></a> Sort every district in a state by any measure, or choose your own columns.</li>
+    <li><a href="{BASE}download/"><strong>Work with the data.</strong></a> Download the full file, and read the <a href="{BASE}methods/">methods and sources</a>.</li>
+  </ul>
+</section>
+
 <section aria-labelledby="map-h" class="panel">
   <h2 id="map-h">Map</h2>
   <p class="hint">The map shows the same figures as the <a href="{BASE}table/">table</a>, which works well with a screen reader.
@@ -289,6 +347,7 @@ Search for a district by ZIP code or name, or explore the map. Every figure link
     <div class="check"><input type="checkbox" id="hs-layer"> <label for="hs-layer">Show high school districts</label></div>
   </div>
   <p id="measure-note" class="note"></p>
+  {explain("per100", "typical")}
   <div id="map" role="region" aria-label="Map of school districts. Use arrow keys to move and plus or minus to zoom." tabindex="0"></div>
   <div id="legend" aria-labelledby="legend-h"><h3 id="legend-h">Legend</h3><ul id="legend-list"></ul></div>
   <p id="map-status" class="visually-hidden" aria-live="polite"></p>
@@ -312,6 +371,7 @@ def table_page() -> str:
     body = f"""
 <h1>Table of districts</h1>
 <p class="lede">Choose a state and a topic to see every district's figures in a sortable table. You can download what you see.</p>
+{explain("per100", "status", "years")}
 <div class="controls">
   <div><label for="t-state">State</label> <select id="t-state"><option value="">Choose a state</option></select></div>
   <div><label for="t-group">Topic</label> <select id="t-group"></select></div>
@@ -325,7 +385,9 @@ def table_page() -> str:
   <table id="t-table"><caption id="t-caption"></caption><thead></thead><tbody></tbody></table>
 </div>
 <p class="hint">Column headings are buttons: press one to sort by that column, and again to reverse the order.
-Words such as "Withheld for privacy" explain why a figure is not shown. See <a href="{BASE}methods/#rules">data rules</a>.</p>
+Words such as "Withheld for privacy" explain why a figure is not shown.</p>
+<h2>Words used in the table</h2>
+{explain("iep", "504", "settings", "leaving", "discipline", "spending", "idea_money", "poverty")}
 """
     return page("Table of districts", body, desc="Sortable table of special education figures for every school district in a state.",
                 path=BASE + "table/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
@@ -348,7 +410,8 @@ def compare_page() -> str:
 <div id="c-wrap" class="table-wrap" role="region" tabindex="0" aria-labelledby="c-caption" hidden>
   <table id="c-table" class="profile compare"><caption id="c-caption">Side-by-side figures</caption><thead></thead><tbody></tbody></table>
 </div>
-<p class="hint">Rates are per 100 students in each group. Figures come from different school years; see <a href="{BASE}methods/">methods and sources</a>.</p>
+<h2>Words used here</h2>
+{explain("per100", "median", "status", "years", "iep", "504", "settings", "leaving", "discipline", "spending", "idea_money", "poverty")}
 """
     return page("Compare districts", body, desc="Compare special education figures for up to four school districts side by side.",
                 path=BASE + "compare/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
@@ -376,19 +439,24 @@ def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> str:
             f"<td>{E(fmt(sm, unit)) or '—'}</td><td>{E(fmt(nm, unit)) or '—'}</td></tr>")
 
 
-def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, unit_note: str, extra: str = "") -> str:
+def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, unit_note: str, extra: str = "",
+            plain: str = "", terms: tuple[str, ...] = (), more: str = "") -> str:
+    """Three layers: plain sentences and explainers; the numbers with medians (one click); full detail (another click)."""
     sources = "; ".join(f"{SOURCES[s][0]}, {SOURCES[s][1]}" for s in src)
     return f"""
 <section aria-labelledby="{sid}">
   <h2 id="{sid}">{E(title)}</h2>
-  {intro}
+  {intro}{plain}
+  {explain(*terms) if terms else ""}
+  <details class="numbers"><summary>The numbers: this district, the state, and the nation</summary>
   <div class="table-wrap" role="region" tabindex="0" aria-labelledby="{sid}-cap">
   <table class="profile">
     <caption id="{sid}-cap">{E(title)}: {E(unit_note)}</caption>
     <thead><tr><th scope="col">Measure</th><th scope="col">This district</th><th scope="col">State median</th><th scope="col">National median</th></tr></thead>
     <tbody>{''.join(rows)}</tbody>
   </table>
-  </div>
+  </div>{more}
+  </details>
   {extra}
   <p class="source">Source: {E(sources)}. <a href="{BASE}methods/#sources">About the sources</a></p>
 </section>"""
@@ -529,6 +597,18 @@ def full_comm(dr) -> str:
                          "Census estimates for the area the district serves, not only children enrolled.")
 
 
+TYPE_PLAIN = {
+    "Regular public school district that is not a component of a supervisory union": "Public school district",
+    "Regular public school district that is a component of a supervisory union": "Public school district (part of a supervisory union)",
+    "Independent charter district": "Charter school district",
+    "Service agency": "Regional service agency",
+    "Specialized public school district": "Specialized public school district",
+    "Other local education agency": "Other local education agency",
+    "State operated agency": "State-run school agency",
+    "Federal operated agency": "Federally run school agency",
+}
+
+
 def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     name = r.display
     lab = {m[0]: m[2] for m in MEASURES}
@@ -537,7 +617,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     if isinstance(r.city, str) and r.city:
         meta.append(f"{r.city.title()}, {r.state_name.title()}")
     if isinstance(r.district_type, str):
-        meta.append(r.district_type)
+        meta.append(TYPE_PLAIN.get(r.district_type, r.district_type))
     if isinstance(r.grade_low, str) and isinstance(r.grade_high, str):
         meta.append(f"Grades {r.grade_low} to {r.grade_high}")
     if pd.notna(r.enrollment):
@@ -567,10 +647,15 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
         glance.append(f"In 2023–24, {fmt(r.oos_idea, 'per100')} of every 100 students with IEPs received an out-of-school suspension, "
                       f"compared with {fmt(r.oos_nodis, 'per100')} of every 100 students without disabilities.")
     glance_html = ("<section aria-labelledby=\"g-h\" class=\"glance\"><h2 id=\"g-h\">At a glance</h2><ul>"
-                   + "".join(f"<li>{E(x)}</li>" for x in glance) + "</ul></section>") if glance else ""
+                   + "".join(f"<li>{E(x)}</li>" for x in glance) + "</ul>" + explain("iep", "per100") + "</section>") if glance else ""
+    howto = ('<p class="howto">Each topic below starts in plain words. Open <strong>The numbers</strong> to see this district beside the state and the nation, '
+             'and <strong>Full detail</strong> for every count behind the figures. Questions such as <em>What is a median?</em> open a short explanation.</p>')
 
     def rows(ks):
         return [compare_row(lab[k], k, unit[k], r, st_med, nat_med) for k in ks]
+
+    def sec(title, intro, ks, src, sid, unit_note, extra, terms, more=""):
+        return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=more)
 
     cat_rows = []
     order = sorted(CATEGORIES, key=lambda c: -(r[c[0]] if str(r[c[0] + "_status"]) == "ok" and pd.notna(r[c[0]]) else -1))
@@ -597,26 +682,28 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
 <h1>{E(name)}</h1>
 <p class="meta">{E(' · '.join(meta))}</p>
 <div class="page-tools"><button type="button" data-print>Print this page</button>
-  <button type="button" data-expand aria-pressed="false">Show all detail</button>
+  <button type="button" data-expand>Show all detail</button>
   <a class="button secondary" href="{BASE}compare/?ids={r.leaid}">Compare with other districts</a></div>
 {parent}{kids}
 {glance_html}
-{section("Who is served", state_note, rows(["id_rate", "pct_504"]), ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", cats + full_who(dr))}
-{section("Where students learn", "<p>Share of school-age students with IEPs in each setting.</p>", rows(["env_80plus", "env_lt40", "env_separate"]), ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr))}
-{section("Leaving school", "<p>How students with IEPs, ages 14 to 21, left school during the year.</p>", rows(["grad_regular", "dropout"]), ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr))}
-{section("Discipline and safety", check + partial, rows(["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"]), ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr))}
-{section("Funding", "", rows(["spend_per_pupil", "idea_federal_per_student"]), ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr))}
-{section("Community", "", rows(["child_poverty"]), ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr))}
+{howto}
+{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), cats)}
+{sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",))}
+{sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",))}
+{sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"))}
+{sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"))}
+{sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",))}
 <section aria-labelledby="s-state">
   <h2 id="s-state">State IDEA rating</h2>
   <p>Each year the U.S. Department of Education rates how each state carries out IDEA. In 2026, {E(r.state_name.title())} was rated <strong>{E(det)}</strong>.
-  The rating describes the state, not this district. <a href="{BASE}methods/#det">What the ratings mean</a></p>
+  The rating describes the state, not this district.</p>
+  {explain("rating")}
   <p class="source">Source: {E(SOURCES['det'][0])}, {E(SOURCES['det'][1])}.</p>
 </section>
 <section aria-labelledby="s-more">
   <h2 id="s-more">Using these figures</h2>
-  <p>Medians are the middle value of districts with a figure: half of districts are above and half below.
-  They give context, not a target. Some figures come from different school years. See <a href="{BASE}methods/">methods and sources</a>.</p>
+  <p>These figures describe what was reported. They are not grades. See <a href="{BASE}methods/">methods and sources</a> for how each one is made.</p>
+  {explain("median", "status", "years")}
   <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/</p>
 </section>
 """

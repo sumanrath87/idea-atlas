@@ -279,12 +279,12 @@
 
   /* ------------------------------------------------------------ print and detail */
   function initTools() {
-    var all = function () { return Array.prototype.slice.call(document.querySelectorAll("details.full, details.kids")); };
+    // "Show all detail" opens the numbers and full-detail layers; explainers stay as the reader left them.
+    var all = function () { return Array.prototype.slice.call(document.querySelectorAll("details.numbers, details.full, details.kids")); };
     var exp = document.querySelector("[data-expand]");
     if (exp) exp.addEventListener("click", function () {
-      var open = exp.getAttribute("aria-pressed") !== "true";
+      var open = exp.textContent.indexOf("Show") === 0;
       all().forEach(function (d) { d.open = open; });
-      exp.setAttribute("aria-pressed", open ? "true" : "false");
       exp.textContent = open ? "Hide all detail" : "Show all detail";
     });
     var before = null;

@@ -95,3 +95,79 @@ STATE_NOTES = {
     "WY": ("Wyoming's 2024–25 district counts of students with IEPs were flagged by the U.S. Department of Education for data quality, "
            "so they are not shown. Other Wyoming figures are shown when available."),
 }
+
+# ---------------------------------------------------------------- plain words
+# Short explainers, shown as "What is ...?" buttons next to the term. Plain, neutral, and accurate.
+TERMS = {
+    "idea": ("What is IDEA?",
+             "The Individuals with Disabilities Education Act (IDEA) is the federal law that guarantees a free appropriate public education "
+             "to children with disabilities, from age 3 through 21. States and districts report data about it every year."),
+    "iep": ("What is an IEP?",
+            "An Individualized Education Program (IEP) is a written plan for a student who qualifies for special education under IDEA. "
+            "The family and school team write it together. It lists the student's goals and the services and supports the school will provide."),
+    "504": ("What is a Section 504 plan?",
+            "Section 504 of the Rehabilitation Act protects students with disabilities from discrimination. A 504 plan lists supports, "
+            "such as extra time or an accessible seat, for a student who needs them to take part fully in school. Students with IEPs are not counted here."),
+    "per100": ("Why “per 100”?",
+               "Showing figures per 100 students lets you read a small district and a large one the same way. "
+               "For example, 15 per 100 means about 15 of every 100 students in that group."),
+    "median": ("What is a median?",
+               "The median is the middle district: half of districts have a higher figure and half have a lower one. "
+               "It gives context. It is not a target or a grade."),
+    "typical": ("What does “typical district” mean?",
+                "On this site, the typical district is the median: the district in the middle when all districts in the state, or the nation, are lined up from lowest to highest."),
+    "categories": ("What are the federal categories?",
+                   "IDEA names 13 disability categories, plus developmental delay for young children. A student is counted in one category. "
+                   "The names are the federal terms used in the reports, not descriptions of any one child."),
+    "settings": ("What do the learning settings mean?",
+                 "IDEA asks how much of the school day each student with an IEP spends in a general class with classmates without disabilities. "
+                 "Separate settings are separate schools, residential facilities, and homebound or hospital settings."),
+    "leaving": ("How is “leaving school” counted?",
+                "Each year districts report how students with IEPs, ages 14 to 21, left school: with a regular diploma, with another certificate, "
+                "by reaching the maximum age for services, or by dropping out. The figures are per 100 students who left that year."),
+    "discipline": ("What do these discipline words mean?",
+                   "Out-of-school suspension means a student was removed from school for at least half a day. Physical restraint means holding a student so they cannot move freely; "
+                   "mechanical restraint uses a device to do so. Seclusion means keeping a student alone in a room they cannot leave. "
+                   "Referral to law enforcement means a school reported a student to police; a school-related arrest happened at school or a school event. "
+                   "The figures count students, not incidents."),
+    "spending": ("What does spending per student include?",
+                 "Current spending is the day-to-day cost of running schools, such as staff, services, and supplies. It leaves out building projects and debt. "
+                 "It covers all students, not only students with IEPs."),
+    "idea_money": ("What is federal IDEA money?",
+                   "Each year Congress sends IDEA funds to states, and states pass most of it to districts. This figure is that federal money divided by the number of students with IEPs. "
+                   "States and districts pay most special education costs from their own funds."),
+    "poverty": ("How is child poverty estimated?",
+                "The Census Bureau estimates how many children ages 5 to 17 live in families below the federal poverty line in each district's area. "
+                "It counts children who live there, whether or not they attend the district's schools."),
+    "status": ("Why are some figures missing?",
+               "Agencies withhold small numbers to protect students' privacy, and a rate is not shown when fewer than 10 students are in the group. "
+               "“At least” means part of a figure was withheld, so the true number is the same or higher. Missing figures are never estimated."),
+    "rating": ("What are the state IDEA ratings?",
+               "Each year the U.S. Department of Education reviews each state and gives one of four ratings: meets requirements, needs assistance, "
+               "needs intervention, or needs substantial intervention. The rating is about the state, not any one district."),
+    "years": ("Why are the school years different?",
+              "Each federal source is released on its own schedule, so the newest available year differs. Every figure shows its own year."),
+}
+
+# Plain sentence for each measure. {v} is the formatted figure.
+PLAIN = {
+    "id_rate": "About {v} of every 100 students enrolled have an IEP served by the district.",
+    "pct_504": "About {v} of every 100 students enrolled have a Section 504 plan.",
+    "env_80plus": "About {v} of every 100 students with IEPs spend most of the day (80% or more) in a general class.",
+    "env_lt40": "About {v} of every 100 students with IEPs spend less than 40% of the day in a general class.",
+    "env_separate": "About {v} of every 100 students with IEPs learn in a separate school, residential facility, or homebound or hospital setting.",
+    "grad_regular": "Of every 100 students with IEPs who left school, about {v} left with a regular high school diploma.",
+    "dropout": "Of every 100 students with IEPs who left school, about {v} left by dropping out.",
+    "oos_idea": "About {v} of every 100 students with IEPs received an out-of-school suspension.",
+    "oos_nodis": "For students without disabilities, the figure was about {v} of every 100.",
+    "oos_504": "For students with Section 504 plans, it was about {v} of every 100.",
+    "expulsion_idea": "About {v} of every 100 students with IEPs were expelled.",
+    "restraint_physical_idea": "About {v} of every 100 students with IEPs were physically restrained.",
+    "restraint_mechanical_idea": "About {v} of every 100 students with IEPs were mechanically restrained.",
+    "seclusion_idea": "About {v} of every 100 students with IEPs were secluded.",
+    "referral_idea": "About {v} of every 100 students with IEPs were referred to law enforcement.",
+    "arrest_idea": "About {v} of every 100 students with IEPs had a school-related arrest.",
+    "spend_per_pupil": "The district spent about {v} per student on day-to-day costs.",
+    "idea_federal_per_student": "It received about {v} in federal IDEA money for each student with an IEP.",
+    "child_poverty": "About {v} of every 100 children ages 5 to 17 in the district's area live in poverty.",
+}
