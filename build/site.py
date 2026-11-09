@@ -70,9 +70,18 @@ def cell(v, status: str, unit: str) -> str:
     return text
 
 
+TABLES: list = []      # tables for the page being built; written into its data block and built in the browser
+SHORT_TERMS = [False]  # district pages carry only the question; the answer comes from one shared file
+
+
 def explain(*keys: str) -> str:
-    """Short "What is ...?" explainers: closed by default, one click to open, read well with a screen reader."""
-    items = "".join(f'<details class="explain"><summary>{E(TERMS[k][0])}</summary><p>{E(TERMS[k][1])}</p></details>' for k in keys)
+    """Short "What is ...?" explainers: closed by default, one click to open, read well with a screen reader.
+    On district pages the answer is filled from data/terms.json; without scripts a link leads to the glossary."""
+    if SHORT_TERMS[0]:
+        items = "".join(f'<details class="explain" data-term="{k}"><summary>{E(TERMS[k][0])}</summary>'
+                        f'<p><a href="{BASE}methods/#term-{k}">Read the explanation</a></p></details>' for k in keys)
+    else:
+        items = "".join(f'<details class="explain"><summary>{E(TERMS[k][0])}</summary><p>{E(TERMS[k][1])}</p></details>' for k in keys)
     return f'<div class="explainers">{items}</div>'
 
 
@@ -207,6 +216,8 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 
 
 def write(rel: str, text: str) -> None:
+    text = re.sub(r"\n[ \t]+", "\n", text)
+    text = re.sub(r"\n{2,}", "\n", text)
     p = OUT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
@@ -278,6 +289,7 @@ def main() -> int:
             codes += code
         vals.append(row)
         stats.append(codes)
+    (OUT / "data" / "terms.json").write_text(json.dumps({k: v[1] for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
     (OUT / "data" / "measures.json").write_text(json.dumps([{"key": m[0], "short": m[3], "unit": m[4]} for m in MEASURES], separators=(",", ":")))
     payload = {
         "version": VERSION,
@@ -544,14 +556,13 @@ Code and processed data are shared under a Creative Commons Attribution 4.0 lice
                 path=BASE + "download/", crumbs=[("IDEA Atlas", BASE)])
 
 
-def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> str:
+def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> list[str]:
     v, s = r[k], str(r[k + "_status"])
     sm = st_med[k].get(r.state, np.nan)
     nm = nat_med[k]
     lo, hi = st_med["_q"][k][0].get(r.state, np.nan), st_med["_q"][k][1].get(r.state, np.nan)
     mid = f"{fmt(lo, unit)} to {fmt(hi, unit)}" if pd.notna(lo) and pd.notna(hi) else "—"
-    return (f"<tr><th scope=\"row\">{E(label)}</th><td>{E(cell(v, s, unit))}</td>"
-            f"<td>{E(fmt(sm, unit)) or '—'}</td><td>{E(mid)}</td><td>{E(fmt(nm, unit)) or '—'}</td></tr>")
+    return [label, cell(v, s, unit), fmt(sm, unit) or "—", mid, fmt(nm, unit) or "—"]
 
 
 def chart(kind: str, caption: str, keys: str = "") -> str:
@@ -561,7 +572,7 @@ def chart(kind: str, caption: str, keys: str = "") -> str:
     return f'<figure class="chart" data-chart="{kind}"{k} aria-hidden="true"><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
 
 
-def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, unit_note: str, extra: str = "",
+def section(title: str, intro: str, rows: list[list[str]], src: list[str], sid: str, unit_note: str, extra: str = "",
             plain: str = "", terms: tuple[str, ...] = (), more: str = "", pic: str = "", pic2: str = "") -> str:
     """Three layers: plain sentences and explainers; the numbers with medians (one click); full detail (another click)."""
     sources = "; ".join(f"{SOURCES[s][0]}, {SOURCES[s][1]}" for s in src)
@@ -572,13 +583,8 @@ def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, u
   {pic}
   {explain(*terms) if terms else ""}
   <details class="numbers"><summary>The numbers: this district, the state, and the nation</summary>
-  <div class="table-wrap" role="region" tabindex="0" aria-labelledby="{sid}-cap">
-  <table class="profile">
-    <caption id="{sid}-cap">{E(title)}: {E(unit_note)}</caption>
-    <thead><tr><th scope="col">Measure</th><th scope="col">This district</th><th scope="col">State median</th><th scope="col">Middle half of state districts</th><th scope="col">National median</th></tr></thead>
-    <tbody>{''.join(rows)}</tbody>
-  </table>
-  </div>{explain("middle")}{pic2}{more}
+  {detail_table(f"{title}: {unit_note}", ["Measure", "This district", "State median", "Middle half of state districts", "National median"], rows, sid + "-cap", "profile")}
+  {explain("middle") if sid == "s-who" else ""}{pic2}{more}
   </details>
   {extra}
   <p class="source">Source: {E(sources)}. <a href="{BASE}methods/#sources">About the sources</a></p>
@@ -619,12 +625,10 @@ def per100(a, b) -> str:
     return f"{100 * a / b:,.1f}"
 
 
-def detail_table(caption: str, head: list[str], rows: list[list[str]], tid: str) -> str:
-    th = "".join(f'<th scope="col">{E(h)}</th>' for h in head)
-    body = "".join("<tr><th scope=\"row\">" + E(r[0]) + "</th>" + "".join(f"<td>{E(c)}</td>" for c in r[1:]) + "</tr>" for r in rows)
-    return (f'<div class="table-wrap" role="region" tabindex="0" aria-labelledby="{tid}">'
-            f'<table class="profile detail"><caption id="{tid}">{E(caption)}</caption><thead><tr>{th}</tr></thead>'
-            f"<tbody>{body}</tbody></table></div>")
+def detail_table(caption: str, head: list[str], rows: list[list[str]], tid: str, cls: str = "profile detail") -> str:
+    """Register a table for this page. It is stored as data and built in the browser as a normal, fully labelled table."""
+    TABLES.append({"id": tid, "c": caption, "h": head, "r": rows, "k": cls})
+    return f'<div class="jt" data-t="{len(TABLES) - 1}"></div>'
 
 
 def details_block(summary: str, inner: str, note: str = "") -> str:
@@ -753,6 +757,8 @@ TYPE_PLAIN = {
 
 
 def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
+    TABLES.clear()
+    SHORT_TERMS[0] = True
     name = r.display
     lab = {m[0]: m[2] for m in MEASURES}
     unit = {m[0]: m[4] for m in MEASURES}
@@ -804,15 +810,9 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
         return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=more,
                        pic=rng(ks) if pic is None else pic, pic2=pic2)
 
-    cat_rows = []
     order = sorted(CATEGORIES, key=lambda c: -(r[c[0]] if str(r[c[0] + "_status"]) == "ok" and pd.notna(r[c[0]]) else -1))
-    for k, label in order:
-        cat_rows.append(f"<tr><th scope=\"row\">{E(label)}</th><td>{E(cell(r[k], str(r[k + '_status']), 'per100'))}</td></tr>")
-    cats = f"""
-  <div class="table-wrap" role="region" tabindex="0" aria-labelledby="cat-cap">
-  <table class="profile narrow"><caption id="cat-cap">Disability categories, largest first, per 100 school-age students with IEPs</caption>
-  <thead><tr><th scope="col">Federal category</th><th scope="col">This district</th></tr></thead>
-  <tbody>{''.join(cat_rows)}</tbody></table></div>"""
+    cat_rows = [[label, cell(r[k], str(r[k + "_status"]), "per100")] for k, label in order]
+    cats_args = ("Disability categories, largest first, per 100 school-age students with IEPs", ["Federal category", "This district"], cat_rows, "cat-cap", "profile narrow")
 
     check = ""
     if bool(r.crdc_count_check) if pd.notna(r.crdc_count_check) else False:
@@ -847,11 +847,9 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
               ex("Reached Maximum Age"), ex("Dropped Out"), ex("Died")]
         if all(x is not None for x in xs) and sum(xs) >= 10:
             cd["ex"] = [xs[0], xs[1] + xs[2], xs[3], xs[4], xs[5]]
-    chart_json = json.dumps(cd, separators=(",", ":")).replace("</", "<\\/")
     det = r.determination_2026 if isinstance(r.determination_2026, str) else "Not available"
     state_note = f'<p class="note">{E(STATE_NOTES[r.state])}</p>' if r.state in STATE_NOTES else ""
     body = f"""
-<script type="application/json" id="chart-data">{chart_json}</script>
 <h1>{E(name)}</h1>
 <dl class="facts">{''.join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in meta)}</dl>
 <div class="page-tools"><button type="button" data-print>Print this page</button>
@@ -860,7 +858,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
 {parent}{kids}
 {glance_html}
 {howto}
-{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + cats)}
+{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
 {sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",), pic=chart("settings", "Time in a general class, school-age students with IEPs"), pic2=rng(["env_80plus", "env_lt40", "env_separate"]))}
 {sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",), pic=chart("exit", "How students with IEPs left school, 2023–24"), pic2=rng(["grad_regular", "dropout"]))}
 {sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"))}
@@ -895,6 +893,10 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
   <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/</p>
 </section>
 """
+    cd["t"] = list(TABLES)
+    SHORT_TERMS[0] = False
+    chart_json = json.dumps(cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
+    body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
     desc = f"Special education data for {name}, {r.state_name.title()}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
     return page(f"{name}, {r.state}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",),
                 crumbs=[("IDEA Atlas", BASE), (r.state_name.title(), f"{BASE}table/?state={r.state}")])
@@ -913,7 +915,7 @@ def methods_page() -> str:
 <li><a href="#what">What the tool shows</a></li><li><a href="#sources">Sources</a></li><li><a href="#rules">Data rules</a></li>
 <li><a href="#measures">How each measure is calculated</a></li><li><a href="#zip">ZIP code search</a></li>
 <li><a href="#det">State ratings</a></li><li><a href="#limits">Known limits</a></li><li><a href="#dictionary">Data dictionary</a></li>
-<li><a href="#updates">Updates and versions</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
+<li><a href="#words">Words explained</a></li><li><a href="#updates">Updates and versions</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
 
 <section aria-labelledby="what"><h2 id="what">What the tool shows</h2>
 <p>I built IDEA Atlas so that families, educators, and researchers can see, in one place, what public federal data say about special education
@@ -972,6 +974,9 @@ A rating describes the state, not any one district.</p></section>
 <section aria-labelledby="dictionary"><h2 id="dictionary">Data dictionary</h2>
 <div class="table-wrap" role="region" tabindex="0" aria-labelledby="dd-cap"><table><caption id="dd-cap">Measures in the download file</caption>
 <thead><tr><th scope="col">Column</th><th scope="col">Measure</th><th scope="col">Group it is counted against</th></tr></thead><tbody>{dict_rows}</tbody></table></div></section>
+
+<section aria-labelledby="words"><h2 id="words">Words explained</h2>
+<dl class="glossary">{''.join(f'<dt id="term-{k}">{E(v[0])}</dt><dd>{E(v[1])}</dd>' for k, v in TERMS.items())}</dl></section>
 
 <section aria-labelledby="updates"><h2 id="updates">Updates and versions</h2>
 <p>A check runs every month. When an agency posts a new file, IDEA Atlas is rebuilt and reviewed before it goes live, and the version number changes.

@@ -369,9 +369,30 @@
     return true;
   }
 
+  // Tables are stored as compact data on district pages and built here as ordinary, fully labelled tables.
+  function buildTables(cd) {
+    Array.prototype.forEach.call(document.querySelectorAll(".jt[data-t]"), function (slot) {
+      var d = (cd.t || [])[+slot.getAttribute("data-t")]; if (!d) return;
+      var h = '<div class="table-wrap" role="region" tabindex="0" aria-labelledby="' + d.id + '"><table class="' + d.k + '"><caption id="' + d.id + '">' + esc(d.c) +
+        '</caption><thead><tr>' + d.h.map(function (x) { return '<th scope="col">' + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>" +
+        d.r.map(function (row) { return "<tr><th scope=\"row\">" + esc(row[0]) + "</th>" + row.slice(1).map(function (c) { return "<td>" + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
+        "</tbody></table></div>";
+      slot.outerHTML = h;
+    });
+  }
+  // Explanations on district pages come from one shared file; until it arrives, each links to the glossary.
+  function fillTerms() {
+    var ds = document.querySelectorAll("details.explain[data-term]"); if (!ds.length) return;
+    fetch(BASE + "data/terms.json").then(function (r) { return r.json(); }).then(function (terms) {
+      Array.prototype.forEach.call(ds, function (d) { var k = d.getAttribute("data-term"); if (terms[k]) d.querySelector("p").textContent = terms[k]; });
+    }).catch(function () {});
+  }
+
   function initCharts() {
+    fillTerms();
     var el = document.getElementById("chart-data"); if (!el) return;
     var cd; try { cd = JSON.parse(el.textContent); } catch (e) { return; }
+    buildTables(cd);
     fetch(BASE + "data/measures.json").then(function (r) { return r.json(); }).then(function (ms) {
       var meas = {}; ms.forEach(function (m) { meas[m.key] = m; });
       Array.prototype.forEach.call(document.querySelectorAll("figure.chart[data-chart]"), function (fig) {

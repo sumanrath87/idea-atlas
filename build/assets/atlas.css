@@ -248,6 +248,9 @@ footer.site { border-top-color: var(--rule); margin-top: 5rem; }
 }
 @media (prefers-reduced-motion: reduce) { details > summary::before { transition: none; } }
 
+dl.glossary dt { font-weight: 700; margin-top: 1rem; scroll-margin-top: 1rem; }
+dl.glossary dd { margin: .2rem 0 0; max-width: var(--measure); color: var(--ink-2); }
+dl.glossary dt:target { color: var(--accent); }
 /* ---------- charts: thin marks, quiet ink, the district in the brand red ---------- */
 figure.chart { margin: 1rem 0 1.4rem; max-width: 46rem; }
 figure.chart figcaption { font-size: .88rem; color: var(--muted); margin-bottom: .5rem; }
@@ -297,7 +300,8 @@ ul.hbars .hv { text-align: right; font-weight: 700; font-variant-numeric: tabula
   .glance { background: none; } ul.plain li, .glance li { font-size: 11pt; margin-bottom: 4pt; }
   dl.facts { gap: 2pt 14pt; } details.numbers > summary::before, details.full > summary::before { display: none; }
   .depth { display: none; }
-  figure.chart { break-inside: avoid; max-width: 100%; } #c-chart { break-after: page; }
+  figure.chart { break-inside: avoid; max-width: 100%; }
+  details.numbers figure.chart { display: none !important; } #c-chart { break-after: page; }
   .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band, svg.range { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .print-head { font-size: 8.5pt; color: #444; border-bottom: 1px solid #999; padding-bottom: 4pt; margin: 0 0 10pt; }
   h1 { font-size: 22pt; margin: 0 0 4pt; }
