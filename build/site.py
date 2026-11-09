@@ -70,6 +70,7 @@ def cell(v, status: str, unit: str) -> str:
     return text
 
 
+TRENDS: dict = {}     # district trend lines: {leaid: {"i": iep share, "s": spending, "p": child poverty}}
 TABLES: list = []      # tables for the page being built; written into its data block and built in the browser
 SHORT_TERMS = [False]  # district pages carry only the question; the answer comes from one shared file
 
@@ -342,7 +343,21 @@ def main() -> int:
         dname = f"idea-atlas-detail-v{VERSION}.zip"
         with zipfile.ZipFile(dl / dname, "w", zipfile.ZIP_DEFLATED) as z:
             z.writestr(f"idea-atlas-detail-v{VERSION}.csv", nice.to_csv())
-    write("download/index.html", download_page(fname, len(d), dname, len(det0.columns)))
+    tname = ""
+    tp = Path(__file__).resolve().parent / "history" / "district_trends.json.gz"
+    if tp.exists():
+        import gzip, zipfile
+        tr_all = json.loads(gzip.open(tp).read())
+        lines = ["leaid,measure,year,value"]
+        nm = {"i": "students_with_ieps_per_100_enrolled (fall year)", "s": "current_spending_per_student_2024_dollars (fiscal year)", "p": "children_5_17_in_poverty_per_100 (estimate year)"}
+        for lid, ms in sorted(tr_all.items()):
+            for k, ys in ms.items():
+                for y, v in sorted(ys.items(), key=lambda kv: int(kv[0])):
+                    lines.append(f"{lid},{nm[k].split(' ')[0]},{y},{v}")
+        tname = f"idea-atlas-trends-v{VERSION}.zip"
+        with zipfile.ZipFile(dl / tname, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr(f"idea-atlas-trends-v{VERSION}.csv", "\n".join(lines) + "\n")
+    write("download/index.html", download_page(fname, len(d), dname, len(det0.columns), tname))
 
     # ---- pages
     write("index.html", home_page(len(d)))
@@ -354,13 +369,17 @@ def main() -> int:
     write("compare/index.html", compare_page())
     children = d[d.part_of.notna()].groupby("part_of")
     kids_of = {k: g for k, g in children}
+    tpath = Path(__file__).resolve().parent / "history" / "district_trends.json.gz"
+    if tpath.exists():
+        import gzip
+        TRENDS.update(json.loads(gzip.open(tpath).read()))
     by_id = d.set_index("leaid")
     dpath = ROOT / "clean" / "output" / "detail.csv.gz"
     detail = pd.read_csv(dpath, dtype=str, index_col=0, keep_default_na=False) if dpath.exists() else pd.DataFrame()
     n = 0
     for _, r in d.iterrows():
         dr = detail.loc[r.leaid] if r.leaid in detail.index else None
-        write(f"district/{r.leaid}/index.html", district_page(r, st_med, nat_med, kids_of, by_id, dr))
+        write(f"district/{r.leaid}/index.html", district_page(r, st_med, nat_med, kids_of, by_id, dr, TRENDS.get(r.leaid)))
         n += 1
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
@@ -532,7 +551,7 @@ def add_counts(out: pd.DataFrame, det: pd.DataFrame) -> pd.DataFrame:
     return out[cols]
 
 
-def download_page(fname: str, n: int, dname: str = "", ncols: int = 0) -> str:
+def download_page(fname: str, n: int, dname: str = "", ncols: int = 0, tname: str = "") -> str:
     detail = f"""
 <h2>Full detail file</h2>
 <p>Every count behind the district pages, one row per district: all federal disability categories for early childhood and school age,
@@ -550,6 +569,10 @@ every learning setting, every way students left special education, civil rights 
 <p><a class="button" href="{BASE}download/{fname}" download>Download {E(fname)}</a></p>
 {explain("status")}
 {detail}
+{f"""<h2>Trends file</h2>
+<p>Each district's trend lines, one row per district, measure, and year: students with IEPs per 100 enrolled (1991–92 onward), spending per student in 2024 dollars (fiscal year 1990 onward), and child poverty (2003 onward).
+See <a href="{BASE}methods/#trends">how the trends are made</a>.</p>
+<p><a class="button" href="{BASE}download/{tname}" download>Download {E(tname)}</a></p>""" if tname else ""}
 
 <h2>Using the files</h2>
 <p>The <a href="{BASE}methods/#dictionary">data dictionary</a> describes every measure and the group it is counted against, and the
@@ -578,14 +601,14 @@ def chart(kind: str, caption: str, keys: str = "") -> str:
 
 
 def section(title: str, intro: str, rows: list[list[str]], src: list[str], sid: str, unit_note: str, extra: str = "",
-            plain: str = "", terms: tuple[str, ...] = (), more: str = "", pic: str = "", pic2: str = "") -> str:
+            plain: str = "", terms: tuple[str, ...] = (), more: str = "", pic: str = "", pic2: str = "", trend: str = "") -> str:
     """Three layers: plain sentences and explainers; the numbers with medians (one click); full detail (another click)."""
     sources = "; ".join(f"{SOURCES[s][0]}, {SOURCES[s][1]}" for s in src)
     return f"""
 <section aria-labelledby="{sid}">
   <h2 id="{sid}">{E(title)}</h2>
   {intro}{plain}
-  {pic}
+  {pic}{trend}
   {explain(*terms) if terms else ""}
   <details class="numbers"><summary>The numbers: this district, the state, and the nation</summary>
   {detail_table(f"{title}: {unit_note}", ["Measure", "This district", "State median", "Middle half of state districts", "National median"], rows, sid + "-cap", "profile")}
@@ -761,7 +784,7 @@ TYPE_PLAIN = {
 }
 
 
-def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
+def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     TABLES.clear()
     SHORT_TERMS[0] = True
     name = r.display
@@ -811,9 +834,43 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     def rng(ks):
         return chart("range", f"Where this district sits among {st_name} districts", ",".join(ks))
 
-    def sec(title, intro, ks, src, sid, unit_note, extra, terms, more="", pic=None, pic2=""):
-        return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=more,
-                       pic=rng(ks) if pic is None else pic, pic2=pic2)
+    def sec(title, intro, ks, src, sid, unit_note, extra, terms, more="", pic=None, pic2="", trend=("", "")):
+        return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=trend[1] + more,
+                       pic=rng(ks) if pic is None else pic, pic2=pic2, trend=trend[0])
+
+    tr = tr or {}
+    cd_tr = {}
+
+    def over_time(code, cur, label, unit, yfmt, src, what):
+        """A plain sentence, a small chart and a table for one measure over time. Returns (visible part, numbers-layer part)."""
+        pts = {int(y): v for y, v in (tr.get(code) or {}).items()}
+        if cur[1] is not None and pd.notna(cur[1]):
+            pts[cur[0]] = round(float(cur[1]), 1) if unit != "usd" else int(round(float(cur[1])))
+        if len(pts) < 3:
+            return "", ""
+        ys = sorted(pts)
+        f = (lambda v: f"${v:,.0f}") if unit == "usd" else (lambda v: f"{v:,.1f}")
+        a, b = ys[0], ys[-1]
+        say = what.format(a=yfmt(a), b=yfmt(b), va=f(pts[a]), vb=f(pts[b]))
+        cd_tr[code] = [[y, pts[y]] for y in ys]
+        vis = (f'<h3 class="ot-h">Over time</h3><ul class="plain"><li>{figs(say)}</li></ul>'
+               + chart("trend", f"{label}, {yfmt(a)} to {yfmt(b)}. Dashed lines join years without a figure.", code))
+        # the year-by-year table is built in the browser from the same numbers as the chart
+        tbl = (f'<div class="jt-tr" data-k="{code}" data-cap="{E(label)}, by year" data-label="{E(label)}" '
+               f'data-y="{"sy" if yfmt is sy else "fy" if yfmt is fy else "y"}"></div>')
+        return vis, tbl + f'<p class="source">{E(src)}</p>'
+
+    sy = lambda y: f"{y}–{str(y + 1)[-2:]}"
+    fy = lambda y: f"{y - 1}–{str(y)[-2:]}"
+    ot_iep = over_time("i", (2024, r.id_rate if str(r.id_rate_status) == "ok" else None), "Students with IEPs per 100 enrolled", "per100", sy,
+                       "Earlier years: Common Core of Data, district files 1991–92 to 2017–18 (students with IEPs and enrollment). Years when a state reported in an unusual way are left out.",
+                       "About {va} of every 100 students had an IEP in {a}, compared with about {vb} in {b}.")
+    ot_sp = over_time("s", (2024, r.spend_per_pupil if str(r.spend_per_pupil_status) == "ok" else None), "Spending per student, in 2024 dollars", "usd", fy,
+                      "Earlier years: NCES and Census Bureau school district finance surveys, adjusted for inflation with the Consumer Price Index (Bureau of Labor Statistics).",
+                      "Adjusted for inflation, the district spent about {va} per student in {a} and about {vb} in {b}.")
+    ot_pv = over_time("p", (2024, r.child_poverty if str(r.child_poverty_status) == "ok" else None), "Children ages 5 to 17 in poverty, per 100", "per100", str,
+                      "Earlier years: Census Bureau Small Area Income and Poverty Estimates, 2003 onward.",
+                      "About {va} of every 100 children in the district's area lived in poverty in {a}, and about {vb} in {b}.")
 
     order = sorted(CATEGORIES, key=lambda c: -(r[c[0]] if str(r[c[0] + "_status"]) == "ok" and pd.notna(r[c[0]]) else -1))
     cat_rows = [[label, cell(r[k], str(r[k + "_status"]), "per100")] for k, label in order]
@@ -863,12 +920,12 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
 {parent}{kids}
 {glance_html}
 {howto}
-{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
+{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), trend=ot_iep, more=chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
 {sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",), pic=chart("settings", "Time in a general class, school-age students with IEPs"), pic2=rng(["env_80plus", "env_lt40", "env_separate"]))}
 {sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",), pic=chart("exit", "How students with IEPs left school, 2023–24"), pic2=rng(["grad_regular", "dropout"]))}
 {sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"))}
-{sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"))}
-{sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",))}
+{sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"), trend=ot_sp)}
+{sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",), trend=ot_pv)}
 <section aria-labelledby="s-state">
   <h2 id="s-state">State IDEA rating</h2>
   <p>Each year the U.S. Department of Education rates how each state carries out IDEA. In 2026, {E(r.state_name.title())} was rated <strong>{E(det)}</strong>.
@@ -899,6 +956,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
 </section>
 """
     cd["t"] = list(TABLES)
+    if cd_tr:
+        cd["tr"] = cd_tr
     SHORT_TERMS[0] = False
     chart_json = json.dumps(cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
@@ -920,7 +979,7 @@ def methods_page() -> str:
 <li><a href="#what">What the tool shows</a></li><li><a href="#sources">Sources</a></li><li><a href="#rules">Data rules</a></li>
 <li><a href="#measures">How each measure is calculated</a></li><li><a href="#zip">ZIP code search</a></li>
 <li><a href="#det">State ratings</a></li><li><a href="#limits">Known limits</a></li><li><a href="#dictionary">Data dictionary</a></li>
-<li><a href="#words">Words explained</a></li><li><a href="#updates">Updates and versions</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
+<li><a href="#trends">History and trends</a></li><li><a href="#words">Words explained</a></li><li><a href="#updates">Updates and versions</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
 
 <section aria-labelledby="what"><h2 id="what">What the tool shows</h2>
 <p>I built IDEA Atlas so that families, educators, and researchers can see, in one place, what public federal data say about special education
@@ -979,6 +1038,20 @@ A rating describes the state, not any one district.</p></section>
 <section aria-labelledby="dictionary"><h2 id="dictionary">Data dictionary</h2>
 <div class="table-wrap" role="region" tabindex="0" aria-labelledby="dd-cap"><table><caption id="dd-cap">Measures in the download file</caption>
 <thead><tr><th scope="col">Column</th><th scope="col">Measure</th><th scope="col">Group it is counted against</th></tr></thead><tbody>{dict_rows}</tbody></table></div></section>
+
+<section aria-labelledby="trends"><h2 id="trends">History and trends</h2>
+<p>The <a href="{BASE}history/">History page</a> uses the Digest of Education Statistics (National Center for Education Statistics), which gathers the counts states report each year,
+tables 204.30, 204.60, 204.70, 219.90, and 203.20, editions 2013 to 2023. Where editions overlap, the newest is used. Years the tables do not report are shown as dashed lines, never filled in.</p>
+<p>The <strong>Over time</strong> lines on district pages use:</p>
+<ul>
+<li><strong>Students with IEPs per 100 enrolled:</strong> Common Core of Data district files, 1991–92 to 2017–18, then this atlas's current year. Before using a year, I check each state:
+if its districts' combined rate that year is more than 30% away from the state's usual level, which usually means the state reported IEP counts differently (for example, at a regional agency), the whole state-year is left out.
+A single year that both neighbouring years contradict is also left out.</li>
+<li><strong>Spending per student:</strong> NCES school district finance surveys (F-33), fiscal years 1990, 1992, and 1995 to 2018, and the Census Bureau's Annual Survey of School System Finances, fiscal years 2019 to 2024.
+Earlier years are adjusted to 2024 dollars with the Consumer Price Index for All Urban Consumers (Bureau of Labor Statistics), averaged over each July to June school year.</li>
+<li><strong>Child poverty:</strong> Census Bureau Small Area Income and Poverty Estimates for school districts, 2003 to 2024.</li>
+</ul>
+<p>Districts sometimes merge, split, or change ID numbers. Trend lines follow the district's current federal ID, so a district that changed shape may show a jump. The trend file can be downloaded on the <a href="{BASE}download/">download page</a>.</p></section>
 
 <section aria-labelledby="words"><h2 id="words">Words explained</h2>
 <dl class="glossary">{''.join(f'<dt id="term-{k}">{E(v[0])}</dt><dd>{E(v[1])}</dd>' for k, v in TERMS.items())}</dl></section>

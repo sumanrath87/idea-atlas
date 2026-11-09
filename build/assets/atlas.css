@@ -288,6 +288,10 @@ ul.hbars .hv { text-align: right; font-weight: 700; font-variant-numeric: tabula
 @media (max-width: 640px) { ul.hbars li { grid-template-columns: 9rem 1fr 2.6rem; } }
 @media (forced-colors: active) { .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band { forced-color-adjust: none; } }
 
+svg.trend .tline { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+svg.trend .tgap { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .6; }
+svg.trend .tdot { fill: var(--accent); stroke: var(--paper); stroke-width: 1.5; }
+h3.ot-h { font-size: 1.05rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; color: var(--ink-2); margin: 1.4rem 0 .2rem; }
 /* ---------- history ---------- */
 figure.chart.wide { max-width: 52rem; }
 svg.hchart { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }

@@ -370,7 +370,20 @@
   }
 
   // Tables are stored as compact data on district pages and built here as ordinary, fully labelled tables.
+  function buildTrendTables(cd) {
+    Array.prototype.forEach.call(document.querySelectorAll(".jt-tr[data-k]"), function (slot, n) {
+      var k = slot.getAttribute("data-k"), pts = (cd.tr || {})[k]; if (!pts) return;
+      var y = slot.getAttribute("data-y"), money = k === "s", id = "ot-" + k;
+      var yl = function (v) { return y === "sy" ? v + "–" + String(v + 1).slice(-2) : y === "fy" ? (v - 1) + "–" + String(v).slice(-2) : String(v); };
+      var fv = function (v) { return money ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1); };
+      slot.outerHTML = '<div class="table-wrap" role="region" tabindex="0" aria-labelledby="' + id + '"><table class="profile narrow"><caption id="' + id + '">' +
+        esc(slot.getAttribute("data-cap")) + '</caption><thead><tr><th scope="col">Year</th><th scope="col">' + esc(slot.getAttribute("data-label")) +
+        "</th></tr></thead><tbody>" + pts.map(function (p) { return '<tr><th scope="row">' + yl(p[0]) + "</th><td>" + fv(p[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
+    });
+  }
+
   function buildTables(cd) {
+    buildTrendTables(cd);
     Array.prototype.forEach.call(document.querySelectorAll(".jt[data-t]"), function (slot) {
       var d = (cd.t || [])[+slot.getAttribute("data-t")]; if (!d) return;
       var h = '<div class="table-wrap" role="region" tabindex="0" aria-labelledby="' + d.id + '"><table class="' + d.k + '"><caption id="' + d.id + '">' + esc(d.c) +
@@ -400,6 +413,43 @@
     });
   }
 
+  // A district's own line over time: thin line, end values labelled, dashed across missing years.
+  function trendChart(body, pts, money) {
+    if (!pts || pts.length < 3) return false;
+    var W = 640, H = 170, L = 10, R = 80, T = 18, B = 26;
+    var x0 = pts[0][0], x1 = pts[pts.length - 1][0];
+    var mx = Math.max.apply(null, pts.map(function (p) { return p[1]; })) * 1.15 || 1;
+    var X = function (x) { return L + (W - L - R) * (x - x0) / Math.max(1, x1 - x0); };
+    var Y = function (v) { return T + (H - T - B) * (1 - v / mx); };
+    var fmtv = function (v) { return money ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "range trend", focusable: "false" });
+    svgEl("line", { x1: L, x2: W - R, y1: Y(0), y2: Y(0), class: "track" }, svg);
+    var seg = "M" + X(pts[0][0]) + "," + Y(pts[0][1]);
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1], b = pts[i];
+      if (b[0] - a[0] > 3) {
+        svgEl("path", { d: seg, class: "tline" }, svg);
+        svgEl("line", { x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1]), class: "tgap" }, svg);
+        seg = "M" + X(b[0]) + "," + Y(b[1]);
+      } else seg += " L" + X(b[0]) + "," + Y(b[1]);
+    }
+    svgEl("path", { d: seg, class: "tline" }, svg);
+    pts.forEach(function (p, i) {
+      var lone = (i > 0 && p[0] - pts[i - 1][0] > 3) && (i === pts.length - 1 || pts[i + 1][0] - p[0] > 3);
+      if (i === 0 || i === pts.length - 1 || lone) {
+        var c = svgEl("circle", { cx: X(p[0]), cy: Y(p[1]), r: (i === 0 || i === pts.length - 1) ? 4.5 : 3, class: "tdot" }, svg);
+        svgEl("title", {}, c).textContent = p[0] + ": " + fmtv(p[1]);
+      }
+    });
+    var f = pts[0], l = pts[pts.length - 1];
+    var t1 = svgEl("text", { x: X(f[0]), y: Y(f[1]) - 9, class: "val", "text-anchor": "start" }, svg); t1.textContent = fmtv(f[1]);
+    var t2 = svgEl("text", { x: X(l[0]) + 10, y: Y(l[1]) + 4.5, class: "val" }, svg); t2.textContent = fmtv(l[1]);
+    var y1 = svgEl("text", { x: X(f[0]), y: H - 6, class: "lab", "text-anchor": "start" }, svg); y1.textContent = f[0];
+    var y2 = svgEl("text", { x: X(l[0]), y: H - 6, class: "lab", "text-anchor": "end" }, svg); y2.textContent = l[0];
+    body.appendChild(svg);
+    return true;
+  }
+
   function initCharts() {
     fillTerms();
     var el = document.getElementById("chart-data"); if (!el) return;
@@ -415,6 +465,7 @@
         else if (kind === "exit") ok = cd.ex ? partsBar(body, [["Regular diploma", cd.ex[0]], ["Alternate diploma or certificate", cd.ex[1]], ["Reached the maximum age", cd.ex[2]],
               ["Dropped out", cd.ex[3]], ["Died", cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
         else if (kind === "cats") ok = catsChart(body, cd.cats || []);
+        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s"); }
         if (!ok) fig.remove();
       });
     });
