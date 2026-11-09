@@ -359,13 +359,14 @@
       getJSON(BASE + (ES ? "data/measures_es.json" : "data/measures.json")), getJSON(BASE + "data/labels.json"), A.load(),
       state.topics.indexOf("hist") >= 0 ? fetchDoc(BASE + (ES ? "es/historia/" : "history/")) : Promise.resolve(null),
       getJSON(BASE + "data/state_measures.json").catch(function () { return null; })];
+    jobs.push(state.topics.indexOf("grp") >= 0 ? getJSON(BASE + "data/groups/" + state.id.slice(0, 2) + ".json").catch(function () { return null; }) : Promise.resolve(null));
     var comps = state.aud === "leader" ? state.comps.slice(0, 3) : [];
     comps.forEach(function (c) { jobs.push(fetchDoc(districtUrl(c, false))); });
     Promise.all(jobs).then(function (r) {
-      var ctx = { doc: r[0], en: r[1], terms: r[2], meas: {}, labels: r[4], hist: r[6], spp: r[7], cd: cdOf(r[1]), comps: [] };
+      var ctx = { doc: r[0], en: r[1], terms: r[2], meas: {}, labels: r[4], hist: r[6], spp: r[7], gh: r[8] ? r[8][state.id] : null, cd: cdOf(r[1]), comps: [] };
       r[3].forEach(function (m) { ctx.meas[m.key] = m; });
       ctx.cdL = cdOf(r[0]);
-      comps.forEach(function (c, k) { ctx.comps.push({ id: c, name: nameOf(c), cd: cdOf(r[8 + k]) }); });
+      comps.forEach(function (c, k) { ctx.comps.push({ id: c, name: nameOf(c), cd: cdOf(r[9 + k]) }); });
       render(ctx, lang);
     }).catch(function () {
       out.innerHTML = '<p class="rpt-msg">' + tr("The report could not be made. Check your connection and try again.", "No se pudo preparar el informe. Revise su conexión e inténtelo de nuevo.") + "</p>";
@@ -455,6 +456,37 @@
   }
 
   // The state's yearly federal measures (state figures, not district figures).
+  // Each group's rate by year, 2013-14 onward. Years where a district's civil rights total was far from its screened IEP share are left out.
+  var GN = { AM: ["American Indian or Alaska Native", "Indígena americano o nativo de Alaska"], AS: ["Asian", "Asiático"], BL: ["Black or African American", "Negro o afroamericano"],
+    HI: ["Hispanic or Latino", "Hispano o latino"], HP: ["Native Hawaiian or Other Pacific Islander", "Nativo de Hawái u otras islas del Pacífico"], TR: ["Two or more races", "Dos o más razas"], WH: ["White", "Blanco"] };
+  function groupHistory(gh) {
+    if (!gh) return "";
+    var years = Object.keys(gh).map(Number).sort(function (a, b) { return a - b; });
+    if (years.length < 2) return "";
+    var groups = []; years.forEach(function (y) { gh[y].forEach(function (r) { if (groups.indexOf(r[0]) < 0) groups.push(r[0]); }); });
+    groups.sort(function (a, b) { return Object.keys(GN).indexOf(a) - Object.keys(GN).indexOf(b); });
+    var table = function (num, den, cap, allLabel) {
+      var cellOf = function (a, b) { return a == null || b == null || b < 10 ? "—" : (100 * a / b).toFixed(1); };
+      var rows = groups.map(function (g) {
+        return '<tr><th scope="row">' + esc(ES ? GN[g][1] : GN[g][0]) + "</th>" + years.map(function (y) {
+          var r = gh[y].filter(function (x) { return x[0] === g; })[0];
+          return "<td>" + (r ? cellOf(r[num], r[den]) : "—") + "</td>";
+        }).join("") + "</tr>";
+      }).join("");
+      var all = '<tr class="all"><th scope="row">' + esc(allLabel) + "</th>" + years.map(function (y) {
+        var a = 0, b = 0, bad = false; gh[y].forEach(function (r) { if (r[num] == null || r[den] == null) bad = true; a += r[num] || 0; b += r[den] || 0; });
+        return "<td>" + (bad ? "—" : cellOf(a, b)) + "</td>";
+      }).join("") + "</tr>";
+      return '<table class="profile rpt-t years"><caption>' + esc(cap) + '</caption><thead><tr><th scope="col">' + tr("Group", "Grupo") + "</th>" +
+        years.map(function (y) { return '<th scope="col">' + A.yearLabel("sy", y) + "</th>"; }).join("") + "</tr></thead><tbody>" + rows + all + "</tbody></table>";
+    };
+    return "<h3>" + tr("Over time", "A lo largo del tiempo") + "</h3>" +
+      table(2, 1, tr("Students with IEPs per 100 students in each group, by school year", "Estudiantes con IEP por cada 100 estudiantes de cada grupo, por año escolar"), tr("All students", "Todos los estudiantes")) +
+      table(3, 2, tr("Out-of-school suspensions per 100 students with IEPs in each group, by school year", "Suspensiones fuera de la escuela por cada 100 estudiantes con IEP de cada grupo, por año escolar"), tr("All students with IEPs", "Todos los estudiantes con IEP")) +
+      '<p class="rpt-note">' + tr("A dash means no figure: the group had fewer than 10 students, or that year was left out because the district's civil rights count was far from its official count of students with IEPs. Suspensions in 2020–21 were low in most districts because many schools taught remotely.",
+        "Una raya quiere decir que no hay cifra: el grupo tenía menos de 10 estudiantes, o ese año se omitió porque el conteo de derechos civiles del distrito estaba muy lejos de su conteo oficial de estudiantes con IEP. Las suspensiones de 2020–21 fueron bajas en la mayoría de los distritos porque muchas escuelas enseñaron a distancia.") + "</p>";
+  }
+
   function stateSection(ctx) {
     var S = ctx.spp, ab = ctx.cd.s2; if (!S || !S.st || !S.st[ab]) return "";
     var row = S.st[ab], items = S.ind.filter(function (k) { return row[k.k] != null; });
@@ -527,7 +559,11 @@
     rows.push(["trend", "year_start", "value"]);
     var names = { i: "iep_per100", s: "spend_per_pupil_2024usd", p: "child_poverty_per100", d: "oos_iep_per100", dc: "oos_nodisability_per100" };
     Object.keys(cd.tr || {}).forEach(function (k) { (cd.tr[k] || []).forEach(function (p) { rows.push([names[k] || k, p[0], p[1]]); }); });
-    if (cd.rg) {
+    if (ctx.gh) {
+      rows.push([]);
+      rows.push(["fall_year", "race_ethnicity_group", "students_enrolled", "students_with_ieps", "students_with_ieps_one_or_more_oos"]);
+      Object.keys(ctx.gh).sort().forEach(function (y) { ctx.gh[y].forEach(function (g) { rows.push([y].concat(g)); }); });
+    } else if (cd.rg) {
       rows.push([]);
       rows.push(["race_ethnicity_group_2023_24", "students_enrolled", "students_with_ieps", "students_with_ieps_one_or_more_oos"]);
       cd.rg.forEach(function (g) { rows.push(g); });
@@ -611,7 +647,7 @@
         if (!cd.rg) return;
         sec("r-grp", L(t), "<p>" + tr("These tables show, for each race and ethnicity group used in federal data, how many students have IEPs and how many students with IEPs received an out-of-school suspension in 2023–24. Each group's figure is shown beside the same figure for all other students in the district, the comparison federal reviews use. Every state also reviews these patterns each year, as IDEA requires. The figures describe what was reported, not why they differ.",
             "Estas tablas muestran, para cada grupo de raza y origen étnico que se usa en los datos federales, cuántos estudiantes tienen un IEP y cuántos estudiantes con IEP recibieron una suspensión fuera de la escuela en 2023–24. La cifra de cada grupo aparece junto a la misma cifra para todos los demás estudiantes del distrito, la comparación que usan las revisiones federales. Cada estado también revisa estos patrones cada año, como exige IDEA. Las cifras describen lo que se informó, no por qué son distintas.") + "</p>" +
-          A.groupTable(cd, "iep", "profile rpt-t") + A.groupTable(cd, "oos", "profile rpt-t") +
+          A.groupTable(cd, "iep", "profile rpt-t") + A.groupTable(cd, "oos", "profile rpt-t") + groupHistory(ctx.gh) +
           '<p class="rpt-note">' + tr("A figure is not shown when a group has fewer than 10 students.", "No se muestra una cifra cuando un grupo tiene menos de 10 estudiantes.") + "</p>" +
           '<p class="source">' + tr("Source: Civil Rights Data Collection, 2023–24 (U.S. Department of Education, Office for Civil Rights), summed from schools to the district.", "Fuente: Civil Rights Data Collection, 2023–24 (Departamento de Educación de EE. UU., Oficina de Derechos Civiles), sumada de las escuelas al distrito.") + "</p>");
         return;

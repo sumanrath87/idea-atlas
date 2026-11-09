@@ -395,6 +395,14 @@ def main() -> int:
         tname = f"idea-atlas-trends-v{VERSION}.zip"
         with zipfile.ZipFile(dl / tname, "w", zipfile.ZIP_DEFLATED) as z:
             z.writestr(f"idea-atlas-trends-v{VERSION}.csv", "\n".join(lines) + "\n")
+            gdir = Path(__file__).resolve().parent / "history" / "groups"
+            if gdir.exists():
+                gl = ["leaid,fall_year,race_ethnicity_group,students_enrolled,students_with_ieps,students_with_ieps_one_or_more_oos"]
+                for gf in sorted(gdir.glob("*.json")):
+                    for lid, ys in sorted(json.loads(gf.read_text()).items()):
+                        for y, rows in sorted(ys.items()):
+                            gl += [f"{lid},{y}," + ",".join("" if x is None else str(x) for x in row) for row in rows]
+                z.writestr(f"idea-atlas-groups-by-year-v{VERSION}.csv", "\n".join(gl) + "\n")
     write("download/index.html", download_page(fname, len(d), dname, len(det0.columns), tname))
 
     # ---- pages
@@ -410,6 +418,9 @@ def main() -> int:
         write("history/index.html", history_page.render(page, explain, BASE))
         write("es/historia/index.html", history_page.render_es(page, lambda *k: es_site.explain_es(BASE, *k, full=True), BASE, es_site.STATE_ES))
     write("compare/index.html", compare_page())
+    gsrc = Path(__file__).resolve().parent / "history" / "groups"
+    if gsrc.exists():
+        shutil.copytree(gsrc, OUT / "data" / "groups", dirs_exist_ok=True)
     sm = Path(__file__).resolve().parent / "history" / "state_measures.json"
     if sm.exists():
         shutil.copy(sm, OUT / "data" / "state_measures.json")
@@ -647,6 +658,7 @@ every learning setting, every way students left special education, civil rights 
 {detail}
 {f"""<h2>Trends file</h2>
 <p>Each district's trend lines, one row per district, measure, and year: students with IEPs per 100 enrolled (1991–92 onward), spending per student in 2024 dollars (fiscal year 1990 onward), child poverty (2003 onward), and out-of-school suspension for students with and without disabilities (2013–14 onward).
+A second file in the same download gives, for each race and ethnicity group, students enrolled, students with IEPs, and students with IEPs who received an out-of-school suspension (Civil Rights Data Collection, 2013–14 to 2023–24).
 See <a href="{BASE}methods/#trends">how the trends are made</a>.</p>
 <p><a class="button" href="{BASE}download/{tname}" download>Download {E(tname)}</a></p>""" if tname else ""}
 

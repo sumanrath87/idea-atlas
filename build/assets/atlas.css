@@ -518,3 +518,4 @@ dl.rpt-rights dt { font-weight: 700; margin-top: .7rem; } dl.rpt-rights dd { mar
 .rpt-said { flex-basis: 100%; margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
 @media print { section.rpt-sec.short { break-before: auto; margin-top: 18pt; } .rpt-mine { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 table.rpt-t td.yr { white-space: nowrap; }
+table.rpt-t.years td, table.rpt-t.years thead th { text-align: right; } table.rpt-t tr.all th, table.rpt-t tr.all td { font-weight: 700; border-top: 1px solid #b9b4a8; }
