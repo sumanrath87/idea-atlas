@@ -16,6 +16,13 @@ CCD = ["https://nces.ed.gov/ccd/data/zip/ccd_lea_2_89_1819_l_1a_091019.zip", "ht
        "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_2223_l_1a_083023.zip", "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2324_l_1a_073124.zip"]
 
 
+# district child count files, 2020-21 to 2023-24 (links listed in the federal data catalog, catalog.data.gov)
+LEA = ["https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/551ff2d5-f3e9-4f00-9ec4-4823ca5ea4de/download/bchildcountandedenvironmentlea2020-21.csv",
+       "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/fd56e573-f30e-434f-ad51-9a197d80b535/download/bchildcountandedenvironmentlea2021-22.csv",
+       "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/0e0a1a55-57f5-4e50-b66e-1a68949e38f3/download/bchildcountdisabilitycategorylea2022-23.csv",
+       "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/5a208d37-564a-40c8-a91d-dd2874fed48c/download/bchildcountdisabilitycategorylea2023-24.csv"]
+
+
 def get(u, dest):
     with requests.get(u, headers=UA, stream=True, timeout=300) as r:
         r.raise_for_status()
@@ -27,7 +34,7 @@ def get(u, dest):
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
     log = []
-    urls = list(CCD)
+    urls = list(LEA)
     for ds in ("idea-section-618-lea-part-b-child-count", "16968dd3-87bd-4e4a-92ed-50f03e6c4941"):
         try:
             r = requests.get("https://data.ed.gov/api/3/action/package_show", params={"id": ds}, headers=UA, timeout=60)
