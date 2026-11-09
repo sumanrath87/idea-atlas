@@ -292,6 +292,35 @@ svg.trend .tline { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-
 svg.trend .tgap { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .6; }
 svg.trend .tdot { fill: var(--accent); stroke: var(--paper); stroke-width: 1.5; }
 h3.ot-h { font-size: 1.05rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; color: var(--ink-2); margin: 1.4rem 0 .2rem; }
+/* ---------- history timeline ---------- */
+.tl { margin: 1rem 0 1.6rem; max-width: 56rem; }
+.tl-svg { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+.tl-axis { stroke: var(--ink); stroke-width: 1.5; }
+.tl-tick { stroke: var(--muted); stroke-width: 1; }
+.tl-dec { font-size: 13px; fill: var(--muted); }
+.tl-data { fill: var(--muted); opacity: .55; }
+.tl-ms { fill: var(--paper); stroke: var(--accent); stroke-width: 2.5; cursor: pointer; }
+.tl-ms.on { fill: var(--accent); }
+.tl-msy { font-family: Vollkorn, Georgia, serif; font-size: 15px; fill: var(--ink-2); }
+.tl-now line { stroke: var(--accent); stroke-width: 2; }
+.tl-now circle { fill: none; stroke: var(--accent); stroke-width: 2; }
+.tl-now { transition: transform .25s ease; }
+.tl-controls { display: grid; gap: .5rem; margin: .6rem 0 .8rem; }
+.tl-controls label { font-weight: 600; }
+.tl-controls output { font-family: Vollkorn, Georgia, serif; font-size: 1.2rem; color: var(--accent); margin-left: .3rem; font-variant-numeric: lining-nums; }
+#tl-range { width: 100%; accent-color: var(--accent); min-height: 2.2rem; }
+.tl-ms-label { font-size: .88rem; color: var(--muted); margin-top: .2rem; }
+ul.tl-btns { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.tl-btn { background: transparent; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; min-height: 2.3rem; padding: .3rem .9rem; font-weight: 600; font-variant-numeric: lining-nums; }
+.tl-btn:hover { background: var(--wash); color: var(--ink); }
+.tl-btn[aria-current=true] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tl-panel { background: var(--wash); border-radius: 14px; padding: .4rem clamp(1.1rem, 3vw, 1.8rem) .8rem; min-height: 9rem; }
+.tl-panel .tl-y { font-family: Vollkorn, Georgia, serif; font-size: 2.2rem; margin: .4rem 0 0; line-height: 1; color: var(--ink); font-variant-numeric: lining-nums; }
+.tl-panel .tl-m { font-family: Vollkorn, Georgia, serif; font-size: 1.2rem; line-height: 1.5; margin: .5rem 0; max-width: var(--measure); }
+.tl-panel .tl-sub { font-size: .9rem; color: var(--muted); margin: .6rem 0 .1rem; }
+.tl-panel ul.plain li { font-size: 1.08rem; }
+ol.timeline.tl-static { display: none; }
+@media (prefers-reduced-motion: reduce) { .tl-now { transition: none; } }
 /* ---------- history ---------- */
 figure.chart.wide { max-width: 52rem; }
 svg.hchart { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
@@ -321,6 +350,7 @@ template { display: none; }
   .glance { background: none; } ul.plain li, .glance li { font-size: 11pt; margin-bottom: 4pt; }
   dl.facts { gap: 2pt 14pt; } details.numbers > summary::before, details.full > summary::before { display: none; }
   .depth { display: none; }
+  .tl { display: none !important; } ol.timeline.tl-static { display: block !important; } .tl-intro { display: none !important; }
   figure.chart { break-inside: avoid; max-width: 100%; }
   details.numbers figure.chart { display: none !important; } #c-chart { break-after: page; }
   .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band, svg.range { -webkit-print-color-adjust: exact; print-color-adjust: exact; }

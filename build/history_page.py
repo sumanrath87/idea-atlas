@@ -19,10 +19,13 @@ INK, INK2, MUTED, RULE, PAPER, ACCENT = "#1d2126", "#474d55", "#5b6168", "#e6e1d
 
 MILESTONES = [
     (1975, "1975", "Congress passes the Education for All Handicapped Children Act. For the first time, every child with a disability has a right to a free appropriate public education."),
+    (1982, "1982", "In Board of Education v. Rowley, the Supreme Court gives its first reading of what a free appropriate public education requires."),
     (1986, "1986", "Amendments extend the law to children ages 3 to 5 and create early intervention for infants and toddlers."),
     (1990, "1990", "The law is renamed the Individuals with Disabilities Education Act (IDEA). Autism and traumatic brain injury become their own categories, and planning for life after school is added."),
     (1997, "1997", "Amendments emphasize learning in the general curriculum and taking part in state tests, and let states use developmental delay up to age 9."),
     (2004, "2004", "The law is reauthorized as the Individuals with Disabilities Education Improvement Act, with changes to how learning disabilities may be identified."),
+    (2017, "2017", "In Endrew F. v. Douglas County, the Supreme Court says a student's program must be reasonably calculated to let the student make progress appropriate in light of the student's circumstances."),
+    (2020, "2020", "School buildings close during the COVID-19 pandemic. The number of students served dips in 2020–21, then rises again."),
 ]
 
 CAT_LABEL = {"learning": "Specific learning disability", "speech": "Speech or language impairment", "otherhealth": "Other health impairment",
@@ -110,6 +113,69 @@ def numbers(inner: str, label: str = "The numbers, year by year") -> str:
 
 def f1(v):
     return "—" if v is None else f"{v:,.1f}"
+
+
+def year_facts(nat, lang: str) -> dict[int, list[str]]:
+    """For each year with any national figure, a few plain sentences about that year."""
+    I = lambda d: {int(k): v for k, v in d.items() if v is not None}
+    pct, served = I(nat["pct_enrollment"]), I(nat["served_thousands"])
+    env, ex = I(nat["environments"]), I(nat["exits"])
+    cats = {int(y): v for y, v in nat["by_category_thousands"].items() if v.get("all")}
+    names = CAT_LABEL if lang == "en" else CAT_LABEL_ES
+    out = {}
+    for y in sorted(set(pct) | set(env) | set(ex)):
+        f = []
+        if y in pct:
+            f.append(f"About {pct[y]:.1f} of every 100 public school students were served under the law ({served[y] / 1000:.1f} million students)." if lang == "en" else
+                     f"Aproximadamente {pct[y]:.1f} de cada 100 estudiantes de escuelas públicas recibían servicios bajo la ley ({served[y] / 1000:.1f} millones de estudiantes).")
+        if y in cats:
+            c = cats[y]
+            k = max((k for k in names if c.get(k) is not None), key=lambda k: c[k])
+            share = 100 * c[k] / c["all"]
+            f.append(f"The largest category was {names[k].lower()}: about {share:.0f} of every 100 students served." if lang == "en" else
+                     f"La categoría más grande era {names[k].lower()}: aproximadamente {share:.0f} de cada 100 estudiantes atendidos.")
+        if y in env:
+            f.append(f"About {env[y]['80plus']:.0f} of every 100 school-age students with IEPs spent most of the day in a general class." if lang == "en" else
+                     f"Aproximadamente {env[y]['80plus']:.0f} de cada 100 estudiantes con IEP en edad escolar pasaban la mayor parte del día en una clase de educación general.")
+        if y in ex:
+            f.append(f"Of students with IEPs who left school, about {ex[y]['regular']:.0f} of every 100 left with a regular diploma." if lang == "en" else
+                     f"De los estudiantes con IEP que salieron de la escuela, aproximadamente {ex[y]['regular']:.0f} de cada 100 salieron con un diploma regular.")
+        out[y] = f
+    return out
+
+
+def timeline(milestones: list[tuple[str, str]], facts: dict[int, list[str]], lang: str) -> str:
+    """Interactive timeline: a picture of 1975 to today with milestone points, a year slider, milestone buttons, and a
+    panel that is read aloud when the year changes. Without scripts, the plain list of milestones below is what shows."""
+    T = (lambda en, es: en if lang == "en" else es)
+    ms = {int(a): b for a, b in milestones}
+    years = sorted(set(facts) | set(ms))
+    y0, y1 = 1975, max(years)
+    W, L, R = 1000, 30, 30
+    X = lambda y: L + (W - L - R) * (y - y0) / (y1 - y0)
+    svg = [f'<svg viewBox="0 0 {W} 86" class="tl-svg" aria-hidden="true" focusable="false">',
+           f'<line x1="{L}" x2="{W - R}" y1="44" y2="44" class="tl-axis"/>']
+    for d in range(1980, y1 + 1, 10):
+        svg.append(f'<line x1="{X(d):.1f}" x2="{X(d):.1f}" y1="38" y2="50" class="tl-tick"/><text x="{X(d):.1f}" y="74" text-anchor="middle" class="tl-dec">{d}</text>')
+    for y in facts:
+        svg.append(f'<circle cx="{X(y):.1f}" cy="44" r="2.5" class="tl-data"/>')
+    for y in ms:
+        svg.append(f'<circle cx="{X(y):.1f}" cy="44" r="7" class="tl-ms" data-y="{y}"/><text x="{X(y):.1f}" y="24" text-anchor="middle" class="tl-msy">{y}</text>')
+    svg.append(f'<g class="tl-now"><line x1="0" x2="0" y1="30" y2="58"/><circle cx="0" cy="44" r="9"/></g></svg>')
+    data = {str(y): {"m": ms.get(y, ""), "f": facts.get(y, [])} for y in years}
+    btns = "".join(f'<li><button type="button" class="tl-btn" data-y="{y}">{y}</button></li>' for y in sorted(ms))
+    return f"""
+<div class="tl" hidden>
+  {''.join(svg)}
+  <div class="tl-controls">
+    <label for="tl-range">{T("Choose a year", "Elija un año")}: <output id="tl-out" for="tl-range">{years[0]}</output></label>
+    <input id="tl-range" type="range" min="0" max="{len(years) - 1}" step="1" value="0" aria-valuetext="{years[0]}">
+    <div class="tl-ms-label" id="tl-ms-l">{T("Jump to a milestone", "Ir a un momento clave")}</div>
+    <ul class="tl-btns" aria-labelledby="tl-ms-l">{btns}</ul>
+  </div>
+  <div class="tl-panel" id="tl-panel" aria-live="polite" aria-atomic="true"></div>
+  <script type="application/json" id="tl-data">{json.dumps({"years": years, "y": data, "x0": y0, "x1": y1, "L": L, "W": W, "R": R, "lang": lang}, ensure_ascii=False, separators=(",", ":"))}</script>
+</div>"""
 
 
 def render(page, explain, BASE: str, sources_note: str = "") -> str:
@@ -256,6 +322,8 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
 <div class="page-tools"><button type="button" data-print>Print this page</button><button type="button" data-expand>Show all detail</button></div>
 <section aria-labelledby="h-time">
   <h2 id="h-time">A short timeline</h2>
+  <p class="tl-intro" hidden>Move through the years to see what changed in the law and what the national figures were at the time.</p>
+  {timeline([(str(a), c) for a, _, c in MILESTONES], year_facts(nat, "en"), "en")}
   <ol class="timeline">{tl}</ol>
 </section>
 {sec1}{sec2}{sec3}{sec4}{sec5}
@@ -274,10 +342,13 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
 # ---------------------------------------------------------------- Spanish
 MILESTONES_ES = [
     ("1975", "El Congreso aprueba la Ley de Educación para Todos los Niños Impedidos. Por primera vez, todo niño con una discapacidad tiene derecho a una educación pública gratuita y apropiada."),
+    ("1982", "En el caso Board of Education contra Rowley, la Corte Suprema da su primera interpretación de lo que exige una educación pública gratuita y apropiada."),
     ("1986", "Unas enmiendas extienden la ley a los niños de 3 a 5 años y crean la intervención temprana para bebés y niños pequeños."),
     ("1990", "La ley pasa a llamarse Ley de Educación para Personas con Discapacidades (IDEA). El autismo y la lesión cerebral traumática pasan a ser categorías propias, y se agrega la planificación para la vida después de la escuela."),
     ("1997", "Unas enmiendas dan importancia al aprendizaje en el currículo general y a la participación en las pruebas estatales, y permiten a los estados usar el retraso del desarrollo hasta los 9 años."),
     ("2004", "La ley se renueva como Ley de Mejoramiento de la Educación para Personas con Discapacidades, con cambios en la forma de identificar las discapacidades del aprendizaje."),
+    ("2017", "En el caso Endrew F. contra el condado de Douglas, la Corte Suprema dice que el programa de un estudiante debe estar razonablemente diseñado para que progrese de forma apropiada según sus circunstancias."),
+    ("2020", "Los edificios escolares cierran durante la pandemia de COVID-19. El número de estudiantes atendidos baja en 2020–21 y luego vuelve a subir."),
 ]
 CAT_LABEL_ES = {"learning": "Discapacidad específica del aprendizaje", "speech": "Impedimento del habla o del lenguaje", "otherhealth": "Otro impedimento de salud",
                 "autism": "Autismo", "devdelay": "Retraso del desarrollo", "intellectual": "Discapacidad intelectual", "emotional": "Trastorno emocional"}
@@ -342,7 +413,10 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
 <h1>Cincuenta años de educación especial</h1>
 <p class="lede">Cómo han cambiado, desde que se aprobó la ley en 1975, el número de estudiantes atendidos, los tipos de discapacidad, el tiempo en las clases de educación general y la graduación.</p>
 <div class="page-tools"><button type="button" data-print>Imprimir esta página</button></div>
-<section aria-labelledby="h-time"><h2 id="h-time">Una breve cronología</h2><ol class="timeline">{tl}</ol></section>
+<section aria-labelledby="h-time"><h2 id="h-time">Una breve cronología</h2>
+<p class="tl-intro" hidden>Recorra los años para ver qué cambió en la ley y cuáles eran las cifras nacionales en ese momento.</p>
+{timeline(MILESTONES_ES, year_facts(nat, "es"), "es")}
+<ol class="timeline">{tl}</ol></section>
 <section aria-labelledby="h-many">
   <h2 id="h-many">Cuántos estudiantes reciben servicios</h2>
   <ul class="plain">

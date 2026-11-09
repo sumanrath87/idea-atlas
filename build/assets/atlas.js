@@ -421,6 +421,40 @@
     }).catch(function () {});
   }
 
+  // History timeline: a year slider and milestone buttons; the panel below is read aloud when the year changes.
+  function initTimeline() {
+    var el = document.getElementById("tl-data"); if (!el) return;
+    var D = JSON.parse(el.textContent), box = el.parentNode, range = document.getElementById("tl-range"), out = document.getElementById("tl-out");
+    var panel = document.getElementById("tl-panel"), now = box.querySelector(".tl-now"), es = D.lang === "es";
+    box.hidden = false;
+    var intro = box.parentNode.querySelector(".tl-intro"); if (intro) intro.hidden = false;
+    var list = box.parentNode.querySelector("ol.timeline"); if (list) list.classList.add("tl-static");
+    var X = function (y) { return D.L + (D.W - D.L - D.R) * (y - D.x0) / (D.x1 - D.x0); };
+    function show(i, quiet) {
+      var y = D.years[i], d = D.y[String(y)], sy = y + "–" + String(y + 1).slice(-2);
+      range.value = i; out.textContent = y; range.setAttribute("aria-valuetext", String(y) + (d.m ? (es ? ", momento clave" : ", milestone") : ""));
+      now.setAttribute("transform", "translate(" + X(y) + ",0)");
+      Array.prototype.forEach.call(box.querySelectorAll(".tl-btn"), function (b) { b.setAttribute("aria-current", +b.getAttribute("data-y") === y ? "true" : "false"); });
+      Array.prototype.forEach.call(box.querySelectorAll(".tl-ms"), function (c) { c.classList.toggle("on", +c.getAttribute("data-y") === y); });
+      var h = '<p class="tl-y">' + y + "</p>";
+      if (d.m) h += '<p class="tl-m">' + esc(d.m) + "</p>";
+      if (d.f.length) h += '<p class="tl-sub">' + (es ? "En el año escolar " + sy + ":" : "In the " + sy + " school year:") + "</p><ul class=\"plain\">" +
+        d.f.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      else h += '<p class="tl-sub">' + (es ? "Las tablas federales no tienen cifras nacionales para este año." : "The federal tables have no national figures for this year.") + "</p>";
+      if (quiet) panel.setAttribute("aria-live", "off");
+      panel.innerHTML = h;
+      if (quiet) setTimeout(function () { panel.setAttribute("aria-live", "polite"); }, 0);
+    }
+    range.addEventListener("input", function () { show(+range.value); });
+    Array.prototype.forEach.call(box.querySelectorAll(".tl-btn"), function (b) {
+      b.addEventListener("click", function () { show(D.years.indexOf(+b.getAttribute("data-y"))); });
+    });
+    Array.prototype.forEach.call(box.querySelectorAll(".tl-ms"), function (c) {
+      c.addEventListener("click", function () { show(D.years.indexOf(+c.getAttribute("data-y"))); });
+    });
+    show(0, true);
+  }
+
   // History: swap the state chart and its sentence; the full table of every state stays one click away.
   function initHistory() {
     var sel = document.getElementById("h-st"); if (!sel) return;
@@ -598,5 +632,5 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); });
+  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); });
 })();
