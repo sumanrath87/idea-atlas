@@ -28,6 +28,16 @@ jobs:
       - name: Download
         if: inputs.step == 'download'
         run: python fetch/history/download_history.py
+      - name: Download more (2018 onward)
+        if: inputs.step == 'more'
+        run: python fetch/history/download_more.py
+      - name: Keep the extra files
+        if: inputs.step == 'more'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          for f in fetch/history/raw/*; do gh release upload history-raw "$f" --clobber || echo "upload failed: $f"; sleep 3; done
       - name: Keep the downloaded files as a release
         if: inputs.step == 'download'
         env:
