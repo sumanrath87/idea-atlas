@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-09T00:48:36+00:00",
+  "run_at": "2026-11-09T00:52:39+00:00",
   "sources": [
     {
       "id": "idea_child_count",
@@ -14,9 +14,15 @@
         },
         {
           "kind": "ckan",
-          "target": "IDEA Section 618 child count LEA",
+          "target": "\"IDEA Section 618 LEA Part B Child Count\"",
           "ok": false,
-          "error": "Expecting value: line 1 column 1 (char 0)"
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Child+Count%22&rows=20"
+        },
+        {
+          "kind": "ckan",
+          "target": "\"Local Level Data File\"",
+          "ok": false,
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22Local+Level+Data+File%22&rows=20"
         },
         {
           "kind": "browser",
@@ -30,7 +36,7 @@
     {
       "id": "idea_environments",
       "name": "IDEA Part B educational environments, by district (LEA)",
-      "expected_year": "2022-23",
+      "expected_year": "2024-25",
       "checked": [
         {
           "kind": "page",
@@ -40,9 +46,9 @@
         },
         {
           "kind": "ckan",
-          "target": "IDEA Section 618 educational environments LEA",
+          "target": "\"IDEA Section 618 LEA Part B Educational Environments\"",
           "ok": false,
-          "error": "Expecting value: line 1 column 1 (char 0)"
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Educational+Environments%22&rows=20"
         },
         {
           "kind": "browser",
@@ -66,9 +72,15 @@
         },
         {
           "kind": "ckan",
-          "target": "IDEA Section 618 exiting LEA",
+          "target": "\"IDEA Section 618 LEA Part B Exiting\"",
           "ok": false,
-          "error": "Expecting value: line 1 column 1 (char 0)"
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Exiting%22&rows=20"
+        },
+        {
+          "kind": "ckan",
+          "target": "IDEA 618 exiting LEA",
+          "ok": false,
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+618+exiting+LEA&rows=20"
         },
         {
           "kind": "browser",
@@ -82,19 +94,13 @@
     {
       "id": "crdc",
       "name": "Civil Rights Data Collection, district and school files",
-      "expected_year": "2021-22",
+      "expected_year": "2023-24",
       "checked": [
         {
           "kind": "page",
           "target": "https://civilrightsdata.ed.gov/data",
           "ok": true,
           "count": 0
-        },
-        {
-          "kind": "ckan",
-          "target": "Civil Rights Data Collection",
-          "ok": false,
-          "error": "Expecting value: line 1 column 1 (char 0)"
         },
         {
           "kind": "browser",
@@ -474,8 +480,8 @@
           "count": 0
         },
         {
-          "kind": "page",
-          "target": "https://nces.ed.gov/ccd/files.asp",
+          "kind": "json",
+          "target": "https://nces.ed.gov/ccd/datatables/api/File",
           "ok": true,
           "count": 0
         },
@@ -484,12 +490,6 @@
           "target": "https://nces.ed.gov/ccd/pubagency.asp",
           "ok": true,
           "count": 250
-        },
-        {
-          "kind": "browser",
-          "target": "https://nces.ed.gov/ccd/files.asp",
-          "ok": true,
-          "count": 9
         }
       ],
       "files": [
@@ -1604,42 +1604,6 @@
         {
           "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip",
           "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/ccddata.asp",
-          "text": "Data Files"
-        },
-        {
-          "url": "javascript:location.href='/ccd/ccddata.asp'",
-          "text": "CCD DATA FILES"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/files.asp",
-          "text": "CCD Data File Tool"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/districtsearch/",
-          "text": "District Locator\u2014NCES ID"
-        },
-        {
-          "url": "https://ies.ed.gov/nces-statistical-products-release-calendar",
-          "text": "Statistical Products Release Calendar"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/datatables/api/Lookup/",
-          "text": "[loaded by page]"
-        },
-        {
-          "url": "https://api.ies.ed.gov/web/navigation/v1/header",
-          "text": "[loaded by page]"
-        },
-        {
-          "url": "https://api.ies.ed.gov/web/navigation/v1/footer",
-          "text": "[loaded by page]"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/datatables/api/File",
-          "text": "[loaded by page]"
         }
       ]
     },
@@ -1655,6 +1619,12 @@
           "count": 130
         },
         {
+          "kind": "json",
+          "target": "https://nces.ed.gov/ccd/datatables/api/File",
+          "ok": true,
+          "count": 0
+        },
+        {
           "kind": "page",
           "target": "https://nces.ed.gov/ccd/f33agency.asp",
           "ok": true,
@@ -1664,10 +1634,206 @@
           "kind": "dir",
           "target": "https://www2.census.gov/programs-surveys/school-finances/tables/",
           "ok": true,
-          "count": 0
+          "count": 28
         }
       ],
       "files": [
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/24elsec_prelim.xlsx",
+          "text": "24elsec_prelim.xlsx",
+          "status": 200,
+          "bytes": 35061,
+          "modified": "Thu, 07 May 2026 17:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.txt",
+          "text": "elsec24.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:45:25 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx",
+          "text": "elsec24.xlsx",
+          "status": 200,
+          "bytes": 12639997,
+          "modified": "Thu, 07 May 2026 11:45:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24_sumtables.xlsx",
+          "text": "elsec24_sumtables.xlsx",
+          "status": 200,
+          "bytes": 290596,
+          "modified": "Thu, 07 May 2026 11:45:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.txt",
+          "text": "elsec24f.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:45:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.xlsx",
+          "text": "elsec24f.xlsx",
+          "status": 200,
+          "bytes": 8151233,
+          "modified": "Thu, 07 May 2026 11:45:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.txt",
+          "text": "elsec24t.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:45:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx",
+          "text": "elsec24t.xlsx",
+          "status": 200,
+          "bytes": 6313790,
+          "modified": "Thu, 07 May 2026 11:45:27 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/23elsec_prelim.xls",
+          "text": "23elsec_prelim.xls",
+          "status": 200,
+          "bytes": 98304,
+          "modified": "Tue, 06 May 2025 19:48:05 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.txt",
+          "text": "elsec23.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:30:25 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.xlsx",
+          "text": "elsec23.xlsx",
+          "status": 200,
+          "bytes": 12718377,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23_sumtables.xlsx",
+          "text": "elsec23_sumtables.xlsx",
+          "status": 200,
+          "bytes": 284631,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.txt",
+          "text": "elsec23f.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.xlsx",
+          "text": "elsec23f.xlsx",
+          "status": 200,
+          "bytes": 8169691,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.txt",
+          "text": "elsec23t.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.xlsx",
+          "text": "elsec23t.xlsx",
+          "status": 200,
+          "bytes": 6309115,
+          "modified": "Thu, 07 May 2026 11:30:26 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/22elsec_prelim.xls",
+          "text": "22elsec_prelim.xls",
+          "status": 200,
+          "bytes": 95232,
+          "modified": "Tue, 06 May 2025 19:48:02 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.txt",
+          "text": "elsec22.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Tue, 29 Apr 2025 18:27:14 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xls",
+          "text": "elsec22.xls",
+          "status": 200,
+          "bytes": 18685440,
+          "modified": "Tue, 06 May 2025 19:48:03 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xlsx",
+          "text": "elsec22.xlsx",
+          "status": 200,
+          "bytes": 12798700,
+          "modified": "Tue, 29 Apr 2025 18:14:06 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xls",
+          "text": "elsec22_sumtables.xls",
+          "status": 200,
+          "bytes": 509440,
+          "modified": "Tue, 06 May 2025 19:48:03 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xlsx",
+          "text": "elsec22_sumtables.xlsx",
+          "status": 200,
+          "bytes": 281112,
+          "modified": "Tue, 29 Apr 2025 18:14:07 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.txt",
+          "text": "elsec22f.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Tue, 29 Apr 2025 18:27:16 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xls",
+          "text": "elsec22f.xls",
+          "status": 200,
+          "bytes": 35756032,
+          "modified": "Tue, 06 May 2025 19:48:04 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xlsx",
+          "text": "elsec22f.xlsx",
+          "status": 200,
+          "bytes": 8167599,
+          "modified": "Tue, 29 Apr 2025 18:14:10 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.txt",
+          "text": "elsec22t.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Tue, 29 Apr 2025 18:27:18 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xls",
+          "text": "elsec22t.xls",
+          "status": 200,
+          "bytes": 9246720,
+          "modified": "Tue, 06 May 2025 19:48:05 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xlsx",
+          "text": "elsec22t.xlsx",
+          "status": 200,
+          "bytes": 6274895,
+          "modified": "Tue, 29 Apr 2025 18:14:12 GMT"
+        },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/Sdf18_1a.zip",
           "text": "ZIP (3.1 MB)",
@@ -1754,199 +1920,115 @@
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf16_1a_sas7bdat.zip",
-          "text": "ZIP (4.43&nbsp;MB)",
-          "status": 200,
-          "bytes": 4646961,
-          "modified": "Fri, 17 May 2019 16:13:56 GMT"
+          "text": "ZIP (4.43&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf15_1a.zip",
-          "text": "ZIP (2.96 MB)",
-          "status": 200,
-          "bytes": 3105712,
-          "modified": "Tue, 21 Aug 2018 16:05:25 GMT"
+          "text": "ZIP (2.96 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf15_1a_spss_code.zip",
-          "text": "SPSS Code",
-          "status": 200,
-          "bytes": 4448,
-          "modified": "Mon, 27 Aug 2018 10:11:45 GMT"
+          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/2018303_F-33_documentation.zip",
-          "text": "ZIP (0.99&nbsp;MB)",
-          "status": 200,
-          "bytes": 1042719,
-          "modified": "Mon, 27 Aug 2018 10:28:55 GMT"
+          "text": "ZIP (0.99&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf15_1a_layout.txt",
-          "text": "Flat File (33&nbsp;KB)",
-          "status": 200,
-          "bytes": 33968,
-          "modified": "Tue, 25 Sep 2018 19:29:55 GMT"
+          "text": "Flat File (33&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf150_2a_sas7bdat.zip",
-          "text": "ZIP (4.34&nbsp;MB)",
-          "status": 200,
-          "bytes": 4560227,
-          "modified": "Thu, 16 May 2019 12:13:01 GMT"
+          "text": "ZIP (4.34&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_flat.zip",
-          "text": "ZIP (2.99 MB)",
-          "status": 200,
-          "bytes": 3070640,
-          "modified": "Tue, 28 Feb 2017 18:34:46 GMT"
+          "text": "ZIP (2.99 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_spss_code.zip",
-          "text": "SPSS Code",
-          "status": 200,
-          "bytes": 4253,
-          "modified": "Thu, 23 Feb 2017 15:41:02 GMT"
+          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/2016304_F-33_documentation.zip",
-          "text": "ZIP (924&nbsp;KB)",
-          "status": 200,
-          "bytes": 945760,
-          "modified": "Tue, 28 Feb 2017 18:34:51 GMT"
+          "text": "ZIP (924&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf14_1a_layout.txt",
-          "text": "Flat File (34&nbsp;KB)",
-          "status": 200,
-          "bytes": 34321,
-          "modified": "Thu, 23 Feb 2017 15:41:02 GMT"
+          "text": "Flat File (34&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_SAS.zip",
-          "text": "ZIP (4.30&nbsp;MB)",
-          "status": 200,
-          "bytes": 4399042,
-          "modified": "Thu, 23 Feb 2017 15:41:02 GMT"
+          "text": "ZIP (4.30&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a.zip",
-          "text": "ZIP (3.34 MB)",
-          "status": 200,
-          "bytes": 3503182,
-          "modified": "Thu, 14 Jan 2016 14:31:05 GMT"
+          "text": "ZIP (3.34 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf13_1a_spss_code.zip",
-          "text": "SPSS Code",
-          "status": 200,
-          "bytes": 4618,
-          "modified": "Wed, 03 Feb 2016 19:19:27 GMT"
+          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf13_1a_layout.txt",
-          "text": "Flat File (33.5&nbsp;KB)",
-          "status": 200,
-          "bytes": 34320,
-          "modified": "Mon, 01 Feb 2016 17:49:54 GMT"
+          "text": "Flat File (33.5&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a_survey_form.pdf.zip",
-          "text": "ZIP (158&nbsp;KB)",
-          "status": 200,
-          "bytes": 162227,
-          "modified": "Tue, 26 Jan 2016 16:49:41 GMT"
+          "text": "ZIP (158&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a.sas7bdat.zip",
-          "text": "ZIP (4.34&nbsp;MB)",
-          "status": 200,
-          "bytes": 4559991,
-          "modified": "Mon, 01 Feb 2016 17:50:52 GMT"
+          "text": "ZIP (4.34&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf121a.zip",
-          "text": "ZIP (2.93 MB)",
-          "status": 200,
-          "bytes": 3079909,
-          "modified": "Thu, 21 May 2015 16:47:58 GMT"
+          "text": "ZIP (2.93 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf121a_spss_code.zip",
-          "text": "SPSS Code",
-          "status": 200,
-          "bytes": 4443,
-          "modified": "Thu, 21 May 2015 16:54:09 GMT"
+          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/Sdf1a_documenation_files.zip",
-          "text": "ZIP (982 KB)",
-          "status": 200,
-          "bytes": 1005660,
-          "modified": "Wed, 27 May 2015 10:10:37 GMT"
+          "text": "ZIP (982 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf121alayout.txt",
-          "text": "Flat File (34&nbsp;KB)",
-          "status": 200,
-          "bytes": 34315,
-          "modified": "Wed, 27 May 2015 10:10:47 GMT"
+          "text": "Flat File (34&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf121a_survey_form.zip",
-          "text": "ZIP (167&nbsp;KB)",
-          "status": 200,
-          "bytes": 171070,
-          "modified": "Thu, 21 May 2015 17:04:59 GMT"
+          "text": "ZIP (167&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf121a_suppressed.sas7bdat.zip",
-          "text": "ZIP (4&nbsp;MB)",
-          "status": 200,
-          "bytes": 4257971,
-          "modified": "Thu, 21 May 2015 16:51:57 GMT"
+          "text": "ZIP (4&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_txt.zip",
-          "text": "ZIP (3.4&nbsp;MB)",
-          "status": 200,
-          "bytes": 3525339,
-          "modified": "Thu, 03 Apr 2014 17:59:53 GMT"
+          "text": "ZIP (3.4&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf11_1a_sps.zip",
-          "text": "SPSS Code",
-          "status": 200,
-          "bytes": 4627,
-          "modified": "Wed, 02 Apr 2014 15:07:21 GMT"
+          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/sdf11_1a_gen.zip",
-          "text": "ZIP (918 KB)",
-          "status": 200,
-          "bytes": 940656,
-          "modified": "Thu, 03 Apr 2014 17:53:23 GMT"
+          "text": "ZIP (918 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf11_1a_layout.txt",
-          "text": "Flat File (33&nbsp;KB)",
-          "status": 200,
-          "bytes": 34298,
-          "modified": "Wed, 02 Apr 2014 13:07:22 GMT"
+          "text": "Flat File (33&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_surveyform.zip",
-          "text": "ZIP (223&nbsp;KB)",
-          "status": 200,
-          "bytes": 228911,
-          "modified": "Wed, 02 Apr 2014 13:07:22 GMT"
+          "text": "ZIP (223&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_sas7bdat.zip",
-          "text": "ZIP (4.6&nbsp;MB)",
-          "status": 200,
-          "bytes": 4871277,
-          "modified": "Thu, 03 Apr 2014 17:59:34 GMT"
+          "text": "ZIP (4.6&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/SDF101a_txt.zip",
@@ -2348,7 +2430,7 @@
           "text": "sd24-ar.txt",
           "status": 200,
           "bytes": 0,
-          "modified": "Mon, 09 Nov 2026 00:49:59 GMT"
+          "modified": "Sun, 08 Nov 2026 16:51:48 GMT"
         },
         {
           "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-az.txt",
@@ -3593,9 +3675,15 @@
         },
         {
           "kind": "ckan",
-          "target": "IDEA determinations",
+          "target": "IDEA determinations Part B",
           "ok": false,
-          "error": "Expecting value: line 1 column 1 (char 0)"
+          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+determinations+Part+B&rows=20"
+        },
+        {
+          "kind": "browser",
+          "target": "https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files",
+          "ok": true,
+          "count": 0
         },
         {
           "kind": "browser",

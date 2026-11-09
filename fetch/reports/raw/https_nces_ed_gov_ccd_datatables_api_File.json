@@ -1,0 +1,2980 @@
+[
+ {
+  "fileName": {
+   "fileNameId": 15,
+   "name": "State Nonfiscal Public Elementary/Secondary Education Survey Data",
+   "yearVersionModels": [
+    {
+     "schoolYearId": 39,
+     "schoolYearLong": "2024 - 2025",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 28,
+     "schoolYearLong": "2013 - 2014",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 27,
+     "schoolYearLong": "2012 - 2013",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 26,
+     "schoolYearLong": "2011 - 2012",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 25,
+     "schoolYearLong": "2010 - 2011",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 23,
+     "versionName": "v.1f"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 11,
+     "schoolYearLong": "1996 - 1997",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 10,
+     "schoolYearLong": "1995 - 1996",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 9,
+     "schoolYearLong": "1994 - 1995",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 8,
+     "schoolYearLong": "1993 - 1994",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 7,
+     "schoolYearLong": "1992 - 1993",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 6,
+     "schoolYearLong": "1991 - 1992",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 5,
+     "schoolYearLong": "1990 - 1991",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 4,
+     "schoolYearLong": "1989 - 1990",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 3,
+     "schoolYearLong": "1988 - 1989",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 2,
+     "schoolYearLong": "1987 - 1988",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 1,
+     "schoolYearLong": "1986 - 1987",
+     "versionId": 17,
+     "versionName": "v.1c"
+    }
+   ]
+  },
+  "yearVersionModels": [
+   {
+    "schoolYearId": 39,
+    "schoolYearLong": "2024 - 2025",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 28,
+    "schoolYearLong": "2013 - 2014",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 27,
+    "schoolYearLong": "2012 - 2013",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 26,
+    "schoolYearLong": "2011 - 2012",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 25,
+    "schoolYearLong": "2010 - 2011",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 23,
+    "versionName": "v.1f"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 11,
+    "schoolYearLong": "1996 - 1997",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 10,
+    "schoolYearLong": "1995 - 1996",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 9,
+    "schoolYearLong": "1994 - 1995",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 8,
+    "schoolYearLong": "1993 - 1994",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 7,
+    "schoolYearLong": "1992 - 1993",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 6,
+    "schoolYearLong": "1991 - 1992",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 5,
+    "schoolYearLong": "1990 - 1991",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 4,
+    "schoolYearLong": "1989 - 1990",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 3,
+    "schoolYearLong": "1988 - 1989",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 2,
+    "schoolYearLong": "1987 - 1988",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 1,
+    "schoolYearLong": "1986 - 1987",
+    "versionId": 17,
+    "versionName": "v.1c"
+   }
+  ]
+ },
+ {
+  "fileName": {
+   "fileNameId": 7,
+   "name": "Local Education Agency (School District) Universe Survey Data",
+   "yearVersionModels": [
+    {
+     "schoolYearId": 40,
+     "schoolYearLong": "2025 - 2026",
+     "versionId": 52,
+     "versionName": null
+    },
+    {
+     "schoolYearId": 39,
+     "schoolYearLong": "2024 - 2025",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 39,
+     "schoolYearLong": "2024 - 2025",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 48,
+     "versionName": "Graduate/Completer v.1a"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 28,
+     "schoolYearLong": "2013 - 2014",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 27,
+     "schoolYearLong": "2012 - 2013",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 26,
+     "schoolYearLong": "2011 - 2012",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 25,
+     "schoolYearLong": "2010 - 2011",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 42,
+     "versionName": "Dropout and Completion v.1a"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 39,
+     "versionName": "Dropout v.1a"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 45,
+     "versionName": "Dropout and Completion v.0d\u2014Preliminary"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 43,
+     "versionName": "Dropout and Completion v.1b"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 44,
+     "versionName": "Dropout and Completion v.1c"
+    },
+    {
+     "schoolYearId": 11,
+     "schoolYearLong": "1996 - 1997",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 10,
+     "schoolYearLong": "1995 - 1996",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 9,
+     "schoolYearLong": "1994 - 1995",
+     "versionId": 4,
+     "versionName": "Revised"
+    },
+    {
+     "schoolYearId": 8,
+     "schoolYearLong": "1993 - 1994",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 7,
+     "schoolYearLong": "1992 - 1993",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 6,
+     "schoolYearLong": "1991 - 1992",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 5,
+     "schoolYearLong": "1990 - 1991",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 4,
+     "schoolYearLong": "1989 - 1990",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 3,
+     "schoolYearLong": "1988 - 1989",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 2,
+     "schoolYearLong": "1987 - 1988",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 1,
+     "schoolYearLong": "1986 - 1987",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    }
+   ]
+  },
+  "yearVersionModels": [
+   {
+    "schoolYearId": 40,
+    "schoolYearLong": "2025 - 2026",
+    "versionId": 52,
+    "versionName": null
+   },
+   {
+    "schoolYearId": 39,
+    "schoolYearLong": "2024 - 2025",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 39,
+    "schoolYearLong": "2024 - 2025",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 48,
+    "versionName": "Graduate/Completer v.1a"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 28,
+    "schoolYearLong": "2013 - 2014",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 27,
+    "schoolYearLong": "2012 - 2013",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 26,
+    "schoolYearLong": "2011 - 2012",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 25,
+    "schoolYearLong": "2010 - 2011",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 42,
+    "versionName": "Dropout and Completion v.1a"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 39,
+    "versionName": "Dropout v.1a"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 45,
+    "versionName": "Dropout and Completion v.0d\u2014Preliminary"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 43,
+    "versionName": "Dropout and Completion v.1b"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 44,
+    "versionName": "Dropout and Completion v.1c"
+   },
+   {
+    "schoolYearId": 11,
+    "schoolYearLong": "1996 - 1997",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 10,
+    "schoolYearLong": "1995 - 1996",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 9,
+    "schoolYearLong": "1994 - 1995",
+    "versionId": 4,
+    "versionName": "Revised"
+   },
+   {
+    "schoolYearId": 8,
+    "schoolYearLong": "1993 - 1994",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 7,
+    "schoolYearLong": "1992 - 1993",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 6,
+    "schoolYearLong": "1991 - 1992",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 5,
+    "schoolYearLong": "1990 - 1991",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 4,
+    "schoolYearLong": "1989 - 1990",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 3,
+    "schoolYearLong": "1988 - 1989",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 2,
+    "schoolYearLong": "1987 - 1988",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 1,
+    "schoolYearLong": "1986 - 1987",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   }
+  ]
+ },
+ {
+  "fileName": {
+   "fileNameId": 11,
+   "name": "Public Elementary/Secondary School Universe Survey Data",
+   "yearVersionModels": [
+    {
+     "schoolYearId": 40,
+     "schoolYearLong": "2025 - 2026",
+     "versionId": 52,
+     "versionName": null
+    },
+    {
+     "schoolYearId": 39,
+     "schoolYearLong": "2024 - 2025",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 39,
+     "schoolYearLong": "2024 - 2025",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 1,
+     "versionName": "CCD Geographic Data"
+    },
+    {
+     "schoolYearId": 28,
+     "schoolYearLong": "2013 - 2014",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 27,
+     "schoolYearLong": "2012 - 2013",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 26,
+     "schoolYearLong": "2011 - 2012",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 25,
+     "schoolYearLong": "2010 - 2011",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 14,
+     "versionName": "v.1b"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 17,
+     "versionName": "v.1c"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 11,
+     "schoolYearLong": "1996 - 1997",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 10,
+     "schoolYearLong": "1995 - 1996",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 9,
+     "schoolYearLong": "1994 - 1995",
+     "versionId": 4,
+     "versionName": "Revised"
+    },
+    {
+     "schoolYearId": 8,
+     "schoolYearLong": "1993 - 1994",
+     "versionId": 4,
+     "versionName": "Revised"
+    },
+    {
+     "schoolYearId": 7,
+     "schoolYearLong": "1992 - 1993",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 6,
+     "schoolYearLong": "1991 - 1992",
+     "versionId": 4,
+     "versionName": "Revised"
+    },
+    {
+     "schoolYearId": 5,
+     "schoolYearLong": "1990 - 1991",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 4,
+     "schoolYearLong": "1989 - 1990",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 3,
+     "schoolYearLong": "1988 - 1989",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 2,
+     "schoolYearLong": "1987 - 1988",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 1,
+     "schoolYearLong": "1986 - 1987",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    }
+   ]
+  },
+  "yearVersionModels": [
+   {
+    "schoolYearId": 40,
+    "schoolYearLong": "2025 - 2026",
+    "versionId": 52,
+    "versionName": null
+   },
+   {
+    "schoolYearId": 39,
+    "schoolYearLong": "2024 - 2025",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 39,
+    "schoolYearLong": "2024 - 2025",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 1,
+    "versionName": "CCD Geographic Data"
+   },
+   {
+    "schoolYearId": 28,
+    "schoolYearLong": "2013 - 2014",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 27,
+    "schoolYearLong": "2012 - 2013",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 26,
+    "schoolYearLong": "2011 - 2012",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 25,
+    "schoolYearLong": "2010 - 2011",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 14,
+    "versionName": "v.1b"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 17,
+    "versionName": "v.1c"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 11,
+    "schoolYearLong": "1996 - 1997",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 10,
+    "schoolYearLong": "1995 - 1996",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 9,
+    "schoolYearLong": "1994 - 1995",
+    "versionId": 4,
+    "versionName": "Revised"
+   },
+   {
+    "schoolYearId": 8,
+    "schoolYearLong": "1993 - 1994",
+    "versionId": 4,
+    "versionName": "Revised"
+   },
+   {
+    "schoolYearId": 7,
+    "schoolYearLong": "1992 - 1993",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 6,
+    "schoolYearLong": "1991 - 1992",
+    "versionId": 4,
+    "versionName": "Revised"
+   },
+   {
+    "schoolYearId": 5,
+    "schoolYearLong": "1990 - 1991",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 4,
+    "schoolYearLong": "1989 - 1990",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 3,
+    "schoolYearLong": "1988 - 1989",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 2,
+    "schoolYearLong": "1987 - 1988",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 1,
+    "schoolYearLong": "1986 - 1987",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   }
+  ]
+ },
+ {
+  "fileName": {
+   "fileNameId": 10,
+   "name": "National Public Education Financial Survey Data",
+   "yearVersionModels": [
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 24,
+     "versionName": "v.2a"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 28,
+     "schoolYearLong": "2013 - 2014",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 27,
+     "schoolYearLong": "2012 - 2013",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 26,
+     "schoolYearLong": "2011 - 2012",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 25,
+     "schoolYearLong": "2010 - 2011",
+     "versionId": 12,
+     "versionName": "v.1a\u2014Preliminary"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 20,
+     "versionName": "v.1d\u2014Revised"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 11,
+     "schoolYearLong": "1996 - 1997",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 10,
+     "schoolYearLong": "1995 - 1996",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 9,
+     "schoolYearLong": "1994 - 1995",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 8,
+     "schoolYearLong": "1993 - 1994",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 7,
+     "schoolYearLong": "1992 - 1993",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 6,
+     "schoolYearLong": "1991 - 1992",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 5,
+     "schoolYearLong": "1990 - 1991",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 4,
+     "schoolYearLong": "1989 - 1990",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 3,
+     "schoolYearLong": "1988 - 1989",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 2,
+     "schoolYearLong": "1987 - 1988",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 1,
+     "schoolYearLong": "1986 - 1987",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    }
+   ]
+  },
+  "yearVersionModels": [
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 24,
+    "versionName": "v.2a"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 28,
+    "schoolYearLong": "2013 - 2014",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 27,
+    "schoolYearLong": "2012 - 2013",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 26,
+    "schoolYearLong": "2011 - 2012",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 25,
+    "schoolYearLong": "2010 - 2011",
+    "versionId": 12,
+    "versionName": "v.1a\u2014Preliminary"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 20,
+    "versionName": "v.1d\u2014Revised"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 11,
+    "schoolYearLong": "1996 - 1997",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 10,
+    "schoolYearLong": "1995 - 1996",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 9,
+    "schoolYearLong": "1994 - 1995",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 8,
+    "schoolYearLong": "1993 - 1994",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 7,
+    "schoolYearLong": "1992 - 1993",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 6,
+    "schoolYearLong": "1991 - 1992",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 5,
+    "schoolYearLong": "1990 - 1991",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 4,
+    "schoolYearLong": "1989 - 1990",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 3,
+    "schoolYearLong": "1988 - 1989",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 2,
+    "schoolYearLong": "1987 - 1988",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 1,
+    "schoolYearLong": "1986 - 1987",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   }
+  ]
+ },
+ {
+  "fileName": {
+   "fileNameId": 5,
+   "name": "Local Education Agency (School District) Finance Survey (F-33) Data",
+   "yearVersionModels": [
+    {
+     "schoolYearId": 38,
+     "schoolYearLong": "2023 - 2024",
+     "versionId": 10,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 37,
+     "schoolYearLong": "2022 - 2023",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 36,
+     "schoolYearLong": "2021 - 2022",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 35,
+     "schoolYearLong": "2020 - 2021",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 34,
+     "schoolYearLong": "2019 - 2020",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 33,
+     "schoolYearLong": "2018 - 2019",
+     "versionId": 34,
+     "versionName": "v.2a\u2014Final"
+    },
+    {
+     "schoolYearId": 32,
+     "schoolYearLong": "2017 - 2018",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 31,
+     "schoolYearLong": "2016 - 2017",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 30,
+     "schoolYearLong": "2015 - 2016",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 29,
+     "schoolYearLong": "2014 - 2015",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 28,
+     "schoolYearLong": "2013 - 2014",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 27,
+     "schoolYearLong": "2012 - 2013",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 26,
+     "schoolYearLong": "2011 - 2012",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 25,
+     "schoolYearLong": "2010 - 2011",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 24,
+     "schoolYearLong": "2009 - 2010",
+     "versionId": 13,
+     "versionName": "(v.1a)"
+    },
+    {
+     "schoolYearId": 23,
+     "schoolYearLong": "2008 - 2009",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 22,
+     "schoolYearLong": "2007 - 2008",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 21,
+     "schoolYearLong": "2006 - 2007",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 20,
+     "schoolYearLong": "2005 - 2006",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 19,
+     "schoolYearLong": "2004 - 2005",
+     "versionId": 18,
+     "versionName": "v.1c\u2014Revised"
+    },
+    {
+     "schoolYearId": 18,
+     "schoolYearLong": "2003 - 2004",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 17,
+     "schoolYearLong": "2002 - 2003",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 16,
+     "schoolYearLong": "2001 - 2002",
+     "versionId": 18,
+     "versionName": "v.1c\u2014Revised"
+    },
+    {
+     "schoolYearId": 15,
+     "schoolYearLong": "2000 - 2001",
+     "versionId": 20,
+     "versionName": "v.1d\u2014Revised"
+    },
+    {
+     "schoolYearId": 14,
+     "schoolYearLong": "1999 - 2000",
+     "versionId": 20,
+     "versionName": "v.1d\u2014Revised"
+    },
+    {
+     "schoolYearId": 13,
+     "schoolYearLong": "1998 - 1999",
+     "versionId": 18,
+     "versionName": "v.1c\u2014Revised"
+    },
+    {
+     "schoolYearId": 12,
+     "schoolYearLong": "1997 - 1998",
+     "versionId": 22,
+     "versionName": "v.1e\u2014Revised"
+    },
+    {
+     "schoolYearId": 11,
+     "schoolYearLong": "1996 - 1997",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 10,
+     "schoolYearLong": "1995 - 1996",
+     "versionId": 16,
+     "versionName": "v.1b\u2014Revised"
+    },
+    {
+     "schoolYearId": 9,
+     "schoolYearLong": "1994 - 1995",
+     "versionId": 20,
+     "versionName": "v.1d\u2014Revised"
+    },
+    {
+     "schoolYearId": 6,
+     "schoolYearLong": "1991 - 1992",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    },
+    {
+     "schoolYearId": 4,
+     "schoolYearLong": "1989 - 1990",
+     "versionId": 11,
+     "versionName": "v.1a\u2014Final"
+    }
+   ]
+  },
+  "yearVersionModels": [
+   {
+    "schoolYearId": 38,
+    "schoolYearLong": "2023 - 2024",
+    "versionId": 10,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 37,
+    "schoolYearLong": "2022 - 2023",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 36,
+    "schoolYearLong": "2021 - 2022",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 35,
+    "schoolYearLong": "2020 - 2021",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 34,
+    "schoolYearLong": "2019 - 2020",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 33,
+    "schoolYearLong": "2018 - 2019",
+    "versionId": 34,
+    "versionName": "v.2a\u2014Final"
+   },
+   {
+    "schoolYearId": 32,
+    "schoolYearLong": "2017 - 2018",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 31,
+    "schoolYearLong": "2016 - 2017",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 30,
+    "schoolYearLong": "2015 - 2016",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 29,
+    "schoolYearLong": "2014 - 2015",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 28,
+    "schoolYearLong": "2013 - 2014",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 27,
+    "schoolYearLong": "2012 - 2013",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 26,
+    "schoolYearLong": "2011 - 2012",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 25,
+    "schoolYearLong": "2010 - 2011",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 24,
+    "schoolYearLong": "2009 - 2010",
+    "versionId": 13,
+    "versionName": "(v.1a)"
+   },
+   {
+    "schoolYearId": 23,
+    "schoolYearLong": "2008 - 2009",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 22,
+    "schoolYearLong": "2007 - 2008",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 21,
+    "schoolYearLong": "2006 - 2007",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 20,
+    "schoolYearLong": "2005 - 2006",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 19,
+    "schoolYearLong": "2004 - 2005",
+    "versionId": 18,
+    "versionName": "v.1c\u2014Revised"
+   },
+   {
+    "schoolYearId": 18,
+    "schoolYearLong": "2003 - 2004",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 17,
+    "schoolYearLong": "2002 - 2003",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 16,
+    "schoolYearLong": "2001 - 2002",
+    "versionId": 18,
+    "versionName": "v.1c\u2014Revised"
+   },
+   {
+    "schoolYearId": 15,
+    "schoolYearLong": "2000 - 2001",
+    "versionId": 20,
+    "versionName": "v.1d\u2014Revised"
+   },
+   {
+    "schoolYearId": 14,
+    "schoolYearLong": "1999 - 2000",
+    "versionId": 20,
+    "versionName": "v.1d\u2014Revised"
+   },
+   {
+    "schoolYearId": 13,
+    "schoolYearLong": "1998 - 1999",
+    "versionId": 18,
+    "versionName": "v.1c\u2014Revised"
+   },
+   {
+    "schoolYearId": 12,
+    "schoolYearLong": "1997 - 1998",
+    "versionId": 22,
+    "versionName": "v.1e\u2014Revised"
+   },
+   {
+    "schoolYearId": 11,
+    "schoolYearLong": "1996 - 1997",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 10,
+    "schoolYearLong": "1995 - 1996",
+    "versionId": 16,
+    "versionName": "v.1b\u2014Revised"
+   },
+   {
+    "schoolYearId": 9,
+    "schoolYearLong": "1994 - 1995",
+    "versionId": 20,
+    "versionName": "v.1d\u2014Revised"
+   },
+   {
+    "schoolYearId": 6,
+    "schoolYearLong": "1991 - 1992",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   },
+   {
+    "schoolYearId": 4,
+    "schoolYearLong": "1989 - 1990",
+    "versionId": 11,
+    "versionName": "v.1a\u2014Final"
+   }
+  ]
+ }
+]
