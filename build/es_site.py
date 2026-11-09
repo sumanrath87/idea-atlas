@@ -309,6 +309,11 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
   <button type="button" class="secondary" data-like>Buscar distritos parecidos</button>
   <div class="like-out" aria-live="polite"></div>
 </section>
+<section aria-labelledby="s-rpt" class="rpt-cta">
+  <h2 id="s-rpt">Crear un informe para imprimir</h2>
+  <p>Responda unas preguntas y reciba un informe sobre este distrito escrito para una familia, un líder escolar o un investigador, con gráficos, listo para imprimir o guardar como PDF.</p>
+  <p><a class="button" href="{BASE}es/informe/?id={r.leaid}">Crear un informe de este distrito</a></p>
+</section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Preguntas que puede hacer</h2>
   <p>Las cifras pueden abrir una conversación. Si usted es madre, padre o cuidador, estas preguntas pueden ayudarle al hablar con el distrito o en una reunión del IEP.</p>
@@ -368,3 +373,20 @@ Todas las cifras vienen de datos federales públicos.</p>
     return page("Datos de educación especial para cada distrito escolar de EE. UU.", body,
                 desc="Busque cualquier distrito escolar de EE. UU. por código postal y vea, en palabras sencillas, datos federales de educación especial: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina y fondos.",
                 path=BASE + "es/", scripts=("atlas.js",), lang="es", alt=BASE)
+
+
+def report_es(*, BASE, page) -> str:
+    body = f"""
+<div class="rpt-intro">
+  <h1>Crear un informe</h1>
+  <p class="lede">Responda cinco preguntas cortas y reciba un informe completo sobre cualquier distrito escolar, con gráficos y títulos claros, listo para imprimir o guardar como PDF.</p>
+  <ul class="rpt-kinds">
+    <li><strong>Para una familia:</strong> palabras sencillas, dibujos, cada término explicado y las preguntas que quiere llevar a una reunión.</li>
+    <li><strong>Para un líder escolar:</strong> una página de resumen, el distrito junto a su estado, el país y los distritos que elija, y las tendencias.</li>
+    <li><strong>Para un investigador:</strong> cada cifra con su estado, las tablas detalladas y de tendencias, el diccionario de datos y la cita.</li>
+  </ul>
+</div>
+<div id="rpt-app" class="rpt-app"><noscript><p>El asistente necesita JavaScript. Cada <a href="{BASE}es/">página de distrito</a> tiene la misma información.</p></noscript></div>
+<div id="rpt-out" hidden></div>"""
+    return page("Crear un informe", body, desc="Cree un informe para imprimir sobre la educación especial en cualquier distrito escolar de EE. UU., para una familia, un líder escolar o un investigador.",
+                path=BASE + "es/informe/", scripts=("atlas.js", "report.js"), crumbs=[("IDEA Atlas", BASE + "es/")], lang="es", alt=BASE + "report/")

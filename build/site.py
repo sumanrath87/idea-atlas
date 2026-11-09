@@ -177,13 +177,13 @@ def plain_lines(r, keys, st_med) -> str:
 
 UI = {
     "en": {"skip": "Skip to main content", "sub": "Special education data for every U.S. school district", "nav_label": "IDEA Atlas",
-           "nav": [("", "Map and search"), ("table/", "Table"), ("compare/", "Compare"), ("history/", "History"), ("methods/", "Methods and sources")],
+           "nav": [("", "Map and search"), ("table/", "Table"), ("compare/", "Compare"), ("history/", "History"), ("report/", "Make a report"), ("methods/", "Methods and sources")],
            "all_tools": "All tools", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
            "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
-           "nav": [("es/", "Buscar un distrito"), ("es/historia/", "Historia")],
+           "nav": [("es/", "Buscar un distrito"), ("es/historia/", "Historia"), ("es/informe/", "Crear un informe")],
            "all_tools": "", "crumb": "Ruta de navegación", "suffix": "IDEA Atlas", "version": "Versión",
            "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
@@ -408,6 +408,8 @@ def main() -> int:
         write("history/index.html", history_page.render(page, explain, BASE))
         write("es/historia/index.html", history_page.render_es(page, lambda *k: es_site.explain_es(BASE, *k, full=True), BASE, es_site.STATE_ES))
     write("compare/index.html", compare_page())
+    write("report/index.html", report_page())
+    write("es/informe/index.html", es_site.report_es(BASE=BASE, page=page))
     children = d[d.part_of.notna()].groupby("part_of")
     kids_of = {k: g for k, g in children}
     tpath = Path(__file__).resolve().parent / "history" / "district_trends.json.gz"
@@ -528,6 +530,23 @@ Words such as "Withheld for privacy" explain why a figure is not shown.</p>
 """
     return page("Table of districts", body, desc="Sortable table of special education figures for every school district in a state.",
                 path=BASE + "table/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+
+
+def report_page() -> str:
+    body = f"""
+<div class="rpt-intro">
+  <h1>Make a report</h1>
+  <p class="lede">Answer five short questions and get a finished report about any school district, with charts and clear headings, ready to print or save as a PDF.</p>
+  <ul class="rpt-kinds">
+    <li><strong>For a family:</strong> plain words, pictures, every term explained, and the questions you want to bring to a meeting.</li>
+    <li><strong>For a school leader:</strong> a summary page, the district beside its state, the nation, and districts you choose, and trends over time.</li>
+    <li><strong>For a researcher:</strong> every figure with its status, the detail and trend tables, the data dictionary, and the citation.</li>
+  </ul>
+</div>
+<div id="rpt-app" class="rpt-app"><noscript><p>The report assistant needs JavaScript. Each <a href="{BASE}">district page</a> has the same information.</p></noscript></div>
+<div id="rpt-out" hidden></div>"""
+    return page("Make a report", body, desc="Make a printable special education report about any U.S. school district, written for a family, a school leader, or a researcher.",
+                path=BASE + "report/", scripts=("atlas.js", "report.js"), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/informe/")
 
 
 def compare_page() -> str:
@@ -997,6 +1016,11 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
   <p>Find districts in {E(st_name)} with a similar number of students and a similar level of child poverty, then compare them side by side.</p>
   <button type="button" class="secondary" data-like>Find districts like this one</button>
   <div class="like-out" aria-live="polite"></div>
+</section>
+<section aria-labelledby="s-rpt" class="rpt-cta">
+  <h2 id="s-rpt">Make a printable report</h2>
+  <p>Answer a few questions and get a report about this district written for a family, a school leader, or a researcher, with charts, ready to print or save as a PDF.</p>
+  <p><a class="button" href="{BASE}report/?id={r.leaid}">Make a report for this district</a></p>
 </section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Questions you could ask</h2>

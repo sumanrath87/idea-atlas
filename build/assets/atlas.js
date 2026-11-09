@@ -831,5 +831,9 @@
     });
   }
 
+  // Shared with the report assistant (report.js), so reports draw the same charts as the site.
+  window.ATLAS = { BASE: BASE, ES: ES, tr: tr, esc: esc, load: load, data: function () { return DATA; }, index: function () { return INDEX; },
+    rangeChart: rangeChart, partsBar: partsBar, catsChart: catsChart, trendChart: trendChart, yearLabel: yearLabel, svgEl: svgEl };
+
   document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();
