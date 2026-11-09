@@ -23,7 +23,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from measures import (ATLAS_ORIGIN, BASE, CATEGORIES, MAP_MEASURES, MEASURES, SITE, SOURCES, STATUS,  # noqa: E402
-                      STATE_NOTES, STATUS_TEXT, VERSION, TERMS, PLAIN)
+                      STATE_NOTES, STATUS_TEXT, VERSION, TERMS, PLAIN, DOI)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / BASE.strip("/")
@@ -890,7 +890,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
   <p>These figures describe what was reported. They are not grades. See <a href="{BASE}methods/">methods and sources</a> for how each one is made.</p>
   {explain("median", "status", "years")}
   <p>Federal ID for this district: {r.leaid}. This is the National Center for Education Statistics (NCES) number, useful when looking up the district in other federal data.</p>
-  <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/</p>
+  <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/ https://doi.org/{DOI}</p>
 </section>
 """
     cd["t"] = list(TABLES)
@@ -983,7 +983,8 @@ A rating describes the state, not any one district.</p></section>
 This is version {VERSION}.</p></section>
 
 <section aria-labelledby="cite"><h2 id="cite">How to cite</h2>
-<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set]. {ATLAS_ORIGIN}{BASE}</p>
+<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set]. https://doi.org/{DOI}</p>
+<p>Online tool: <a href="{ATLAS_ORIGIN}{BASE}">{ATLAS_ORIGIN}{BASE}</a>. The data files for each version are kept permanently at <a href="https://doi.org/{DOI}">doi.org/{DOI}</a>.</p>
 <p>To report an error, please use the <a href="{SITE}/contact/">contact page</a>.</p></section>
 """
     return page("Methods and sources", body, desc="How IDEA Atlas figures are made: sources, data rules, calculations, limits, and data dictionary.",

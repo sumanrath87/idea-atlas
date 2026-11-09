@@ -2,6 +2,7 @@
 so the map, table, district pages, download, and methods page always agree."""
 
 VERSION = "2026.1"
+DOI = "10.5281/zenodo.24083644"   # reserved on Zenodo; the record is published at launch
 import os
 BASE = os.environ.get("ATLAS_BASE", "/tools/idea-atlas/")
 SITE = "https://www.sumanrath.org"
