@@ -29,20 +29,23 @@ TIMEOUT = 60
 
 # Extra places to look, beyond each landing page.
 EXTRA = {
-    "idea_child_count": [("ckan", '"IDEA Section 618 LEA Part B Child Count"'),
-                         ("ckan", '"Local Level Data File"')],
-    "idea_environments": [("ckan", '"IDEA Section 618 LEA Part B Educational Environments"')],
-    "idea_exiting": [("ckan", '"IDEA Section 618 LEA Part B Exiting"'),
-                     ("ckan", "IDEA 618 exiting LEA")],
-    "osep_determinations": [("ckan", "IDEA determinations Part B"),
-                            ("browser", "https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files")],
+    # data.ed.gov dataset pages are built with JavaScript, so they are opened in a browser.
+    # The direct links are the latest files known when this was written; they are re-checked each run.
+    "idea_child_count": [("browser", "https://data.ed.gov/dataset/idea-section-618-lea-part-b-child-count"),
+                         ("direct", "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv")],
+    "idea_environments": [("browser", "https://data.ed.gov/dataset/idea-section-618-lea-part-b-educational-environments"),
+                          ("direct", "https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv")],
+    "idea_exiting": [("browser", "https://data.ed.gov/dataset/idea-section-618-lea-part-b-exiting"),
+                     ("browser", "https://data.ed.gov/dataset/idea-section-618-data-products")],
+    "osep_determinations": [("browser", "https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files")],
     "saipe": [("dir", "https://www2.census.gov/programs-surveys/saipe/datasets/")],
     # Newer F-33 years are published by the Census Bureau as "school system finances"
     "edge_boundaries": [("page", "https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries")],
     "edge_zcta": [("page", "https://nces.ed.gov/programs/edge/Geographic/RelationshipFiles")],
-    "ccd_directory": [("json", "https://nces.ed.gov/ccd/datatables/api/File"),
+    # NCES file service: /api/File/{fiscal}/{level 5 = district}/{year}/{file}/{version}/{year}
+    "ccd_directory": [("json", "https://nces.ed.gov/ccd/datatables/api/File/0/5/0/7/0/0"),
                       ("page", "https://nces.ed.gov/ccd/pubagency.asp")],
-    "f33": [("json", "https://nces.ed.gov/ccd/datatables/api/File"),
+    "f33": [("json", "https://nces.ed.gov/ccd/datatables/api/File/1/5/0/5/0/0"),
             ("page", "https://nces.ed.gov/ccd/f33agency.asp"),
             ("dir", "https://www2.census.gov/programs-surveys/school-finances/tables/")],
 }
@@ -94,7 +97,8 @@ def links_from_browser(url: str) -> list[dict]:
                 found.append({"url": full, "text": text[:160]})
         b.close()
     for u in dict.fromkeys(api):
-        found.append({"url": u, "text": "[loaded by page]"})
+        if DATA_EXT.search(u) and not re.search(r"\.js(on)?(\?|$)", u):
+            found.append({"url": u, "text": "[loaded by page]"})
     return found
 
 
@@ -108,7 +112,7 @@ def links_from_json(url: str) -> list[dict]:
 
     def walk(x, ctx):
         if isinstance(x, dict):
-            label = " | ".join(str(x[k]) for k in ("title", "name", "fileName", "description", "schoolYear", "year") if k in x)[:200]
+            label = " | ".join(str(x[k]) for k in ("schoolYear", "title", "name", "description", "year") if isinstance(x.get(k), (str, int)))[:200]
             for v in x.values():
                 walk(v, label or ctx)
         elif isinstance(x, list):
@@ -118,6 +122,10 @@ def links_from_json(url: str) -> list[dict]:
             found.append({"url": urljoin("https://nces.ed.gov/ccd/", x), "text": ctx})
     walk(data, "")
     return found
+
+
+def links_from_direct(url: str) -> list[dict]:
+    return [{"url": url, "text": url.rsplit("/", 1)[-1]}]
 
 
 def links_from_ckan(query: str) -> list[dict]:
@@ -177,7 +185,8 @@ def main() -> int:
         for kind, target in places:
             try:
                 fn = {"page": links_from_page, "ckan": links_from_ckan, "dir": links_from_dir,
-                      "browser": links_from_browser, "json": links_from_json}[kind]
+                      "browser": links_from_browser, "json": links_from_json,
+                      "direct": links_from_direct}[kind]
                 items = fn(target)
                 entry["checked"].append({"kind": kind, "target": target, "ok": True, "count": len(items)})
             except Exception as e:  # noqa: BLE001
