@@ -23,13 +23,17 @@ def describe_table(df: pd.DataFrame, label: str, lines: list[str]) -> None:
     lines.append("Columns: " + ", ".join(f"`{c}`" for c in df.columns[:400]))
     lines.append("")
     lines.append("```")
-    lines.append(df.head(SAMPLE_ROWS).to_csv(index=False)[:3000])
+    n = 14 if "raw)" in label else SAMPLE_ROWS
+    lines.append(df.head(n).to_csv(index=False)[:6000])
     lines.append("```")
     lines.append("")
 
 
 def read_any(name: str, data: bytes) -> dict[str, pd.DataFrame]:
     low = name.lower()
+    if low.endswith(".csv") and data[:40].lstrip(b"\xef\xbb\xbf").startswith(b"Extraction"):
+        text = data.decode("latin-1").splitlines()
+        return {name + " (first 14 lines, raw)": pd.DataFrame({"line": text[:14]})}
     if low.endswith(".csv"):
         for enc in ("utf-8", "latin-1"):
             try:
