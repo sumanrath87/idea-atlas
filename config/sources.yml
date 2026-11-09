@@ -22,7 +22,7 @@ sources:
     name: IDEA Part B exiting, by district (LEA)
     agency: U.S. Department of Education, OSEP
     landing: https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products
-    expected_year: 2022-23
+    expected_year: 2023-24
     measures: [graduation_regular_diploma, dropout]
 
   - id: crdc
@@ -43,7 +43,7 @@ sources:
     name: School District Finance Survey (F-33)
     agency: NCES and U.S. Census Bureau
     landing: https://nces.ed.gov/ccd/f33agency.asp
-    expected_year: FY2023
+    expected_year: FY2024
     measures: [per_pupil_spending, federal_idea_revenue]
 
   - id: saipe

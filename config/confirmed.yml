@@ -1,0 +1,62 @@
+# IDEA Atlas: confirmed source files (Checkpoint 1)
+# Exact files found by the discovery step on 8 November 2026.
+# The download step fetches each one, records its size, date, and a checksum,
+# and stores a dated copy as a GitHub release so the original is always kept.
+
+files:
+  - source: idea_child_count
+    year: 2024-25
+    url: https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv
+
+  - source: idea_environments
+    year: 2024-25
+    url: https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv
+
+  - source: idea_exiting
+    year: 2023-24
+    url: https://data.ed.gov/dataset/183e21a7-0a9b-43e5-bf22-1bb6f6e98db2/resource/20a14232-1210-47a3-8658-6d6734bd2b9b/download/bexitinglea2023-24.csv
+
+  - source: crdc
+    year: 2023-24
+    url: https://civilrightsdata.ed.gov/assets/ocr/docs/2023-24-crdc-data.zip
+
+  - source: ccd_directory
+    year: 2024-25
+    url: https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2425_w_1a_073025.zip
+    note: district directory
+
+  - source: ccd_directory
+    year: 2024-25
+    url: https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2425_l_1a_073025.zip
+    note: district enrollment (membership)
+
+  - source: f33
+    year: FY2024
+    url: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx
+    note: Census Annual Survey of School System Finances, the same district finance collection as NCES F-33, one year newer
+
+  - source: f33
+    year: FY2024
+    url: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx
+
+  - source: f33
+    year: FY2024
+    url: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.xlsx
+
+  - source: saipe
+    year: 2024
+    pattern: https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-*.txt
+    note: one file per state, taken from the discovery report
+
+  - source: edge_boundaries
+    year: SY2024-25
+    url: https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL25_SY2425.zip
+
+  - source: edge_zcta
+    year: SY2024-25
+    url: https://nces.ed.gov/programs/edge/data/GRF25.zip
+
+  - source: osep_determinations
+    year: 2026
+    local: config/state_determinations_2026.csv
+    note: entered by hand from the official fact sheet; see config/state_determinations_2026.md
