@@ -3,15 +3,8 @@ name: Build and publish website
 # Builds the static site. Publishes to the hidden preview address on sumanrath.org
 # when the upload login has been saved as repository secrets (DH_HOST, DH_USER, DH_PASS, DH_PATH).
 # The live address (/tools/idea-atlas/) is only updated by hand, after approval.
+# Paused: the atlas is now published with GitHub Pages (pages.yml). Run by hand only.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "build/**"
-      - ".github/workflows/site.yml"
-  workflow_run:
-    workflows: ["Clean and join data"]
-    types: [completed]
   workflow_dispatch:
     inputs:
       target:

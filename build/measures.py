@@ -5,6 +5,7 @@ VERSION = "2026.1"
 import os
 BASE = os.environ.get("ATLAS_BASE", "/tools/idea-atlas/")
 SITE = "https://www.sumanrath.org"
+ATLAS_ORIGIN = os.environ.get("ATLAS_ORIGIN", SITE)  # where the atlas itself lives, for canonical links and citations
 
 SOURCES = {
     "ccd": ("Common Core of Data, district directory and enrollment", "2024–25", "National Center for Education Statistics"),

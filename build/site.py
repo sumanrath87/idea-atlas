@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from measures import (BASE, CATEGORIES, MAP_MEASURES, MEASURES, SITE, SOURCES, STATUS,  # noqa: E402
+from measures import (ATLAS_ORIGIN, BASE, CATEGORIES, MAP_MEASURES, MEASURES, SITE, SOURCES, STATUS,  # noqa: E402
                       STATE_NOTES, STATUS_TEXT, VERSION)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -89,7 +89,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <title>{E(title)} | IDEA Atlas</title>
 <meta name="description" content="{E(desc)}">
 {robots}
-<link rel="canonical" href="{SITE}{path}">
+<link rel="canonical" href="{ATLAS_ORIGIN}{path}">
 <link rel="stylesheet" href="{BASE}assets/atlas.css">{css}
 {js}
 </head>
@@ -243,6 +243,10 @@ def main() -> int:
         n += 1
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
+    domain = ATLAS_ORIGIN.split("://", 1)[-1].rstrip("/")
+    if BASE == "/" and domain != "www.sumanrath.org":
+        write("CNAME", domain + "\n")       # custom address for GitHub Pages
+        write(".nojekyll", "")
     total = sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file())
     print(f"Built {n:,} district pages; site size {total / 1e6:,.0f} MB at {OUT}")
     return 0
@@ -444,7 +448,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id) -> str:
   <h2 id="s-more">Using these figures</h2>
   <p>Medians are the middle value of districts with a figure: half of districts are above and half below.
   They give context, not a target. Some figures come from different school years. See <a href="{BASE}methods/">methods and sources</a>.</p>
-  <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {SITE}{BASE}district/{r.leaid}/</p>
+  <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/</p>
 </section>
 """
     desc = f"Special education data for {name}, {r.state_name.title()}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
@@ -529,7 +533,7 @@ A rating describes the state, not any one district.</p></section>
 This is version {VERSION}.</p></section>
 
 <section aria-labelledby="cite"><h2 id="cite">How to cite</h2>
-<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set]. {SITE}{BASE}</p>
+<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set]. {ATLAS_ORIGIN}{BASE}</p>
 <p>To report an error, please use the <a href="{SITE}/contact/">contact page</a>.</p></section>
 """
     return page("Methods and sources", body, desc="How IDEA Atlas figures are made: sources, data rules, calculations, limits, and data dictionary.",

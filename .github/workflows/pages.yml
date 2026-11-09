@@ -1,0 +1,60 @@
+name: Publish atlas.sumanrath.org
+
+# Builds the site and publishes it with GitHub Pages at atlas.sumanrath.org.
+# Runs after new data is cleaned, when the site code changes, or by hand.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build/**"
+      - ".github/workflows/pages.yml"
+  workflow_run:
+    workflows: ["Clean and join data"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      preview:
+        description: "Keep search engines out (yes during review, no at launch)"
+        required: true
+        default: "yes"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy
+      - name: Build the site
+        env:
+          ATLAS_BASE: /
+          ATLAS_ORIGIN: https://atlas.sumanrath.org
+        run: |
+          # Search engines stay out until launch is approved (change the default below at launch).
+          if [ "${{ github.event.inputs.preview || 'yes' }}" = "no" ]; then python build/site.py; else python build/site.py --preview; fi
+          N=$(ls site/district | wc -l); echo "district pages: $N"; test "$N" -gt 15000
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
