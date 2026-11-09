@@ -511,3 +511,9 @@ table.rpt-t th, table.rpt-t td { white-space: normal; overflow-wrap: anywhere; }
 table.rpt-t.compare { table-layout: fixed; font-size: .82rem; } table.rpt-t.compare th:first-child { width: 22%; }
 @media print { table.rpt-t { font-size: 8.5pt; } table.rpt-t.compare { font-size: 8pt; } }
 table.rpt-t thead th { white-space: normal !important; overflow: visible; text-overflow: clip; vertical-align: bottom; line-height: 1.25; }
+.rpt-mine { background: #eef4fc; border-left: 4px solid #1c5cab; border-radius: 0 8px 8px 0; padding: .3rem 1.1rem .5rem; margin: 1.2rem 0; } .rpt-mine h3 { margin-top: .5em !important; }
+dl.rpt-rights dt { font-weight: 700; margin-top: .7rem; } dl.rpt-rights dd { margin: .1rem 0 0; }
+.rpt-notes h3 { font-family: Manrope, system-ui, sans-serif; font-size: .95rem !important; font-weight: 700; margin: 1rem 0 0 !important; }
+.rpt-app select { font: inherit; padding: .45rem .6rem; border: 1px solid #8f8a80; border-radius: var(--radius); min-height: 2.75rem; max-width: 100%; background: #fff; }
+.rpt-said { flex-basis: 100%; margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
+@media print { section.rpt-sec.short { break-before: auto; margin-top: 18pt; } .rpt-mine { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
