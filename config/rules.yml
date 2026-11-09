@@ -1,0 +1,21 @@
+# IDEA Atlas data rules. Changing this file re-runs the cleaning step.
+
+minimum_group: 10        # rates are hidden when the group (denominator) is under 10
+rates_per: 100
+
+# How agency codes are read. Every negative number is a code, never a count.
+codes:
+  idea:
+    "-8": hidden          # suppressed by the agency for privacy (small numbers)
+    "-9": quality         # flagged or suppressed for data quality
+    "": not_reported
+  crdc:
+    any_negative: not_applicable_or_hidden   # -3 skipped, -5 action plan, -6 privacy, -9 not applicable, -11 suppressed
+
+# Districts used for the hand spot-check at Checkpoint 2.
+spot_check:
+  - {state: NJ, name: "Montclair"}
+  - {state: NJ, name: "Newark"}
+  - {state: NY, name: "New York City"}
+  - {state: CA, name: "Los Angeles Unified"}
+  - {state: AK, name: "Alaska Gateway"}
