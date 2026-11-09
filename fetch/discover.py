@@ -23,7 +23,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "fetch" / "reports"
-UA = {"User-Agent": "IDEA-Atlas-data-check/0.1 (+https://sumanrath.org/tools/idea-atlas/)"}
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36 IDEA-Atlas-data-check/0.2"}
 DATA_EXT = re.compile(r"\.(zip|csv|xlsx?|txt|json|gpkg|7z)(\?|$)", re.I)
 TIMEOUT = 60
 
@@ -35,11 +35,13 @@ EXTRA = {
     "crdc": [("ckan", "Civil Rights Data Collection")],
     "osep_determinations": [("ckan", "IDEA determinations")],
     "saipe": [("dir", "https://www2.census.gov/programs-surveys/saipe/datasets/")],
+    # Newer F-33 years are published by the Census Bureau as "school system finances"
     "edge_boundaries": [("page", "https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries")],
     "edge_zcta": [("page", "https://nces.ed.gov/programs/edge/Geographic/RelationshipFiles")],
     "ccd_directory": [("page", "https://nces.ed.gov/ccd/files.asp"),
                       ("page", "https://nces.ed.gov/ccd/pubagency.asp")],
-    "f33": [("page", "https://nces.ed.gov/ccd/f33agency.asp")],
+    "f33": [("page", "https://nces.ed.gov/ccd/f33agency.asp"),
+            ("dir", "https://www2.census.gov/programs-surveys/school-finances/tables/")],
 }
 
 
@@ -69,6 +71,30 @@ def links_from_page(url: str) -> list[dict]:
     return found
 
 
+def links_from_browser(url: str) -> list[dict]:
+    """Render the page in headless Chromium, for sites built with JavaScript.
+    Records file links on the page and any data or API addresses it loads."""
+    from playwright.sync_api import sync_playwright
+    found, api = [], []
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page()
+        pg.on("response", lambda r: api.append(r.url) if (
+            "json" in (r.headers.get("content-type") or "") or DATA_EXT.search(r.url)) else None)
+        pg.goto(url, wait_until="networkidle", timeout=90_000)
+        pg.wait_for_timeout(4000)
+        for a in pg.query_selector_all("a[href]"):
+            href = a.get_attribute("href") or ""
+            full = urljoin(url, href)
+            text = (a.inner_text() or "").strip()
+            if DATA_EXT.search(full) or re.search(r"download|data file|lea|district", text, re.I):
+                found.append({"url": full, "text": text[:160]})
+        b.close()
+    for u in dict.fromkeys(api):
+        found.append({"url": u, "text": "[loaded by page]"})
+    return found
+
+
 def links_from_ckan(query: str) -> list[dict]:
     api = "https://data.ed.gov/api/3/action/package_search"
     r = get(api, params={"q": query, "rows": 25, "sort": "metadata_modified desc"})
@@ -92,7 +118,9 @@ def links_from_dir(url: str, depth: int = 2) -> list[dict]:
         try:
             r = get(u)
             r.raise_for_status()
-        except Exception:  # noqa: BLE001
+        except Exception as e:  # noqa: BLE001
+            if u == url:
+                raise
             continue
         for href in re.findall(r'href="([^"?][^"]*)"', r.text):
             full = urljoin(u, href)
@@ -101,9 +129,9 @@ def links_from_dir(url: str, depth: int = 2) -> list[dict]:
             if full.endswith("/") and d < depth:
                 # only follow recent years and school-district folders
                 tail = full.rstrip("/").rsplit("/", 1)[-1]
-                if re.fullmatch(r"20(2[3-9])", tail) or "school" in tail.lower():
+                if re.fullmatch(r"20(2[2-9])", tail) or "school" in tail.lower() or "elsec" in tail.lower():
                     todo.append((full, d + 1))
-            elif DATA_EXT.search(full) and "school" in full.lower():
+            elif DATA_EXT.search(full) and ("school" in full.lower() or "elsec" in full.lower()):
                 found.append({"url": full, "text": full.rsplit("/", 1)[-1]})
     return found
 
@@ -121,7 +149,8 @@ def main() -> int:
         seen = set()
         for kind, target in places:
             try:
-                fn = {"page": links_from_page, "ckan": links_from_ckan, "dir": links_from_dir}[kind]
+                fn = {"page": links_from_page, "ckan": links_from_ckan, "dir": links_from_dir,
+                      "browser": links_from_browser}[kind]
                 items = fn(target)
                 entry["checked"].append({"kind": kind, "target": target, "ok": True, "count": len(items)})
             except Exception as e:  # noqa: BLE001
@@ -132,6 +161,18 @@ def main() -> int:
                     continue
                 seen.add(it["url"])
                 entry["files"].append(it)
+        if not entry["files"] or src["id"] == "ccd_directory":
+            try:
+                items = links_from_browser(src["landing"])
+                entry["checked"].append({"kind": "browser", "target": src["landing"], "ok": True, "count": len(items)})
+                for it in items:
+                    if it["url"] not in seen:
+                        seen.add(it["url"])
+                        entry["files"].append(it)
+            except Exception as e:  # noqa: BLE001
+                entry["checked"].append({"kind": "browser", "target": src["landing"], "ok": False, "error": str(e)[:200]})
+        # newest first, so recent years show at the top of the report
+        entry["files"].sort(key=lambda f: max([int(y) for y in re.findall(r"(?<!\d)(20[12]\d|1[5-9]2[0-6]|2[0-5]2[1-6])(?!\d)", f["url"])] or [0]), reverse=True)
         # size/date for the first 40 candidates only, to stay polite
         for it in entry["files"][:40]:
             it.update(head_info(it["url"]))
@@ -146,7 +187,7 @@ def main() -> int:
         for c in s["checked"]:
             status = f"{c['count']} links" if c["ok"] else f"failed: {c['error']}"
             lines.append(f"- checked {c['kind']} `{c['target']}`: {status}")
-        for f in s["files"][:15]:
+        for f in s["files"][:25]:
             size = f"{f.get('bytes', 0) / 1e6:.1f} MB" if f.get("bytes") else "size unknown"
             lines.append(f"  - {f['text'] or 'file'}: {f['url']} ({size})")
         lines.append("")
