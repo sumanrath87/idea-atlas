@@ -2,6 +2,11 @@
 (function () {
   "use strict";
   var BASE = "/tools/idea-atlas/";
+  // Spanish pages (lang="es") use the same scripts with Spanish words.
+  var ES = (document.documentElement.lang || "en") === "es";
+  function tr(en, es) { return ES ? es : en; }
+  var STATUS_ES = {"at least": "al menos", "Withheld for privacy": "Retenido por privacidad", "Fewer than 10 students": "Menos de 10 estudiantes",
+    "Flagged for data quality": "Marcado por calidad de datos", "Not reported": "No se informó", "No students in this group": "No hay estudiantes en este grupo"};
   var COLORS = ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"]; // one hue, light to dark
   var NODATA = "#dcd9d0";
   var STATES = {"01":["AL","Alabama"],"02":["AK","Alaska"],"04":["AZ","Arizona"],"05":["AR","Arkansas"],"06":["CA","California"],"08":["CO","Colorado"],"09":["CT","Connecticut"],"10":["DE","Delaware"],"11":["DC","District of Columbia"],"12":["FL","Florida"],"13":["GA","Georgia"],"15":["HI","Hawaii"],"16":["ID","Idaho"],"17":["IL","Illinois"],"18":["IN","Indiana"],"19":["IA","Iowa"],"20":["KS","Kansas"],"21":["KY","Kentucky"],"22":["LA","Louisiana"],"23":["ME","Maine"],"24":["MD","Maryland"],"25":["MA","Massachusetts"],"26":["MI","Michigan"],"27":["MN","Minnesota"],"28":["MS","Mississippi"],"29":["MO","Missouri"],"30":["MT","Montana"],"31":["NE","Nebraska"],"32":["NV","Nevada"],"33":["NH","New Hampshire"],"34":["NJ","New Jersey"],"35":["NM","New Mexico"],"36":["NY","New York"],"37":["NC","North Carolina"],"38":["ND","North Dakota"],"39":["OH","Ohio"],"40":["OK","Oklahoma"],"41":["OR","Oregon"],"42":["PA","Pennsylvania"],"44":["RI","Rhode Island"],"45":["SC","South Carolina"],"46":["SD","South Dakota"],"47":["TN","Tennessee"],"48":["TX","Texas"],"49":["UT","Utah"],"50":["VT","Vermont"],"51":["VA","Virginia"],"53":["WA","Washington"],"54":["WV","West Virginia"],"55":["WI","Wisconsin"],"56":["WY","Wyoming"],"60":["AS","American Samoa"],"66":["GU","Guam"],"69":["MP","Northern Mariana Islands"],"72":["PR","Puerto Rico"],"78":["VI","U.S. Virgin Islands"]};
@@ -25,7 +30,8 @@
     var mi = DATA.measures.indexOf(m), code = DATA.codes[i].charAt(mi), v = DATA.values[i][mi];
     if (code === "0") return fmt(v, m.unit);
     if (code === "1") return "at least " + fmt(v, m.unit);
-    return DATA.status[code] || "Not reported";
+    var s_ = DATA.status[code] || "Not reported";
+    return ES ? (STATUS_ES[s_] || s_) : s_;
   }
   function place(i) { var n = DATA.names[i]; return (n[2] ? n[2] + ", " : "") + n[1]; }
 
@@ -36,31 +42,33 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var text = q.value.trim();
-      if (!text) { out.innerHTML = "<p>Please type a ZIP code or a district name.</p>"; return; }
-      out.innerHTML = "<p>Searching…</p>";
+      if (!text) { out.innerHTML = tr("<p>Please type a ZIP code or a district name.</p>", "<p>Escriba un código postal o el nombre de un distrito.</p>"); return; }
+      out.innerHTML = tr("<p>Searching…</p>", "<p>Buscando…</p>");
       load().then(function () {
         if (/^\d{5}$/.test(text)) return zipSearch(text, out);
         nameSearch(text, out);
-      }).catch(function () { out.innerHTML = "<p>Sorry, the data could not be loaded. Please try again.</p>"; });
+      }).catch(function () { out.innerHTML = tr("<p>Sorry, the data could not be loaded. Please try again.</p>", "<p>No se pudieron cargar los datos. Inténtelo de nuevo.</p>"); });
     });
   }
   function listHTML(items, intro) {
     return "<h3>" + esc(intro) + "</h3><ul>" + items.map(function (it) {
       var i = it.i;
-      return "<li><a href=\"" + BASE + "district/" + DATA.ids[i] + "/\">" + esc(DATA.names[i][0]) + "</a><div class=\"sub\">" +
-        esc(place(i)) + (DATA.enrollment[i] != null ? " · " + DATA.enrollment[i].toLocaleString("en-US") + " students" : "") +
+      return "<li><a href=\"" + BASE + (ES ? "es/distrito/" : "district/") + DATA.ids[i] + "/\">" + esc(DATA.names[i][0]) + "</a><div class=\"sub\">" +
+        esc(place(i)) + (DATA.enrollment[i] != null ? " · " + DATA.enrollment[i].toLocaleString("en-US") + tr(" students", " estudiantes") : "") +
         (it.note ? " · " + esc(it.note) : "") + "</div></li>";
     }).join("") + "</ul>";
   }
   function zipSearch(zip, out) {
     return fetch(BASE + "data/zip/" + zip.slice(0, 2) + ".json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (z) {
       var rows = (z[zip] || []).filter(function (x) { return x[0] in INDEX; });
-      if (!rows.length) { out.innerHTML = "<p>No school district was found for ZIP code " + esc(zip) + ". Try the district name instead.</p>"; return; }
+      if (!rows.length) { out.innerHTML = tr("<p>No school district was found for ZIP code " + esc(zip) + ". Try the district name instead.</p>",
+        "<p>No se encontró ningún distrito escolar para el código postal " + esc(zip) + ". Pruebe con el nombre del distrito.</p>"); return; }
       var items = rows.map(function (x, k) {
-        var note = rows.length > 1 && x[1] != null ? (k === 0 ? "covers the most of this ZIP code" : "covers part of this ZIP code") : "";
+        var note = rows.length > 1 && x[1] != null ? (k === 0 ? tr("covers the most of this ZIP code", "cubre la mayor parte de este código postal") : tr("covers part of this ZIP code", "cubre parte de este código postal")) : "";
         return {i: INDEX[x[0]], note: note};
       });
-      out.innerHTML = listHTML(items, items.length === 1 ? "1 district serves ZIP code " + zip : items.length + " districts serve parts of ZIP code " + zip);
+      out.innerHTML = listHTML(items, items.length === 1 ? tr("1 district serves ZIP code " + zip, "1 distrito atiende el código postal " + zip) :
+        tr(items.length + " districts serve parts of ZIP code " + zip, items.length + " distritos atienden partes del código postal " + zip));
     });
   }
   function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim(); }
@@ -74,9 +82,11 @@
       }
     }
     hits.sort(function (a, b) { return a.s - b.s || a.e - b.e; });
-    if (!hits.length) { out.innerHTML = "<p>No district matched “" + esc(text) + "”. Check the spelling, or try a ZIP code.</p>"; return; }
+    if (!hits.length) { out.innerHTML = tr("<p>No district matched “" + esc(text) + "”. Check the spelling, or try a ZIP code.</p>",
+      "<p>Ningún distrito coincide con «" + esc(text) + "». Revise la ortografía o pruebe con un código postal.</p>"); return; }
     var shown = hits.slice(0, 25);
-    out.innerHTML = listHTML(shown, hits.length > 25 ? hits.length + " districts matched; showing the 25 largest" : (hits.length === 1 ? "1 district matched" : hits.length + " districts matched"));
+    out.innerHTML = listHTML(shown, hits.length > 25 ? tr(hits.length + " districts matched; showing the 25 largest", hits.length + " distritos coinciden; se muestran los 25 más grandes") :
+      (hits.length === 1 ? tr("1 district matched", "1 distrito coincide") : tr(hits.length + " districts matched", hits.length + " distritos coinciden")));
   }
 
   /* ------------------------------------------------------------ map */
@@ -283,9 +293,10 @@
     var all = function () { return Array.prototype.slice.call(document.querySelectorAll("details.numbers, details.full, details.kids")); };
     var exp = document.querySelector("[data-expand]");
     if (exp) exp.addEventListener("click", function () {
-      var open = exp.textContent.indexOf("Show") === 0;
+      var open = exp.getAttribute("data-open") !== "1";
       all().forEach(function (d) { d.open = open; });
-      exp.textContent = open ? "Hide all detail" : "Show all detail";
+      exp.setAttribute("data-open", open ? "1" : "0");
+      exp.textContent = open ? tr("Hide all detail", "Ocultar los detalles") : tr("Show all detail", "Mostrar todos los detalles");
     });
     var before = null;
     window.addEventListener("beforeprint", function () { before = all().map(function (d) { return d.open; }); all().forEach(function (d) { d.open = true; }); });
@@ -327,8 +338,9 @@
       var mx = Math.max(v || 0, hi || 0, nat || 0, med || 0) * 1.12 || 1;
       var X = function (x) { return L + (R - L) * Math.max(0, x) / mx; };
       var y = top + i * rowH + rowH / 2, g = svgEl("g", {}, svg);
-      svgEl("title", {}, g).textContent = m.short + ": this district " + (v == null ? "not shown" : f1(v, m.unit)) +
-        "; " + cd.st + " median " + f1(med, m.unit) + (lo != null ? "; middle half " + f1(lo, m.unit) + " to " + f1(hi, m.unit) : "") + "; national median " + f1(nat, m.unit);
+      svgEl("title", {}, g).textContent = m.short + tr(": this district ", ": este distrito ") + (v == null ? tr("not shown", "sin dato") : f1(v, m.unit)) +
+        tr("; " + cd.st + " median ", "; mediana de " + cd.st + " ") + f1(med, m.unit) + (lo != null ? tr("; middle half ", "; mitad central ") + f1(lo, m.unit) + tr(" to ", " a ") + f1(hi, m.unit) : "") +
+        tr("; national median ", "; mediana nacional ") + f1(nat, m.unit);
       var lab = svgEl("text", { x: 0, y: y + 4.5, class: "lab" }, g); lab.textContent = m.short;
       svgEl("line", { x1: L, x2: R, y1: y, y2: y, class: "track" }, g);
       if (lo != null && hi != null) svgEl("rect", { x: X(lo), y: y - 6, width: Math.max(3, X(hi) - X(lo)), height: 12, rx: 6, class: "band" }, g);
@@ -337,11 +349,12 @@
       if (v != null) {
         svgEl("circle", { cx: X(v), cy: y, r: 6.5, class: "dot" }, g);
         var t = svgEl("text", { x: R + 14, y: y + 4.5, class: "val" }, g); t.textContent = (d[1] === "1" ? "≥ " : "") + f1(v, m.unit);
-      } else { var n = svgEl("text", { x: R + 14, y: y + 4.5, class: "na" }, g); n.textContent = "Not shown"; }
+      } else { var n = svgEl("text", { x: R + 14, y: y + 4.5, class: "na" }, g); n.textContent = tr("Not shown", "Sin dato"); }
     });
     body.appendChild(svg);
-    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-dot"></span>This district</li><li><span class="k-band"></span>Middle half of ' +
-      esc(cd.st) + ' districts</li><li><span class="k-med"></span>' + esc(cd.st) + ' median</li><li><span class="k-nat"></span>National median</li></ul>');
+    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-dot"></span>' + tr("This district", "Este distrito") + '</li><li><span class="k-band"></span>' +
+      tr("Middle half of " + esc(cd.st) + " districts", "Mitad central de los distritos de " + esc(cd.st)) + '</li><li><span class="k-med"></span>' +
+      tr(esc(cd.st) + " median", "Mediana de " + esc(cd.st)) + '</li><li><span class="k-nat"></span>' + tr("National median", "Mediana nacional") + '</li></ul>');
   }
 
   // One bar split into parts, labelled below with counts and shares.
@@ -349,12 +362,12 @@
     var total = parts.reduce(function (a, p) { return a + (p[1] || 0); }, 0); if (!total) return false;
     var bar = '<div class="pbar">' + parts.map(function (p, i) {
       var w = 100 * (p[1] || 0) / total; if (!w) return "";
-      return '<span style="flex-basis:' + w.toFixed(2) + '%;background:' + colors[i] + '" title="' + esc(p[0]) + ': ' + (100 * p[1] / total).toFixed(1) + ' per 100"></span>';
+      return '<span style="flex-basis:' + w.toFixed(2) + '%;background:' + colors[i] + '" title="' + esc(p[0]) + ': ' + (100 * p[1] / total).toFixed(1) + tr(' per 100', ' por cada 100') + '"></span>';
     }).join("") + "</div>";
     var key = '<ul class="pkey">' + parts.map(function (p, i) {
       if (!p[1]) return "";
       return '<li><span class="sw" style="background:' + colors[i] + '"></span><span class="pl">' + esc(p[0]) + '</span><span class="pv">' +
-        (100 * p[1] / total).toFixed(1) + '<small> per 100 · ' + p[1].toLocaleString("en-US") + ' students</small></span></li>';
+        (100 * p[1] / total).toFixed(1) + '<small>' + tr(' per 100 · ', ' por cada 100 · ') + p[1].toLocaleString("en-US") + tr(' students', ' estudiantes') + '</small></span></li>';
     }).join("") + "</ul>";
     body.innerHTML = bar + key;
     return true;
@@ -384,8 +397,15 @@
 
   function buildTables(cd) {
     buildTrendTables(cd);
+    if (!document.querySelector(".jt[data-t]")) return;
+    // repeated words are stored once in data/labels.json; numbers in the table data point into that list
+    fetch(BASE + "data/labels.json").then(function (r) { return r.json(); }).then(function (L) { fillTables(cd, L); }).catch(function () { fillTables(cd, []); });
+  }
+  function fillTables(cd, L) {
+    var w = function (x) { return typeof x === "number" ? (L[x] != null ? L[x] : "") : x; };
     Array.prototype.forEach.call(document.querySelectorAll(".jt[data-t]"), function (slot) {
-      var d = (cd.t || [])[+slot.getAttribute("data-t")]; if (!d) return;
+      var d0 = (cd.t || [])[+slot.getAttribute("data-t")]; if (!d0) return;
+      var d = {id: d0.id, k: d0.k, c: w(d0.c), h: d0.h.map(w), r: d0.r.map(function (row) { return row.map(w); })};
       var h = '<div class="table-wrap" role="region" tabindex="0" aria-labelledby="' + d.id + '"><table class="' + d.k + '"><caption id="' + d.id + '">' + esc(d.c) +
         '</caption><thead><tr>' + d.h.map(function (x) { return '<th scope="col">' + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>" +
         d.r.map(function (row) { return "<tr><th scope=\"row\">" + esc(row[0]) + "</th>" + row.slice(1).map(function (c) { return "<td>" + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
@@ -396,7 +416,7 @@
   // Explanations on district pages come from one shared file; until it arrives, each links to the glossary.
   function fillTerms() {
     var ds = document.querySelectorAll("details.explain[data-term]"); if (!ds.length) return;
-    fetch(BASE + "data/terms.json").then(function (r) { return r.json(); }).then(function (terms) {
+    fetch(BASE + (ES ? "data/terms_es.json" : "data/terms.json")).then(function (r) { return r.json(); }).then(function (terms) {
       Array.prototype.forEach.call(ds, function (d) { var k = d.getAttribute("data-term"); if (terms[k]) d.querySelector("p").textContent = terms[k]; });
     }).catch(function () {});
   }
@@ -455,15 +475,15 @@
     var el = document.getElementById("chart-data"); if (!el) return;
     var cd; try { cd = JSON.parse(el.textContent); } catch (e) { return; }
     buildTables(cd);
-    fetch(BASE + "data/measures.json").then(function (r) { return r.json(); }).then(function (ms) {
+    fetch(BASE + (ES ? "data/measures_es.json" : "data/measures.json")).then(function (r) { return r.json(); }).then(function (ms) {
       var meas = {}; ms.forEach(function (m) { meas[m.key] = m; });
       Array.prototype.forEach.call(document.querySelectorAll("figure.chart[data-chart]"), function (fig) {
         var body = fig.querySelector(".chart-body"), kind = fig.getAttribute("data-chart"), ok = true;
         if (kind === "range") rangeChart(body, fig.getAttribute("data-keys").split(","), cd, meas);
-        else if (kind === "settings") ok = cd.set ? partsBar(body, [["80% or more of the day", cd.set[0]], ["40% to 79%", cd.set[1]], ["Less than 40%", cd.set[2]],
-              ["Separate school, facility, home or hospital", cd.set[3]], ["Other places", cd.set[4]]], ["#0d366b", "#1c5cab", "#3987e5", "#86b6ef", "#b9b4a8"]) : false;
-        else if (kind === "exit") ok = cd.ex ? partsBar(body, [["Regular diploma", cd.ex[0]], ["Alternate diploma or certificate", cd.ex[1]], ["Reached the maximum age", cd.ex[2]],
-              ["Dropped out", cd.ex[3]], ["Died", cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
+        else if (kind === "settings") ok = cd.set ? partsBar(body, [[tr("80% or more of the day", "80% o más del día"), cd.set[0]], [tr("40% to 79%", "40% a 79%"), cd.set[1]], [tr("Less than 40%", "Menos del 40%"), cd.set[2]],
+              [tr("Separate school, facility, home or hospital", "Escuela o centro separado, hogar u hospital"), cd.set[3]], [tr("Other places", "Otros lugares"), cd.set[4]]], ["#0d366b", "#1c5cab", "#3987e5", "#86b6ef", "#b9b4a8"]) : false;
+        else if (kind === "exit") ok = cd.ex ? partsBar(body, [[tr("Regular diploma", "Diploma regular"), cd.ex[0]], [tr("Alternate diploma or certificate", "Diploma alternativo o certificado"), cd.ex[1]], [tr("Reached the maximum age", "Llegó a la edad máxima"), cd.ex[2]],
+              [tr("Dropped out", "Abandonó la escuela"), cd.ex[3]], [tr("Died", "Falleció"), cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
         else if (kind === "cats") ok = catsChart(body, cd.cats || []);
         else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s"); }
         if (!ok) fig.remove();

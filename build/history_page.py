@@ -268,4 +268,135 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
 </section>"""
     return page("Fifty years of special education", body,
                 desc="How special education in U.S. public schools has changed since 1975: students served, disability categories, time in general classes, graduation, and each state over time.",
-                path=BASE + "history/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+                path=BASE + "history/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/historia/")
+
+
+# ---------------------------------------------------------------- Spanish
+MILESTONES_ES = [
+    ("1975", "El Congreso aprueba la Ley de Educación para Todos los Niños Impedidos. Por primera vez, todo niño con una discapacidad tiene derecho a una educación pública gratuita y apropiada."),
+    ("1986", "Unas enmiendas extienden la ley a los niños de 3 a 5 años y crean la intervención temprana para bebés y niños pequeños."),
+    ("1990", "La ley pasa a llamarse Ley de Educación para Personas con Discapacidades (IDEA). El autismo y la lesión cerebral traumática pasan a ser categorías propias, y se agrega la planificación para la vida después de la escuela."),
+    ("1997", "Unas enmiendas dan importancia al aprendizaje en el currículo general y a la participación en las pruebas estatales, y permiten a los estados usar el retraso del desarrollo hasta los 9 años."),
+    ("2004", "La ley se renueva como Ley de Mejoramiento de la Educación para Personas con Discapacidades, con cambios en la forma de identificar las discapacidades del aprendizaje."),
+]
+CAT_LABEL_ES = {"learning": "Discapacidad específica del aprendizaje", "speech": "Impedimento del habla o del lenguaje", "otherhealth": "Otro impedimento de salud",
+                "autism": "Autismo", "devdelay": "Retraso del desarrollo", "intellectual": "Discapacidad intelectual", "emotional": "Trastorno emocional"}
+
+
+def render_es(page, explain, BASE: str, state_es: dict) -> str:
+    nat = json.loads((HERE / "national.json").read_text())
+    states = json.loads((HERE / "states.json").read_text())
+    I = lambda d: {int(k): v for k, v in d.items() if v is not None}
+    served, pct = I(nat["served_thousands"]), I(nat["pct_enrollment"])
+    first, last = min(pct), max(pct)
+    c1 = line_chart([{"label": "Estudiantes atendidos", "color": ACCENT, "points": pct}], ymax=20, xmin=1975, xmax=last, ticks=[0, 5, 10, 15, 20],
+                    marks=[(1975, "Ley de 1975"), (1990, "IDEA"), (2004, "2004")])
+    cats = nat["by_category_thousands"]
+    years = sorted(int(y) for y in cats if cats[y].get("all"))
+    s2 = []
+    for i, (k, lab) in enumerate(CAT_LABEL_ES.items()):
+        pts = {y: 100 * cats[str(y)][k] / cats[str(y)]["all"] for y in years if cats[str(y)].get(k) is not None}
+        if pts:
+            s2.append({"label": lab, "color": SERIES[i], "points": pts})
+    c2 = line_chart(s2, ymax=50, xmin=1975, xmax=last, ticks=[0, 10, 20, 30, 40, 50])
+    lk = lambda k, y: 100 * cats[str(y)][k] / cats[str(y)]["all"]
+    env = I(nat["environments"])
+    e_first, e_last = min(env), max(env)
+    s3 = [{"label": "80% o más del día", "color": "#0d366b", "points": {y: v["80plus"] for y, v in env.items()}},
+          {"label": "40% a 79%", "color": "#3987e5", "points": {y: v["40_79"] for y, v in env.items()}},
+          {"label": "Menos del 40%", "color": "#86b6ef", "points": {y: v["lt40"] for y, v in env.items()}},
+          {"label": "Escuela o centro separado", "color": "#b9b4a8",
+           "points": {y: (v["sep_school"] or 0) + (v["residential"] or 0) + (v["homebound"] or 0) for y, v in env.items()}}]
+    c3 = line_chart(s3, ymax=80, xmin=1985, xmax=e_last, ticks=[0, 20, 40, 60, 80], marks=[(2019, "Cambio en el conteo")])
+    ex = I(nat["exits"])
+    x_first, x_last = min(ex), max(ex)
+    s4 = [{"label": "Diploma regular", "color": SERIES[0], "points": {y: v["regular"] for y, v in ex.items()}},
+          {"label": "Diploma alternativo o certificado", "color": SERIES[1], "points": {y: v["alt_cert"] for y, v in ex.items()}},
+          {"label": "Abandonaron", "color": SERIES[3], "points": {y: v["dropout"] for y, v in ex.items()}}]
+    c4 = line_chart(s4, ymax=80, xmin=x_first, xmax=x_last, ticks=[0, 20, 40, 60, 80])
+    names = [s for s in states if s != "United States" and len(s) < 25 and s not in ("Education", "Other jurisdictions")
+             and states[s] and any(v.get("pct") for v in states[s].values())]
+    stdata = {s: {int(y): v["pct"] for y, v in states[s].items() if v.get("pct")} for s in ["United States"] + names}
+    us = stdata["United States"]
+    yrs = sorted({y for d in stdata.values() for y in d})
+    es = lambda n: state_es.get(n, n)
+
+    def st_chart(name):
+        ser = [{"label": "Estados Unidos", "color": MUTED, "points": us}]
+        if name:
+            ser.append({"label": es(name), "color": ACCENT, "points": stdata[name]})
+        return line_chart(ser, ymax=25, xmin=min(yrs), xmax=max(yrs), ticks=[0, 5, 10, 15, 20, 25])
+
+    def st_say(name):
+        d = stdata[name]
+        a, b = min(d), max(d)
+        word = "aproximadamente igual que" if abs(d[b] - us.get(b, d[b])) < 1 else ("más alto que" if d[b] > us.get(b, 0) else "más bajo que")
+        return (f"En {es(name)}, aproximadamente {d[a]:.1f} de cada 100 estudiantes de escuelas públicas recibían servicios en {sy(a)}, y aproximadamente {d[b]:.1f} de cada 100 en {sy(b)}. "
+                f"Eso es {word} el promedio del país en {sy(b)} ({us.get(b, 0):.1f}).")
+    opts = "".join(f'<option value="{E(s)}">{E(es(s))}</option>' for s in sorted(names, key=es))
+    tmpl = "".join(f'<template data-state="{E(n)}" data-say="{E(st_say(n))}">{st_chart(n)}</template>' for n in names)
+    t1 = table("Estudiantes de 3 a 21 años atendidos bajo IDEA", "h1-t", ["Año escolar", "Estudiantes atendidos", "Por cada 100 estudiantes de escuelas públicas"],
+               [[sy(y), f"{served[y] * 1000:,.0f}", f1(pct.get(y))] for y in sorted(served)])
+    tl = "".join(f'<li><span class="tl-y">{E(a)}</span><span class="tl-t">{E(b)}</span></li>' for a, b in MILESTONES_ES)
+    body = f"""
+<h1>Cincuenta años de educación especial</h1>
+<p class="lede">Cómo han cambiado, desde que se aprobó la ley en 1975, el número de estudiantes atendidos, los tipos de discapacidad, el tiempo en las clases de educación general y la graduación.</p>
+<div class="page-tools"><button type="button" data-print>Imprimir esta página</button></div>
+<section aria-labelledby="h-time"><h2 id="h-time">Una breve cronología</h2><ol class="timeline">{tl}</ol></section>
+<section aria-labelledby="h-many">
+  <h2 id="h-many">Cuántos estudiantes reciben servicios</h2>
+  <ul class="plain">
+    <li>En {sy(first)}, aproximadamente <span class="fig">{pct[first]:.1f}</span> de cada 100 estudiantes de escuelas públicas recibían servicios bajo la ley, o aproximadamente 1 de cada {round(100 / pct[first])}.</li>
+    <li>En {sy(last)}, fueron aproximadamente <span class="fig">{pct[last]:.1f}</span> de cada 100, o aproximadamente 1 de cada {round(100 / pct[last])}: <span class="fig">{served[last] / 1000:.1f} millones</span> de estudiantes.</li>
+  </ul>
+  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes atendidos bajo la ley, por cada 100 estudiantes de escuelas públicas, de {sy(first)} a {sy(last)}. Las líneas punteadas unen años que las tablas federales no informan.</figcaption>{c1}</figure>
+  {explain("per100", "idea")}
+  {numbers(t1, "Las cifras, año por año")}
+  <p class="source">Fuente: Departamento de Educación de EE. UU., Digest of Education Statistics, tabla 204.30.</p>
+</section>
+<section aria-labelledby="h-which">
+  <h2 id="h-which">Qué discapacidades</h2>
+  <ul class="plain">
+    <li>En {sy(first)}, el impedimento del habla o del lenguaje era la categoría más grande: aproximadamente <span class="fig">{lk('speech', first):.0f}</span> de cada 100 estudiantes atendidos.</li>
+    <li>La discapacidad específica del aprendizaje ha sido la más grande desde la década de 1980. En {sy(last)}, fue aproximadamente <span class="fig">{lk('learning', last):.0f}</span> de cada 100.</li>
+    <li>El autismo, una categoría propia desde 1990, llegó a aproximadamente <span class="fig">{lk('autism', last):.0f}</span> de cada 100 en {sy(last)}.</li>
+  </ul>
+  <figure class="chart wide" aria-hidden="true"><figcaption>Proporción de estudiantes atendidos en cada una de las siete categorías federales más grandes, por cada 100 estudiantes atendidos.</figcaption>{key(s2)}{c2}</figure>
+  {explain("categories")}
+</section>
+<section aria-labelledby="h-where">
+  <h2 id="h-where">Tiempo en las clases de educación general</h2>
+  <ul class="plain">
+    <li>En {e_first}, aproximadamente <span class="fig">{env[e_first]['80plus']:.0f}</span> de cada 100 estudiantes con IEP en edad escolar pasaban la mayor parte del día (80% o más) en una clase de educación general.</li>
+    <li>En {e_last}, fueron aproximadamente <span class="fig">{env[e_last]['80plus']:.0f}</span> de cada 100, o aproximadamente 2 de cada 3.</li>
+  </ul>
+  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes con IEP en edad escolar según el tiempo en una clase de educación general, por cada 100. Las tablas federales no incluyen de 1991 a 1993 (línea punteada). Desde 2019, los niños de 5 años en kínder se cuentan en edad escolar.</figcaption>{key(s3)}{c3}</figure>
+  {explain("settings")}
+</section>
+<section aria-labelledby="h-leave">
+  <h2 id="h-leave">Al terminar la escuela</h2>
+  <ul class="plain">
+    <li>En {sy(x_first)}, aproximadamente <span class="fig">{ex[x_first]['regular']:.0f}</span> de cada 100 estudiantes con IEP que salieron de la escuela lo hicieron con un diploma regular.</li>
+    <li>En {sy(x_last)}, fueron aproximadamente <span class="fig">{ex[x_last]['regular']:.0f}</span> de cada 100, o aproximadamente 3 de cada 4.</li>
+  </ul>
+  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes con IEP de 14 a 21 años que salieron de la escuela, por cada 100, de {sy(x_first)} a {sy(x_last)}.</figcaption>{key(s4)}{c4}</figure>
+  {explain("leaving")}
+</section>
+<section aria-labelledby="h-state">
+  <h2 id="h-state">Su estado a lo largo del tiempo</h2>
+  <div class="controls"><div><label for="h-st">Elija un estado</label> <select id="h-st"><option value="">Solo Estados Unidos</option>{opts}</select></div></div>
+  <p id="h-st-say" class="plain-one" aria-live="polite">En todo el país, aproximadamente {us[min(us)]:.1f} de cada 100 estudiantes de escuelas públicas recibían servicios en {sy(min(us))}, y aproximadamente {us[max(us)]:.1f} en {sy(max(us))}. Elija un estado para comparar.</p>
+  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes atendidos, por cada 100 estudiantes de escuelas públicas, de {sy(min(yrs))} a {sy(max(yrs))}.</figcaption><div id="h-st-chart">{st_chart("")}</div></figure>
+  {tmpl}
+  <p class="source">Fuente: Digest of Education Statistics, tablas 204.70 y 203.20.</p>
+</section>
+<section aria-labelledby="h-about">
+  <h2 id="h-about">Sobre estas cifras</h2>
+  <p>Las cifras nacionales y estatales vienen del Digest of Education Statistics, que reúne los conteos que los estados informan cada año. Las reglas de conteo, los nombres de las categorías
+  y los grupos de edad han cambiado con los años, y esos cambios se señalan junto a cada gráfico. Para ver las cifras de un distrito a lo largo del tiempo, búsquelo en la <a href="{BASE}es/">página de búsqueda</a>.
+  Las tablas completas están en la <a href="{BASE}history/" hreflang="en">página en inglés</a>.</p>
+  {explain("years")}
+</section>"""
+    return page("Cincuenta años de educación especial", body,
+                desc="Cómo ha cambiado la educación especial en las escuelas públicas de EE. UU. desde 1975: estudiantes atendidos, categorías, tiempo en clases generales, graduación y cada estado.",
+                path=BASE + "es/historia/", scripts=("atlas.js",), lang="es", alt=BASE + "history/", crumbs=[("IDEA Atlas", BASE + "es/")])
