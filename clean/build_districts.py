@@ -374,6 +374,10 @@ def main() -> int:
     out["idea_federal_per_student"] = np.where(
         (out.idea_count_status == "ok") & (out.idea_count >= MIN) & (out.idea_federal_revenue_status == "ok"),
         (out.idea_federal_revenue / out.idea_count).round(0), np.nan)
+    out["idea_federal_per_student_status"] = np.where(
+        out.idea_federal_per_student.notna(), "ok",
+        np.where(out.idea_count_status.isin(["hidden", "quality"]), out.idea_count_status,
+                 np.where(out.idea_count < MIN, "small_group", "not_reported")))
     # Flag districts whose civil rights IEP count is far from their IDEA count. Their discipline
     # rates use the civil rights count, so the site shows a note asking readers to check with the district.
     out["crdc_count_check"] = (out.crdc_enr_idea.notna() & out.idea_count.notna() & (out.idea_count >= 50)

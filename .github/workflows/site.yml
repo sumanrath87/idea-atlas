@@ -1,0 +1,67 @@
+name: Build and publish website
+
+# Builds the static site. Publishes to the hidden preview address on sumanrath.org
+# when the upload login has been saved as repository secrets (DH_HOST, DH_USER, DH_PASS, DH_PATH).
+# The live address (/tools/idea-atlas/) is only updated by hand, after approval.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "build/**"
+      - ".github/workflows/site.yml"
+  workflow_run:
+    workflows: ["Clean and join data"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "preview or live"
+        required: true
+        default: "preview"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TARGET: ${{ github.event.inputs.target || 'preview' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy
+      - name: Build the site
+        run: |
+          if [ "$TARGET" = "live" ]; then
+            ATLAS_BASE=/tools/idea-atlas/ python build/site.py
+            echo "REMOTE_DIR=tools/idea-atlas" >> $GITHUB_ENV
+          else
+            ATLAS_BASE=/tools/idea-atlas-preview/ python build/site.py --preview
+            echo "REMOTE_DIR=tools/idea-atlas-preview" >> $GITHUB_ENV
+          fi
+          echo "LOCAL_DIR=$(ls -d site/tools/*)" >> $GITHUB_ENV
+      - name: Check the pages
+        run: |
+          D=$LOCAL_DIR
+          test -f $D/index.html && test -f $D/table/index.html && test -f $D/methods/index.html
+          N=$(ls $D/district | wc -l); echo "district pages: $N"; test "$N" -gt 15000
+      - name: Publish
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+          DH_USER: ${{ secrets.DH_USER }}
+          DH_PASS: ${{ secrets.DH_PASS }}
+          DH_PATH: ${{ secrets.DH_PATH }}
+        run: |
+          if [ -z "$DH_HOST" ] || [ -z "$DH_USER" ] || [ -z "$DH_PASS" ] || [ -z "$DH_PATH" ]; then
+            echo "Upload login not saved yet; skipping publish."; exit 0
+          fi
+          sudo apt-get -qq update && sudo apt-get -qq install -y lftp
+          lftp -u "$DH_USER","$DH_PASS" "sftp://$DH_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 3; \
+            mkdir -p $DH_PATH/$REMOTE_DIR; \
+            mirror --reverse --delete --parallel=8 --verbose=1 $LOCAL_DIR $DH_PATH/$REMOTE_DIR; quit"
+          echo "Published to https://www.sumanrath.org/$REMOTE_DIR/"
