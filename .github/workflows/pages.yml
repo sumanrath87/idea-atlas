@@ -58,3 +58,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 2400000        # 40 minutes: the site has about 39,000 pages
