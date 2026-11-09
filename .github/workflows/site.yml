@@ -61,7 +61,9 @@ jobs:
             echo "Upload login not saved yet; skipping publish."; exit 0
           fi
           sudo apt-get -qq update && sudo apt-get -qq install -y lftp
-          lftp -u "$DH_USER","$DH_PASS" "sftp://$DH_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 3; \
+          export LFTP_PASSWORD="$(printf '%s' "$DH_PASS" | tr -d '\r\n')"
+          DH_USER="$(printf '%s' "$DH_USER" | tr -d '\r\n ')"; DH_HOST="$(printf '%s' "$DH_HOST" | tr -d '\r\n ')"
+          lftp --env-password -u "$DH_USER" "sftp://$DH_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 2; \
             mkdir -p $DH_PATH/$REMOTE_DIR; \
             mirror --reverse --delete --parallel=8 --verbose=1 $LOCAL_DIR $DH_PATH/$REMOTE_DIR; quit"
           echo "Published to https://www.sumanrath.org/$REMOTE_DIR/"
