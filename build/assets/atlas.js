@@ -186,23 +186,39 @@
     });
     load().then(function () {
       var groups = ["Overview"]; DATA.measures.forEach(function (m) { if (groups.indexOf(m.group) < 0) groups.push(m.group); });
+      groups.push("All measures", "Choose columns");
       groups.forEach(function (g) { var o = document.createElement("option"); o.value = g; o.textContent = g; gSel.appendChild(o); });
+      // column picker: one checkbox per measure, grouped by topic
+      var fs = document.getElementById("t-cols");
+      var html = "<legend>Choose the columns to show</legend>", grp = "";
+      DATA.measures.forEach(function (m) {
+        if (m.group !== grp) { if (grp) html += "</div>"; grp = m.group; html += "<div class=\"colgroup\"><p class=\"colgroup-h\">" + esc(grp) + "</p>"; }
+        html += "<label><input type=\"checkbox\" value=\"" + m.key + "\"> " + esc(m.short) + "</label>";
+      });
+      fs.innerHTML = html + "</div><p><button type=\"button\" id=\"t-apply\">Show these columns</button></p>";
       var p = new URLSearchParams(location.search);
       if (p.get("state") && ABBR[p.get("state")]) stSel.value = p.get("state");
       if (p.get("topic")) gSel.value = p.get("topic");
+      (p.get("cols") || "").split(",").forEach(function (k) { var c = fs.querySelector("input[value=\"" + k + "\"]"); if (c) c.checked = true; });
+      document.getElementById("t-apply").addEventListener("click", function () { sortKey = "name"; sortDir = 1; render(); status.textContent = "Showing " + picked().length + " chosen columns. " + status.textContent; });
       render();
     });
     [stSel, gSel].forEach(function (s) { s.addEventListener("change", function () { sortKey = "name"; sortDir = 1; render(); }); });
     filt.addEventListener("input", function () { draw(); });
+    function picked() { return Array.prototype.map.call(document.querySelectorAll("#t-cols input:checked"), function (c) { return c.value; }); }
     function columns() {
       var g = gSel.value || "Overview";
+      document.getElementById("t-cols").hidden = g !== "Choose columns";
       var keys = g === "Overview" ? ["id_rate", "pct_504", "env_80plus", "grad_regular", "oos_idea", "spend_per_pupil"] :
+        g === "All measures" ? DATA.measures.map(function (m) { return m.key; }) :
+        g === "Choose columns" ? (picked().length ? picked() : ["id_rate"]) :
         DATA.measures.filter(function (m) { return m.group === g; }).map(function (m) { return m.key; });
       return keys.map(function (k) { return DATA.measures.filter(function (m) { return m.key === k; })[0]; });
     }
     function render() {
       var st = stSel.value;
-      history.replaceState(null, "", st ? "?state=" + st + "&topic=" + encodeURIComponent(gSel.value) : location.pathname);
+      document.getElementById("t-cols").hidden = gSel.value !== "Choose columns";
+      history.replaceState(null, "", st ? "?state=" + st + "&topic=" + encodeURIComponent(gSel.value) + (gSel.value === "Choose columns" ? "&cols=" + picked().join(",") : "") : location.pathname);
       if (!st) { wrap.hidden = true; dl.disabled = true; status.textContent = "Choose a state to begin."; return; }
       cols = columns();
       rows = []; DATA.ids.forEach(function (id, i) { if (DATA.names[i][1] === st) rows.push(i); });
@@ -261,5 +277,97 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { initSearch(); initMap(); initTable(); });
+  /* ------------------------------------------------------------ print and detail */
+  function initTools() {
+    var all = function () { return Array.prototype.slice.call(document.querySelectorAll("details.full, details.kids")); };
+    var exp = document.querySelector("[data-expand]");
+    if (exp) exp.addEventListener("click", function () {
+      var open = exp.getAttribute("aria-pressed") !== "true";
+      all().forEach(function (d) { d.open = open; });
+      exp.setAttribute("aria-pressed", open ? "true" : "false");
+      exp.textContent = open ? "Hide all detail" : "Show all detail";
+    });
+    var before = null;
+    window.addEventListener("beforeprint", function () { before = all().map(function (d) { return d.open; }); all().forEach(function (d) { d.open = true; }); });
+    window.addEventListener("afterprint", function () { if (before) all().forEach(function (d, i) { d.open = before[i]; }); });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-print]"), function (b) {
+      b.addEventListener("click", function () { window.print(); });
+    });
+  }
+
+  /* ------------------------------------------------------------ compare */
+  function initCompare() {
+    var form = document.getElementById("c-form"); if (!form) return;
+    var q = document.getElementById("c-q"), res = document.getElementById("c-results"), chosenEl = document.getElementById("c-chosen");
+    var wrap = document.getElementById("c-wrap"), table = document.getElementById("c-table"), status = document.getElementById("c-status");
+    var chosen = [];
+    function save() { history.replaceState(null, "", chosen.length ? "?ids=" + chosen.join(",") : location.pathname); }
+    function add(id) {
+      if (chosen.indexOf(id) >= 0) { status.textContent = DATA.names[INDEX[id]][0] + " is already chosen."; return; }
+      if (chosen.length >= 4) { status.textContent = "You can compare up to four districts. Remove one first."; return; }
+      chosen.push(id); save(); draw(); res.innerHTML = "";
+      status.textContent = DATA.names[INDEX[id]][0] + " added. " + chosen.length + " of 4 chosen.";
+      q.value = ""; q.focus();
+    }
+    function remove(id) {
+      chosen = chosen.filter(function (x) { return x !== id; }); save(); draw();
+      status.textContent = DATA.names[INDEX[id]][0] + " removed. " + chosen.length + " chosen.";
+    }
+    function draw() {
+      chosenEl.innerHTML = chosen.map(function (id) {
+        var i = INDEX[id];
+        return "<li><a href=\"" + BASE + "district/" + id + "/\">" + esc(DATA.names[i][0]) + "</a> <span class=\"sub\">" + esc(place(i)) + "</span> " +
+          "<button type=\"button\" class=\"link\" data-remove=\"" + id + "\" aria-label=\"Remove " + esc(DATA.names[i][0]) + "\">Remove</button></li>";
+      }).join("") || "<li class=\"sub\">None yet.</li>";
+      Array.prototype.forEach.call(chosenEl.querySelectorAll("[data-remove]"), function (b) { b.addEventListener("click", function () { remove(b.getAttribute("data-remove")); }); });
+      if (!chosen.length) { wrap.hidden = true; return; }
+      var idx = chosen.map(function (id) { return INDEX[id]; });
+      table.tHead.innerHTML = "<tr><th scope=\"col\">Measure</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(DATA.names[i][1]) + "</span></th>"; }).join("") + "<th scope=\"col\">National median</th></tr>";
+      var rows = "<tr><th scope=\"row\">Students enrolled</th>" + idx.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : "Not reported") + "</td>"; }).join("") + "<td>—</td></tr>";
+      var group = "";
+      DATA.measures.forEach(function (m) {
+        if (m.group !== group) { group = m.group; rows += "<tr class=\"group\"><th scope=\"rowgroup\" colspan=\"" + (idx.length + 2) + "\">" + esc(group) + "</th></tr>"; }
+        rows += "<tr><th scope=\"row\">" + esc(m.label) + "</th>" + idx.map(function (i) { return "<td>" + esc(cellText(i, m)) + "</td>"; }).join("") +
+          "<td>" + (m.national_median != null ? fmt(m.national_median, m.unit) : "—") + "</td></tr>";
+      });
+      table.tBodies[0].innerHTML = rows;
+      document.getElementById("c-caption").textContent = "Side-by-side figures for " + idx.map(function (i) { return DATA.names[i][0]; }).join(", ") + ". Rates per 100 students in each group unless shown in dollars.";
+      wrap.hidden = false;
+    }
+    load().then(function () {
+      var p = new URLSearchParams(location.search);
+      (p.get("ids") || "").split(",").forEach(function (id) { if (id in INDEX && chosen.length < 4 && chosen.indexOf(id) < 0) chosen.push(id); });
+      draw();
+      if (chosen.length) status.textContent = chosen.length + " district" + (chosen.length > 1 ? "s" : "") + " chosen." + (chosen.length < 4 ? " You can add up to " + (4 - chosen.length) + " more." : " That is the most you can compare at once.");
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var text = q.value.trim(); if (!text) return;
+      load().then(function () {
+        var render = function (items, title) {
+          if (!items.length) { res.innerHTML = "<p>No district matched. Try another name or ZIP code.</p>"; return; }
+          res.innerHTML = "<h3>" + esc(title) + "</h3><ul class=\"pick\">" + items.slice(0, 15).map(function (i) {
+            return "<li><button type=\"button\" data-add=\"" + DATA.ids[i] + "\">Add " + esc(DATA.names[i][0]) + "</button> <span class=\"sub\">" + esc(place(i)) + "</span></li>";
+          }).join("") + "</ul>";
+          Array.prototype.forEach.call(res.querySelectorAll("[data-add]"), function (b) { b.addEventListener("click", function () { add(b.getAttribute("data-add")); }); });
+          var first = res.querySelector("button"); if (first) first.focus();
+        };
+        if (/^\d{5}$/.test(text)) {
+          fetch(BASE + "data/zip/" + text.slice(0, 2) + ".json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (z) {
+            render((z[text] || []).filter(function (x) { return x[0] in INDEX; }).map(function (x) { return INDEX[x[0]]; }), "Districts serving ZIP code " + text);
+          });
+        } else {
+          var words = norm(text).split(" "), hits = [];
+          for (var i = 0; i < DATA.ids.length; i++) {
+            var hay = norm(DATA.names[i][0] + " " + DATA.names[i][2] + " " + DATA.names[i][1]);
+            if (words.every(function (w) { return hay.indexOf(w) >= 0; })) hits.push(i);
+          }
+          hits.sort(function (a, b) { return (DATA.enrollment[b] || 0) - (DATA.enrollment[a] || 0); });
+          render(hits, hits.length + " matched" + (hits.length > 15 ? "; showing the 15 largest" : ""));
+        }
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); });
 })();

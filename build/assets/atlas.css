@@ -101,4 +101,63 @@ footer.site { margin-top: 3rem; border-top: 1px solid var(--rule); color: var(--
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 @media (forced-colors: active) { .swatch { forced-color-adjust: none; } }
-@media print { header.site nav, #map, .controls, footer.site { display: none; } }
+/* page tools, detail sections, compare, column picker */
+.page-tools { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 .5rem; }
+.button.secondary, button.secondary { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+.button.secondary:hover { background: #f6f2e8; color: var(--accent-ink); }
+button.link { all: unset; color: var(--accent); text-decoration: underline; cursor: pointer; font-size: .92rem; margin-left: .4rem; }
+button.link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+details.full { margin: .75rem 0 1rem; border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; padding: .2rem .9rem; }
+details.full > summary { cursor: pointer; font-weight: 600; padding: .55rem 0; color: var(--ink); }
+details.full[open] > summary { border-bottom: 1px solid var(--rule); margin-bottom: .5rem; }
+table.detail td { text-align: right; }
+table.compare th[scope=col] .sub { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; }
+table.compare td { text-align: right; }
+table.compare tbody th[scope=row], table.compare thead th:first-child { width: 32%; min-width: 14rem; }
+table.compare tr.group th { background: #f4f1e9; font-family: Vollkorn, Georgia, serif; font-size: 1.05rem; padding-top: .8rem; }
+ul.chosen, ul.pick { list-style: none; padding: 0; }
+ul.chosen li, ul.pick li { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
+ul.pick button { padding: .35rem .8rem; min-height: 2.4rem; }
+.sub { color: var(--muted); font-size: .92rem; }
+fieldset.cols { border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; padding: .6rem 1rem 1rem; margin: .5rem 0 1rem; }
+fieldset.cols legend { font-weight: 600; padding: 0 .3rem; }
+.colgroup { display: inline-block; vertical-align: top; min-width: 14rem; margin: .4rem 1.5rem .4rem 0; }
+.colgroup-h { font-weight: 600; margin: .2rem 0; font-family: Vollkorn, Georgia, serif; }
+.colgroup label { display: block; font-weight: 400; padding: .15rem 0; }
+.print-only { display: none; }
+
+/* ---------- print: clean, readable, every detail open ---------- */
+@page { margin: 16mm 14mm 18mm; }
+@media print {
+  html { font-size: 10.5pt; }
+  body { background: #fff; color: #000; line-height: 1.45; }
+  .wrap { max-width: none; padding: 0; }
+  header.site, .skip, .crumbs, .page-tools, .controls, #map, #legend, #map-status, #search-form, #results,
+  #c-form, #c-results, .hint button, button, fieldset.cols, footer.site p:first-child a[href$="download/"] { display: none !important; }
+  .print-only { display: block !important; }
+  .print-head { font-size: 8.5pt; color: #444; border-bottom: 1px solid #999; padding-bottom: 4pt; margin: 0 0 10pt; }
+  h1 { font-size: 22pt; margin: 0 0 4pt; }
+  h2 { font-size: 14pt; margin: 14pt 0 4pt; break-after: avoid; page-break-after: avoid; }
+  h3 { break-after: avoid; }
+  .meta, .lede { color: #222; }
+  a { color: #000; text-decoration: none; }
+  .source a, .note a { text-decoration: underline; }
+  section { break-inside: auto; }
+  .glance { break-inside: avoid; border: 1px solid #999; padding: 4pt 10pt; }
+  .note { border-left: 2pt solid #000; background: none; }
+  .table-wrap { overflow: visible; }
+  table { font-size: 9.5pt; background: none; }
+  caption { color: #000; }
+  th, td { border-bottom: .5pt solid #999; padding: 3pt 5pt; }
+  thead { display: table-header-group; }
+  thead th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  details.full { border: none; padding: 0; break-inside: auto; }
+  details.full > summary { list-style: none; font-size: 11pt; border-bottom: none; padding: 6pt 0 0; }
+  details.full > summary::-webkit-details-marker { display: none; }
+  details.kids ul { columns: 3; font-size: 9pt; }
+  #c-chosen-h, #c-chosen, #c-status { display: none !important; }
+  #t-table th button { all: unset; }
+  #t-wrap[hidden], #c-wrap[hidden] { display: none !important; }
+  footer.site { border-top: 1px solid #999; margin-top: 12pt; padding-top: 6pt; color: #333; font-size: 8.5pt; }
+}

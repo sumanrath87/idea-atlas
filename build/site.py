@@ -103,6 +103,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
       <ul>
         <li><a href="{BASE}">Map and search</a></li>
         <li><a href="{BASE}table/">Table</a></li>
+        <li><a href="{BASE}compare/">Compare</a></li>
         <li><a href="{BASE}methods/">Methods and sources</a></li>
         <li><a href="{SITE}/tools/">All tools</a></li>
       </ul>
@@ -110,6 +111,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
   </div>
 </header>
 <main id="main" class="wrap">
+<p class="print-only print-head">IDEA Atlas · {E(title)} · {ATLAS_ORIGIN}{path} · Version {VERSION}</p>
 {nav}
 {body}
 </main>
@@ -234,12 +236,16 @@ def main() -> int:
     write("index.html", home_page(len(d)))
     write("table/index.html", table_page())
     write("methods/index.html", methods_page())
+    write("compare/index.html", compare_page())
     children = d[d.part_of.notna()].groupby("part_of")
     kids_of = {k: g for k, g in children}
     by_id = d.set_index("leaid")
+    dpath = ROOT / "clean" / "output" / "detail.csv.gz"
+    detail = pd.read_csv(dpath, dtype=str, index_col=0, keep_default_na=False) if dpath.exists() else pd.DataFrame()
     n = 0
     for _, r in d.iterrows():
-        write(f"district/{r.leaid}/index.html", district_page(r, st_med, nat_med, kids_of, by_id))
+        dr = detail.loc[r.leaid] if r.leaid in detail.index else None
+        write(f"district/{r.leaid}/index.html", district_page(r, st_med, nat_med, kids_of, by_id, dr))
         n += 1
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
@@ -311,7 +317,9 @@ def table_page() -> str:
   <div><label for="t-group">Topic</label> <select id="t-group"></select></div>
   <div><label for="t-filter">Filter by name</label> <input id="t-filter" type="search" autocomplete="off"></div>
   <div><button type="button" id="t-download" disabled>Download this table (CSV)</button></div>
+  <div><button type="button" data-print>Print this table</button></div>
 </div>
+<fieldset id="t-cols" class="cols" hidden></fieldset>
 <p id="t-status" aria-live="polite" class="hint">Choose a state to begin.</p>
 <div id="t-wrap" class="table-wrap" tabindex="0" role="region" aria-labelledby="t-caption" hidden>
   <table id="t-table"><caption id="t-caption"></caption><thead></thead><tbody></tbody></table>
@@ -321,6 +329,29 @@ Words such as "Withheld for privacy" explain why a figure is not shown. See <a h
 """
     return page("Table of districts", body, desc="Sortable table of special education figures for every school district in a state.",
                 path=BASE + "table/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+
+
+def compare_page() -> str:
+    body = f"""
+<h1>Compare districts</h1>
+<p class="lede">Choose two to four districts to see their figures side by side, with the national median for context.</p>
+<form id="c-form" role="search" novalidate>
+  <label for="c-q">Add a district by name or ZIP code</label>
+  <div class="row"><input id="c-q" type="search" autocomplete="off" aria-describedby="c-hint"><button type="submit">Find</button></div>
+  <p id="c-hint" class="hint">Up to four districts. The link in your address bar keeps your choices, so you can bookmark or share it.</p>
+</form>
+<div id="c-results" aria-live="polite"></div>
+<h2 id="c-chosen-h">Chosen districts</h2>
+<ul id="c-chosen" class="chosen" aria-labelledby="c-chosen-h"></ul>
+<div class="page-tools"><button type="button" data-print>Print this comparison</button></div>
+<p id="c-status" class="hint" aria-live="polite"></p>
+<div id="c-wrap" class="table-wrap" role="region" tabindex="0" aria-labelledby="c-caption" hidden>
+  <table id="c-table" class="profile compare"><caption id="c-caption">Side-by-side figures</caption><thead></thead><tbody></tbody></table>
+</div>
+<p class="hint">Rates are per 100 students in each group. Figures come from different school years; see <a href="{BASE}methods/">methods and sources</a>.</p>
+"""
+    return page("Compare districts", body, desc="Compare special education figures for up to four school districts side by side.",
+                path=BASE + "compare/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
 
 
 def download_page(fname: str, n: int) -> str:
@@ -363,7 +394,142 @@ def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, u
 </section>"""
 
 
-def district_page(r, st_med, nat_med, kids_of, by_id) -> str:
+# ---------------------------------------------------------------- full detail
+
+def raw_cell(v) -> str:
+    v = "" if v is None else str(v).strip()
+    if v == "":
+        return "Not reported"
+    if v == "-8":
+        return "Withheld for privacy"
+    if v == "-9":
+        return "Flagged for data quality"
+    try:
+        x = float(v)
+    except ValueError:
+        return v
+    return "Not reported" if x < 0 else f"{x:,.0f}"
+
+
+def num(v):
+    try:
+        x = float(v)
+        return x if x >= 0 else None
+    except (TypeError, ValueError):
+        return None
+
+
+def per100(a, b) -> str:
+    a, b = num(a), num(b)
+    if a is None or b is None or b == 0:
+        return "—"
+    if b < 10:
+        return "Fewer than 10 students"
+    return f"{100 * a / b:,.1f}"
+
+
+def detail_table(caption: str, head: list[str], rows: list[list[str]], tid: str) -> str:
+    th = "".join(f'<th scope="col">{E(h)}</th>' for h in head)
+    body = "".join("<tr><th scope=\"row\">" + E(r[0]) + "</th>" + "".join(f"<td>{E(c)}</td>" for c in r[1:]) + "</tr>" for r in rows)
+    return (f'<div class="table-wrap" role="region" tabindex="0" aria-labelledby="{tid}">'
+            f'<table class="profile detail"><caption id="{tid}">{E(caption)}</caption><thead><tr>{th}</tr></thead>'
+            f"<tbody>{body}</tbody></table></div>")
+
+
+def details_block(summary: str, inner: str, note: str = "") -> str:
+    n = f'<p class="hint">{E(note)}</p>' if note else ""
+    return f'<details class="full"><summary>{E(summary)}</summary>{n}{inner}</details>'
+
+
+def full_who(dr) -> str:
+    if dr is None:
+        return ""
+    cats = sorted({c.split("|", 1)[1].replace("School Age ", "", 1) for c in dr.index if c.startswith("cc|School Age ") and "All Disabilities" not in c})
+    sa_all = dr.get("cc|School Age All Disabilities")
+    rows = []
+    for c in cats:
+        rows.append([c, raw_cell(dr.get(f"cc|Early Childhood {c}")), raw_cell(dr.get(f"cc|School Age {c}")), per100(dr.get(f"cc|School Age {c}"), sa_all)])
+    rows.append(["All disabilities", raw_cell(dr.get("cc|Early Childhood All Disabilities")), raw_cell(sa_all), "100.0" if num(sa_all) else "—"])
+    rows.append(["Total, ages 3 to 21", "", raw_cell(dr.get("cc|Combined Early Childhood and School Age Total")), ""])
+    return details_block("Full detail: students with IEPs by federal disability category",
+                         detail_table("Students with IEPs by category, 2024–25", ["Federal category", "Early childhood (ages 3 to 5)", "School age (5 in kindergarten to 21)", "Per 100 school-age students with IEPs"], rows, "fd-who"),
+                         "Category names are the federal terms used in the IDEA count.")
+
+
+def full_where(dr) -> str:
+    if dr is None:
+        return ""
+    out = []
+    for label, pre, allc in (("School age (5 in kindergarten to 21)", "School Age", "School Age All Educational Environments"),
+                             ("Early childhood (ages 3 to 5)", "Early Childhood", "Early Childhood All Educational Environments")):
+        cols = [c.split("|", 1)[1] for c in dr.index if c.startswith(f"ev|{pre} ") and not c.endswith("All Educational Environments")]
+        if not cols:
+            continue
+        tot = dr.get(f"ev|{allc}")
+        rows = [[c.replace(pre + " ", "", 1), raw_cell(dr.get(f"ev|{c}")), per100(dr.get(f"ev|{c}"), tot)] for c in cols]
+        rows.append(["All settings", raw_cell(tot), "100.0" if num(tot) else "—"])
+        tid = "fd-where-" + pre.split()[0].lower()
+        out.append(detail_table(f"Where students with IEPs learn, {label}, 2024–25", ["Setting", "Students", "Per 100 students with IEPs"], rows, tid))
+    return details_block("Full detail: every learning setting", "".join(out)) if out else ""
+
+
+def full_leave(dr) -> str:
+    if dr is None:
+        return ""
+    cols = [c.split("|", 1)[1] for c in dr.index if c.startswith("ex|All Disabilities ")]
+    if not cols:
+        return ""
+    tot = dr.get("ex|All Disabilities Total Exiting Special Education")
+    rows = [[c.replace("All Disabilities ", "", 1), raw_cell(dr.get(f"ex|{c}")), per100(dr.get(f"ex|{c}"), tot) if "Total" not in c else ""] for c in cols]
+    return details_block("Full detail: every way students left special education",
+                         detail_table("How students with IEPs, ages 14 to 21, left special education, 2023–24", ["Reason", "Students", "Per 100 who left special education"], rows, "fd-leave"),
+                         "Leaving school counts graduation, other completion, reaching the maximum age, and dropping out. Leaving special education also counts students who moved or returned to general education.")
+
+
+CR_ROWS = [("Out-of-school suspension (one or more)", "oos_idea", "enr_idea", "oos_nodis", "enr_nodis", "oos_504", "enr_504"),
+           ("Expulsion", "exp_idea", "enr_idea", None, None, None, None),
+           ("Physical restraint", "rs_phys_idea", "enr_idea", None, None, None, None),
+           ("Mechanical restraint", "rs_mech_idea", "enr_idea", None, None, None, None),
+           ("Seclusion", "rs_secl_idea", "enr_idea", None, None, None, None),
+           ("Referral to law enforcement", "ref_idea", "enr_idea", None, None, None, None),
+           ("School-related arrest", "arr_idea", "enr_idea", None, None, None, None)]
+
+
+def full_disc(dr) -> str:
+    if dr is None or "cr|enr_idea" not in dr.index or dr.get("cr|enr_idea", "") == "":
+        return ""
+    g = lambda k: dr.get(f"cr|{k}") if k else None
+    rows = []
+    for label, n1, d1, n2, d2, n3, d3 in CR_ROWS:
+        rows.append([label, raw_cell(g(n1)), per100(g(n1), g(d1)),
+                     raw_cell(g(n2)) if n2 else "Not collected", per100(g(n2), g(d2)) if n2 else "—",
+                     raw_cell(g(n3)) if n3 else "Not collected", per100(g(n3), g(d3)) if n3 else "—"])
+    rows.append(["Students in the group", raw_cell(g("enr_idea")), "", raw_cell(g("enr_nodis")), "", raw_cell(g("enr_504")), ""])
+    return details_block("Full detail: discipline and safety counts",
+                         detail_table("Students affected, by group, 2023–24", ["Action", "Students with IEPs", "Per 100", "Students without disabilities", "Per 100", "Students with Section 504 plans", "Per 100"], rows, "fd-disc"),
+                         "Counts of students, not incidents. Some actions are reported only for students with IEPs.")
+
+
+def full_fund(dr) -> str:
+    if dr is None or dr.get("fin|V33", "") == "":
+        return ""
+    k = lambda c: (f"${float(dr.get(c)) * 1000:,.0f}" if num(dr.get(c)) is not None else "Not reported")
+    rows = [["Total revenue", k("fin|TOTALREV")], ["Federal revenue", k("fin|TFEDREV")], ["Federal IDEA revenue (through the state)", k("fin|C15")],
+            ["Total spending", k("fin|TOTALEXP")], ["Current spending (day-to-day costs)", k("fin|TCURELSC")],
+            ["Students enrolled in the fall (finance count)", raw_cell(dr.get("fin|V33"))]]
+    return details_block("Full detail: district finances", detail_table("District finances, fiscal year 2024", ["Item", "Amount"], rows, "fd-fund"))
+
+
+def full_comm(dr) -> str:
+    if dr is None or dr.get("pov|children_5_17", "") == "":
+        return ""
+    rows = [["Children ages 5 to 17 living in the district's area", raw_cell(dr.get("pov|children_5_17"))],
+            ["Of those, children living in poverty", raw_cell(dr.get("pov|children_poor"))]]
+    return details_block("Full detail: child poverty estimate", detail_table("Child poverty estimate, 2024", ["Item", "Children"], rows, "fd-comm"),
+                         "Census estimates for the area the district serves, not only children enrolled.")
+
+
+def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     name = r.display
     lab = {m[0]: m[2] for m in MEASURES}
     unit = {m[0]: m[4] for m in MEASURES}
@@ -430,14 +596,17 @@ def district_page(r, st_med, nat_med, kids_of, by_id) -> str:
     body = f"""
 <h1>{E(name)}</h1>
 <p class="meta">{E(' · '.join(meta))}</p>
+<div class="page-tools"><button type="button" data-print>Print this page</button>
+  <button type="button" data-expand aria-pressed="false">Show all detail</button>
+  <a class="button secondary" href="{BASE}compare/?ids={r.leaid}">Compare with other districts</a></div>
 {parent}{kids}
 {glance_html}
-{section("Who is served", state_note, rows(["id_rate", "pct_504"]), ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", cats)}
-{section("Where students learn", "<p>Share of school-age students with IEPs in each setting.</p>", rows(["env_80plus", "env_lt40", "env_separate"]), ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21")}
-{section("Leaving school", "<p>How students with IEPs, ages 14 to 21, left school during the year.</p>", rows(["grad_regular", "dropout"]), ["idea_exit"], "s-leave", "per 100 students with IEPs who left school")}
-{section("Discipline and safety", check + partial, rows(["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"]), ["crdc"], "s-disc", "per 100 students in each group")}
-{section("Funding", "", rows(["spend_per_pupil", "idea_federal_per_student"]), ["fin", "idea_cc"], "s-fund", "dollars")}
-{section("Community", "", rows(["child_poverty"]), ["saipe"], "s-comm", "per 100 children ages 5 to 17")}
+{section("Who is served", state_note, rows(["id_rate", "pct_504"]), ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", cats + full_who(dr))}
+{section("Where students learn", "<p>Share of school-age students with IEPs in each setting.</p>", rows(["env_80plus", "env_lt40", "env_separate"]), ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr))}
+{section("Leaving school", "<p>How students with IEPs, ages 14 to 21, left school during the year.</p>", rows(["grad_regular", "dropout"]), ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr))}
+{section("Discipline and safety", check + partial, rows(["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"]), ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr))}
+{section("Funding", "", rows(["spend_per_pupil", "idea_federal_per_student"]), ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr))}
+{section("Community", "", rows(["child_poverty"]), ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr))}
 <section aria-labelledby="s-state">
   <h2 id="s-state">State IDEA rating</h2>
   <p>Each year the U.S. Department of Education rates how each state carries out IDEA. In 2026, {E(r.state_name.title())} was rated <strong>{E(det)}</strong>.
@@ -452,7 +621,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id) -> str:
 </section>
 """
     desc = f"Special education data for {name}, {r.state_name.title()}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
-    return page(f"{name}, {r.state}", body, desc=desc, path=f"{BASE}district/{r.leaid}/",
+    return page(f"{name}, {r.state}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",),
                 crumbs=[("IDEA Atlas", BASE), (r.state_name.title(), f"{BASE}table/?state={r.state}")])
 
 
@@ -463,6 +632,7 @@ def methods_page() -> str:
     body = f"""
 <h1>Methods and sources</h1>
 <p class="lede">How every figure in IDEA Atlas is made, where it comes from, and what it cannot tell you.</p>
+<div class="page-tools"><button type="button" data-print>Print this page</button></div>
 
 <nav aria-label="On this page" class="toc"><ul>
 <li><a href="#what">What the tool shows</a></li><li><a href="#sources">Sources</a></li><li><a href="#rules">Data rules</a></li>
@@ -537,7 +707,7 @@ This is version {VERSION}.</p></section>
 <p>To report an error, please use the <a href="{SITE}/contact/">contact page</a>.</p></section>
 """
     return page("Methods and sources", body, desc="How IDEA Atlas figures are made: sources, data rules, calculations, limits, and data dictionary.",
-                path=BASE + "methods/", crumbs=[("IDEA Atlas", BASE)])
+                path=BASE + "methods/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
 
 
 if __name__ == "__main__":

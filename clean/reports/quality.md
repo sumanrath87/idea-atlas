@@ -8,6 +8,7 @@
 - Civil rights data 2023-24: 17,591 districts from 97,094 schools. A count of -9 (skipped because the school reported none) is read as zero. Districts where at least one school withheld or did not report an item (figure shown as a minimum): 24
 - Finance FY2024: 14,077 districts; federal IDEA revenue total $13.65 billion
 - Child poverty 2024: 12,897 districts from 51 state files
+- Full detail file: 19,074 districts, 92 columns of counts
 - ZIP lookup: 33,789 ZIP code areas; 20,724 cover more than one district (the site will list all of them, largest share first)
 - Map shapes 2024-25: 13,368 districts with a boundary; 13,224 of 19,630 listed districts have one (charter and specialty districts usually do not)
 

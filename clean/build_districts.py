@@ -391,6 +391,29 @@ def main() -> int:
     out[status_cols] = out[status_cols].fillna("not_reported")
     out.to_csv(OUT / "districts.csv", index=False)
 
+    # ---- 10b. Full detail: every count behind the rates, for the "full detail" sections of district pages.
+    # IDEA cells keep the agency's own codes (-8 withheld, -9 quality) so pages can say why a cell is empty.
+    det_parts = []
+    for prefix, frame in (("cc", cc), ("ev", ev), ("ex", ex)):
+        cols = [c for c in frame.columns[6:] if c != "leaid"]
+        part = frame[["leaid"] + cols].drop_duplicates("leaid").set_index("leaid")
+        part.columns = [f"{prefix}|{c}" for c in cols]
+        det_parts.append(part)
+    crd = cr.set_index("leaid")[[k for k in groups] + [k + "_status" for k in groups] + ["enr_nodis"]]
+    crd.columns = [f"cr|{c}" for c in crd.columns]
+    det_parts.append(crd)
+    fin_d = f.drop_duplicates("leaid").set_index("leaid")[["V33", "TOTALREV", "TFEDREV", "C15", "TOTALEXP", "TCURELSC"]]
+    fin_d.columns = [f"fin|{c}" for c in fin_d.columns]
+    det_parts.append(fin_d)
+    sa_d = sa.set_index("leaid")[["children_5_17", "children_poor"]]
+    sa_d.columns = [f"pov|{c}" for c in sa_d.columns]
+    det_parts.append(sa_d)
+    detail = pd.concat(det_parts, axis=1)
+    detail.index.name = "leaid"
+    detail = detail[detail.index.isin(out.leaid)]
+    detail.to_csv(OUT / "detail.csv.gz", compression="gzip")
+    Q.append(f"- Full detail file: {len(detail):,} districts, {detail.shape[1]} columns of counts")
+
     # ---- 11. ZIP lookup (Census ZIP code areas to districts, 2025) ----
     with zipfile.ZipFile(raw("edge_zcta__")) as z:
         name = next(n for n in z.namelist() if n.lower().endswith("zcta5ce20.xlsx"))
