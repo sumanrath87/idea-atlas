@@ -14,6 +14,7 @@ Status words used for every measure:
   quality       the agency flagged it for data quality
   not_reported  no figure was reported
   none          the group is zero (for example, no students in that group)
+  ok_minimum    a real figure, but small parts were withheld, so it is shown as "at least"
 """
 from __future__ import annotations
 
@@ -134,8 +135,45 @@ def main() -> int:
     base = base.merge(m, on="leaid", how="left")
     base["enrollment_status"] = np.where(base.enrollment.notna() & (base.enrollment >= 0), "ok", "not_reported")
 
+    # ---- 2b. Combined records. NYC is one district in the civil rights, finance, poverty and map
+    # files (3620580) but 32 geographic districts in the directory and IDEA files. ----
+    combos = RULES.get("combined_districts", [])
+    parent_of = {}
+    for cmb in combos:
+        kids = base[(base.state == cmb["state"]) & base.name.str.contains(cmb["components_match"], case=False, regex=True)]
+        for k in kids.leaid:
+            parent_of[k] = cmb["leaid"]
+        row = {"leaid": cmb["leaid"], "name": cmb["name"], "state": cmb["state"],
+               "state_name": kids.state_name.iloc[0], "city": cmb["city"],
+               "district_type": f"Combined record of {len(kids)} districts", "charter": "Not a charter district",
+               "status": "Open", "enrollment": kids.enrollment.sum(min_count=1), "enrollment_status": "ok"}
+        base = pd.concat([base, pd.DataFrame([row])], ignore_index=True)
+        Q.append(f"- Combined record: {cmb['name']} ({cmb['leaid']}) adds up {len(kids)} component districts "
+                 f"for enrollment and IDEA counts; other sources report it as one district.")
+    base["part_of"] = base.leaid.map(parent_of)
+
+    def add_combined(df: pd.DataFrame, id_cols: int = 6) -> pd.DataFrame:
+        """Sum IDEA counts of component districts into a parent row. Cells withheld in any component
+        are left out of the sum, so the parent figure for that cell is a minimum."""
+        if not parent_of:
+            return df
+        kids = df[df.leaid.isin(parent_of)]
+        new_rows = []
+        for parent, grp in kids.groupby(kids.leaid.map(parent_of)):
+            r = grp.iloc[0].copy()
+            for c in df.columns[id_cols:]:
+                if c == "leaid":
+                    continue
+                vals = [idea_val(v) for v in grp[c]]
+                oks = [v for v, st in vals if st == "ok"]
+                r[c] = str(int(sum(oks))) if oks else (vals[0][1] == "hidden" and "-8" or "")
+            r["leaid"] = parent
+            r[df.columns[3]] = "Combined record"
+            new_rows.append(r)
+        return pd.concat([df, pd.DataFrame(new_rows)], ignore_index=True)
+
     # ---- 3. IDEA child count 2024-25 ----
-    cc = read_idea("idea_child_count__")
+    cc = add_combined(read_idea("idea_child_count__"))
     tot_c = col(cc, "Combined Early Childhood and School Age Total")
     sa_c = col(cc, "School Age All Disabilities")
     cats = {"autism": "School Age Autism", "emotional": "School Age Emotional disturbance",
@@ -156,11 +194,12 @@ def main() -> int:
     cc_t = pd.DataFrame(rows)
     Q.append(f"- IDEA child count 2024-25: {len(cc_t):,} district rows; "
              f"{cc_t.leaid.duplicated().sum()} duplicate IDs; total hidden: "
-             f"{(cc_t.idea_count_status == 'hidden').sum():,}; national sum of reported totals: "
-             f"{cc_t.idea_count.sum():,.0f}")
+             f"{(cc_t.idea_count_status == 'hidden').sum():,}; national sum of reported totals "
+             f"(combined records not double-counted): "
+             f"{cc_t.loc[~cc_t.leaid.isin({c['leaid'] for c in combos}), 'idea_count'].sum():,.0f}")
 
     # ---- 4. IDEA educational environments 2024-25 (school age) ----
-    ev = read_idea("idea_environments__")
+    ev = add_combined(read_idea("idea_environments__"))
     e_all = col(ev, "School Age All Educational Environments")
     e80 = col(ev, "School Age", "80%")
     e40 = col(ev, "School Age", "less than 40%")
@@ -174,18 +213,22 @@ def main() -> int:
         rec["env_80plus"], rec["env_80plus_status"] = rate(*idea_val(r[e80]), all_v, all_st)
         rec["env_lt40"], rec["env_lt40_status"] = rate(*idea_val(r[e40]), all_v, all_st)
         vals = [idea_val(r[c]) for c in sep]
-        if any(st in ("hidden", "quality") for _, st in vals):
+        oks = [v for v, st in vals if st == "ok"]
+        withheld = any(st in ("hidden", "quality") for _, st in vals)
+        if withheld and not oks:
             s_v, s_st = np.nan, next(st for _, st in vals if st in ("hidden", "quality"))
         else:
-            s_v, s_st = sum(v for v, st in vals if st == "ok"), "ok"
+            s_v, s_st = sum(oks), "ok"
         rec["env_separate"], rec["env_separate_status"] = rate(s_v, s_st, all_v, all_st)
+        if withheld and rec["env_separate_status"] == "ok":
+            rec["env_separate_status"] = "ok_minimum"   # some small parts withheld: shown as "at least"
         rows.append(rec)
     ev_t = pd.DataFrame(rows)
     Q.append(f"- Educational environments 2024-25: {len(ev_t):,} rows. Separate settings combine: "
              + "; ".join(sep))
 
     # ---- 5. IDEA exiting 2023-24 ----
-    ex = read_idea("idea_exiting__")
+    ex = add_combined(read_idea("idea_exiting__"))
     x_tot = col(ex, "Total Exiting School")
     x_reg = col(ex, "Regular High School Diploma")
     x_drop = col(ex, "Dropped Out")
@@ -228,8 +271,11 @@ def main() -> int:
                 cache[fname] = pd.read_csv(z.open(member(fname)), dtype=str, encoding="latin-1",
                                            keep_default_na=False)
             sch = cache[fname]
+            # Civil rights codes (2023-24): -9 = skipped because the school reported none, read as 0;
+            # -6 and -11 = withheld for privacy; -5 and -3 = not reported; -10 = withheld category (nonbinary).
             total = pd.Series(0.0, index=sch.index)
-            bad = pd.Series(False, index=sch.index)
+            hidden = pd.Series(False, index=sch.index)
+            missing = pd.Series(False, index=sch.index)
             for stem in stems:
                 for sex in ("M", "F", "X"):
                     c = f"{stem}_{sex}"
@@ -238,15 +284,17 @@ def main() -> int:
                     used_columns.append(c)
                     v = pd.to_numeric(sch[c], errors="coerce")
                     if sex == "X":
-                        total += v.where(v >= 0, 0).fillna(0)   # nonbinary counts were withheld in 2023-24
-                    else:
-                        bad |= v.isna() | (v < 0)
                         total += v.where(v >= 0, 0).fillna(0)
-            g = pd.DataFrame({"leaid": leaid(sch.LEAID), "v": total, "bad": bad})
-            agg = g.groupby("leaid").agg(v=("v", "sum"), schools=("v", "size"), bad=("bad", "sum"))
-            agg[key] = np.where(agg.bad == agg.schools, np.nan, agg.v)
-            agg[key + "_status"] = np.where(agg.bad == agg.schools, "not_reported",
-                                            np.where(agg.bad > 0, "ok_partial", "ok"))
+                        continue
+                    hidden |= v.isin([-6, -11])
+                    missing |= v.isna() | v.isin([-5, -3]) | ((v < 0) & ~v.isin([-9, -6, -11, -10]))
+                    total += v.where(v >= 0, 0).fillna(0)
+            g = pd.DataFrame({"leaid": leaid(sch.LEAID), "v": total, "hid": hidden, "mis": missing})
+            agg = g.groupby("leaid").agg(v=("v", "sum"), schools=("v", "size"), hid=("hid", "sum"), mis=("mis", "sum"))
+            none_ok = (agg.hid + agg.mis) >= agg.schools
+            agg[key] = np.where(none_ok, np.nan, agg.v)
+            agg[key + "_status"] = np.where(none_ok, np.where(agg.hid > 0, "hidden", "not_reported"),
+                                            np.where((agg.hid + agg.mis) > 0, "ok_partial", "ok"))
             crdc[key] = agg[[key, key + "_status"]]
             if key == "enr_total":
                 crdc["schools"] = agg[["schools"]]
@@ -276,8 +324,9 @@ def main() -> int:
         out_cr[name_], out_cr[name_ + "_status"] = crdc_rate(n_, d_)
     out_cr["crdc_partial"] = (cr.filter(like="_status") == "ok_partial").any(axis=1)
     Q.append(f"- Civil rights data 2023-24: {len(out_cr):,} districts from "
-             f"{int(cr.schools.sum()):,} schools; districts where some schools did not report an item: "
-             f"{int(out_cr.crdc_partial.sum()):,}")
+             f"{int(cr.schools.sum()):,} schools. A count of -9 (skipped because the school reported none) "
+             f"is read as zero. Districts where at least one school withheld or did not report an item "
+             f"(figure shown as a minimum): {int(out_cr.crdc_partial.sum()):,}")
 
     # ---- 7. District finance FY2024 (Census, dollars in thousands) ----
     f = pd.read_excel(raw("f33__elsec24.xlsx"), sheet_name="elsec24", dtype=str)
@@ -325,6 +374,10 @@ def main() -> int:
     out["idea_federal_per_student"] = np.where(
         (out.idea_count_status == "ok") & (out.idea_count >= MIN) & (out.idea_federal_revenue_status == "ok"),
         (out.idea_federal_revenue / out.idea_count).round(0), np.nan)
+    # Flag districts whose civil rights IEP count is far from their IDEA count. Their discipline
+    # rates use the civil rights count, so the site shows a note asking readers to check with the district.
+    out["crdc_count_check"] = (out.crdc_enr_idea.notna() & out.idea_count.notna() & (out.idea_count >= 50)
+                               & ((out.crdc_enr_idea - out.idea_count).abs() > 0.5 * out.idea_count))
     status_cols = [c for c in out.columns if c.endswith("_status")]
     out[status_cols] = out[status_cols].fillna("not_reported")
     out.to_csv(OUT / "districts.csv", index=False)

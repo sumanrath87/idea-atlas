@@ -12,10 +12,18 @@ codes:
   crdc:
     any_negative: not_applicable_or_hidden   # -3 skipped, -5 action plan, -6 privacy, -9 not applicable, -11 suppressed
 
+# Districts reported as one unit in some files and as several in others.
+combined_districts:
+  - leaid: "3620580"
+    name: New York City Public Schools
+    state: NY
+    city: New York
+    components_match: "^NEW YORK CITY GEOGRAPHIC DISTRICT"
+
 # Districts used for the hand spot-check at Checkpoint 2.
 spot_check:
   - {state: NJ, name: "Montclair"}
   - {state: NJ, name: "Newark"}
-  - {state: NY, name: "New York City"}
+  - {state: NY, name: "New York City Public Schools"}
   - {state: CA, name: "Los Angeles Unified"}
   - {state: AK, name: "Alaska Gateway"}
