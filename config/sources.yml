@@ -15,7 +15,7 @@ sources:
     name: IDEA Part B educational environments, by district (LEA)
     agency: U.S. Department of Education, OSEP
     landing: https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products
-    expected_year: 2022-23
+    expected_year: 2024-25
     measures: [time_in_general_class]
 
   - id: idea_exiting
@@ -29,7 +29,7 @@ sources:
     name: Civil Rights Data Collection, district and school files
     agency: U.S. Department of Education, OCR
     landing: https://civilrightsdata.ed.gov/data
-    expected_year: 2021-22
+    expected_year: 2023-24
     measures: [suspension, expulsion, restraint_seclusion, referral_arrest, section_504_count]
 
   - id: ccd_directory

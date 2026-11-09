@@ -29,18 +29,21 @@ TIMEOUT = 60
 
 # Extra places to look, beyond each landing page.
 EXTRA = {
-    "idea_child_count": [("ckan", "IDEA Section 618 child count LEA")],
-    "idea_environments": [("ckan", "IDEA Section 618 educational environments LEA")],
-    "idea_exiting": [("ckan", "IDEA Section 618 exiting LEA")],
-    "crdc": [("ckan", "Civil Rights Data Collection")],
-    "osep_determinations": [("ckan", "IDEA determinations")],
+    "idea_child_count": [("ckan", '"IDEA Section 618 LEA Part B Child Count"'),
+                         ("ckan", '"Local Level Data File"')],
+    "idea_environments": [("ckan", '"IDEA Section 618 LEA Part B Educational Environments"')],
+    "idea_exiting": [("ckan", '"IDEA Section 618 LEA Part B Exiting"'),
+                     ("ckan", "IDEA 618 exiting LEA")],
+    "osep_determinations": [("ckan", "IDEA determinations Part B"),
+                            ("browser", "https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files")],
     "saipe": [("dir", "https://www2.census.gov/programs-surveys/saipe/datasets/")],
     # Newer F-33 years are published by the Census Bureau as "school system finances"
     "edge_boundaries": [("page", "https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries")],
     "edge_zcta": [("page", "https://nces.ed.gov/programs/edge/Geographic/RelationshipFiles")],
-    "ccd_directory": [("page", "https://nces.ed.gov/ccd/files.asp"),
+    "ccd_directory": [("json", "https://nces.ed.gov/ccd/datatables/api/File"),
                       ("page", "https://nces.ed.gov/ccd/pubagency.asp")],
-    "f33": [("page", "https://nces.ed.gov/ccd/f33agency.asp"),
+    "f33": [("json", "https://nces.ed.gov/ccd/datatables/api/File"),
+            ("page", "https://nces.ed.gov/ccd/f33agency.asp"),
             ("dir", "https://www2.census.gov/programs-surveys/school-finances/tables/")],
 }
 
@@ -95,9 +98,33 @@ def links_from_browser(url: str) -> list[dict]:
     return found
 
 
+def links_from_json(url: str) -> list[dict]:
+    """Read a JSON data service and collect every file address inside it."""
+    r = get(url)
+    r.raise_for_status()
+    data, found = r.json(), []
+    (OUT / "raw").mkdir(parents=True, exist_ok=True)
+    (OUT / "raw" / (re.sub(r"\W+", "_", url)[-60:] + ".json")).write_text(json.dumps(data, indent=1)[:2_000_000])
+
+    def walk(x, ctx):
+        if isinstance(x, dict):
+            label = " | ".join(str(x[k]) for k in ("title", "name", "fileName", "description", "schoolYear", "year") if k in x)[:200]
+            for v in x.values():
+                walk(v, label or ctx)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v, ctx)
+        elif isinstance(x, str) and DATA_EXT.search(x):
+            found.append({"url": urljoin("https://nces.ed.gov/ccd/", x), "text": ctx})
+    walk(data, "")
+    return found
+
+
 def links_from_ckan(query: str) -> list[dict]:
-    api = "https://data.ed.gov/api/3/action/package_search"
-    r = get(api, params={"q": query, "rows": 25, "sort": "metadata_modified desc"})
+    api = "https://catalog.data.gov/api/3/action/package_search"
+    r = get(api, params={"q": query, "rows": 20, "fq": "organization:ed-gov"})
+    if r.status_code != 200 or not r.text.lstrip().startswith("{"):
+        r = get(api, params={"q": query, "rows": 20})
     r.raise_for_status()
     found = []
     for pkg in r.json().get("result", {}).get("results", []):
@@ -110,7 +137,7 @@ def links_from_ckan(query: str) -> list[dict]:
     return found
 
 
-def links_from_dir(url: str, depth: int = 2) -> list[dict]:
+def links_from_dir(url: str, depth: int = 3) -> list[dict]:
     """Walk a plain Apache-style directory listing (used by census.gov)."""
     found, todo = [], [(url, 0)]
     while todo:
@@ -129,7 +156,7 @@ def links_from_dir(url: str, depth: int = 2) -> list[dict]:
             if full.endswith("/") and d < depth:
                 # only follow recent years and school-district folders
                 tail = full.rstrip("/").rsplit("/", 1)[-1]
-                if re.fullmatch(r"20(2[2-9])", tail) or "school" in tail.lower() or "elsec" in tail.lower():
+                if re.fullmatch(r"20(2[2-9])", tail) or "school" in tail.lower() or "elsec" in tail.lower() or "finance" in tail.lower():
                     todo.append((full, d + 1))
             elif DATA_EXT.search(full) and ("school" in full.lower() or "elsec" in full.lower()):
                 found.append({"url": full, "text": full.rsplit("/", 1)[-1]})
@@ -150,7 +177,7 @@ def main() -> int:
         for kind, target in places:
             try:
                 fn = {"page": links_from_page, "ckan": links_from_ckan, "dir": links_from_dir,
-                      "browser": links_from_browser}[kind]
+                      "browser": links_from_browser, "json": links_from_json}[kind]
                 items = fn(target)
                 entry["checked"].append({"kind": kind, "target": target, "ok": True, "count": len(items)})
             except Exception as e:  # noqa: BLE001
@@ -161,7 +188,7 @@ def main() -> int:
                     continue
                 seen.add(it["url"])
                 entry["files"].append(it)
-        if not entry["files"] or src["id"] == "ccd_directory":
+        if not entry["files"]:
             try:
                 items = links_from_browser(src["landing"])
                 entry["checked"].append({"kind": "browser", "target": src["landing"], "ok": True, "count": len(items)})
