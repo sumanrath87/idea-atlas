@@ -17,7 +17,7 @@ Each figure below is shown as it appears in the original file, then as IDEA Atla
 | Out-of-school suspension, students without disabilities | 45 of 4,712 | 1.0 (ok) |
 | Section 504 students per 100 enrolled | 250 of 5,963 | 4.2 (ok) |
 | Physical restraint, students with IEPs | 18 of 1,001 | 1.8 (ok) |
-| Referred to law enforcement, students with IEPs | nan of 1,001 | nan (not_reported) |
+| Referred to law enforcement, students with IEPs | 0 of 1,001 | 0.0 (ok) |
 | Current spending per pupil (FY2024) | $173,522 thousand ÷ 6,192 students | $28,024 |
 | Federal IDEA money (FY2024) | $2,580 thousand | $2,580,000 |
 | Children 5-17 in poverty (2024) | 285 of 7,672 | 3.7 |
@@ -32,29 +32,37 @@ Each figure below is shown as it appears in the original file, then as IDEA Atla
 | Students with IEPs per 100 enrolled | 6795 ÷ 44,199 | 15.4 (ok) |
 | Specific learning disability, share of school-age | 1677 of 5995 | 28.0 (ok) |
 | In general class 80%+ of the day | 2666 of 5995 | 44.5 (ok) |
-| Separate school or facility | 154 + -8 + -8 of 5995 | nan (hidden) |
+| Separate school or facility | 154 + -8 + -8 of 5995 | 2.6 (ok_minimum) |
 | Regular diploma, share of leavers (2023-24) | 326 of 403 | 80.9 (ok) |
 | Out-of-school suspension, students with IEPs (2023-24) | 23 of 6,176 | 0.4 (ok) |
 | Out-of-school suspension, students without disabilities | 151 of 32,505 | 0.5 (ok) |
 | Section 504 students per 100 enrolled | 212 of 38,893 | 0.5 (ok) |
-| Physical restraint, students with IEPs | nan of 6,176 | nan (not_reported) |
+| Physical restraint, students with IEPs | 0 of 6,176 | 0.0 (ok) |
 | Referred to law enforcement, students with IEPs | 8 of 6,176 | 0.1 (ok) |
 | Current spending per pupil (FY2024) | $1,657,157 thousand ÷ 42,791 students | $38,727 |
 | Federal IDEA money (FY2024) | $11,977 thousand | $11,977,000 |
 | Children 5-17 in poverty (2024) | 14,373 of 56,125 | 25.6 |
 | State IDEA rating (2026) | New Jersey | Meets Requirements |
 
-## NEW YORK CITY GEOGRAPHIC DISTRICT #31, NY (NCES ID 3600103)
+## New York City Public Schools, NY (NCES ID 3620580)
 
 | Measure | In the original file | Calculated |
 |---|---|---|
-| Enrollment 2024-25 | CCD total: 60,164 | 60,164 |
-| Students with IEPs, ages 3-21 | 21284 | 21,284 (ok) |
-| Students with IEPs per 100 enrolled | 21284 ÷ 60,164 | 35.4 (ok) |
-| Specific learning disability, share of school-age | 6033 of 19213 | 31.4 (ok) |
-| In general class 80%+ of the day | 11147 of 19213 | 58.0 (ok) |
-| Separate school or facility | 879 + 26 + -8 of 19213 | nan (hidden) |
-| Regular diploma, share of leavers (2023-24) | 786 of 987 | 79.6 (ok) |
+| Enrollment 2024-25 | CCD total: 837,777 | 837,777 |
+| Students with IEPs, ages 3-21 | 262107 | 262,107 (ok) |
+| Students with IEPs per 100 enrolled | 262107 ÷ 837,777 | 31.3 (ok) |
+| Specific learning disability, share of school-age | 68006 of 239575 | 28.4 (ok) |
+| In general class 80%+ of the day | 140519 of 239575 | 58.7 (ok) |
+| Separate school or facility | 9509 + 227 + 55 of 239575 | 4.1 (ok) |
+| Regular diploma, share of leavers (2023-24) | 10377 of 13305 | 78.0 (ok) |
+| Out-of-school suspension, students with IEPs (2023-24) | 1,991 of 176,195 | 1.1 (ok) |
+| Out-of-school suspension, students without disabilities | 3,263 of 623,702 | 0.5 (ok) |
+| Section 504 students per 100 enrolled | 4,757 of 804,654 | 0.6 (ok) |
+| Physical restraint, students with IEPs | 69 of 176,195 | 0.0 (ok) |
+| Referred to law enforcement, students with IEPs | 433 of 176,195 | 0.2 (ok) |
+| Current spending per pupil (FY2024) | $34,591,210 thousand ÷ 845,509 students | $40,912 |
+| Federal IDEA money (FY2024) | $502,273 thousand | $502,273,000 |
+| Children 5-17 in poverty (2024) | 282,054 of 1,205,433 | 23.4 |
 | State IDEA rating (2026) | New York | Needs Intervention |
 
 ## Los Angeles Unified, CA (NCES ID 0622710)
@@ -66,7 +74,7 @@ Each figure below is shown as it appears in the original file, then as IDEA Atla
 | Students with IEPs per 100 enrolled | 84937 ÷ 408,026 | 20.8 (ok) |
 | Specific learning disability, share of school-age | 29161 of 77642 | 37.6 (ok) |
 | In general class 80%+ of the day | 51929 of 77642 | 66.9 (ok) |
-| Separate school or facility | 3009 + -8 + 304 of 77642 | nan (hidden) |
+| Separate school or facility | 3009 + -8 + 304 of 77642 | 4.3 (ok_minimum) |
 | Regular diploma, share of leavers (2023-24) | 4513 of 6062 | 74.4 (ok) |
 | Out-of-school suspension, students with IEPs (2023-24) | 437 of 61,827 | 0.7 (ok) |
 | Out-of-school suspension, students without disabilities | 1,301 of 352,051 | 0.4 (ok) |
@@ -92,8 +100,8 @@ Each figure below is shown as it appears in the original file, then as IDEA Atla
 | Out-of-school suspension, students with IEPs (2023-24) | 4 of 66 | 6.1 (ok) |
 | Out-of-school suspension, students without disabilities | 16 of 263 | 6.1 (ok) |
 | Section 504 students per 100 enrolled | 11 of 340 | 3.2 (ok) |
-| Physical restraint, students with IEPs | nan of 66 | nan (not_reported) |
-| Referred to law enforcement, students with IEPs | nan of 66 | nan (not_reported) |
+| Physical restraint, students with IEPs | 0 of 66 | 0.0 (ok) |
+| Referred to law enforcement, students with IEPs | 0 of 66 | 0.0 (ok) |
 | Current spending per pupil (FY2024) | $17,193 thousand ÷ 369 students | $46,593 |
 | Federal IDEA money (FY2024) | $168 thousand | $168,000 |
 | Children 5-17 in poverty (2024) | 78 of 466 | 16.7 |
