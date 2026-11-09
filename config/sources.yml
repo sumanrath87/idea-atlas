@@ -1,0 +1,80 @@
+# IDEA Atlas: data sources
+# Each entry lists where a file comes from and the school year we expect.
+# The monthly check compares these against what the agency has posted.
+# Exact file links are confirmed on the first run on GitHub's servers.
+
+sources:
+  - id: idea_child_count
+    name: IDEA Part B child count, by district (LEA)
+    agency: U.S. Department of Education, OSEP
+    landing: https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products
+    expected_year: 2024-25
+    measures: [identification_rate, disability_category_mix]
+
+  - id: idea_environments
+    name: IDEA Part B educational environments, by district (LEA)
+    agency: U.S. Department of Education, OSEP
+    landing: https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products
+    expected_year: 2022-23
+    measures: [time_in_general_class]
+
+  - id: idea_exiting
+    name: IDEA Part B exiting, by district (LEA)
+    agency: U.S. Department of Education, OSEP
+    landing: https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products
+    expected_year: 2022-23
+    measures: [graduation_regular_diploma, dropout]
+
+  - id: crdc
+    name: Civil Rights Data Collection, district and school files
+    agency: U.S. Department of Education, OCR
+    landing: https://civilrightsdata.ed.gov/data
+    expected_year: 2021-22
+    measures: [suspension, expulsion, restraint_seclusion, referral_arrest, section_504_count]
+
+  - id: ccd_directory
+    name: Common Core of Data, district directory and enrollment
+    agency: NCES
+    landing: https://nces.ed.gov/ccd/files.asp
+    expected_year: 2024-25
+    measures: [district_names, total_enrollment]
+
+  - id: f33
+    name: School District Finance Survey (F-33)
+    agency: NCES and U.S. Census Bureau
+    landing: https://nces.ed.gov/ccd/f33agency.asp
+    expected_year: FY2023
+    measures: [per_pupil_spending, federal_idea_revenue]
+
+  - id: saipe
+    name: Small Area Income and Poverty Estimates, school districts
+    agency: U.S. Census Bureau
+    landing: https://www.census.gov/programs-surveys/saipe.html
+    expected_year: 2024
+    measures: [child_poverty]
+
+  - id: edge_boundaries
+    name: School district boundaries (composite)
+    agency: NCES EDGE
+    landing: https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries
+    expected_year: SY2024-25
+    measures: [map_shapes]
+
+  - id: edge_zcta
+    name: ZIP code (ZCTA) to district relationship files
+    agency: NCES EDGE and U.S. Census Bureau
+    landing: https://nces.ed.gov/programs/edge/Geographic/RelationshipFiles
+    expected_year: SY2024-25
+    measures: [zip_search]
+
+  - id: osep_determinations
+    name: IDEA state determinations
+    agency: U.S. Department of Education, OSEP
+    landing: https://sites.ed.gov/idea/idea-files/
+    expected_year: 2026
+    measures: [state_determination]
+
+settings:
+  minimum_group: 10
+  rates_per: 100
+  approval_email: set as a private GitHub setting, not stored here
