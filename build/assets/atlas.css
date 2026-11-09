@@ -186,6 +186,8 @@ ul.plain li, .glance li { font-family: var(--serif); font-size: 1.22rem; line-he
 ul.plain li, .glance li, .lede, h1, h2 { font-variant-numeric: lining-nums; }
 .fig { font-weight: 650; font-variant-numeric: lining-nums tabular-nums; }
 .med { color: var(--muted); white-space: nowrap; }
+.ev { color: var(--ink-2); font-style: italic; }
+ul.ask { padding-left: 1.2rem; max-width: var(--measure); } ul.ask li { margin: .45rem 0; }
 .glance { background: var(--wash); border-radius: 14px; padding: .4rem clamp(1.2rem, 3vw, 2rem) 1rem; margin: 0 0 1.5rem; max-width: 52rem; }
 .glance h2 { margin-top: 1rem; font-size: 1.35rem; }
 .glance li { font-size: 1.28rem; }

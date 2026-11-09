@@ -87,7 +87,30 @@ def figs(text: str) -> str:
     """Escape a plain sentence and give its figures quiet emphasis; the state comparison in brackets stays soft."""
     h = E(text)
     h = re.sub(r"(?<!\()(\$[\d,]+|\b\d[\d,]*\.\d\b)", r'<span class="fig">\1</span>', h)
+    h = re.sub(r", or ((?:about|nearly|fewer than) [^.]*)\.", r', or <span class="ev">\1</span>.', h)
     return re.sub(r"\((\$?[\d,]+(?:\.\d)?)\)", r'<span class="med">(\1)</span>', h)
+
+
+def everyday(v: float) -> str:
+    """A rate per 100 in words a family can picture: 'about 1 in 5', 'about half', 'nearly all'."""
+    if v is None or pd.isna(v) or v <= 0:
+        return ""
+    if v < 1:
+        return "fewer than 1 in 100"
+    if v >= 95:
+        return "nearly all"
+    if 45 <= v <= 55:
+        return "about half"
+    if v <= 34:
+        return f"about 1 in {round(100 / v)}"
+    best = min(((k, d) for d in (3, 4, 5, 10) for k in range(1, d)), key=lambda kd: (abs(kd[0] / kd[1] - v / 100), kd[1]))
+    return f"about {best[0]} in {best[1]}"
+
+
+def add_everyday(sent: str, fv: str, v: float) -> str:
+    """Close the sentence with the everyday version: '..., or about 1 in 5.'"""
+    w = everyday(v)
+    return sent[:-1] + f", or {w}." if w and sent.endswith(".") else sent
 
 
 def plain_lines(r, keys, st_med) -> str:
@@ -106,6 +129,8 @@ def plain_lines(r, keys, st_med) -> str:
             sent = ZERO_TEXT[k] if (code == "0" and v == 0 and k in ZERO_TEXT) else PLAIN[k].format(v=fv)
             if code == "1":
                 sent = sent.replace("About " + fv, "At least " + fv).replace("about " + fv, "at least " + fv)
+            if unit[k] == "per100" and not (code == "0" and v == 0):
+                sent = add_everyday(sent, fv, v)
             sm = st_med[k].get(r.state, np.nan)
             if code == "0" and pd.notna(sm):
                 if sm == 0:
@@ -219,6 +244,10 @@ def main() -> int:
 
     nat_med = {k: float(np.nanmedian(present(k))) if present(k).notna().any() else np.nan for k in keys}
     st_med = {k: present(k).groupby(d.state).median().to_dict() for k in keys}
+    st_q = {k: (present(k).groupby(d.state).quantile(.25).to_dict(), present(k).groupby(d.state).quantile(.75).to_dict()) for k in keys}
+    st_med["_q"] = st_q
+    nat_med["_q"] = {k: (float(np.nanpercentile(present(k).dropna(), 25)), float(np.nanpercentile(present(k).dropna(), 75)))
+                     if present(k).notna().any() else (np.nan, np.nan) for k in keys}
     breaks = {k: classify(present(k).to_numpy(dtype=float)) for k in MAP_MEASURES}
 
     if OUT.exists():
@@ -282,8 +311,24 @@ def main() -> int:
     dl = OUT / "download"
     dl.mkdir()
     fname = f"idea-atlas-districts-v{VERSION}.csv"
-    d.drop(columns=["display"]).to_csv(dl / fname, index=False)
-    write("download/index.html", download_page(fname, len(d)))
+    dpath0 = ROOT / "clean" / "output" / "detail.csv.gz"
+    det0 = pd.read_csv(dpath0, dtype=str, index_col=0, keep_default_na=False) if dpath0.exists() else pd.DataFrame()
+    out = d.drop(columns=["display"]).copy()
+    if not det0.empty:
+        out = add_counts(out, det0)
+    out.to_csv(dl / fname, index=False)
+    dname = ""
+    if not det0.empty:
+        import zipfile
+        nice = det0.copy()
+        nice.columns = [DETAIL_PREFIX[c.split("|", 1)[0]] + ": " + c.split("|", 1)[1] for c in nice.columns]
+        nice.insert(0, "state", d.set_index("leaid").state.reindex(nice.index))
+        nice.insert(0, "name", d.set_index("leaid").name.reindex(nice.index))
+        nice.index.name = "leaid"
+        dname = f"idea-atlas-detail-v{VERSION}.zip"
+        with zipfile.ZipFile(dl / dname, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr(f"idea-atlas-detail-v{VERSION}.csv", nice.to_csv())
+    write("download/index.html", download_page(fname, len(d), dname, len(det0.columns)))
 
     # ---- pages
     write("index.html", home_page(len(d)))
@@ -428,17 +473,72 @@ def compare_page() -> str:
                 path=BASE + "compare/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
 
 
-def download_page(fname: str, n: int) -> str:
+DETAIL_PREFIX = {"cc": "Child count", "ev": "Learning setting", "ex": "Leaving", "cr": "Civil rights", "fin": "Finance ($000s)", "pov": "Poverty"}
+
+# counts behind each rate: (numerator columns, denominator column); "main:" reads from the district file, others from detail
+COUNTS = {
+    "id_rate": (["main:idea_count"], "main:enrollment"),
+    "pct_504": (["cr|enr_504"], "cr|enr_total"),
+    "env_80plus": (["ev|School Age Inside regular class 80% or more of the day"], "ev|School Age All Educational Environments"),
+    "env_lt40": (["ev|School Age Inside regular class less than 40% of the day"], "ev|School Age All Educational Environments"),
+    "env_separate": (["ev|School Age Separate School", "ev|School Age Residential Facility", "ev|School Age Homebound/Hospital"], "ev|School Age All Educational Environments"),
+    "grad_regular": (["ex|All Disabilities Graduated With Regular High School Diploma"], "ex|All Disabilities Total Exiting School"),
+    "dropout": (["ex|All Disabilities Dropped Out"], "ex|All Disabilities Total Exiting School"),
+    "oos_idea": (["cr|oos_idea"], "cr|enr_idea"), "oos_nodis": (["cr|oos_nodis"], "cr|enr_nodis"), "oos_504": (["cr|oos_504"], "cr|enr_504"),
+    "expulsion_idea": (["cr|exp_idea"], "cr|enr_idea"), "restraint_physical_idea": (["cr|rs_phys_idea"], "cr|enr_idea"),
+    "restraint_mechanical_idea": (["cr|rs_mech_idea"], "cr|enr_idea"), "seclusion_idea": (["cr|rs_secl_idea"], "cr|enr_idea"),
+    "referral_idea": (["cr|ref_idea"], "cr|enr_idea"), "arrest_idea": (["cr|arr_idea"], "cr|enr_idea"),
+    "child_poverty": (["pov|children_poor"], "pov|children_5_17"),
+}
+
+
+def add_counts(out: pd.DataFrame, det: pd.DataFrame) -> pd.DataFrame:
+    """Add <measure>_count and <measure>_group next to each rate, so figures can be recomputed or pooled.
+    Withheld or unreported pieces are left blank, never estimated."""
+    det = det.reindex(out.leaid)
+    def col(name):
+        if name.startswith("main:"):
+            return pd.to_numeric(out[name[5:]], errors="coerce").reset_index(drop=True)
+        x = pd.to_numeric(det[name], errors="coerce") if name in det.columns else pd.Series(np.nan, index=det.index)
+        return x.where(x >= 0).reset_index(drop=True)
+    cols = list(out.columns)
+    out = out.reset_index(drop=True)
+    for k, (nums, den) in COUNTS.items():
+        parts = [col(n) for n in nums]
+        num_ = parts[0] if len(parts) == 1 else pd.concat(parts, axis=1).sum(axis=1, min_count=len(parts))
+        out[k + "_count"] = num_.round().astype("Int64")
+        out[k + "_group"] = col(den).round().astype("Int64")
+        i = cols.index(k + "_status") + 1
+        cols[i:i] = [k + "_count", k + "_group"]
+    return out[cols]
+
+
+def download_page(fname: str, n: int, dname: str = "", ncols: int = 0) -> str:
+    detail = f"""
+<h2>Full detail file</h2>
+<p>Every count behind the district pages, one row per district: all federal disability categories for early childhood and school age,
+every learning setting, every way students left special education, civil rights counts by group, district finances, and the child poverty estimate
+({ncols} columns).</p>
+<p><a class="button" href="{BASE}download/{dname}" download>Download {E(dname)}</a></p>
+{explain("detail_codes")}""" if dname else ""
     body = f"""
 <h1>Download the data</h1>
-<p class="lede">The full data set, one row per district ({n:,} rows), as a CSV file you can open in Excel or any statistics program.</p>
+<p class="lede">Everything in IDEA Atlas, ready to open in Excel or any statistics program.</p>
+
+<h2>Main file</h2>
+<p>One row per district ({n:,} rows). Each measure has three companions: <code>_status</code> says whether the figure is a real number or why it is not shown;
+<code>_count</code> and <code>_group</code> give the number of students counted and the size of the group, so you can recompute a rate or pool districts.</p>
 <p><a class="button" href="{BASE}download/{fname}" download>Download {E(fname)}</a></p>
-<p>Each measure has a matching column ending in <code>_status</code> that says whether the figure is a real number
-or why it is not shown. The <a href="{BASE}methods/#dictionary">data dictionary</a> describes every column.
+{explain("status")}
+{detail}
+
+<h2>Using the files</h2>
+<p>The <a href="{BASE}methods/#dictionary">data dictionary</a> describes every measure and the group it is counted against, and the
+<a href="{BASE}methods/#rules">data rules</a> explain privacy, small groups, and minimums.
 Code and processed data are shared under a Creative Commons Attribution 4.0 license. The original federal data are in the public domain.</p>
 <p>Please <a href="{BASE}methods/#cite">cite IDEA Atlas</a> with its version number ({VERSION}) so others can find the same figures.</p>
 """
-    return page("Download the data", body, desc="Download the full IDEA Atlas data set as a CSV file.",
+    return page("Download the data", body, desc="Download the full IDEA Atlas data set as CSV files: district measures with counts, and a full detail file.",
                 path=BASE + "download/", crumbs=[("IDEA Atlas", BASE)])
 
 
@@ -446,8 +546,10 @@ def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> str:
     v, s = r[k], str(r[k + "_status"])
     sm = st_med[k].get(r.state, np.nan)
     nm = nat_med[k]
+    lo, hi = st_med["_q"][k][0].get(r.state, np.nan), st_med["_q"][k][1].get(r.state, np.nan)
+    mid = f"{fmt(lo, unit)} to {fmt(hi, unit)}" if pd.notna(lo) and pd.notna(hi) else "—"
     return (f"<tr><th scope=\"row\">{E(label)}</th><td>{E(cell(v, s, unit))}</td>"
-            f"<td>{E(fmt(sm, unit)) or '—'}</td><td>{E(fmt(nm, unit)) or '—'}</td></tr>")
+            f"<td>{E(fmt(sm, unit)) or '—'}</td><td>{E(mid)}</td><td>{E(fmt(nm, unit)) or '—'}</td></tr>")
 
 
 def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, unit_note: str, extra: str = "",
@@ -463,10 +565,10 @@ def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, u
   <div class="table-wrap" role="region" tabindex="0" aria-labelledby="{sid}-cap">
   <table class="profile">
     <caption id="{sid}-cap">{E(title)}: {E(unit_note)}</caption>
-    <thead><tr><th scope="col">Measure</th><th scope="col">This district</th><th scope="col">State median</th><th scope="col">National median</th></tr></thead>
+    <thead><tr><th scope="col">Measure</th><th scope="col">This district</th><th scope="col">State median</th><th scope="col">Middle half of state districts</th><th scope="col">National median</th></tr></thead>
     <tbody>{''.join(rows)}</tbody>
   </table>
-  </div>{more}
+  </div>{explain("middle")}{more}
   </details>
   {extra}
   <p class="source">Source: {E(sources)}. <a href="{BASE}methods/#sources">About the sources</a></p>
@@ -535,6 +637,26 @@ def full_who(dr) -> str:
                          "Category names are the federal terms used in the IDEA count.")
 
 
+PLAIN_ROW = {
+    "Inside regular class 80% or more of the day": "In a general class 80% or more of the day",
+    "Inside regular class 40% through 79% of the day": "In a general class 40% to 79% of the day",
+    "Inside regular class less than 40% of the day": "In a general class less than 40% of the day",
+    "Separate School": "Separate school", "Residential Facility": "Residential facility",
+    "Homebound/Hospital": "At home or in a hospital", "Correctional Facilities": "Correctional facility",
+    "Parentally placed in private schools": "Private school chosen by the family",
+    "Services in Regular Early Childhood Program (at least 10 hours)": "Preschool class, 10 or more hours a week, services there",
+    "Other Location Regular Early Childhood Program (at least 10 hours)": "Preschool class, 10 or more hours a week, services elsewhere",
+    "Services in Regular Early Childhood Program (less than 10 hours)": "Preschool class, under 10 hours a week, services there",
+    "Other Location Regular Early Childhood Program (less than 10 hours)": "Preschool class, under 10 hours a week, services elsewhere",
+    "Separate Class": "Separate class", "Home": "At home", "Service Provider Location": "At a service provider's location",
+    "Died": "Died", "Dropped Out": "Dropped out", "Graduated With an Alternate Diploma": "Alternate diploma",
+    "Graduated With Regular High School Diploma": "Regular high school diploma", "Moved, Known to be Continuing": "Moved and continuing school elsewhere",
+    "Reached Maximum Age": "Reached the maximum age for services", "Received a Certificate": "Certificate of completion",
+    "Transferred to Regular Education": "No longer needs special education", "Total Exiting School": "All who left school",
+    "Total Exiting Special Education": "All who left special education",
+}
+
+
 def full_where(dr) -> str:
     if dr is None:
         return ""
@@ -545,7 +667,7 @@ def full_where(dr) -> str:
         if not cols:
             continue
         tot = dr.get(f"ev|{allc}")
-        rows = [[c.replace(pre + " ", "", 1), raw_cell(dr.get(f"ev|{c}")), per100(dr.get(f"ev|{c}"), tot)] for c in cols]
+        rows = [[PLAIN_ROW.get(c.replace(pre + " ", "", 1), c.replace(pre + " ", "", 1)), raw_cell(dr.get(f"ev|{c}")), per100(dr.get(f"ev|{c}"), tot)] for c in cols]
         rows.append(["All settings", raw_cell(tot), "100.0" if num(tot) else "—"])
         tid = "fd-where-" + pre.split()[0].lower()
         out.append(detail_table(f"Where students with IEPs learn, {label}, 2024–25", ["Setting", "Students", "Per 100 students with IEPs"], rows, tid))
@@ -559,7 +681,7 @@ def full_leave(dr) -> str:
     if not cols:
         return ""
     tot = dr.get("ex|All Disabilities Total Exiting Special Education")
-    rows = [[c.replace("All Disabilities ", "", 1), raw_cell(dr.get(f"ex|{c}")), per100(dr.get(f"ex|{c}"), tot) if "Total" not in c else ""] for c in cols]
+    rows = [[PLAIN_ROW.get(c.replace("All Disabilities ", "", 1), c.replace("All Disabilities ", "", 1)), raw_cell(dr.get(f"ex|{c}")), per100(dr.get(f"ex|{c}"), tot) if "Total" not in c else ""] for c in cols]
     return details_block("Full detail: every way students left special education",
                          detail_table("How students with IEPs, ages 14 to 21, left special education, 2023–24", ["Reason", "Students", "Per 100 who left special education"], rows, "fd-leave"),
                          "Leaving school counts graduation, other completion, reaching the maximum age, and dropping out. Leaving special education also counts students who moved or returned to general education.")
@@ -633,7 +755,6 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
         meta.append(("Grades", f"{r.grade_low} to {r.grade_high}"))
     if pd.notna(r.enrollment):
         meta.append(("Students, 2024–25", f"{r.enrollment:,.0f}"))
-    meta.append(("NCES district ID", str(r.leaid)))
     parent = ""
     if isinstance(r.part_of, str) and r.part_of in by_id.index:
         p = by_id.loc[r.part_of]
@@ -649,11 +770,11 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     # at a glance
     glance = []
     if str(r.id_rate_status) == "ok":
-        glance.append(f"In 2024–25, {fmt(r.id_rate, 'per100')} of every 100 students enrolled had an IEP served by the district.")
+        glance.append(add_everyday(f"In 2024–25, {fmt(r.id_rate, 'per100')} of every 100 students enrolled had an IEP served by the district.", fmt(r.id_rate, 'per100'), r.id_rate))
     if str(r.env_80plus_status) == "ok":
-        glance.append(f"{fmt(r.env_80plus, 'per100')} of every 100 students with IEPs spent at least 80% of the day in a general class.")
+        glance.append(add_everyday(f"{fmt(r.env_80plus, 'per100')} of every 100 students with IEPs spent at least 80% of the day in a general class.", fmt(r.env_80plus, 'per100'), r.env_80plus))
     if str(r.grad_regular_status) == "ok":
-        glance.append(f"Of students with IEPs who left school in 2023–24, {fmt(r.grad_regular, 'per100')} of every 100 left with a regular diploma.")
+        glance.append(add_everyday(f"Of students with IEPs who left school in 2023–24, {fmt(r.grad_regular, 'per100')} of every 100 left with a regular diploma.", fmt(r.grad_regular, 'per100'), r.grad_regular))
     if str(r.oos_idea_status) == "ok" and str(r.oos_nodis_status) == "ok":
         glance.append(f"In 2023–24, {fmt(r.oos_idea, 'per100')} of every 100 students with IEPs received an out-of-school suspension, "
                       f"compared with {fmt(r.oos_nodis, 'per100')} of every 100 students without disabilities.")
@@ -711,10 +832,25 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
   {explain("rating")}
   <p class="source">Source: {E(SOURCES['det'][0])}, {E(SOURCES['det'][1])}.</p>
 </section>
+<section aria-labelledby="s-ask">
+  <h2 id="s-ask">Questions you could ask</h2>
+  <p>Numbers can start a conversation. If you are a parent or caregiver, these questions may help when you talk with the district or at an IEP meeting.</p>
+  <ul class="ask">
+    <li>How does the district decide whether a child needs special education, and how long does an evaluation take?</li>
+    <li>What supports help students with IEPs learn alongside their classmates in general classes?</li>
+    <li>How are families included when an IEP is written and reviewed?</li>
+    <li>What can a family do if they disagree with a decision?</li>
+    <li>How does the district help students with IEPs plan for life after high school?</li>
+    <li>Where can I read the district's own special education reports?</li>
+  </ul>
+  <p>For free, one-on-one help, every state has at least one federally funded Parent Training and Information Center.
+  <a href="https://www.parentcenterhub.org/find-your-center/">Find your state's Parent Center</a>.</p>
+</section>
 <section aria-labelledby="s-more">
   <h2 id="s-more">Using these figures</h2>
   <p>These figures describe what was reported. They are not grades. See <a href="{BASE}methods/">methods and sources</a> for how each one is made.</p>
   {explain("median", "status", "years")}
+  <p>Federal ID for this district: {r.leaid}. This is the National Center for Education Statistics (NCES) number, useful when looking up the district in other federal data.</p>
   <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/</p>
 </section>
 """

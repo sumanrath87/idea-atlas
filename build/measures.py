@@ -114,6 +114,9 @@ TERMS = {
     "median": ("What is a median?",
                "The median is the middle district: half of districts have a higher figure and half have a lower one. "
                "It gives context. It is not a target or a grade."),
+    "middle": ("What is the middle half?",
+               "Line up every district in the state from lowest to highest and set aside the lowest quarter and the highest quarter. "
+               "The middle half is the range that is left (the 25th to the 75th percentile). A figure outside it is less common in that state, not necessarily better or worse."),
     "typical": ("What does “typical district” mean?",
                 "On this site, the typical district is the median: the district in the middle when all districts in the state, or the nation, are lined up from lowest to highest."),
     "categories": ("What are the federal categories?",
@@ -142,6 +145,9 @@ TERMS = {
     "status": ("Why are some figures missing?",
                "Agencies withhold small numbers to protect students' privacy, and a rate is not shown when fewer than 10 students are in the group. "
                "“At least” means part of a figure was withheld, so the true number is the same or higher. Missing figures are never estimated."),
+    "detail_codes": ("How are missing values marked in the detail file?",
+                     "Values are as reported. A blank cell was not reported. In the IDEA columns, -8 means withheld for privacy and -9 means flagged for data quality. "
+                     "Civil rights columns have a matching status column (ok, ok_partial for a minimum, hidden, not_reported). Finance amounts are in thousands of dollars."),
     "rating": ("What are the state IDEA ratings?",
                "Each year the U.S. Department of Education reviews each state and gives one of four ratings: meets requirements, needs assistance, "
                "needs intervention, or needs substantial intervention. The rating is about the state, not any one district."),
