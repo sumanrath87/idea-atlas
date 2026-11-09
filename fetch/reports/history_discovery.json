@@ -1,0 +1,3273 @@
+{
+ "lea_child_count": [],
+ "lea_environments": [],
+ "lea_exiting": [],
+ "state_child_count": [],
+ "state_cc_env": [],
+ "state_environments": [],
+ "state_exiting": [],
+ "static_tables_b": [],
+ "crdc": [
+  {
+   "url": "https://civilrightsdata.ed.gov/data",
+   "text": "Download Data Files"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2023-24-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-school-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-lea-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 User's Manual.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 Master List of CRDC Definitions.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 Appendix Workbook.xlsx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2021-2022",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2021-22-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-school-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-lea-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22 User's Manual.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-2220List20Definitions.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22 Appendix Workbook.xlsx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2020-2021",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2020-21-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-school-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-lea-form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21 User's Manual.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/Master List of Definitions.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21 Appendix Workbook.xlsx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2017-2018",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2017-18-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/2017-18-All-Schools-Form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/2017-18-CRDC-LEA-Form.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/2017-18 CRDC Public-Use Data File Manual.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2017-18.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/2017-18_Master_List_of_CRDC_Definitions.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/appendix/Appendix-C-LEAs-Identified-with-Post-Submission-Data-Quality-Checks.xlsx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2015-2016",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2015-16-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2015-16.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2015-16.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/Public-Use-Data-File-Manual-2015-16.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2015-16.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2015-16.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/appendix/2015-16-data-notes-addendum.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2013-2014",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2013-14-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2013-14.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2013-14.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/CRDC-Public-Use-Data-File-Users-Manual-2013-14.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2013-14.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Defintions-2013-14.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2011-2012",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2011-12-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/Table-Layouts-2011-12.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/Table-Layouts-2011-12.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/Data-Notes-CRDC-2011-12.pdf",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2011-12.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2009-2010",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2009-10-crdc-data.zip",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/p1-p2-3-CRDC-2009-10.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/p1-p2-3-CRDC-2009-10.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2009-10.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2009-10.docx",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2006",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2004",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/estimations/2000",
+   "text": "Download"
+  },
+  {
+   "url": "https://civilrightsdata.ed.gov/data",
+   "text": "Download Data Files"
+  }
+ ],
+ "ccd_agency": [
+  {
+   "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
+   "text": "2009-10 Errata Report"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_csv.zip",
+   "text": "Flat File (ZIP 1.04 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_sas.zip",
+   "text": "SAS File (ZIP 1.45 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip",
+   "text": "Release Notes"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/SY1819_Directory_DataNotes.xlsx",
+   "text": "Directory Data Notes"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Companion.xlsx",
+   "text": "Companion File"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Layout.xlsx",
+   "text": "Record Layout (29.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx",
+   "text": "State Data Notes"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip",
+   "text": "Flat and SAS File  (ZIP 2.50 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Companion.xlsx",
+   "text": "Excel File (906 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Layout.xlsx",
+   "text": "Excel File (30 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip",
+   "text": "Flat and SAS File  (ZIP 50.0 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Companion.xlsx",
+   "text": "Excel File (1.14 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Layout.xlsx",
+   "text": "Excel File (24.6 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip",
+   "text": "Flat and SAS File  (ZIP 6.77 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Companion.xlsx",
+   "text": "Excel File (1.14 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Layout.xlsx",
+   "text": "Excel File (24 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip",
+   "text": "Flat and SAS File  (ZIP 712 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Companion.xlsx",
+   "text": "Excel File (1.14 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Layout.xlsx",
+   "text": "Excel File (23.6 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip",
+   "text": "Flat and SAS File  (ZIP 680 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Companion.xlsx",
+   "text": "Excel File (1.14 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Layout.xlsx",
+   "text": "Excel File (23.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/2019052_Documentation_CCD.zip",
+   "text": "ZIP (608 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip",
+   "text": "Release Notes"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx",
+   "text": "State Data Notes"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1617_w_1a_11212017.zip",
+   "text": "Flat and SAS File  (ZIP 2.25 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Companion.xlsx",
+   "text": "Excel File (826 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Layout.xls",
+   "text": "Excel File (53.0 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1617_l_2a_11212017.zip",
+   "text": "Flat and SAS File  (ZIP 50.4 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Companion.xlsx",
+   "text": "Excel File (0.98 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Layout.xls",
+   "text": "Excel File (37.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1617_l_2a_11212017.zip",
+   "text": "Flat and SAS File  (ZIP 7.17 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Companion.xlsx",
+   "text": "Excel File (0.98 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Layout.xls",
+   "text": "Excel File (32.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1617_l_2a_11212017.zip",
+   "text": "Flat and SAS File  (ZIP 712 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Companion.xlsx",
+   "text": "Excel File (0.98 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Layout.xls",
+   "text": "Excel File (31.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1617_l_2a_11212017.zip",
+   "text": "Flat and SAS File  (ZIP 677 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Companion.xlsx",
+   "text": "Excel File (0.98 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Layout.xls",
+   "text": "Excel File (31.5 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/2017074_Documentation_CCD_201516.zip",
+   "text": "ZIP (635 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx",
+   "text": "Crossfile Companion (411 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2015-16_CCD_LEA-Level_Data_10.12.17.xlsx",
+   "text": "Master Layout (16 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_csv.zip",
+   "text": "Flat File (ZIP 0.97 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_sas.zip",
+   "text": "SAS File (ZIP 1.19 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory.xlsx",
+   "text": "Excel File ( 756 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory_layout.xlsx",
+   "text": "Excel File (17 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_csv.zip",
+   "text": "Flat File (ZIP 2.58 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_sas.zip",
+   "text": "SAS File (ZIP 3.52 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership.xlsx",
+   "text": "Excel File (659 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership_layout.xlsx",
+   "text": "Excel File (25 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/CCD_LEA_059_1516_W_1a_011717_csv.zip",
+   "text": "Flat File (ZIP 822 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1516_w_1a_011717_sas.zip",
+   "text": "SAS File (ZIP 1 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff.xlsx",
+   "text": "Excel File (625 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff_layout.xlsx",
+   "text": "Excel File (16 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_csv.zip",
+   "text": "Flat File (ZIP 306 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_sas.zip",
+   "text": "SAS File (ZIP 378 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA.xlsx",
+   "text": "Excel File (624 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA_layout.xlsx",
+   "text": "Excel File (13 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_csv.zip",
+   "text": "Flat File (ZIP 277 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_sas.zip",
+   "text": "SAS File (ZIP 344 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL.xlsx",
+   "text": "Excel File (623 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL_layout.xlsx",
+   "text": "Excel File (13 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/2016077_CCD_201415_Data_File_Documentation.zip",
+   "text": "ZIP (586 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2014-15_CCD_LEA-Level_Data.xlsx",
+   "text": "Master Layout (17 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_txt.zip",
+   "text": "Flat File (ZIP 925 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_sas.zip",
+   "text": "SAS File (ZIP 1.05 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory.xlsx",
+   "text": "Excel File (649 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory_File_Layout.xlsx",
+   "text": "Excel File (40 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_0216161a_txt.zip",
+   "text": "Flat File (ZIP 2.58 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_02161601a_sas.zip",
+   "text": "SAS File (ZIP 3.62 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_Membership.xlsx",
+   "text": "Excel File (773 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Membership_File_Layout.xlsx",
+   "text": "Excel File (158 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_txt.zip",
+   "text": "Flat File (ZIP 791 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_sas.zip",
+   "text": "SAS File (ZIP 980 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Staff.xlsx",
+   "text": "Excel File (643 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Staff_File_Layout.xlsx",
+   "text": "Excel File (44 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_txt.zip",
+   "text": "Flat File (ZIP 287 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_sas.zip",
+   "text": "SAS File (ZIP 374 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA SPEC ED.xlsx",
+   "text": "Excel File (616 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA SPEC ED_File_Layout.xlsx",
+   "text": "Excel File (17 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_txt.zip",
+   "text": "Flat File (ZIP 282 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_sas.zip",
+   "text": "SAS File (ZIP 353 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_ELL.xlsx",
+   "text": "Excel File (614 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA ELL_File_Layout.xlsx",
+   "text": "Excel File (14 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_csv.zip",
+   "text": "ZIP (593&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/2017010_EDGE_GEOIDS_201415_160913_Documentation.zip",
+   "text": "ZIP (963&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_COMPANIONFILE.zip",
+   "text": "ZIP (26.6&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_xlsx.zip",
+   "text": "ZIP (2.40&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_txt.zip",
+   "text": "ZIP (3.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sas.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag131a_Documentation.zip",
+   "text": "ZIP (391 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau131alay.txt",
+   "text": "Flat File (40.8&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_sas.zip",
+   "text": "ZIP (5.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_supp_txt.zip",
+   "text": "ZIP (4.2 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sas.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_documentation.zip",
+   "text": "ZIP (223 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/txt/pau121alay.txt",
+   "text": "Flat File (48.9&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_supp_sas.zip",
+   "text": "ZIP (5.1 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag111a_txt.zip",
+   "text": "ZIP (4.4 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/ag111a_sascode.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag111a_documentation.zip",
+   "text": "ZIP (306 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/txt/pau111alay.txt",
+   "text": "Flat File (48.9&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag111a_sas.zip",
+   "text": "ZIP (6.44 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/ag111a_spsscode.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag102a_txt.zip",
+   "text": "ZIP (4.11 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag102a_sas.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/2010_LEA_2A_doc.zip",
+   "text": "ZIP (550 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/txt/pau102alay.txt",
+   "text": "Flat File (39.1&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/ag102a_sas7bdat.zip",
+   "text": "ZIP (5.72 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag102a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag092a_txt.zip",
+   "text": "ZIP (1.72 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sas.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau092alay.txt",
+   "text": "Flat File (19&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag092a_sas.zip",
+   "text": "ZIP (2.27 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag091a_txt.zip",
+   "text": "ZIP (1.6 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
+   "text": "2009-10 Errata Report"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_091a.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_08.zip",
+   "text": "ZIP (1.8 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau091agen.zip",
+   "text": "ZIP (451 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau091alay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag091a_sas.zip",
+   "text": "ZIP (2.1 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
+   "text": "2009-10 Errata Report"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_091a.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag081a_txt.zip",
+   "text": "ZIP (1.5 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_081a.zip",
+   "text": "SAS Format"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau081agen.zip",
+   "text": "ZIP (442 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau081alay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag081a_sas.zip",
+   "text": "ZIP (2 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_081a.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag071b_txt.zip",
+   "text": "ZIP (1.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_07b.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau071bgen.zip",
+   "text": "ZIP (413 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau071blay.txt",
+   "text": "Flat File (16&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag071b_sas.zip",
+   "text": "ZIP (2.1&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_07b.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag061c_dat.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_06.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau061cgen.zip",
+   "text": "ZIP (242 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau061clay.txt",
+   "text": "Flat File (30&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag061c_sas.zip",
+   "text": "ZIP (2.1&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_06.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag051a_dat.zip",
+   "text": "ZIP (1.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_05.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau051agen.zip",
+   "text": "ZIP (215 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau051alay.txt",
+   "text": "Flat File (25&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag051a_sas.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_05.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag041c_dat.zip",
+   "text": "ZIP (1.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_041c.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau041cgen.zip",
+   "text": "ZIP (229 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau041clay.txt",
+   "text": "Flat File (24 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag041c_sas.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_041c.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag031b_dat.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_03.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau031bgen.zip",
+   "text": "ZIP (137 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau031blay.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag031b_sas.zip",
+   "text": "ZIP (2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_03.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag021a_dat.zip",
+   "text": "ZIP (1.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_02.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau021agen.zip",
+   "text": "ZIP (121 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau021alay.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag021a.zip",
+   "text": "ZIP (2.1&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_02.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag011a_dat.zip",
+   "text": "ZIP (2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_01.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau01gen.zip",
+   "text": "ZIP (84 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau01lay.txt",
+   "text": "Flat File (32&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag011a.zip",
+   "text": "ZIP (2.1&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_01.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag001a_dat.zip",
+   "text": "ZIP (2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_00.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau00gen.zip",
+   "text": "ZIP (110 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau00lay.txt",
+   "text": "Flat File (32&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag001a.zip",
+   "text": "ZIP (2.3&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_00.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag991b_dat.zip",
+   "text": "ZIP (2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_99.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau99genr.zip",
+   "text": "ZIP (104 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau99lay.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag991b.zip",
+   "text": "ZIP (2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_99.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag981c_dat.zip",
+   "text": "ZIP (1.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_98.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau98rgen.zip",
+   "text": "ZIP (103 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau98lay.txt",
+   "text": "Flat File (25&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ag981c.zip",
+   "text": "ZIP (1.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_98.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau97data.zip",
+   "text": "ZIP (1.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_97.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau97gen.zip",
+   "text": "ZIP (80 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau97lay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/ccdagn97.zip",
+   "text": "ZIP (1.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_97.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau96data.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_96.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau96gen.zip",
+   "text": "ZIP (103 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau96lay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_96.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau95data.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_95.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau95gen.zip",
+   "text": "ZIP (106&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau95lay.txt",
+   "text": "Flat File (23&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_95.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau94datr.zip",
+   "text": "ZIP (1.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_94.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau94gen.zip",
+   "text": "ZIP (138&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau94lay.txt",
+   "text": "Flat File (23&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_94.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau93data.zip",
+   "text": "ZIP (1.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_93.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau93gen.zip",
+   "text": "ZIP (129&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau93lay.txt",
+   "text": "Flat File (20&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_93.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau92data.zip",
+   "text": "ZIP (1.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_92.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau92gen.zip",
+   "text": "ZIP (109&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau92lay.txt",
+   "text": "Flat File (23&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_92.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau91data.zip",
+   "text": "ZIP (889&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_91.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/pau91gen.zip",
+   "text": "ZIP (138 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau91lay.txt",
+   "text": "Flat File (4 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_91.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau90data.zip",
+   "text": "ZIP (869&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_90.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau90lay.txt",
+   "text": "Flat File (3&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_90.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau89data.zip",
+   "text": "ZIP (879&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_89.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau89lay.txt",
+   "text": "Flat File (3&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_89.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau88data.zip",
+   "text": "ZIP (863&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_88.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau88lay.txt",
+   "text": "Flat File (3&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_88.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau87data.zip",
+   "text": "ZIP (852&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_87.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau87lay.txt",
+   "text": "Flat File (3&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_87.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/pau86data.zip",
+   "text": "ZIP (712&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_86.zip",
+   "text": "SAS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/pau86lay.txt",
+   "text": "Flat File (3&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip",
+   "text": "SPSS Code"
+  }
+ ],
+ "f33_agency": [
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/Sdf18_1a.zip",
+   "text": "ZIP (3.1 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf18_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf18_1a_layout.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf18_1a_sas7bdat.zip",
+   "text": "ZIP (4.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/Sdf17_1a.zip",
+   "text": "ZIP (3.1 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf17_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf17_1a_layout.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf17_1a_sas7bdat.zip",
+   "text": "ZIP (4.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/Sdf16_1a.zip",
+   "text": "ZIP (3.05 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf16_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/2019304.zip",
+   "text": "ZIP (1.33&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf16_1a_layout.txt",
+   "text": "Flat File (33.4&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf16_1a_sas7bdat.zip",
+   "text": "ZIP (4.43&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf15_1a.zip",
+   "text": "ZIP (2.96 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf15_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/2018303_F-33_documentation.zip",
+   "text": "ZIP (0.99&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf15_1a_layout.txt",
+   "text": "Flat File (33&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf150_2a_sas7bdat.zip",
+   "text": "ZIP (4.34&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_flat.zip",
+   "text": "ZIP (2.99 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/2016304_F-33_documentation.zip",
+   "text": "ZIP (924&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf14_1a_layout.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf14_1a_SAS.zip",
+   "text": "ZIP (4.30&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a.zip",
+   "text": "ZIP (3.34 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf13_1a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf13_1a_layout.txt",
+   "text": "Flat File (33.5&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a_survey_form.pdf.zip",
+   "text": "ZIP (158&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a.sas7bdat.zip",
+   "text": "ZIP (4.34&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf121a.zip",
+   "text": "ZIP (2.93 MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf121a_spss_code.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/Sdf1a_documenation_files.zip",
+   "text": "ZIP (982 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf121alayout.txt",
+   "text": "Flat File (34&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf121a_survey_form.zip",
+   "text": "ZIP (167&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf121a_suppressed.sas7bdat.zip",
+   "text": "ZIP (4&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_txt.zip",
+   "text": "ZIP (3.4&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf11_1a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf11_1a_gen.zip",
+   "text": "ZIP (918 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf11_1a_layout.txt",
+   "text": "Flat File (33&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_surveyform.zip",
+   "text": "ZIP (223&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_sas7bdat.zip",
+   "text": "ZIP (4.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SDF101a_txt.zip",
+   "text": "ZIP (3.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf101a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf101agen.zip",
+   "text": "ZIP (970 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf101alayout.txt",
+   "text": "Flat File (33&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf101a_sas.zip",
+   "text": "ZIP (5.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/SDF091a_txt.zip",
+   "text": "ZIP (2.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf091a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf091agen.zip",
+   "text": "ZIP (780 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf091alayout.txt",
+   "text": "Flat File (32&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf091a_sas.zip",
+   "text": "ZIP (4.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf081a_txt.zip",
+   "text": "ZIP (2.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf081a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf081agen.zip",
+   "text": "ZIP (769 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf081alayout.txt",
+   "text": "Flat File (22&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf081a_sas.zip",
+   "text": "ZIP (4.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf071a.txt.zip",
+   "text": "ZIP (3.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/sdf071a_sps.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf071agen.zip",
+   "text": "ZIP (249 KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf071alayout.txt",
+   "text": "Flat File (19&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf071a.sas.zip",
+   "text": "ZIP (4.3&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf061a.txt.zip",
+   "text": "ZIP (3.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_061a.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf061agen.zip",
+   "text": "ZIP (407&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf061alay.txt",
+   "text": "Flat File (18&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf061a.sas.zip",
+   "text": "ZIP (4.3&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf051c.txt.zip",
+   "text": "ZIP (2.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/SPSS_051c.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf051cgen.zip",
+   "text": "ZIP (487 &nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf051clay.txt",
+   "text": "Flat File (18&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf051c.sas.zip",
+   "text": "ZIP (4.1&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf041b.txt.zip",
+   "text": "ZIP (3.2&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_041b.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf041bgen.zip",
+   "text": "ZIP (300&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf041blay.txt",
+   "text": "Flat File (24&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf041b.sas.zip",
+   "text": "ZIP (4.3&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf031b.txt.zip",
+   "text": "ZIP (2.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_031b.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf031bgen.zip",
+   "text": "ZIP (403&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf031blay.txt",
+   "text": "Flat File (23&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf031b.sas.zip",
+   "text": "ZIP (3.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf021ctxt.zip",
+   "text": "ZIP (3&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_021C.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf021cgen.zip",
+   "text": "ZIP (182&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf021clay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf021cdata.zip",
+   "text": "ZIP (4&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf011d.txt.zip",
+   "text": "ZIP (2.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_011D.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf011dgen.zip",
+   "text": "ZIP (608&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf011dlay.txt",
+   "text": "Flat File (18&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf011d.sas.zip",
+   "text": "ZIP (3.9&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf001d.txt.zip",
+   "text": "ZIP (2.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_001D.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf001dgen.zip",
+   "text": "ZIP (166&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf001dlay.txt",
+   "text": "Flat File (19&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf001d.data.zip",
+   "text": "ZIP (3.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf991c.txt.zip",
+   "text": "ZIP (2.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_991C.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf99gen1c.zip",
+   "text": "ZIP (174&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf991clay.txt",
+   "text": "Flat File (17&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf991c.sas.zip",
+   "text": "ZIP (3.8&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf981e.txt.zip",
+   "text": "ZIP (2.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_98D1E.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf981egen.zip",
+   "text": "ZIP (144&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf981elay.txt",
+   "text": "Flat File (7&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf981e.sas.zip",
+   "text": "ZIP (3.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf97d1a.txt.zip",
+   "text": "ZIP (2.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_97D1A.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf971agen.zip",
+   "text": "ZIP (132&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf97layr.txt",
+   "text": "Flat File (9&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf97d1a.sas.zip",
+   "text": "ZIP (3.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf96c1b.txt.zip",
+   "text": "ZIP (2.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_96C1B.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf96c1bgen.zip",
+   "text": "ZIP (150&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf96layr.txt",
+   "text": "Flat File (9&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf96c1b.sas.zip",
+   "text": "ZIP (3.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf95c1d.txt.zip",
+   "text": "ZIP (2.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_95C1D.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf95c1dgen.zip",
+   "text": "ZIP (133&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf95layr.txt",
+   "text": "Flat File (9&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf95c1d.sas.zip",
+   "text": "ZIP (3.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf921a.txt.zip",
+   "text": "ZIP (2.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_921a.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf921agen.zip",
+   "text": "ZIP (217&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf921alay.txt",
+   "text": "Flat File (10&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf921a.sas.zip",
+   "text": "ZIP (3.6&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf901a.txt.zip",
+   "text": "ZIP (1.7&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/f33/spss_901a.zip",
+   "text": "SPSS Code"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/Data/zip/sdf901agen.zip",
+   "text": "ZIP (1.5&nbsp;MB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/txt/sdf901alay.txt",
+   "text": "Flat File (6&nbsp;KB)"
+  },
+  {
+   "url": "https://nces.ed.gov/ccd/data/zip/sdf901a.sas.zip",
+   "text": "ZIP (2.3&nbsp;MB)"
+  }
+ ],
+ "census_finance": [
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/24elsec_prelim.xlsx",
+   "text": "24elsec_prelim.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.txt",
+   "text": "elsec24.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx",
+   "text": "elsec24.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24_sumtables.xlsx",
+   "text": "elsec24_sumtables.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.txt",
+   "text": "elsec24f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.xlsx",
+   "text": "elsec24f.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.txt",
+   "text": "elsec24t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx",
+   "text": "elsec24t.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/23elsec_prelim.xls",
+   "text": "23elsec_prelim.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.txt",
+   "text": "elsec23.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.xlsx",
+   "text": "elsec23.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23_sumtables.xlsx",
+   "text": "elsec23_sumtables.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.txt",
+   "text": "elsec23f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.xlsx",
+   "text": "elsec23f.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.txt",
+   "text": "elsec23t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.xlsx",
+   "text": "elsec23t.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/22elsec_prelim.xls",
+   "text": "22elsec_prelim.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.txt",
+   "text": "elsec22.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xls",
+   "text": "elsec22.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xlsx",
+   "text": "elsec22.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xls",
+   "text": "elsec22_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xlsx",
+   "text": "elsec22_sumtables.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.txt",
+   "text": "elsec22f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xls",
+   "text": "elsec22f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xlsx",
+   "text": "elsec22f.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.txt",
+   "text": "elsec22t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xls",
+   "text": "elsec22t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xlsx",
+   "text": "elsec22t.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/21elsec_prelim.xls",
+   "text": "21elsec_prelim.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21.txt",
+   "text": "elsec21.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21.xls",
+   "text": "elsec21.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21_sumtables.xls",
+   "text": "elsec21_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21f.txt",
+   "text": "elsec21f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21f.xls",
+   "text": "elsec21f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21t.txt",
+   "text": "elsec21t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21t.xls",
+   "text": "elsec21t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/20elsec_prelim.xlsx",
+   "text": "20elsec_prelim.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20.txt",
+   "text": "elsec20.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20.xls",
+   "text": "elsec20.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20_sumtables.xls",
+   "text": "elsec20_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20f.txt",
+   "text": "elsec20f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20f.xls",
+   "text": "elsec20f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20t.txt",
+   "text": "elsec20t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20t.xls",
+   "text": "elsec20t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/20elsec_prelim.xlsx",
+   "text": "20elsec_prelim.xlsx"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19.txt",
+   "text": "elsec19.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19.xls",
+   "text": "elsec19.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19_sumtables.xls",
+   "text": "elsec19_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19f.txt",
+   "text": "elsec19f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19f.xls",
+   "text": "elsec19f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19t.txt",
+   "text": "elsec19t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19t.xls",
+   "text": "elsec19t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18.txt",
+   "text": "elsec18.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18.xls",
+   "text": "elsec18.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18_sumtables.xls",
+   "text": "elsec18_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18f.txt",
+   "text": "elsec18f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18f.xls",
+   "text": "elsec18f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18t.txt",
+   "text": "elsec18t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18t.xls",
+   "text": "elsec18t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/errata_report18.xls",
+   "text": "errata_report18.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17.txt",
+   "text": "elsec17.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17.xls",
+   "text": "elsec17.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17_sumtables.xls",
+   "text": "elsec17_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17_sumtables_old.xls",
+   "text": "elsec17_sumtables_old.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17f.txt",
+   "text": "elsec17f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17f.xls",
+   "text": "elsec17f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17t.txt",
+   "text": "elsec17t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17t.xls",
+   "text": "elsec17t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16.txt",
+   "text": "elsec16.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16.xls",
+   "text": "elsec16.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16_sumtables.xls",
+   "text": "elsec16_sumtables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16f.txt",
+   "text": "elsec16f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16f.xls",
+   "text": "elsec16f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16t.txt",
+   "text": "elsec16t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16t.xls",
+   "text": "elsec16t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15.txt",
+   "text": "elsec15.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15.xls",
+   "text": "elsec15.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15_sttables.xls",
+   "text": "elsec15_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15f.txt",
+   "text": "elsec15f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15f.xls",
+   "text": "elsec15f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15t.txt",
+   "text": "elsec15t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15t.xls",
+   "text": "elsec15t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14.txt",
+   "text": "elsec14.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14.xls",
+   "text": "elsec14.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14_sttables.xls",
+   "text": "elsec14_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14f.txt",
+   "text": "elsec14f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14f.xls",
+   "text": "elsec14f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14t.txt",
+   "text": "elsec14t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14t.xls",
+   "text": "elsec14t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/errata_report14.xls",
+   "text": "errata_report14.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13.txt",
+   "text": "elsec13.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13.xls",
+   "text": "elsec13.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13_sttables.xls",
+   "text": "elsec13_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13f.txt",
+   "text": "elsec13f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13f.xls",
+   "text": "elsec13f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13t.txt",
+   "text": "elsec13t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13t.xls",
+   "text": "elsec13t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12.txt",
+   "text": "elsec12.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12.xls",
+   "text": "elsec12.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12_sttables.xls",
+   "text": "elsec12_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12f.txt",
+   "text": "elsec12f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12f.xls",
+   "text": "elsec12f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12t.txt",
+   "text": "elsec12t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12t.xls",
+   "text": "elsec12t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11.txt",
+   "text": "elsec11.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11.xls",
+   "text": "elsec11.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11_sttables.xls",
+   "text": "elsec11_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11f.txt",
+   "text": "elsec11f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11f.xls",
+   "text": "elsec11f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11t.txt",
+   "text": "elsec11t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11t.xls",
+   "text": "elsec11t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10.txt",
+   "text": "elsec10.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10.xls",
+   "text": "elsec10.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10_sttables.xls",
+   "text": "elsec10_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10f.txt",
+   "text": "elsec10f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10f.xls",
+   "text": "elsec10f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10t.txt",
+   "text": "elsec10t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10t.xls",
+   "text": "elsec10t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09.txt",
+   "text": "elsec09.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09.xls",
+   "text": "elsec09.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09_sttables.xls",
+   "text": "elsec09_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09f.txt",
+   "text": "elsec09f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09f.xls",
+   "text": "elsec09f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09t.txt",
+   "text": "elsec09t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09t.xls",
+   "text": "elsec09t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08.txt",
+   "text": "elsec08.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08.xls",
+   "text": "elsec08.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08_sttables.xls",
+   "text": "elsec08_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08f.txt",
+   "text": "elsec08f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08f.xls",
+   "text": "elsec08f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08t.txt",
+   "text": "elsec08t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08t.xls",
+   "text": "elsec08t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07.txt",
+   "text": "elsec07.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07.xls",
+   "text": "elsec07.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07_sttables.xls",
+   "text": "elsec07_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07f.txt",
+   "text": "elsec07f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07f.xls",
+   "text": "elsec07f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07t.txt",
+   "text": "elsec07t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07t.xls",
+   "text": "elsec07t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06.txt",
+   "text": "elsec06.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06.xls",
+   "text": "elsec06.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06_sttables.xls",
+   "text": "elsec06_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06f.txt",
+   "text": "elsec06f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06f.xls",
+   "text": "elsec06f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06t.txt",
+   "text": "elsec06t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06t.xls",
+   "text": "elsec06t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05.txt",
+   "text": "elsec05.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05.xls",
+   "text": "elsec05.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05_sttables.xls",
+   "text": "elsec05_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05f.txt",
+   "text": "elsec05f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05f.xls",
+   "text": "elsec05f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05t.txt",
+   "text": "elsec05t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05t.xls",
+   "text": "elsec05t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04.txt",
+   "text": "elsec04.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04.xls",
+   "text": "elsec04.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04_sttables.xls",
+   "text": "elsec04_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04f.txt",
+   "text": "elsec04f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04f.xls",
+   "text": "elsec04f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04t.txt",
+   "text": "elsec04t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04t.xls",
+   "text": "elsec04t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03.txt",
+   "text": "elsec03.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03.xls",
+   "text": "elsec03.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03_sttables.xls",
+   "text": "elsec03_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03f.txt",
+   "text": "elsec03f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03f.xls",
+   "text": "elsec03f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03t.txt",
+   "text": "elsec03t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03t.xls",
+   "text": "elsec03t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02.txt",
+   "text": "elsec02.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02.xls",
+   "text": "elsec02.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02_sttables.xls",
+   "text": "elsec02_sttables.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02f.txt",
+   "text": "elsec02f.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02f.xls",
+   "text": "elsec02f.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02t.txt",
+   "text": "elsec02t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02t.xls",
+   "text": "elsec02t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01.txt",
+   "text": "elsec01.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01.xls",
+   "text": "elsec01.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01t.txt",
+   "text": "elsec01t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01t.xls",
+   "text": "elsec01t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00.txt",
+   "text": "elsec00.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00.xls",
+   "text": "elsec00.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00t.txt",
+   "text": "elsec00t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00t.xls",
+   "text": "elsec00t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99.xls",
+   "text": "elsec99.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99t.txt",
+   "text": "elsec99t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99t.xls",
+   "text": "elsec99t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98.txt",
+   "text": "elsec98.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98.xls",
+   "text": "elsec98.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98t.txt",
+   "text": "elsec98t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98t.xls",
+   "text": "elsec98t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec99.txt",
+   "text": "elsec99.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97.txt",
+   "text": "elsec97.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97.xls",
+   "text": "elsec97.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97t.txt",
+   "text": "elsec97t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97t.xls",
+   "text": "elsec97t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96.txt",
+   "text": "elsec96.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96.xls",
+   "text": "elsec96.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96t.txt",
+   "text": "elsec96t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96t.xls",
+   "text": "elsec96t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95.txt",
+   "text": "elsec95.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95.xls",
+   "text": "elsec95.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95t.txt",
+   "text": "elsec95t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95t.xls",
+   "text": "elsec95t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94.txt",
+   "text": "elsec94.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94.xls",
+   "text": "elsec94.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94t.txt",
+   "text": "elsec94t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94t.xls",
+   "text": "elsec94t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93.txt",
+   "text": "elsec93.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93.xls",
+   "text": "elsec93.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93t.txt",
+   "text": "elsec93t.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93t.xls",
+   "text": "elsec93t.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1992/secondary-education-finance/elsec92.txt",
+   "text": "elsec92.txt"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1992/secondary-education-finance/elsec92.xls",
+   "text": "elsec92.xls"
+  },
+  {
+   "url": "https://www2.census.gov/programs-surveys/school-finances/tables/1957/1957-vol3-no1-fin-schdist.zip",
+   "text": "1957-vol3-no1-fin-schdist.zip"
+  }
+ ],
+ "saipe": [],
+ "digest": [
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.30.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.40.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.60.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.70.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn219.90.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn203.20.xlsx",
+   "status": 200,
+   "bytes": 27540
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d25/tables/xls/tabn203.10.xlsx",
+   "status": 200,
+   "bytes": 19144
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.30.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.40.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.60.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.70.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn219.90.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn203.20.xlsx",
+   "status": 200,
+   "bytes": 29058
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d24/tables/xls/tabn203.10.xlsx",
+   "status": 200,
+   "bytes": 26121
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.30.xlsx",
+   "status": 200,
+   "bytes": 28529
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.40.xlsx",
+   "status": 200,
+   "bytes": 30862
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.60.xlsx",
+   "status": 200,
+   "bytes": 28289
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.65.xlsx",
+   "status": 200,
+   "bytes": 25144
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.70.xlsx",
+   "status": 200,
+   "bytes": 38701
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn219.90.xlsx",
+   "status": 200,
+   "bytes": 25462
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn203.20.xlsx",
+   "status": 200,
+   "bytes": 23556
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d23/tables/xls/tabn203.10.xlsx",
+   "status": 200,
+   "bytes": 20466
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.30.xlsx",
+   "status": 200,
+   "bytes": 27546
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.40.xlsx",
+   "status": 200,
+   "bytes": 30212
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.60.xlsx",
+   "status": 200,
+   "bytes": 28016
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.65.xlsx",
+   "status": 200,
+   "bytes": 24579
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.70.xlsx",
+   "status": 200,
+   "bytes": 40353
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn219.90.xlsx",
+   "status": 200,
+   "bytes": 19075
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn203.20.xlsx",
+   "status": 200,
+   "bytes": 18374
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn203.10.xlsx",
+   "status": 200,
+   "bytes": 15602
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 52224
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 51200
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 57344
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 46080
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 52224
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d21/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 53760
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 50688
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 57344
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 44544
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 45568
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d20/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 50176
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 53760
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 50688
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 50688
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 47104
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 45568
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d19/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 55296
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 51200
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 53248
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.65.xlsx",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 56832
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 48128
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 54784
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d18/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 54272
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 53760
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 48640
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 52224
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 51200
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 47104
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 54784
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d17/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 52224
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 53760
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 48128
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 51200
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 50688
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 47104
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 54784
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d16/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 53760
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 48128
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 50176
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 51200
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 46080
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 54784
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d15/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 58880
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 69632
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 47616
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 50688
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 44032
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 52224
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d14/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 48128
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.30.xls",
+   "status": 200,
+   "bytes": 51712
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.40.xls",
+   "status": 200,
+   "bytes": 21347
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.60.xls",
+   "status": 200,
+   "bytes": 19858
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.70.xls",
+   "status": 200,
+   "bytes": 23989
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn219.90.xls",
+   "status": 200,
+   "bytes": 18229
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn203.20.xls",
+   "status": 200,
+   "bytes": 53248
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d13/tables/xls/tabn203.10.xls",
+   "status": 200,
+   "bytes": 21325
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.30.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.40.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.60.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.70.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn219.90.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn203.20.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d12/tables/xls/tabn203.10.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.30.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.40.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.60.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.70.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn219.90.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn203.20.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d11/tables/xls/tabn203.10.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.30.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.40.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.60.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.65.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.70.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn219.90.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn203.20.xls",
+   "status": 404,
+   "bytes": 1245
+  },
+  {
+   "url": "https://nces.ed.gov/programs/digest/d10/tables/xls/tabn203.10.xls",
+   "status": 404,
+   "bytes": 1245
+  }
+ ]
+}

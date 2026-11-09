@@ -1,0 +1,810 @@
+# History discovery
+
+## lea_child_count (0)
+
+## lea_environments (0)
+
+## lea_exiting (0)
+
+## state_child_count (0)
+
+## state_cc_env (0)
+
+## state_environments (0)
+
+## state_exiting (0)
+
+## static_tables_b (0)
+
+## crdc (60)
+-  https://civilrightsdata.ed.gov/data Download Data Files
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2023-24-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-school-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-lea-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2023-24 User's Manual.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2023-24 Master List of CRDC Definitions.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2023-24 Appendix Workbook.xlsx Download
+-  https://civilrightsdata.ed.gov/estimations/2021-2022 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2021-22-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-school-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-lea-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2021-22 User's Manual.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2021-2220List20Definitions.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2021-22 Appendix Workbook.xlsx Download
+-  https://civilrightsdata.ed.gov/estimations/2020-2021 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2020-21-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-school-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-lea-form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2020-21 User's Manual.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/Master List of Definitions.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2020-21 Appendix Workbook.xlsx Download
+-  https://civilrightsdata.ed.gov/estimations/2017-2018 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2017-18-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/school-form/2017-18-All-Schools-Form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/district-form/2017-18-CRDC-LEA-Form.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/2017-18 CRDC Public-Use Data File Manual.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2017-18.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/2017-18_Master_List_of_CRDC_Definitions.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/appendix/Appendix-C-LEAs-Identified-with-Post-Submission-Data-Quality-Checks.xlsx Download
+-  https://civilrightsdata.ed.gov/estimations/2015-2016 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2015-16-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2015-16.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2015-16.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/Public-Use-Data-File-Manual-2015-16.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2015-16.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2015-16.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/appendix/2015-16-data-notes-addendum.pdf Download
+-  https://civilrightsdata.ed.gov/estimations/2013-2014 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2013-14-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2013-14.docx Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2013-14.docx Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/CRDC-Public-Use-Data-File-Users-Manual-2013-14.pdf Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2013-14.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/CRDC-Defintions-2013-14.pdf Download
+-  https://civilrightsdata.ed.gov/estimations/2011-2012 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2011-12-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/downloads/Table-Layouts-2011-12.docx Download
+-  https://civilrightsdata.ed.gov/assets/downloads/Table-Layouts-2011-12.docx Download
+-  https://civilrightsdata.ed.gov/assets/downloads/Data-Notes-CRDC-2011-12.pdf Download
+-  https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2011-12.docx Download
+-  https://civilrightsdata.ed.gov/estimations/2009-2010 Download
+-  https://civilrightsdata.ed.gov/assets/ocr/docs/2009-10-crdc-data.zip Download
+-  https://civilrightsdata.ed.gov/assets/downloads/p1-p2-3-CRDC-2009-10.docx Download
+-  https://civilrightsdata.ed.gov/assets/downloads/p1-p2-3-CRDC-2009-10.docx Download
+-  https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2009-10.docx Download
+-  https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2009-10.docx Download
+-  https://civilrightsdata.ed.gov/estimations/2006 Download
+-  https://civilrightsdata.ed.gov/estimations/2004 Download
+-  https://civilrightsdata.ed.gov/estimations/2000 Download
+-  https://civilrightsdata.ed.gov/data Download Data Files
+
+## ccd_agency (250)
+-  https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx 2009-10 Errata Report
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_csv.zip Flat File (ZIP 1.04 MB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_sas.zip SAS File (ZIP 1.45 MB)
+-  https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip Release Notes
+-  https://nces.ed.gov/ccd/xls/SY1819_Directory_DataNotes.xlsx Directory Data Notes
+-  https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Companion.xlsx Companion File
+-  https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Layout.xlsx Record Layout (29.5 KB)
+-  https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx State Data Notes
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip Flat and SAS File  (ZIP 2.50 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Companion.xlsx Excel File (906 KB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Layout.xlsx Excel File (30 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip Flat and SAS File  (ZIP 50.0 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Companion.xlsx Excel File (1.14 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Layout.xlsx Excel File (24.6 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip Flat and SAS File  (ZIP 6.77 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Companion.xlsx Excel File (1.14 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Layout.xlsx Excel File (24 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip Flat and SAS File  (ZIP 712 KB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Companion.xlsx Excel File (1.14 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Layout.xlsx Excel File (23.6 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip Flat and SAS File  (ZIP 680 KB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Companion.xlsx Excel File (1.14 MB)
+-  https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Layout.xlsx Excel File (23.5 KB)
+-  https://nces.ed.gov/ccd/Data/zip/2019052_Documentation_CCD.zip ZIP (608 KB)
+-  https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip Release Notes
+-  https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx State Data Notes
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1617_w_1a_11212017.zip Flat and SAS File  (ZIP 2.25 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Companion.xlsx Excel File (826 KB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Layout.xls Excel File (53.0 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1617_l_2a_11212017.zip Flat and SAS File  (ZIP 50.4 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Companion.xlsx Excel File (0.98 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Layout.xls Excel File (37.5 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1617_l_2a_11212017.zip Flat and SAS File  (ZIP 7.17 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Companion.xlsx Excel File (0.98 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Layout.xls Excel File (32.5 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1617_l_2a_11212017.zip Flat and SAS File  (ZIP 712 KB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Companion.xlsx Excel File (0.98 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Layout.xls Excel File (31.5 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1617_l_2a_11212017.zip Flat and SAS File  (ZIP 677 KB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Companion.xlsx Excel File (0.98 MB)
+-  https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Layout.xls Excel File (31.5 KB)
+-  https://nces.ed.gov/ccd/Data/zip/2017074_Documentation_CCD_201516.zip ZIP (635 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx Crossfile Companion (411 KB)
+-  https://nces.ed.gov/ccd/xls/Master_Layout_2015-16_CCD_LEA-Level_Data_10.12.17.xlsx Master Layout (16 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-speci
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_csv.zip Flat File (ZIP 0.97 MB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_sas.zip SAS File (ZIP 1.19 MB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory.xlsx Excel File ( 756 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory_layout.xlsx Excel File (17 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_csv.zip Flat File (ZIP 2.58 MB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_sas.zip SAS File (ZIP 3.52 MB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership.xlsx Excel File (659 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership_layout.xlsx Excel File (25 KB)
+-  https://nces.ed.gov/ccd/Data/zip/CCD_LEA_059_1516_W_1a_011717_csv.zip Flat File (ZIP 822 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1516_w_1a_011717_sas.zip SAS File (ZIP 1 MB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff.xlsx Excel File (625 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff_layout.xlsx Excel File (16 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_csv.zip Flat File (ZIP 306 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_sas.zip SAS File (ZIP 378 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA.xlsx Excel File (624 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA_layout.xlsx Excel File (13 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_csv.zip Flat File (ZIP 277 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_sas.zip SAS File (ZIP 344 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL.xlsx Excel File (623 KB)
+-  https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL_layout.xlsx Excel File (13 KB)
+-  https://nces.ed.gov/ccd/Data/zip/2016077_CCD_201415_Data_File_Documentation.zip ZIP (586 KB)
+-  https://nces.ed.gov/ccd/xls/Master_Layout_2014-15_CCD_LEA-Level_Data.xlsx Master Layout (17 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-speci
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_txt.zip Flat File (ZIP 925 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_sas.zip SAS File (ZIP 1.05 MB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory.xlsx Excel File (649 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory_File_Layout.xlsx Excel File (40 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_0216161a_txt.zip Flat File (ZIP 2.58 MB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_02161601a_sas.zip SAS File (ZIP 3.62 MB)
+-  https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_Membership.xlsx Excel File (773 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Membership_File_Layout.xlsx Excel File (158 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_txt.zip Flat File (ZIP 791 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_sas.zip SAS File (ZIP 980 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Staff.xlsx Excel File (643 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Staff_File_Layout.xlsx Excel File (44 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_txt.zip Flat File (ZIP 287 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_sas.zip SAS File (ZIP 374 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA SPEC ED.xlsx Excel File (616 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA SPEC ED_File_Layout.xlsx Excel File (17 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_txt.zip Flat File (ZIP 282 KB)
+-  https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_sas.zip SAS File (ZIP 353 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_ELL.xlsx Excel File (614 KB)
+-  https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA ELL_File_Layout.xlsx Excel File (14 KB)
+-  https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_csv.zip ZIP (593&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/2017010_EDGE_GEOIDS_201415_160913_Documentation.zip ZIP (963&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_COMPANIONFILE.zip ZIP (26.6&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_xlsx.zip ZIP (2.40&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/ag131a_supp_txt.zip ZIP (3.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sas.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/ag131a_Documentation.zip ZIP (391 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau131alay.txt Flat File (40.8&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag131a_supp_sas.zip ZIP (5.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/ag121a_supp_txt.zip ZIP (4.2 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sas.zip SAS Format
+-  https://nces.ed.gov/ccd/Data/zip/ag121a_documentation.zip ZIP (223 KB)
+-  https://nces.ed.gov/ccd/Data/txt/pau121alay.txt Flat File (48.9&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/ag121a_supp_sas.zip ZIP (5.1 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/ag111a_txt.zip ZIP (4.4 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/ag111a_sascode.zip SAS Format
+-  https://nces.ed.gov/ccd/Data/zip/ag111a_documentation.zip ZIP (306 KB)
+-  https://nces.ed.gov/ccd/Data/txt/pau111alay.txt Flat File (48.9&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/ag111a_sas.zip ZIP (6.44 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/ag111a_spsscode.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/ag102a_txt.zip ZIP (4.11 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_ag102a_sas.zip SAS Format
+-  https://nces.ed.gov/ccd/Data/zip/2010_LEA_2A_doc.zip ZIP (550 KB)
+-  https://nces.ed.gov/ccd/Data/txt/pau102alay.txt Flat File (39.1&nbsp;KB)
+-  https://nces.ed.gov/ccd/Data/zip/ag102a_sas7bdat.zip ZIP (5.72 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_ag102a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag092a_txt.zip ZIP (1.72 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sas.zip SAS Format
+-  https://nces.ed.gov/ccd/data/txt/pau092alay.txt Flat File (19&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag092a_sas.zip ZIP (2.27 MB)
+-  https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag091a_txt.zip ZIP (1.6 MB)
+-  https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx 2009-10 Errata Report
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_091a.zip SAS Format
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_08.zip ZIP (1.8 KB)
+-  https://nces.ed.gov/ccd/Data/zip/pau091agen.zip ZIP (451 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau091alay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag091a_sas.zip ZIP (2.1 MB)
+-  https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx 2009-10 Errata Report
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_091a.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag081a_txt.zip ZIP (1.5 MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_081a.zip SAS Format
+-  https://nces.ed.gov/ccd/Data/zip/pau081agen.zip ZIP (442 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau081alay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag081a_sas.zip ZIP (2 MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_081a.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag071b_txt.zip ZIP (1.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_07b.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau071bgen.zip ZIP (413 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau071blay.txt Flat File (16&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag071b_sas.zip ZIP (2.1&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_07b.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag061c_dat.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_06.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau061cgen.zip ZIP (242 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau061clay.txt Flat File (30&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag061c_sas.zip ZIP (2.1&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_06.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag051a_dat.zip ZIP (1.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_05.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau051agen.zip ZIP (215 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau051alay.txt Flat File (25&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag051a_sas.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_05.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag041c_dat.zip ZIP (1.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_041c.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau041cgen.zip ZIP (229 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau041clay.txt Flat File (24 KB)
+-  https://nces.ed.gov/ccd/data/zip/ag041c_sas.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_041c.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag031b_dat.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_03.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau031bgen.zip ZIP (137 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau031blay.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag031b_sas.zip ZIP (2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_03.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag021a_dat.zip ZIP (1.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_02.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau021agen.zip ZIP (121 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau021alay.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag021a.zip ZIP (2.1&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_02.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag011a_dat.zip ZIP (2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_01.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau01gen.zip ZIP (84 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau01lay.txt Flat File (32&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag011a.zip ZIP (2.1&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_01.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag001a_dat.zip ZIP (2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_00.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau00gen.zip ZIP (110 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau00lay.txt Flat File (32&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag001a.zip ZIP (2.3&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_00.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag991b_dat.zip ZIP (2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_99.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau99genr.zip ZIP (104 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau99lay.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag991b.zip ZIP (2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_99.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/ag981c_dat.zip ZIP (1.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_98.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau98rgen.zip ZIP (103 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau98lay.txt Flat File (25&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ag981c.zip ZIP (1.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_98.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau97data.zip ZIP (1.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_97.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau97gen.zip ZIP (80 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau97lay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/ccdagn97.zip ZIP (1.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_97.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau96data.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_96.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau96gen.zip ZIP (103 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau96lay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_96.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau95data.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_95.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau95gen.zip ZIP (106&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/pau95lay.txt Flat File (23&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_95.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau94datr.zip ZIP (1.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_94.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau94gen.zip ZIP (138&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/pau94lay.txt Flat File (23&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_94.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau93data.zip ZIP (1.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_93.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau93gen.zip ZIP (129&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/pau93lay.txt Flat File (20&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_93.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau92data.zip ZIP (1.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_92.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau92gen.zip ZIP (109&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/pau92lay.txt Flat File (23&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_92.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau91data.zip ZIP (889&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_91.zip SAS Code
+-  https://nces.ed.gov/ccd/Data/zip/pau91gen.zip ZIP (138 KB)
+-  https://nces.ed.gov/ccd/data/txt/pau91lay.txt Flat File (4 KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_91.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau90data.zip ZIP (869&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_90.zip SAS Code
+-  https://nces.ed.gov/ccd/data/txt/pau90lay.txt Flat File (3&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_90.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau89data.zip ZIP (879&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_89.zip SAS Code
+-  https://nces.ed.gov/ccd/data/txt/pau89lay.txt Flat File (3&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_89.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau88data.zip ZIP (863&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_88.zip SAS Code
+-  https://nces.ed.gov/ccd/data/txt/pau88lay.txt Flat File (3&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_88.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau87data.zip ZIP (852&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_87.zip SAS Code
+-  https://nces.ed.gov/ccd/data/txt/pau87lay.txt Flat File (3&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_87.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/pau86data.zip ZIP (712&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SAS_Pau_86.zip SAS Code
+-  https://nces.ed.gov/ccd/data/txt/pau86lay.txt Flat File (3&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip SPSS Code
+
+## f33_agency (130)
+-  https://nces.ed.gov/ccd/data/zip/Sdf18_1a.zip ZIP (3.1 MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf18_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/txt/sdf18_1a_layout.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf18_1a_sas7bdat.zip ZIP (4.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/Sdf17_1a.zip ZIP (3.1 MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf17_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/txt/sdf17_1a_layout.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf17_1a_sas7bdat.zip ZIP (4.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/Sdf16_1a.zip ZIP (3.05 MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf16_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/2019304.zip ZIP (1.33&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/txt/sdf16_1a_layout.txt Flat File (33.4&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf16_1a_sas7bdat.zip ZIP (4.43&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf15_1a.zip ZIP (2.96 MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf15_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/2018303_F-33_documentation.zip ZIP (0.99&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/txt/sdf15_1a_layout.txt Flat File (33&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf150_2a_sas7bdat.zip ZIP (4.34&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf14_1a_flat.zip ZIP (2.99 MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf14_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/zip/2016304_F-33_documentation.zip ZIP (924&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf14_1a_layout.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf14_1a_SAS.zip ZIP (4.30&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf13_1a.zip ZIP (3.34 MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf13_1a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/data/txt/sdf13_1a_layout.txt Flat File (33.5&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf13_1a_survey_form.pdf.zip ZIP (158&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf13_1a.sas7bdat.zip ZIP (4.34&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf121a.zip ZIP (2.93 MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf121a_spss_code.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/Sdf1a_documenation_files.zip ZIP (982 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf121alayout.txt Flat File (34&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf121a_survey_form.zip ZIP (167&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf121a_suppressed.sas7bdat.zip ZIP (4&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf11_1a_txt.zip ZIP (3.4&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf11_1a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf11_1a_gen.zip ZIP (918 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf11_1a_layout.txt Flat File (33&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf11_1a_surveyform.zip ZIP (223&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf11_1a_sas7bdat.zip ZIP (4.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SDF101a_txt.zip ZIP (3.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf101a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf101agen.zip ZIP (970 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf101alayout.txt Flat File (33&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf101a_sas.zip ZIP (5.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/SDF091a_txt.zip ZIP (2.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf091a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf091agen.zip ZIP (780 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf091alayout.txt Flat File (32&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf091a_sas.zip ZIP (4.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf081a_txt.zip ZIP (2.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf081a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf081agen.zip ZIP (769 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf081alayout.txt Flat File (22&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf081a_sas.zip ZIP (4.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf071a.txt.zip ZIP (3.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/sdf071a_sps.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf071agen.zip ZIP (249 KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf071alayout.txt Flat File (19&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf071a.sas.zip ZIP (4.3&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf061a.txt.zip ZIP (3.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_061a.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf061agen.zip ZIP (407&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf061alay.txt Flat File (18&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf061a.sas.zip ZIP (4.3&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf051c.txt.zip ZIP (2.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/SPSS_051c.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf051cgen.zip ZIP (487 &nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf051clay.txt Flat File (18&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf051c.sas.zip ZIP (4.1&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf041b.txt.zip ZIP (3.2&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_041b.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf041bgen.zip ZIP (300&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf041blay.txt Flat File (24&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf041b.sas.zip ZIP (4.3&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf031b.txt.zip ZIP (2.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_031b.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf031bgen.zip ZIP (403&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf031blay.txt Flat File (23&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf031b.sas.zip ZIP (3.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf021ctxt.zip ZIP (3&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_021C.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf021cgen.zip ZIP (182&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf021clay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf021cdata.zip ZIP (4&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf011d.txt.zip ZIP (2.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_011D.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf011dgen.zip ZIP (608&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf011dlay.txt Flat File (18&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf011d.sas.zip ZIP (3.9&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf001d.txt.zip ZIP (2.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_001D.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf001dgen.zip ZIP (166&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf001dlay.txt Flat File (19&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf001d.data.zip ZIP (3.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf991c.txt.zip ZIP (2.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_991C.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf99gen1c.zip ZIP (174&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf991clay.txt Flat File (17&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf991c.sas.zip ZIP (3.8&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf981e.txt.zip ZIP (2.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_98D1E.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf981egen.zip ZIP (144&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf981elay.txt Flat File (7&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf981e.sas.zip ZIP (3.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf97d1a.txt.zip ZIP (2.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_97D1A.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf971agen.zip ZIP (132&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf97layr.txt Flat File (9&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf97d1a.sas.zip ZIP (3.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf96c1b.txt.zip ZIP (2.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_96C1B.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf96c1bgen.zip ZIP (150&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf96layr.txt Flat File (9&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf96c1b.sas.zip ZIP (3.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf95c1d.txt.zip ZIP (2.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_95C1D.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf95c1dgen.zip ZIP (133&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf95layr.txt Flat File (9&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf95c1d.sas.zip ZIP (3.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf921a.txt.zip ZIP (2.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_921a.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf921agen.zip ZIP (217&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/txt/sdf921alay.txt Flat File (10&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf921a.sas.zip ZIP (3.6&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/sdf901a.txt.zip ZIP (1.7&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/zip/f33/spss_901a.zip SPSS Code
+-  https://nces.ed.gov/ccd/Data/zip/sdf901agen.zip ZIP (1.5&nbsp;MB)
+-  https://nces.ed.gov/ccd/data/txt/sdf901alay.txt Flat File (6&nbsp;KB)
+-  https://nces.ed.gov/ccd/data/zip/sdf901a.sas.zip ZIP (2.3&nbsp;MB)
+
+## census_finance (213)
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/24elsec_prelim.xlsx 24elsec_prelim.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.txt elsec24.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx elsec24.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24_sumtables.xlsx elsec24_sumtables.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.txt elsec24f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24f.xlsx elsec24f.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.txt elsec24t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24t.xlsx elsec24t.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/23elsec_prelim.xls 23elsec_prelim.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.txt elsec23.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23.xlsx elsec23.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23_sumtables.xlsx elsec23_sumtables.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.txt elsec23f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23f.xlsx elsec23f.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.txt elsec23t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2023/secondary-education-finance/elsec23t.xlsx elsec23t.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/22elsec_prelim.xls 22elsec_prelim.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.txt elsec22.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xls elsec22.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22.xlsx elsec22.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xls elsec22_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xlsx elsec22_sumtables.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.txt elsec22f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xls elsec22f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xlsx elsec22f.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.txt elsec22t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xls elsec22t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22t.xlsx elsec22t.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/21elsec_prelim.xls 21elsec_prelim.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21.txt elsec21.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21.xls elsec21.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21_sumtables.xls elsec21_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21f.txt elsec21f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21f.xls elsec21f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21t.txt elsec21t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2021/secondary-education-finance/elsec21t.xls elsec21t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/20elsec_prelim.xlsx 20elsec_prelim.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20.txt elsec20.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20.xls elsec20.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20_sumtables.xls elsec20_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20f.txt elsec20f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20f.xls elsec20f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20t.txt elsec20t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2020/secondary-education-finance/elsec20t.xls elsec20t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/20elsec_prelim.xlsx 20elsec_prelim.xlsx
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19.txt elsec19.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19.xls elsec19.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19_sumtables.xls elsec19_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19f.txt elsec19f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19f.xls elsec19f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19t.txt elsec19t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2019/secondary-education-finance/elsec19t.xls elsec19t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18.txt elsec18.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18.xls elsec18.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18_sumtables.xls elsec18_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18f.txt elsec18f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18f.xls elsec18f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18t.txt elsec18t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/elsec18t.xls elsec18t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2018/secondary-education-finance/errata_report18.xls errata_report18.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17.txt elsec17.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17.xls elsec17.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17_sumtables.xls elsec17_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17_sumtables_old.xls elsec17_sumtables_old.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17f.txt elsec17f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17f.xls elsec17f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17t.txt elsec17t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2017/secondary-education-finance/elsec17t.xls elsec17t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16.txt elsec16.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16.xls elsec16.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16_sumtables.xls elsec16_sumtables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16f.txt elsec16f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16f.xls elsec16f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16t.txt elsec16t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2016/secondary-education-finance/elsec16t.xls elsec16t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15.txt elsec15.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15.xls elsec15.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15_sttables.xls elsec15_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15f.txt elsec15f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15f.xls elsec15f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15t.txt elsec15t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2015/secondary-education-finance/elsec15t.xls elsec15t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14.txt elsec14.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14.xls elsec14.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14_sttables.xls elsec14_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14f.txt elsec14f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14f.xls elsec14f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14t.txt elsec14t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/elsec14t.xls elsec14t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2014/secondary-education-finance/errata_report14.xls errata_report14.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13.txt elsec13.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13.xls elsec13.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13_sttables.xls elsec13_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13f.txt elsec13f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13f.xls elsec13f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13t.txt elsec13t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2013/secondary-education-finance/elsec13t.xls elsec13t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12.txt elsec12.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12.xls elsec12.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12_sttables.xls elsec12_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12f.txt elsec12f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12f.xls elsec12f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12t.txt elsec12t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2012/secondary-education-finance/elsec12t.xls elsec12t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11.txt elsec11.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11.xls elsec11.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11_sttables.xls elsec11_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11f.txt elsec11f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11f.xls elsec11f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11t.txt elsec11t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2011/secondary-education-finance/elsec11t.xls elsec11t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10.txt elsec10.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10.xls elsec10.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10_sttables.xls elsec10_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10f.txt elsec10f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10f.xls elsec10f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10t.txt elsec10t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2010/secondary-education-finance/elsec10t.xls elsec10t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09.txt elsec09.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09.xls elsec09.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09_sttables.xls elsec09_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09f.txt elsec09f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09f.xls elsec09f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09t.txt elsec09t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2009/secondary-education-finance/elsec09t.xls elsec09t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08.txt elsec08.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08.xls elsec08.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08_sttables.xls elsec08_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08f.txt elsec08f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08f.xls elsec08f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08t.txt elsec08t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2008/secondary-education-finance/elsec08t.xls elsec08t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07.txt elsec07.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07.xls elsec07.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07_sttables.xls elsec07_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07f.txt elsec07f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07f.xls elsec07f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07t.txt elsec07t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2007/secondary-education-finance/elsec07t.xls elsec07t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06.txt elsec06.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06.xls elsec06.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06_sttables.xls elsec06_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06f.txt elsec06f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06f.xls elsec06f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06t.txt elsec06t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2006/secondary-education-finance/elsec06t.xls elsec06t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05.txt elsec05.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05.xls elsec05.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05_sttables.xls elsec05_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05f.txt elsec05f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05f.xls elsec05f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05t.txt elsec05t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2005/secondary-education-finance/elsec05t.xls elsec05t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04.txt elsec04.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04.xls elsec04.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04_sttables.xls elsec04_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04f.txt elsec04f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04f.xls elsec04f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04t.txt elsec04t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2004/secondary-education-finance/elsec04t.xls elsec04t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03.txt elsec03.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03.xls elsec03.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03_sttables.xls elsec03_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03f.txt elsec03f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03f.xls elsec03f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03t.txt elsec03t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2003/secondary-education-finance/elsec03t.xls elsec03t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02.txt elsec02.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02.xls elsec02.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02_sttables.xls elsec02_sttables.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02f.txt elsec02f.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02f.xls elsec02f.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02t.txt elsec02t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2002/secondary-education-finance/elsec02t.xls elsec02t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01.txt elsec01.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01.xls elsec01.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01t.txt elsec01t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2001/secondary-education-finance/elsec01t.xls elsec01t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00.txt elsec00.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00.xls elsec00.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00t.txt elsec00t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/2000/secondary-education-finance/elsec00t.xls elsec00t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99.xls elsec99.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99t.txt elsec99t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1999/secondary-education-finance/elsec99t.xls elsec99t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98.txt elsec98.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98.xls elsec98.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98t.txt elsec98t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec98t.xls elsec98t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1998/secondary-education-finance/elsec99.txt elsec99.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97.txt elsec97.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97.xls elsec97.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97t.txt elsec97t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1997/secondary-education-finance/elsec97t.xls elsec97t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96.txt elsec96.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96.xls elsec96.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96t.txt elsec96t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1996/secondary-education-finance/elsec96t.xls elsec96t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95.txt elsec95.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95.xls elsec95.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95t.txt elsec95t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1995/secondary-education-finance/elsec95t.xls elsec95t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94.txt elsec94.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94.xls elsec94.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94t.txt elsec94t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1994/secondary-education-finance/elsec94t.xls elsec94t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93.txt elsec93.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93.xls elsec93.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93t.txt elsec93t.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1993/secondary-education-finance/elsec93t.xls elsec93t.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1992/secondary-education-finance/elsec92.txt elsec92.txt
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1992/secondary-education-finance/elsec92.xls elsec92.xls
+-  https://www2.census.gov/programs-surveys/school-finances/tables/1957/1957-vol3-no1-fin-schdist.zip 1957-vol3-no1-fin-schdist.zip
+
+## saipe (0)
+
+## digest (128)
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.30.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.40.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.60.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.65.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn204.70.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn219.90.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn203.20.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d25/tables/xls/tabn203.10.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.30.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.40.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.60.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.65.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn204.70.xlsx 
+- 404 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn219.90.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn203.20.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d24/tables/xls/tabn203.10.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.30.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.40.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.60.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn204.70.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn219.90.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn203.20.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d23/tables/xls/tabn203.10.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.30.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.40.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.60.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn204.70.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn219.90.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn203.20.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d22/tables/xls/tabn203.10.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d21/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d20/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d19/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.65.xlsx 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d18/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.65.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d17/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.65.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d16/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.65.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d15/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.65.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d14/tables/xls/tabn203.10.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.30.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.40.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.65.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn204.70.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn219.90.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn203.20.xls 
+- 200 https://nces.ed.gov/programs/digest/d13/tables/xls/tabn203.10.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.30.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.40.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.65.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn204.70.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn219.90.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn203.20.xls 
+- 404 https://nces.ed.gov/programs/digest/d12/tables/xls/tabn203.10.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.30.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.40.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.65.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn204.70.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn219.90.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn203.20.xls 
+- 404 https://nces.ed.gov/programs/digest/d11/tables/xls/tabn203.10.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.30.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.40.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.60.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.65.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn204.70.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn219.90.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn203.20.xls 
+- 404 https://nces.ed.gov/programs/digest/d10/tables/xls/tabn203.10.xls 
