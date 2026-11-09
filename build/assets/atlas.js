@@ -295,6 +295,130 @@
     });
   }
 
+
+  /* ------------------------------------------------------------ charts
+     Drawn from small data on each page. Hidden from screen readers: the sentences and tables carry the same figures. */
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function svgEl(tag, attrs, parent) {
+    var e = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function f1(v, unit) { return v == null ? "" : (unit === "usd" ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1)); }
+  var SHAPES = ["circle", "square", "diamond", "triangle"];
+  var SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#6250d6"];
+  function mark(g, shape, x, y, r, fill) {
+    if (shape === "circle") return svgEl("circle", { cx: x, cy: y, r: r, fill: fill, stroke: "#fbfaf6", "stroke-width": 2 }, g);
+    var p;
+    if (shape === "square") p = [[x - r, y - r], [x + r, y - r], [x + r, y + r], [x - r, y + r]];
+    else if (shape === "diamond") p = [[x, y - r * 1.25], [x + r * 1.25, y], [x, y + r * 1.25], [x - r * 1.25, y]];
+    else p = [[x, y - r * 1.2], [x + r * 1.15, y + r * .9], [x - r * 1.15, y + r * .9]];
+    return svgEl("polygon", { points: p.map(function (a) { return a.join(","); }).join(" "), fill: fill, stroke: "#fbfaf6", "stroke-width": 2 }, g);
+  }
+
+  // Dot on a range: this district, the middle half of state districts, the state median, and the national median.
+  function rangeChart(body, keys, cd, meas) {
+    var rowH = 46, top = 8, W = 680, L = 210, R = 600;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + (top + keys.length * rowH + 4), class: "range", focusable: "false" });
+    keys.forEach(function (k, i) {
+      var m = meas[k], d = cd.m[k]; if (!m || !d) return;
+      var v = d[0], lo = d[2], med = d[3], hi = d[4], nat = d[5];
+      var mx = Math.max(v || 0, hi || 0, nat || 0, med || 0) * 1.12 || 1;
+      var X = function (x) { return L + (R - L) * Math.max(0, x) / mx; };
+      var y = top + i * rowH + rowH / 2, g = svgEl("g", {}, svg);
+      svgEl("title", {}, g).textContent = m.short + ": this district " + (v == null ? "not shown" : f1(v, m.unit)) +
+        "; " + cd.st + " median " + f1(med, m.unit) + (lo != null ? "; middle half " + f1(lo, m.unit) + " to " + f1(hi, m.unit) : "") + "; national median " + f1(nat, m.unit);
+      var lab = svgEl("text", { x: 0, y: y + 4.5, class: "lab" }, g); lab.textContent = m.short;
+      svgEl("line", { x1: L, x2: R, y1: y, y2: y, class: "track" }, g);
+      if (lo != null && hi != null) svgEl("rect", { x: X(lo), y: y - 6, width: Math.max(3, X(hi) - X(lo)), height: 12, rx: 6, class: "band" }, g);
+      if (med != null) svgEl("line", { x1: X(med), x2: X(med), y1: y - 10, y2: y + 10, class: "smed" }, g);
+      if (nat != null) svgEl("circle", { cx: X(nat), cy: y, r: 4.5, class: "nat" }, g);
+      if (v != null) {
+        svgEl("circle", { cx: X(v), cy: y, r: 6.5, class: "dot" }, g);
+        var t = svgEl("text", { x: R + 14, y: y + 4.5, class: "val" }, g); t.textContent = (d[1] === "1" ? "≥ " : "") + f1(v, m.unit);
+      } else { var n = svgEl("text", { x: R + 14, y: y + 4.5, class: "na" }, g); n.textContent = "Not shown"; }
+    });
+    body.appendChild(svg);
+    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-dot"></span>This district</li><li><span class="k-band"></span>Middle half of ' +
+      esc(cd.st) + ' districts</li><li><span class="k-med"></span>' + esc(cd.st) + ' median</li><li><span class="k-nat"></span>National median</li></ul>');
+  }
+
+  // One bar split into parts, labelled below with counts and shares.
+  function partsBar(body, parts, colors) {
+    var total = parts.reduce(function (a, p) { return a + (p[1] || 0); }, 0); if (!total) return false;
+    var bar = '<div class="pbar">' + parts.map(function (p, i) {
+      var w = 100 * (p[1] || 0) / total; if (!w) return "";
+      return '<span style="flex-basis:' + w.toFixed(2) + '%;background:' + colors[i] + '" title="' + esc(p[0]) + ': ' + (100 * p[1] / total).toFixed(1) + ' per 100"></span>';
+    }).join("") + "</div>";
+    var key = '<ul class="pkey">' + parts.map(function (p, i) {
+      if (!p[1]) return "";
+      return '<li><span class="sw" style="background:' + colors[i] + '"></span><span class="pl">' + esc(p[0]) + '</span><span class="pv">' +
+        (100 * p[1] / total).toFixed(1) + '<small> per 100 · ' + p[1].toLocaleString("en-US") + ' students</small></span></li>';
+    }).join("") + "</ul>";
+    body.innerHTML = bar + key;
+    return true;
+  }
+
+  function catsChart(body, cats) {
+    if (!cats.length) return false;
+    var mx = Math.max.apply(null, cats.map(function (c) { return c[1]; })) || 1;
+    body.innerHTML = '<ul class="hbars">' + cats.slice().sort(function (a, b) { return b[1] - a[1]; }).map(function (c) {
+      return '<li><span class="hl">' + esc(c[0]) + '</span><span class="ht"><span style="width:' + (100 * c[1] / mx).toFixed(1) + '%"></span></span><span class="hv">' + c[1].toFixed(1) + '</span></li>';
+    }).join("") + "</ul>";
+    return true;
+  }
+
+  function initCharts() {
+    var el = document.getElementById("chart-data"); if (!el) return;
+    var cd; try { cd = JSON.parse(el.textContent); } catch (e) { return; }
+    fetch(BASE + "data/measures.json").then(function (r) { return r.json(); }).then(function (ms) {
+      var meas = {}; ms.forEach(function (m) { meas[m.key] = m; });
+      Array.prototype.forEach.call(document.querySelectorAll("figure.chart[data-chart]"), function (fig) {
+        var body = fig.querySelector(".chart-body"), kind = fig.getAttribute("data-chart"), ok = true;
+        if (kind === "range") rangeChart(body, fig.getAttribute("data-keys").split(","), cd, meas);
+        else if (kind === "settings") ok = cd.set ? partsBar(body, [["80% or more of the day", cd.set[0]], ["40% to 79%", cd.set[1]], ["Less than 40%", cd.set[2]],
+              ["Separate school, facility, home or hospital", cd.set[3]], ["Other places", cd.set[4]]], ["#0d366b", "#1c5cab", "#3987e5", "#86b6ef", "#b9b4a8"]) : false;
+        else if (kind === "exit") ok = cd.ex ? partsBar(body, [["Regular diploma", cd.ex[0]], ["Alternate diploma or certificate", cd.ex[1]], ["Reached the maximum age", cd.ex[2]],
+              ["Dropped out", cd.ex[3]], ["Died", cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
+        else if (kind === "cats") ok = catsChart(body, cd.cats || []);
+        if (!ok) fig.remove();
+      });
+    });
+  }
+
+  // Compare: every chosen district on one scale per measure, with a different shape for each.
+  function compareChart(idx) {
+    var fig = document.getElementById("c-chart"); if (!fig) return;
+    var body = fig.querySelector(".chart-body"); body.innerHTML = "";
+    var prev = fig.querySelector(".chart-key"); if (prev) prev.remove();
+    if (!idx.length) { fig.hidden = true; return; }
+    var rowH = 40, W = 680, L = 210, R = 640, y0 = 6, groups = [], g0 = "";
+    DATA.measures.forEach(function (m, j) { if (m.group !== g0) { g0 = m.group; groups.push([m.group, []]); } groups[groups.length - 1][1].push([m, j]); });
+    var H = y0 + groups.reduce(function (a, g) { return a + 34 + g[1].length * rowH; }, 0);
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "range", focusable: "false" }), y = y0;
+    groups.forEach(function (gr) {
+      var h = svgEl("text", { x: 0, y: y + 22, class: "grp" }, svg); h.textContent = gr[0]; y += 34;
+      gr[1].forEach(function (mj) {
+        var m = mj[0], j = mj[1], cy = y + rowH / 2, g = svgEl("g", {}, svg);
+        var vals = idx.map(function (i) { var c = DATA.codes[i][j]; return (c === "0" || c === "1") ? DATA.values[i][j] : null; });
+        var mx = Math.max.apply(null, vals.concat([m.national_median || 0]).map(function (x) { return x || 0; })) * 1.1 || 1;
+        var X = function (x) { return L + (R - L) * Math.max(0, x) / mx; };
+        svgEl("title", {}, g).textContent = m.short + ": " + idx.map(function (i, n) { return DATA.names[i][0] + " " + (vals[n] == null ? "not shown" : f1(vals[n], m.unit)); }).join("; ") + "; national median " + f1(m.national_median, m.unit);
+        var t = svgEl("text", { x: 0, y: cy + 4.5, class: "lab" }, g); t.textContent = m.short;
+        svgEl("line", { x1: L, x2: R, y1: cy, y2: cy, class: "track" }, g);
+        if (m.national_median != null) svgEl("circle", { cx: X(m.national_median), cy: cy, r: 4.5, class: "nat" }, g);
+        vals.forEach(function (v, n) { if (v != null) mark(g, SHAPES[n], X(v), cy, 6, SERIES[n]); });
+        y += rowH;
+      });
+    });
+    body.appendChild(svg);
+    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key">' + idx.map(function (i, n) {
+      return '<li><svg viewBox="-8 -8 16 16" width="14" height="14" aria-hidden="true">' + (function () { var tmp = document.createElementNS(SVGNS, "g"); mark(tmp, SHAPES[n], 0, 0, 5.5, SERIES[n]); return tmp.innerHTML; })() + '</svg>' + esc(DATA.names[i][0]) + '</li>';
+    }).join("") + '<li><span class="k-nat"></span>National median</li></ul>');
+    fig.hidden = false;
+  }
+
   /* ------------------------------------------------------------ compare */
   function initCompare() {
     var form = document.getElementById("c-form"); if (!form) return;
@@ -320,8 +444,9 @@
           "<button type=\"button\" class=\"link\" data-remove=\"" + id + "\" aria-label=\"Remove " + esc(DATA.names[i][0]) + "\">Remove</button></li>";
       }).join("") || "<li class=\"sub\">None yet.</li>";
       Array.prototype.forEach.call(chosenEl.querySelectorAll("[data-remove]"), function (b) { b.addEventListener("click", function () { remove(b.getAttribute("data-remove")); }); });
-      if (!chosen.length) { wrap.hidden = true; return; }
+      if (!chosen.length) { wrap.hidden = true; compareChart([]); return; }
       var idx = chosen.map(function (id) { return INDEX[id]; });
+      compareChart(idx);
       table.tHead.innerHTML = "<tr><th scope=\"col\">Measure</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(DATA.names[i][1]) + "</span></th>"; }).join("") + "<th scope=\"col\">National median</th></tr>";
       var rows = "<tr><th scope=\"row\">Students enrolled</th>" + idx.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : "Not reported") + "</td>"; }).join("") + "<td>—</td></tr>";
       var group = "";
@@ -369,5 +494,5 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); });
+  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); });
 })();

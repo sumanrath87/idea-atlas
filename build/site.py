@@ -278,6 +278,7 @@ def main() -> int:
             codes += code
         vals.append(row)
         stats.append(codes)
+    (OUT / "data" / "measures.json").write_text(json.dumps([{"key": m[0], "short": m[3], "unit": m[4]} for m in MEASURES], separators=(",", ":")))
     payload = {
         "version": VERSION,
         "measures": [{"key": m[0], "group": m[1], "label": m[2], "short": m[3], "unit": m[4],
@@ -463,6 +464,7 @@ def compare_page() -> str:
 <ul id="c-chosen" class="chosen" aria-labelledby="c-chosen-h"></ul>
 <div class="page-tools"><button type="button" data-print>Print this comparison</button></div>
 <p id="c-status" class="hint" aria-live="polite"></p>
+<figure id="c-chart" class="chart" aria-hidden="true" hidden><figcaption>Each row shows the chosen districts on the same scale. The ring marks the national median.</figcaption><div class="chart-body"></div></figure>
 <div id="c-wrap" class="table-wrap" role="region" tabindex="0" aria-labelledby="c-caption" hidden>
   <table id="c-table" class="profile compare"><caption id="c-caption">Side-by-side figures</caption><thead></thead><tbody></tbody></table>
 </div>
@@ -552,14 +554,22 @@ def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> str:
             f"<td>{E(fmt(sm, unit)) or '—'}</td><td>{E(mid)}</td><td>{E(fmt(nm, unit)) or '—'}</td></tr>")
 
 
+def chart(kind: str, caption: str, keys: str = "") -> str:
+    """Placeholder for a chart drawn in the browser from this page's chart data. Hidden from screen readers:
+    the sentences and tables around it carry the same figures."""
+    k = f' data-keys="{keys}"' if keys else ""
+    return f'<figure class="chart" data-chart="{kind}"{k} aria-hidden="true"><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
+
+
 def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, unit_note: str, extra: str = "",
-            plain: str = "", terms: tuple[str, ...] = (), more: str = "") -> str:
+            plain: str = "", terms: tuple[str, ...] = (), more: str = "", pic: str = "", pic2: str = "") -> str:
     """Three layers: plain sentences and explainers; the numbers with medians (one click); full detail (another click)."""
     sources = "; ".join(f"{SOURCES[s][0]}, {SOURCES[s][1]}" for s in src)
     return f"""
 <section aria-labelledby="{sid}">
   <h2 id="{sid}">{E(title)}</h2>
   {intro}{plain}
+  {pic}
   {explain(*terms) if terms else ""}
   <details class="numbers"><summary>The numbers: this district, the state, and the nation</summary>
   <div class="table-wrap" role="region" tabindex="0" aria-labelledby="{sid}-cap">
@@ -568,7 +578,7 @@ def section(title: str, intro: str, rows: list[str], src: list[str], sid: str, u
     <thead><tr><th scope="col">Measure</th><th scope="col">This district</th><th scope="col">State median</th><th scope="col">Middle half of state districts</th><th scope="col">National median</th></tr></thead>
     <tbody>{''.join(rows)}</tbody>
   </table>
-  </div>{explain("middle")}{more}
+  </div>{explain("middle")}{pic2}{more}
   </details>
   {extra}
   <p class="source">Source: {E(sources)}. <a href="{BASE}methods/#sources">About the sources</a></p>
@@ -786,8 +796,13 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     def rows(ks):
         return [compare_row(lab[k], k, unit[k], r, st_med, nat_med) for k in ks]
 
-    def sec(title, intro, ks, src, sid, unit_note, extra, terms, more=""):
-        return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=more)
+    st_name = r.state_name.title() if isinstance(r.state_name, str) else "the state"
+    def rng(ks):
+        return chart("range", f"Where this district sits among {st_name} districts", ",".join(ks))
+
+    def sec(title, intro, ks, src, sid, unit_note, extra, terms, more="", pic=None, pic2=""):
+        return section(title, intro, rows(ks), src, sid, unit_note, extra, plain=plain_lines(r, ks, st_med), terms=terms, more=more,
+                       pic=rng(ks) if pic is None else pic, pic2=pic2)
 
     cat_rows = []
     order = sorted(CATEGORIES, key=lambda c: -(r[c[0]] if str(r[c[0] + "_status"]) == "ok" and pd.notna(r[c[0]]) else -1))
@@ -808,9 +823,35 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
     if bool(r.crdc_partial) if pd.notna(r.crdc_partial) else False:
         partial = '<p class="note">Some schools in this district withheld or did not report an item, so the figures in this section are minimums.</p>'
 
+    def q(x):
+        return None if x is None or pd.isna(x) else round(float(x), 1)
+    cd = {"st": st_name, "m": {}}
+    for k in [m[0] for m in MEASURES]:
+        code = STATUS.get(str(r[k + "_status"]), ("5", ""))[0]
+        cd["m"][k] = [q(r[k]) if code in ("0", "1") else None, code,
+                      q(st_med["_q"][k][0].get(r.state)), q(st_med[k].get(r.state)), q(st_med["_q"][k][1].get(r.state)), q(nat_med[k])]
+    cd["cats"] = [[lbl, q(r[k])] for k, lbl in CATEGORIES if STATUS.get(str(r[k + "_status"]), ("5",))[0] == "0" and pd.notna(r[k])]
+    if dr is not None:
+        def n(c):
+            x = num(dr.get(c))
+            return None if x is None else int(x)
+        ev = lambda c: n("ev|School Age " + c)
+        parts = [ev("Inside regular class 80% or more of the day"), ev("Inside regular class 40% through 79% of the day"),
+                 ev("Inside regular class less than 40% of the day")]
+        sep = [ev("Separate School"), ev("Residential Facility"), ev("Homebound/Hospital")]
+        oth = [ev("Correctional Facilities"), ev("Parentally placed in private schools")]
+        if all(x is not None for x in parts + sep):
+            cd["set"] = parts + [sum(sep), sum(x or 0 for x in oth)]
+        ex = lambda c: n("ex|All Disabilities " + c)
+        xs = [ex("Graduated With Regular High School Diploma"), ex("Graduated With an Alternate Diploma"), ex("Received a Certificate"),
+              ex("Reached Maximum Age"), ex("Dropped Out"), ex("Died")]
+        if all(x is not None for x in xs) and sum(xs) >= 10:
+            cd["ex"] = [xs[0], xs[1] + xs[2], xs[3], xs[4], xs[5]]
+    chart_json = json.dumps(cd, separators=(",", ":")).replace("</", "<\\/")
     det = r.determination_2026 if isinstance(r.determination_2026, str) else "Not available"
     state_note = f'<p class="note">{E(STATE_NOTES[r.state])}</p>' if r.state in STATE_NOTES else ""
     body = f"""
+<script type="application/json" id="chart-data">{chart_json}</script>
 <h1>{E(name)}</h1>
 <dl class="facts">{''.join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in meta)}</dl>
 <div class="page-tools"><button type="button" data-print>Print this page</button>
@@ -819,9 +860,9 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None) -> str:
 {parent}{kids}
 {glance_html}
 {howto}
-{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), cats)}
-{sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",))}
-{sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",))}
+{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + cats)}
+{sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",), pic=chart("settings", "Time in a general class, school-age students with IEPs"), pic2=rng(["env_80plus", "env_lt40", "env_separate"]))}
+{sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",), pic=chart("exit", "How students with IEPs left school, 2023–24"), pic2=rng(["grad_regular", "dropout"]))}
 {sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"))}
 {sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"))}
 {sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",))}

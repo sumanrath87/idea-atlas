@@ -248,6 +248,43 @@ footer.site { border-top-color: var(--rule); margin-top: 5rem; }
 }
 @media (prefers-reduced-motion: reduce) { details > summary::before { transition: none; } }
 
+/* ---------- charts: thin marks, quiet ink, the district in the brand red ---------- */
+figure.chart { margin: 1rem 0 1.4rem; max-width: 46rem; }
+figure.chart figcaption { font-size: .88rem; color: var(--muted); margin-bottom: .5rem; }
+svg.range { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+svg.range .lab { font-size: 13px; fill: var(--ink-2); }
+svg.range .grp { font-family: Vollkorn, Georgia, serif; font-size: 16px; fill: var(--ink); }
+svg.range .val { font-size: 13px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums; }
+svg.range .na { font-size: 12px; fill: var(--muted); }
+svg.range .track { stroke: var(--rule); stroke-width: 1; }
+svg.range .band { fill: #e2d9c6; }
+svg.range .smed { stroke: var(--ink-2); stroke-width: 2; stroke-linecap: round; }
+svg.range .nat { fill: var(--paper); stroke: var(--muted); stroke-width: 1.6; }
+svg.range .dot { fill: var(--accent); stroke: var(--paper); stroke-width: 2; }
+ul.chart-key { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; padding: 0; margin: 0 0 .4rem; font-size: .84rem; color: var(--ink-2); }
+ul.chart-key li { display: flex; align-items: center; gap: .4rem; }
+.k-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+.k-band { width: 22px; height: 9px; border-radius: 5px; background: #e2d9c6; }
+.k-med { width: 2px; height: 14px; border-radius: 1px; background: var(--ink-2); }
+.k-nat { width: 9px; height: 9px; border-radius: 50%; border: 1.6px solid var(--muted); background: var(--paper); }
+.pbar { display: flex; gap: 2px; height: 30px; margin: .2rem 0 .8rem; }
+.pbar span { min-width: 3px; }
+.pbar span:first-child { border-radius: 4px 0 0 4px; }
+.pbar span:last-child { border-radius: 0 4px 4px 0; }
+ul.pkey { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .35rem 1.5rem; }
+ul.pkey li { display: grid; grid-template-columns: 12px 1fr auto; gap: .55rem; align-items: baseline; font-size: .9rem; color: var(--ink-2); border-bottom: 1px solid var(--rule); padding: .3rem 0; }
+ul.pkey .sw { width: 12px; height: 12px; border-radius: 3px; align-self: center; }
+ul.pkey .pv { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+ul.pkey .pv small { font-weight: 400; color: var(--muted); font-size: .8rem; margin-left: .25rem; }
+ul.hbars { list-style: none; padding: 0; margin: 0; max-width: 40rem; }
+ul.hbars li { display: grid; grid-template-columns: 14rem 1fr 3rem; gap: .8rem; align-items: center; font-size: .9rem; padding: .22rem 0; }
+ul.hbars .hl { color: var(--ink-2); }
+ul.hbars .ht { height: 10px; }
+ul.hbars .ht span { display: block; height: 100%; background: #2a78d6; border-radius: 0 4px 4px 0; min-width: 2px; }
+ul.hbars .hv { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { ul.hbars li { grid-template-columns: 9rem 1fr 2.6rem; } }
+@media (forced-colors: active) { .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band { forced-color-adjust: none; } }
+
 /* ---------- print: clean, readable, every detail open ---------- */
 @page { margin: 16mm 14mm 18mm; }
 @media print {
@@ -260,6 +297,8 @@ footer.site { border-top-color: var(--rule); margin-top: 5rem; }
   .glance { background: none; } ul.plain li, .glance li { font-size: 11pt; margin-bottom: 4pt; }
   dl.facts { gap: 2pt 14pt; } details.numbers > summary::before, details.full > summary::before { display: none; }
   .depth { display: none; }
+  figure.chart { break-inside: avoid; max-width: 100%; } #c-chart { break-after: page; }
+  .pbar span, ul.pkey .sw, ul.hbars .ht span, .k-dot, .k-band, svg.range { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .print-head { font-size: 8.5pt; color: #444; border-bottom: 1px solid #999; padding-bottom: 4pt; margin: 0 0 10pt; }
   h1 { font-size: 22pt; margin: 0 0 4pt; }
   h2 { font-size: 14pt; margin: 14pt 0 4pt; break-after: avoid; page-break-after: avoid; }
