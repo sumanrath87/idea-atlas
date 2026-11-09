@@ -464,11 +464,196 @@
       var t = sel.value && document.querySelector('template[data-state="' + sel.value.replace(/"/g, '\\"') + '"]');
       box.innerHTML = t ? t.innerHTML : base;
       say.textContent = t ? t.getAttribute("data-say") : baseSay;
+      initHistoryCharts(box.closest("section"));
+    });
+  }
+
+
+  /* ------------------------------------------------------------ interactive layer
+     Every part works with the keyboard and a screen reader; pictures stay hidden from screen readers and the
+     same information is given in words. */
+
+  function yearLabel(kind, y) {
+    if (kind === "fy") return (y - 1) + "–" + String(y).slice(-2);
+    if (kind === "y") return String(y);
+    if (kind === "fall") return (ES ? "Otoño de " : "Fall ") + y;
+    return y + "–" + String(y + 1).slice(-2);
+  }
+
+  // 1. Explore a line chart year by year: arrow keys (slider) or pointer; a crosshair and a short note show the values.
+  function makeExplorer(fig, geo, visible, fmtv) {
+    var svg = fig.querySelector("svg"); if (!svg || fig.querySelector(".explore")) return;
+    var years = [];
+    geo.series.forEach(function (s) { s.pts.forEach(function (p) { if (years.indexOf(p[0]) < 0) years.push(p[0]); }); });
+    years.sort(function (a, b) { return a - b; });
+    if (years.length < 2) return;
+    var X = function (y) { return geo.L + (geo.w - geo.L - geo.R) * (y - geo.x0) / Math.max(1, geo.x1 - geo.x0); };
+    var Y = function (v) { return geo.T + (geo.h - geo.T - geo.B) * (1 - v / geo.vmax); };
+    fmtv = fmtv || function (v) { return (+v).toFixed(1); };
+    var g = svgEl("g", { class: "xhair", visibility: "hidden" }, svg);
+    var line = svgEl("line", { y1: geo.T, y2: geo.h - geo.B, class: "xh-line" }, g);
+    var dots = svgEl("g", {}, g);
+    var box = svgEl("g", {}, g), rect = svgEl("rect", { rx: 6, class: "xh-box" }, box), txt = svgEl("text", { class: "xh-text" }, box);
+    var ctl = document.createElement("div");
+    ctl.className = "explore"; ctl.tabIndex = 0; ctl.setAttribute("role", "slider");
+    ctl.setAttribute("aria-label", tr("Explore this chart by year. Use the left and right arrow keys.", "Recorra este gráfico por año. Use las flechas izquierda y derecha."));
+    ctl.setAttribute("aria-valuemin", "0"); ctl.setAttribute("aria-valuemax", String(years.length - 1));
+    ctl.innerHTML = '<span class="explore-hint" aria-hidden="true">' + tr("Explore by year: focus here and use the arrow keys, or point at the chart.", "Recorra por año: enfoque aquí y use las flechas, o señale el gráfico.") + "</span>";
+    fig.appendChild(ctl);
+    var idx = years.length - 1;
+    function at(i, quiet) {
+      idx = Math.max(0, Math.min(years.length - 1, i));
+      var y = years[idx], parts = [], lines = [];
+      while (dots.firstChild) dots.removeChild(dots.firstChild);
+      while (txt.firstChild) txt.removeChild(txt.firstChild);
+      geo.series.forEach(function (s, si) {
+        if (!visible(si)) return;
+        var p = s.pts.filter(function (q) { return q[0] === y; })[0];
+        if (!p) return;
+        svgEl("circle", { cx: X(y), cy: Y(p[1]), r: 4.5, class: "xh-dot" }, dots);
+        parts.push((geo.series.length > 1 ? s.label + ": " : "") + fmtv(p[1]) + (geo.unit || ""));
+        lines.push((geo.series.length > 1 ? s.label + ": " : "") + fmtv(p[1]) + (geo.unit || ""));
+      });
+      var head = yearLabel(geo.yl, y);
+      var say = head + ": " + (parts.length ? parts.join("; ") : tr("no figure", "sin cifra"));
+      ctl.setAttribute("aria-valuenow", String(idx)); ctl.setAttribute("aria-valuetext", say);
+      line.setAttribute("x1", X(y)); line.setAttribute("x2", X(y));
+      [head].concat(lines.length ? lines : [tr("no figure", "sin cifra")]).forEach(function (l, k) {
+        var ts = svgEl("tspan", { x: 0, dy: k ? 16 : 0, class: k ? "" : "xh-head" }, txt); ts.textContent = l;
+      });
+      var bb = txt.getBBox(), bx = X(y) + 12, by = geo.T + 6;
+      if (X(y) > geo.L + (geo.w - geo.L - geo.R) * 0.6 || bx + bb.width + 16 > geo.w) bx = X(y) - bb.width - 28;
+      txt.setAttribute("transform", "translate(" + (bx + 8) + "," + (by + 14) + ")");
+      rect.setAttribute("x", bx); rect.setAttribute("y", by); rect.setAttribute("width", bb.width + 16); rect.setAttribute("height", bb.height + 10);
+      g.setAttribute("visibility", quiet ? "hidden" : "visible");
+    }
+    at(idx, true);
+    ctl.addEventListener("focus", function () { at(idx); });
+    ctl.addEventListener("blur", function () { g.setAttribute("visibility", "hidden"); });
+    ctl.addEventListener("keydown", function (e) {
+      var k = e.key, step = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1, PageDown: -5, PageUp: 5 }[k];
+      if (step) { at(idx + step); e.preventDefault(); }
+      else if (k === "Home") { at(0); e.preventDefault(); }
+      else if (k === "End") { at(years.length - 1); e.preventDefault(); }
+    });
+    svg.addEventListener("pointermove", function (e) {
+      var r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * geo.w / r.width;
+      var y = geo.x0 + (px - geo.L) / (geo.w - geo.L - geo.R) * (geo.x1 - geo.x0), best = 0;
+      years.forEach(function (yy, i) { if (Math.abs(yy - y) < Math.abs(years[best] - y)) best = i; });
+      at(best);
+    });
+    svg.addEventListener("pointerleave", function () { if (document.activeElement !== ctl) g.setAttribute("visibility", "hidden"); });
+    ctl.refresh = function () { if (g.getAttribute("visibility") === "visible") at(idx); };
+    return ctl;
+  }
+
+  // History charts: explorer plus legend buttons that show or hide a line.
+  function initHistoryCharts(root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll("figure.explorable svg.hchart[data-geo]"), function (svg) {
+      var fig = svg.closest("figure"), geo = JSON.parse(svg.getAttribute("data-geo"));
+      var shown = function (si) { var b = fig.querySelector('.k-btn[data-s="' + si + '"]'); return !b || b.getAttribute("aria-pressed") === "true"; };
+      var old = fig.querySelector(".explore"); if (old) old.remove();
+      var ctl = makeExplorer(fig, geo, shown);
+      Array.prototype.forEach.call(fig.querySelectorAll(".k-btn"), function (b) {
+        b.setAttribute("aria-label", b.textContent + tr(": shown. Press to hide this line.", ": visible. Pulse para ocultar esta línea."));
+        b.onclick = function () {
+          var on = b.getAttribute("aria-pressed") !== "true", si = b.getAttribute("data-s");
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+          b.setAttribute("aria-label", b.textContent + (on ? tr(": shown. Press to hide this line.", ": visible. Pulse para ocultar esta línea.") : tr(": hidden. Press to show this line.", ": oculta. Pulse para mostrar esta línea.")));
+          Array.prototype.forEach.call(svg.querySelectorAll('[data-s="' + si + '"]'), function (el) { el.style.display = on ? "" : "none"; });
+          if (ctl && ctl.refresh) ctl.refresh();
+        };
+      });
+    });
+  }
+
+  // 2. "See it as 100 students": a 10 by 10 picture beside sentences that say "of every 100".
+  function initHundred() {
+    var n = 0;
+    Array.prototype.forEach.call(document.querySelectorAll("ul.plain li, .glance li"), function (li) {
+      var t = li.textContent, f = li.querySelector(".fig");
+      if (!f || /\$/.test(t) || !/(of every 100|de cada 100)/.test(t)) return;
+      var v = parseFloat(f.textContent.replace(/,/g, "")); if (!(v >= 1 && v <= 100)) return;
+      var k = Math.round(v), id = "h100-" + (++n);
+      var b = document.createElement("button"); b.type = "button"; b.className = "h100-btn"; b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", id);
+      b.textContent = tr("See it as 100 students", "Verlo como 100 estudiantes");
+      var grid = document.createElement("div"); grid.className = "h100"; grid.id = id; grid.hidden = true;
+      grid.setAttribute("role", "img");
+      grid.setAttribute("aria-label", tr("A picture of 100 students with " + k + " shaded, about " + v + " of every 100.", "Un dibujo de 100 estudiantes con " + k + " sombreados, aproximadamente " + v + " de cada 100."));
+      var h = ""; for (var i = 0; i < 100; i++) h += '<span class="' + (i < k ? "on" : "") + '"></span>';
+      grid.innerHTML = h;
+      b.addEventListener("click", function () { var o = grid.hidden; grid.hidden = !o; b.setAttribute("aria-expanded", o ? "true" : "false"); });
+      li.appendChild(document.createTextNode(" ")); li.appendChild(b); li.appendChild(grid);
+    });
+  }
+
+  // 3. Questions for an IEP meeting: tick, add your own, print or copy.
+  function initAsk() {
+    var ul = document.querySelector("ul.ask"); if (!ul) return;
+    var qs = Array.prototype.map.call(ul.querySelectorAll("li"), function (li) { return li.textContent; });
+    var name = (document.querySelector("h1") || {}).textContent || "";
+    var fs = document.createElement("fieldset"); fs.className = "askfs";
+    fs.innerHTML = "<legend>" + tr("Choose the questions you want to bring", "Elija las preguntas que quiere llevar") + "</legend>" +
+      qs.map(function (q, i) { return '<div class="ask-row"><input type="checkbox" id="ask-' + i + '" checked><label for="ask-' + i + '">' + esc(q) + "</label></div>"; }).join("") +
+      '<label for="ask-own" class="ask-own-l">' + tr("Add your own questions, one on each line", "Agregue sus propias preguntas, una en cada línea") + '</label><textarea id="ask-own" rows="3"></textarea>' +
+      '<div class="ask-tools"><button type="button" data-ask="print">' + tr("Print my questions", "Imprimir mis preguntas") + '</button>' +
+      '<button type="button" class="secondary" data-ask="copy">' + tr("Copy my questions", "Copiar mis preguntas") + '</button></div><p class="hint" aria-live="polite" id="ask-status"></p>';
+    ul.replaceWith(fs);
+    function chosen() {
+      var out = [];
+      qs.forEach(function (q, i) { if (document.getElementById("ask-" + i).checked) out.push(q); });
+      document.getElementById("ask-own").value.split("\n").forEach(function (l) { if (l.trim()) out.push(l.trim()); });
+      return out;
+    }
+    var st = document.getElementById("ask-status");
+    fs.querySelector('[data-ask="copy"]').addEventListener("click", function () {
+      var list = chosen(), text = tr("Questions for my IEP meeting", "Preguntas para mi reunión del IEP") + " (" + name + ")\n\n" + list.map(function (q, i) { return (i + 1) + ". " + q; }).join("\n");
+      var done = function () { st.textContent = tr("Copied " + list.length + " questions.", "Se copiaron " + list.length + " preguntas."); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () { st.textContent = tr("Copying is not allowed here. Use Print instead.", "Aquí no se puede copiar. Use Imprimir."); });
+    });
+    fs.querySelector('[data-ask="print"]').addEventListener("click", function () {
+      var list = chosen(), box = document.getElementById("my-q") || document.body.appendChild(Object.assign(document.createElement("div"), { id: "my-q" }));
+      box.innerHTML = "<h1>" + tr("Questions for my IEP meeting", "Preguntas para mi reunión del IEP") + "</h1><p>" + esc(name) + "</p><ol>" +
+        list.map(function (q) { return "<li>" + esc(q) + '<div class="ans"></div></li>'; }).join("") + "</ol><p class=\"src\">IDEA Atlas · " + location.href + "</p>";
+      document.body.classList.add("print-q");
+      var off = function () { document.body.classList.remove("print-q"); window.removeEventListener("afterprint", off); };
+      window.addEventListener("afterprint", off);
+      window.print();
+      setTimeout(off, 1500);
+    });
+  }
+
+  // 4. Districts like this one: same state, similar enrollment and child poverty; one click to compare.
+  function initLike() {
+    var btn = document.querySelector("[data-like]"); if (!btn) return;
+    var el = document.getElementById("chart-data"), cd = el ? JSON.parse(el.textContent) : {}, out = document.querySelector(".like-out");
+    btn.addEventListener("click", function () {
+      out.innerHTML = "<p>" + tr("Looking…", "Buscando…") + "</p>";
+      load().then(function () {
+        var i0 = INDEX[cd.id], pj = -1;
+        DATA.measures.forEach(function (m, j) { if (m.key === "child_poverty") pj = j; });
+        var pov = function (i) { var c = DATA.codes[i][pj]; return (c === "0" || c === "1") ? DATA.values[i][pj] : null; };
+        if (i0 == null || !DATA.enrollment[i0] || pov(i0) == null) { out.innerHTML = "<p>" + tr("This district does not have the enrollment and poverty figures needed to find similar districts.", "Este distrito no tiene las cifras de inscripción y pobreza necesarias para buscar distritos parecidos.") + "</p>"; return; }
+        var e0 = DATA.enrollment[i0], p0 = pov(i0), st = DATA.names[i0][1], hits = [];
+        for (var i = 0; i < DATA.ids.length; i++) {
+          if (i === i0 || DATA.names[i][1] !== st || !DATA.enrollment[i] || pov(i) == null) continue;
+          hits.push({ i: i, d: Math.abs(Math.log(DATA.enrollment[i] / e0)) + Math.abs(pov(i) - p0) / 8 });
+        }
+        hits.sort(function (a, b) { return a.d - b.d; });
+        var top = hits.slice(0, 5);
+        if (!top.length) { out.innerHTML = "<p>" + tr("No similar districts were found in this state.", "No se encontraron distritos parecidos en este estado.") + "</p>"; return; }
+        out.innerHTML = "<h3>" + tr(top.length + " districts like this one", top.length + " distritos parecidos a este") + "</h3><ul class=\"like-list\">" + top.map(function (h) {
+          var i = h.i;
+          return '<li><a href="' + BASE + (ES ? "es/distrito/" : "district/") + DATA.ids[i] + '/">' + esc(DATA.names[i][0]) + "</a> <span class=\"sub\">" +
+            DATA.enrollment[i].toLocaleString("en-US") + tr(" students · ", " estudiantes · ") + pov(i).toFixed(1) + tr(" of every 100 children in poverty", " de cada 100 niños en la pobreza") + "</span></li>";
+        }).join("") + "</ul><p><a class=\"button\" href=\"" + BASE + "compare/?ids=" + [cd.id].concat(top.slice(0, 3).map(function (h) { return DATA.ids[h.i]; })).join(",") + "\">" +
+          tr("Compare this district with the first three", "Comparar este distrito con los tres primeros") + "</a>" + (ES ? ' <span class="sub">(en inglés)</span>' : "") + "</p>";
+      });
     });
   }
 
   // A district's own line over time: thin line, end values labelled, dashed across missing years.
-  function trendChart(body, pts, money, comp) {
+  function trendChart(body, pts, money, comp, yfmt) {
     if (!pts || pts.length < 3) return false;
     var W = 640, H = 170, L = 10, R = 80, T = 18, B = 26;
     var x0 = pts[0][0], x1 = pts[pts.length - 1][0];
@@ -508,7 +693,13 @@
     var t2 = svgEl("text", { x: X(l[0]) + 10, y: Y(l[1]) + 4.5, class: "val" }, svg); t2.textContent = fmtv(l[1]);
     var y1 = svgEl("text", { x: X(f[0]), y: H - 6, class: "lab", "text-anchor": "start" }, svg); y1.textContent = f[0];
     var y2 = svgEl("text", { x: X(l[0]), y: H - 6, class: "lab", "text-anchor": "end" }, svg); y2.textContent = l[0];
+    svg.setAttribute("aria-hidden", "true");
     body.appendChild(svg);
+    var key = body.previousElementSibling; if (key && key.classList.contains("chart-key")) key.setAttribute("aria-hidden", "true");
+    var ser = [{ label: tr("Students with IEPs", "Estudiantes con IEP"), pts: pts }];
+    if (comp && comp.length > 1) ser.push({ label: tr("Students without disabilities", "Estudiantes sin discapacidades"), pts: comp });
+    var fig = body.closest("figure");
+    if (fig) makeExplorer(fig, { yl: yfmt || "sy", x0: x0, x1: x1, vmax: mx, L: L, R: R, T: T, B: B, w: W, h: H, unit: "", series: comp && comp.length > 1 ? ser : [{ label: "", pts: pts }] }, function () { return true; }, fmtv);
     return true;
   }
 
@@ -527,7 +718,7 @@
         else if (kind === "exit") ok = cd.ex ? partsBar(body, [[tr("Regular diploma", "Diploma regular"), cd.ex[0]], [tr("Alternate diploma or certificate", "Diploma alternativo o certificado"), cd.ex[1]], [tr("Reached the maximum age", "Llegó a la edad máxima"), cd.ex[2]],
               [tr("Dropped out", "Abandonó la escuela"), cd.ex[3]], [tr("Died", "Falleció"), cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
         else if (kind === "cats") ok = catsChart(body, cd.cats || []);
-        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s", (cd.tr || {})[k + "c"]); }
+        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s", (cd.tr || {})[k + "c"], k === "s" ? "fy" : k === "p" ? "y" : "sy"); }
         if (!ok) fig.remove();
       });
     });
@@ -640,5 +831,5 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); });
+  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

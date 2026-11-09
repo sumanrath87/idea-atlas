@@ -39,7 +39,7 @@ def sy(y: int) -> str:
 
 def line_chart(series: list[dict], *, ymax: float | None = None, unit: str = "", w: int = 720, h: int = 320,
                xmin: int | None = None, xmax: int | None = None, marks: list[tuple[int, str]] | None = None,
-               ticks: list[float] | None = None, gap_years: int = 3) -> str:
+               ticks: list[float] | None = None, gap_years: int = 3, ylab: str = "sy") -> str:
     """Static SVG line chart. series: [{label, color, points: {year: value}}]. Lines break across gaps longer than
     gap_years (drawn dashed), so missing years are never hidden. Labels sit at the end of each line."""
     L, R, T, B = 48, 190, 14, 34
@@ -48,7 +48,9 @@ def line_chart(series: list[dict], *, ymax: float | None = None, unit: str = "",
     vmax = ymax or max(v for s in series for v in s["points"].values()) * 1.1
     X = lambda y: L + (w - L - R) * (y - x0) / max(1, x1 - x0)
     Y = lambda v: T + (h - T - B) * (1 - v / vmax)
-    out = [f'<svg viewBox="0 0 {w} {h}" class="hchart" aria-hidden="true" focusable="false">']
+    geo = {"yl": ylab, "x0": x0, "x1": x1, "vmax": vmax, "L": L, "R": R, "T": T, "B": B, "w": w, "h": h, "unit": unit,
+           "series": [{"label": s_["label"], "pts": [[y, round(v, 1)] for y, v in sorted(s_["points"].items())]} for s_ in series]}
+    out = [f'<svg viewBox="0 0 {w} {h}" class="hchart" aria-hidden="true" focusable="false" data-geo="{E(json.dumps(geo, separators=(",", ":"), ensure_ascii=False))}">']
     tks = ticks or [vmax * i / 4 for i in range(5)]
     for t in tks:
         out.append(f'<line x1="{L}" x2="{w - R}" y1="{Y(t):.1f}" y2="{Y(t):.1f}" stroke="{RULE}" stroke-width="1"/>')
@@ -61,7 +63,8 @@ def line_chart(series: list[dict], *, ymax: float | None = None, unit: str = "",
         out.append(f'<line x1="{X(yr):.1f}" x2="{X(yr):.1f}" y1="{T}" y2="{h - B}" stroke="{MUTED}" stroke-width="1" stroke-dasharray="2 3"/>')
         out.append(f'<text x="{X(yr) + 4:.1f}" y="{T + 10}" class="mk">{E(txt)}</text>')
     ends = []
-    for s in series:
+    for si, s in enumerate(series):
+        out.append(f'<g class="ser" data-s="{si}">')
         pts = sorted(s["points"].items())
         segs, cur = [], [pts[0]]
         for a, b in zip(pts, pts[1:]):
@@ -81,23 +84,26 @@ def line_chart(series: list[dict], *, ymax: float | None = None, unit: str = "",
         for y, v in pts:
             if y in lone:
                 out.append(f'<circle cx="{X(y):.1f}" cy="{Y(v):.1f}" r="3" fill="{s["color"]}" stroke="{PAPER}" stroke-width="1.5"><title>{E(s["label"])}, {sy(y)}: {v:,.1f}{unit}</title></circle>')
+        out.append("</g>")
         ly, lv = pts[-1]
-        ends.append([Y(lv), s, lv])
+        ends.append([Y(lv), s, lv, si])
     ends.sort(key=lambda e: e[0])
     for i in range(1, len(ends)):                       # keep end labels from overlapping
         if ends[i][0] - ends[i - 1][0] < 15:
             ends[i][0] = ends[i - 1][0] + 15
-    for yy, s, lv in ends:
+    for yy, s, lv, si in ends:
         val = f"{lv:,.1f}{unit}"
-        out.append(f'<text x="{w - R + 8}" y="{yy + 4:.1f}" class="el"><tspan class="ev" fill="{INK}">{E(val)}</tspan>'
+        out.append(f'<text x="{w - R + 8}" y="{yy + 4:.1f}" class="el" data-s="{si}"><tspan class="ev" fill="{INK}">{E(val)}</tspan>'
                    f'<tspan dx="6" fill="{INK2}">{E(s["label"])}</tspan></text>')
     out.append("</svg>")
     return "".join(out)
 
 
 def key(series) -> str:
-    return '<ul class="chart-key">' + "".join(
-        f'<li><span class="k-line" style="background:{s["color"]}"></span>{E(s["label"])}</li>' for s in series) + "</ul>"
+    """Legend whose items are buttons: press one to hide or show that line (the explorer then reads only the lines shown)."""
+    return '<ul class="chart-key toggles">' + "".join(
+        f'<li><button type="button" class="k-btn" data-s="{i}" aria-pressed="true"><span class="k-line" style="background:{s["color"]}"></span>{E(s["label"])}</button></li>'
+        for i, s in enumerate(series)) + "</ul>"
 
 
 def table(caption: str, tid: str, head: list[str], rows: list[list[str]]) -> str:
@@ -199,7 +205,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
     <li>In {sy(first)}, about <span class="fig">{pct[first]:.1f}</span> of every 100 public school students were served under the law, or about 1 in {round(100 / pct[first])}.</li>
     <li>In {sy(last)}, it was about <span class="fig">{pct[last]:.1f}</span> of every 100, or about 1 in {round(100 / pct[last])}: <span class="fig">{served[last] / 1000:.1f} million</span> students.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Students served under the law, per 100 public school students, {sy(first)} to {sy(last)}. Dashed lines join years the federal tables do not report.</figcaption>{c1}</figure>
+  <figure class="chart wide explorable"><figcaption>Students served under the law, per 100 public school students, {sy(first)} to {sy(last)}. Dashed lines join years the federal tables do not report.</figcaption>{c1}</figure>
   {explain("per100", "idea")}
   {numbers(t1)}
   <p class="source">Source: U.S. Department of Education, Digest of Education Statistics, table 204.30 (editions 2013 to 2023). Counts before 1994–95 include children served under a related program (Chapter 1).</p>
@@ -225,7 +231,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
     <li>Specific learning disability has been the largest since the 1980s. In {sy(last)}, it was about <span class="fig">{lk('learning', last):.0f}</span> of every 100.</li>
     <li>Autism, a separate category since 1990, grew to about <span class="fig">{lk('autism', last):.0f}</span> of every 100 in {sy(last)}.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Share of students served in each of the seven largest federal categories, per 100 students served.</figcaption>{key(s2)}{c2}</figure>
+  <figure class="chart wide explorable"><figcaption>Share of students served in each of the seven largest federal categories, per 100 students served.</figcaption>{key(s2)}{c2}</figure>
   {explain("categories")}
   {numbers(t2)}
   <p class="source">Source: Digest of Education Statistics, table 204.30. Categories and their names changed over time; for example, autism and traumatic brain injury were added in 1990.</p>
@@ -239,7 +245,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
           {"label": "Less than 40%", "color": "#86b6ef", "points": {y: v["lt40"] for y, v in env.items()}},
           {"label": "Separate school or facility", "color": "#b9b4a8",
            "points": {y: (v["sep_school"] or 0) + (v["residential"] or 0) + (v["homebound"] or 0) for y, v in env.items()}}]
-    c3 = line_chart(s3, ymax=80, xmin=1985, xmax=e_last, ticks=[0, 20, 40, 60, 80], marks=[(2019, "Counting change")])
+    c3 = line_chart(s3, ymax=80, xmin=1985, xmax=e_last, ticks=[0, 20, 40, 60, 80], marks=[(2019, "Counting change")], ylab="fall")
     t3 = table("School-age students with IEPs, time in a general class, per 100", "h3-t",
                ["Fall of", "80% or more", "40% to 79%", "Less than 40%", "Separate school or facility"],
                [[str(y), f1(v["80plus"]), f1(v["40_79"]), f1(v["lt40"]), f1((v["sep_school"] or 0) + (v["residential"] or 0) + (v["homebound"] or 0))] for y, v in sorted(env.items())])
@@ -250,7 +256,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
     <li>In {e_first}, about <span class="fig">{env[e_first]['80plus']:.0f}</span> of every 100 school-age students with IEPs spent most of the day (80% or more) in a general class.</li>
     <li>By {e_last}, it was about <span class="fig">{env[e_last]['80plus']:.0f}</span> of every 100, or about {'2 in 3' if 63 <= env[e_last]['80plus'] <= 70 else 'half'}.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>School-age students with IEPs by time in a general class, per 100, {e_first} to {e_last}. The federal tables skip 1991 to 1993 (dashed). From 2019, 5-year-olds in kindergarten are counted as school age.</figcaption>{key(s3)}{c3}</figure>
+  <figure class="chart wide explorable"><figcaption>School-age students with IEPs by time in a general class, per 100, {e_first} to {e_last}. The federal tables skip 1991 to 1993 (dashed). From 2019, 5-year-olds in kindergarten are counted as school age.</figcaption>{key(s3)}{c3}</figure>
   {explain("settings")}
   {numbers(t3)}
   <p class="source">Source: Digest of Education Statistics, table 204.60.</p>
@@ -273,7 +279,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
     <li>In {sy(x_first)}, about <span class="fig">{ex[x_first]['regular']:.0f}</span> of every 100 students with IEPs who left school left with a regular diploma.</li>
     <li>In {sy(x_last)}, it was about <span class="fig">{ex[x_last]['regular']:.0f}</span> of every 100, or about 3 in 4.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Students with IEPs, ages 14 to 21, who left school, per 100 who left, {sy(x_first)} to {sy(x_last)}.</figcaption>{key(s4)}{c4}</figure>
+  <figure class="chart wide explorable"><figcaption>Students with IEPs, ages 14 to 21, who left school, per 100 who left, {sy(x_first)} to {sy(x_last)}.</figcaption>{key(s4)}{c4}</figure>
   {explain("leaving")}
   {numbers(t4)}
   <p class="source">Source: Digest of Education Statistics, table 219.90 (editions 2013 to 2023).</p>
@@ -306,7 +312,7 @@ def render(page, explain, BASE: str, sources_note: str = "") -> str:
   <h2 id="h-state">Your state over time</h2>
   <div class="controls"><div><label for="h-st">Choose a state</label> <select id="h-st"><option value="">United States only</option>{opts}</select></div></div>
   <p id="h-st-say" class="plain-one" aria-live="polite">Nationally, about {us[min(us)]:.1f} of every 100 public school students were served in {sy(min(us))}, and about {us[max(us)]:.1f} in {sy(max(us))}. Choose a state to compare.</p>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Students served, per 100 public school students, {sy(min(yrs))} to {sy(max(yrs))}.</figcaption><div id="h-st-chart">{st_chart("")}</div></figure>
+  <figure class="chart wide explorable"><figcaption>Students served, per 100 public school students, {sy(min(yrs))} to {sy(max(yrs))}.</figcaption><div id="h-st-chart">{st_chart("")}</div></figure>
   {tmpl}
   {numbers(t5, "Every state, year by year")}
   <p class="source">Source: Digest of Education Statistics, tables 204.70 and 203.20. State shares divide students served by fall public school enrollment.</p>
@@ -378,7 +384,7 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
           {"label": "Menos del 40%", "color": "#86b6ef", "points": {y: v["lt40"] for y, v in env.items()}},
           {"label": "Escuela o centro separado", "color": "#b9b4a8",
            "points": {y: (v["sep_school"] or 0) + (v["residential"] or 0) + (v["homebound"] or 0) for y, v in env.items()}}]
-    c3 = line_chart(s3, ymax=80, xmin=1985, xmax=e_last, ticks=[0, 20, 40, 60, 80], marks=[(2019, "Cambio en el conteo")])
+    c3 = line_chart(s3, ymax=80, xmin=1985, xmax=e_last, ticks=[0, 20, 40, 60, 80], marks=[(2019, "Cambio en el conteo")], ylab="fall")
     ex = I(nat["exits"])
     x_first, x_last = min(ex), max(ex)
     s4 = [{"label": "Diploma regular", "color": SERIES[0], "points": {y: v["regular"] for y, v in ex.items()}},
@@ -423,7 +429,7 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
     <li>En {sy(first)}, aproximadamente <span class="fig">{pct[first]:.1f}</span> de cada 100 estudiantes de escuelas públicas recibían servicios bajo la ley, o aproximadamente 1 de cada {round(100 / pct[first])}.</li>
     <li>En {sy(last)}, fueron aproximadamente <span class="fig">{pct[last]:.1f}</span> de cada 100, o aproximadamente 1 de cada {round(100 / pct[last])}: <span class="fig">{served[last] / 1000:.1f} millones</span> de estudiantes.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes atendidos bajo la ley, por cada 100 estudiantes de escuelas públicas, de {sy(first)} a {sy(last)}. Las líneas punteadas unen años que las tablas federales no informan.</figcaption>{c1}</figure>
+  <figure class="chart wide explorable"><figcaption>Estudiantes atendidos bajo la ley, por cada 100 estudiantes de escuelas públicas, de {sy(first)} a {sy(last)}. Las líneas punteadas unen años que las tablas federales no informan.</figcaption>{c1}</figure>
   {explain("per100", "idea")}
   {numbers(t1, "Las cifras, año por año")}
   <p class="source">Fuente: Departamento de Educación de EE. UU., Digest of Education Statistics, tabla 204.30.</p>
@@ -435,7 +441,7 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
     <li>La discapacidad específica del aprendizaje ha sido la más grande desde la década de 1980. En {sy(last)}, fue aproximadamente <span class="fig">{lk('learning', last):.0f}</span> de cada 100.</li>
     <li>El autismo, una categoría propia desde 1990, llegó a aproximadamente <span class="fig">{lk('autism', last):.0f}</span> de cada 100 en {sy(last)}.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Proporción de estudiantes atendidos en cada una de las siete categorías federales más grandes, por cada 100 estudiantes atendidos.</figcaption>{key(s2)}{c2}</figure>
+  <figure class="chart wide explorable"><figcaption>Proporción de estudiantes atendidos en cada una de las siete categorías federales más grandes, por cada 100 estudiantes atendidos.</figcaption>{key(s2)}{c2}</figure>
   {explain("categories")}
 </section>
 <section aria-labelledby="h-where">
@@ -444,7 +450,7 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
     <li>En {e_first}, aproximadamente <span class="fig">{env[e_first]['80plus']:.0f}</span> de cada 100 estudiantes con IEP en edad escolar pasaban la mayor parte del día (80% o más) en una clase de educación general.</li>
     <li>En {e_last}, fueron aproximadamente <span class="fig">{env[e_last]['80plus']:.0f}</span> de cada 100, o aproximadamente 2 de cada 3.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes con IEP en edad escolar según el tiempo en una clase de educación general, por cada 100. Las tablas federales no incluyen de 1991 a 1993 (línea punteada). Desde 2019, los niños de 5 años en kínder se cuentan en edad escolar.</figcaption>{key(s3)}{c3}</figure>
+  <figure class="chart wide explorable"><figcaption>Estudiantes con IEP en edad escolar según el tiempo en una clase de educación general, por cada 100. Las tablas federales no incluyen de 1991 a 1993 (línea punteada). Desde 2019, los niños de 5 años en kínder se cuentan en edad escolar.</figcaption>{key(s3)}{c3}</figure>
   {explain("settings")}
 </section>
 <section aria-labelledby="h-leave">
@@ -453,14 +459,14 @@ def render_es(page, explain, BASE: str, state_es: dict) -> str:
     <li>En {sy(x_first)}, aproximadamente <span class="fig">{ex[x_first]['regular']:.0f}</span> de cada 100 estudiantes con IEP que salieron de la escuela lo hicieron con un diploma regular.</li>
     <li>En {sy(x_last)}, fueron aproximadamente <span class="fig">{ex[x_last]['regular']:.0f}</span> de cada 100, o aproximadamente 3 de cada 4.</li>
   </ul>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes con IEP de 14 a 21 años que salieron de la escuela, por cada 100, de {sy(x_first)} a {sy(x_last)}.</figcaption>{key(s4)}{c4}</figure>
+  <figure class="chart wide explorable"><figcaption>Estudiantes con IEP de 14 a 21 años que salieron de la escuela, por cada 100, de {sy(x_first)} a {sy(x_last)}.</figcaption>{key(s4)}{c4}</figure>
   {explain("leaving")}
 </section>
 <section aria-labelledby="h-state">
   <h2 id="h-state">Su estado a lo largo del tiempo</h2>
   <div class="controls"><div><label for="h-st">Elija un estado</label> <select id="h-st"><option value="">Solo Estados Unidos</option>{opts}</select></div></div>
   <p id="h-st-say" class="plain-one" aria-live="polite">En todo el país, aproximadamente {us[min(us)]:.1f} de cada 100 estudiantes de escuelas públicas recibían servicios en {sy(min(us))}, y aproximadamente {us[max(us)]:.1f} en {sy(max(us))}. Elija un estado para comparar.</p>
-  <figure class="chart wide" aria-hidden="true"><figcaption>Estudiantes atendidos, por cada 100 estudiantes de escuelas públicas, de {sy(min(yrs))} a {sy(max(yrs))}.</figcaption><div id="h-st-chart">{st_chart("")}</div></figure>
+  <figure class="chart wide explorable"><figcaption>Estudiantes atendidos, por cada 100 estudiantes de escuelas públicas, de {sy(min(yrs))} a {sy(max(yrs))}.</figcaption><div id="h-st-chart">{st_chart("")}</div></figure>
   {tmpl}
   <p class="source">Fuente: Digest of Education Statistics, tablas 204.70 y 203.20.</p>
 </section>

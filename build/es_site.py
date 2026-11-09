@@ -201,6 +201,8 @@ def plain_es(r, keys, st_med, fmt, STATUS, pd) -> str:
 
 def chart_es(kind: str, caption: str, keys: str = "") -> str:
     k = f' data-keys="{keys}"' if keys else ""
+    if kind == "trend":
+        return f'<figure class="chart explorable" data-chart="{kind}"{k}><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
     return f'<figure class="chart" data-chart="{kind}"{k} aria-hidden="true"><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
 
 
@@ -300,6 +302,12 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
   <p>Cada año, el Departamento de Educación de EE. UU. califica cómo cada estado cumple con IDEA. En 2026, {E(state)} recibió la calificación <strong>{E(det)}</strong>.
   La calificación describe al estado, no a este distrito.</p>
   {explain_es(BASE, "rating")}
+</section>
+<section aria-labelledby="s-like" class="like">
+  <h2 id="s-like">Distritos parecidos a este</h2>
+  <p>Busque distritos de {E(state)} con un número parecido de estudiantes y un nivel parecido de pobreza infantil, y compárelos uno al lado del otro.</p>
+  <button type="button" class="secondary" data-like>Buscar distritos parecidos</button>
+  <div class="like-out" aria-live="polite"></div>
 </section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Preguntas que puede hacer</h2>

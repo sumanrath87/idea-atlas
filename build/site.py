@@ -641,6 +641,8 @@ def chart(kind: str, caption: str, keys: str = "") -> str:
     """Placeholder for a chart drawn in the browser from this page's chart data. Hidden from screen readers:
     the sentences and tables around it carry the same figures."""
     k = f' data-keys="{keys}"' if keys else ""
+    if kind == "trend":       # trend charts can be explored year by year with the arrow keys, so they stay visible to screen readers
+        return f'<figure class="chart explorable" data-chart="{kind}"{k}><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
     return f'<figure class="chart" data-chart="{kind}"{k} aria-hidden="true"><figcaption>{E(caption)}</figcaption><div class="chart-body"></div></figure>'
 
 
@@ -944,7 +946,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 
     def q(x):
         return None if x is None or pd.isna(x) else round(float(x), 1)
-    cd = {"st": st_name, "m": {}}
+    cd = {"st": st_name, "m": {}, "id": r.leaid, "s2": r.state}
     for k in [m[0] for m in MEASURES]:
         code = STATUS.get(str(r[k + "_status"]), ("5", ""))[0]
         cd["m"][k] = [q(r[k]) if code in ("0", "1") else None, code,
@@ -989,6 +991,12 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
   The rating describes the state, not this district.</p>
   {explain("rating")}
   <p class="source">Source: {E(SOURCES['det'][0])}, {E(SOURCES['det'][1])}.</p>
+</section>
+<section aria-labelledby="s-like" class="like">
+  <h2 id="s-like">Districts like this one</h2>
+  <p>Find districts in {E(st_name)} with a similar number of students and a similar level of child poverty, then compare them side by side.</p>
+  <button type="button" class="secondary" data-like>Find districts like this one</button>
+  <div class="like-out" aria-live="polite"></div>
 </section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Questions you could ask</h2>
