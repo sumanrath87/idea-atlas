@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-09T00:43:26+00:00",
+  "run_at": "2026-11-09T00:48:36+00:00",
   "sources": [
     {
       "id": "idea_child_count",
@@ -17,6 +17,12 @@
           "target": "IDEA Section 618 child count LEA",
           "ok": false,
           "error": "Expecting value: line 1 column 1 (char 0)"
+        },
+        {
+          "kind": "browser",
+          "target": "https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products",
+          "ok": true,
+          "count": 0
         }
       ],
       "files": []
@@ -37,6 +43,12 @@
           "target": "IDEA Section 618 educational environments LEA",
           "ok": false,
           "error": "Expecting value: line 1 column 1 (char 0)"
+        },
+        {
+          "kind": "browser",
+          "target": "https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products",
+          "ok": true,
+          "count": 0
         }
       ],
       "files": []
@@ -57,6 +69,12 @@
           "target": "IDEA Section 618 exiting LEA",
           "ok": false,
           "error": "Expecting value: line 1 column 1 (char 0)"
+        },
+        {
+          "kind": "browser",
+          "target": "https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products",
+          "ok": true,
+          "count": 0
         }
       ],
       "files": []
@@ -77,9 +95,372 @@
           "target": "Civil Rights Data Collection",
           "ok": false,
           "error": "Expecting value: line 1 column 1 (char 0)"
+        },
+        {
+          "kind": "browser",
+          "target": "https://civilrightsdata.ed.gov/data",
+          "ok": true,
+          "count": 62
         }
       ],
-      "files": []
+      "files": [
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2023-24-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 99570187,
+          "modified": "Mon, 31 Aug 2026 19:12:52 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-school-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 2347425,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-lea-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 518709,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 User's Manual.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 689694,
+          "modified": "Tue, 20 Oct 2026 17:10:08 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 Master List of CRDC Definitions.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 364717,
+          "modified": "Tue, 20 Oct 2026 17:10:08 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2023-24 Appendix Workbook.xlsx",
+          "text": "Download",
+          "status": 200,
+          "bytes": 8547862,
+          "modified": "Tue, 20 Oct 2026 17:10:08 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2021-2022",
+          "text": "Download",
+          "status": 200,
+          "bytes": 62260,
+          "modified": "Tue, 27 Oct 2026 14:15:36 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2021-22-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 832409504,
+          "modified": "Fri, 10 Jan 2025 15:45:28 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-school-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 2351552,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22-crdc-lea-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 464248,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22 User's Manual.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 859905,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-2220List20Definitions.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 294285,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2021-22 Appendix Workbook.xlsx",
+          "text": "Download",
+          "status": 200,
+          "bytes": 10228700,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2020-2021",
+          "text": "Download",
+          "status": 200,
+          "bytes": 62260,
+          "modified": "Tue, 27 Oct 2026 14:15:36 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2020-21-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 81589466,
+          "modified": "Wed, 05 Jun 2024 18:42:48 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-school-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 1693262,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21-crdc-lea-form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 485512,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21 User's Manual.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 832385,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2020-21 Appendix Workbook.xlsx",
+          "text": "Download",
+          "status": 200,
+          "bytes": 8955544,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2017-2018",
+          "text": "Download",
+          "status": 200,
+          "bytes": 62260,
+          "modified": "Tue, 27 Oct 2026 14:15:36 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2017-18-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 119899863,
+          "modified": "Mon, 10 Jun 2024 18:10:30 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/2017-18-All-Schools-Form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 1556902,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/2017-18-CRDC-LEA-Form.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 325113,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/2017-18 CRDC Public-Use Data File Manual.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 481413,
+          "modified": "Thu, 28 May 2026 15:13:48 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2017-18.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 473138,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/2017-18_Master_List_of_CRDC_Definitions.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 290650,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2015-2016",
+          "text": "Download",
+          "status": 200,
+          "bytes": 62260,
+          "modified": "Tue, 27 Oct 2026 14:15:36 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2015-16-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 32403546,
+          "modified": "Mon, 10 Jun 2024 18:14:20 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2015-16.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 2203770,
+          "modified": "Thu, 28 May 2026 15:13:48 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2015-16.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 435068,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/Public-Use-Data-File-Manual-2015-16.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 2317614,
+          "modified": "Thu, 28 May 2026 15:13:48 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2015-16.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 323679,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2015-16.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 201346,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/appendix/2015-16-data-notes-addendum.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 266823,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2013-2014",
+          "text": "Download",
+          "status": 200,
+          "bytes": 62260,
+          "modified": "Tue, 27 Oct 2026 14:15:36 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2013-14-crdc-data.zip",
+          "text": "Download",
+          "status": 200,
+          "bytes": 591564603,
+          "modified": "Mon, 10 Jun 2024 18:20:28 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/school-form/All-Schools-Form-CRDC-2013-14.docx",
+          "text": "Download",
+          "status": 200,
+          "bytes": 198818,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/district-form/Lea-Form-CRDC-2013-14.docx",
+          "text": "Download",
+          "status": 200,
+          "bytes": 55391,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/user-manual/CRDC-Public-Use-Data-File-Users-Manual-2013-14.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 2027077,
+          "modified": "Thu, 28 May 2026 15:13:48 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2013-14.pdf",
+          "text": "Download",
+          "status": 200,
+          "bytes": 74377,
+          "modified": "Thu, 28 May 2026 15:13:46 GMT"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Defintions-2013-14.pdf",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2011-2012",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2011-12-crdc-data.zip",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/Table-Layouts-2011-12.docx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/Data-Notes-CRDC-2011-12.pdf",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2011-12.docx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2009-2010",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/data",
+          "text": "Download Data Files"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/Master List of Definitions.pdf",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/appendix/Appendix-C-LEAs-Identified-with-Post-Submission-Data-Quality-Checks.xlsx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/ocr/docs/2009-10-crdc-data.zip",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/p1-p2-3-CRDC-2009-10.docx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2009-10.docx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/assets/downloads/CRDC-Definitions-2009-10.docx",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2006",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2004",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/estimations/2000",
+          "text": "Download"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/api/v1.0/SurveyYearsList?cutoff=10",
+          "text": "[loaded by page]"
+        },
+        {
+          "url": "https://civilrightsdata.ed.gov/api/v1.0/AuthEnvConfig?issuer=icam&env=prod",
+          "text": "[loaded by page]"
+        }
+      ]
     },
     {
       "id": "ccd_directory",
@@ -103,43 +484,21 @@
           "target": "https://nces.ed.gov/ccd/pubagency.asp",
           "ok": true,
           "count": 250
+        },
+        {
+          "kind": "browser",
+          "target": "https://nces.ed.gov/ccd/files.asp",
+          "ok": true,
+          "count": 9
         }
       ],
       "files": [
-        {
-          "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
-          "text": "2009-10 Errata Report",
-          "status": 200,
-          "bytes": 36205,
-          "modified": "Fri, 01 Jun 2012 15:55:05 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_csv.zip",
-          "text": "Flat File (ZIP 1.04 MB)",
-          "status": 200,
-          "bytes": 1098546,
-          "modified": "Mon, 05 Aug 2019 10:30:07 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_sas.zip",
-          "text": "SAS File (ZIP 1.45 MB)",
-          "status": 200,
-          "bytes": 1525221,
-          "modified": "Mon, 05 Aug 2019 10:30:25 GMT"
-        },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip",
           "text": "Release Notes",
           "status": 200,
           "bytes": 34497,
           "modified": "Wed, 21 Aug 2019 09:56:30 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/xls/SY1819_Directory_DataNotes.xlsx",
-          "text": "Directory Data Notes",
-          "status": 200,
-          "bytes": 48513,
-          "modified": "Wed, 31 Jul 2019 19:18:42 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Companion.xlsx",
@@ -156,20 +515,6 @@
           "modified": "Mon, 05 Aug 2019 10:46:25 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx",
-          "text": "State Data Notes",
-          "status": 200,
-          "bytes": 101055,
-          "modified": "Wed, 09 Oct 2019 16:22:30 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 2.50 MB)",
-          "status": 200,
-          "bytes": 2624796,
-          "modified": "Wed, 09 Oct 2019 16:24:55 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Companion.xlsx",
           "text": "Excel File (906 KB)",
           "status": 200,
@@ -182,13 +527,6 @@
           "status": 200,
           "bytes": 30793,
           "modified": "Tue, 15 Oct 2019 13:36:12 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 50.0 MB)",
-          "status": 200,
-          "bytes": 52507687,
-          "modified": "Wed, 09 Oct 2019 16:25:43 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Companion.xlsx",
@@ -205,13 +543,6 @@
           "modified": "Tue, 15 Oct 2019 13:37:22 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 6.77 MB)",
-          "status": 200,
-          "bytes": 7106568,
-          "modified": "Wed, 09 Oct 2019 18:08:07 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Companion.xlsx",
           "text": "Excel File (1.14 MB)",
           "status": 200,
@@ -224,13 +555,6 @@
           "status": 200,
           "bytes": 24618,
           "modified": "Tue, 15 Oct 2019 13:37:41 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 712 KB)",
-          "status": 200,
-          "bytes": 730078,
-          "modified": "Wed, 09 Oct 2019 16:25:16 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Companion.xlsx",
@@ -247,13 +571,6 @@
           "modified": "Tue, 15 Oct 2019 13:36:59 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 680 KB)",
-          "status": 200,
-          "bytes": 697330,
-          "modified": "Wed, 09 Oct 2019 16:25:08 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Companion.xlsx",
           "text": "Excel File (1.14 MB)",
           "status": 200,
@@ -268,32 +585,11 @@
           "modified": "Tue, 15 Oct 2019 13:36:34 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/2019052_Documentation_CCD.zip",
-          "text": "ZIP (608 KB)",
-          "status": 200,
-          "bytes": 623250,
-          "modified": "Tue, 15 Jan 2019 15:06:31 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip",
           "text": "Release Notes",
           "status": 200,
           "bytes": 23085,
           "modified": "Mon, 05 Aug 2019 14:20:11 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx",
-          "text": "State Data Notes",
-          "status": 200,
-          "bytes": 82115,
-          "modified": "Tue, 05 Feb 2019 15:59:42 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1617_w_1a_11212017.zip",
-          "text": "Flat and SAS File  (ZIP 2.25 MB)",
-          "status": 200,
-          "bytes": 2366863,
-          "modified": "Fri, 01 Nov 2019 17:56:34 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Companion.xlsx",
@@ -310,13 +606,6 @@
           "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1617_l_2a_11212017.zip",
-          "text": "Flat and SAS File  (ZIP 50.4 MB)",
-          "status": 200,
-          "bytes": 52878592,
-          "modified": "Thu, 31 Oct 2019 18:13:37 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Companion.xlsx",
           "text": "Excel File (0.98 MB)",
           "status": 200,
@@ -329,13 +618,6 @@
           "status": 200,
           "bytes": 38400,
           "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1617_l_2a_11212017.zip",
-          "text": "Flat and SAS File  (ZIP 7.17 MB)",
-          "status": 200,
-          "bytes": 7525898,
-          "modified": "Thu, 31 Oct 2019 18:13:41 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Companion.xlsx",
@@ -352,13 +634,6 @@
           "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1617_l_2a_11212017.zip",
-          "text": "Flat and SAS File  (ZIP 712 KB)",
-          "status": 200,
-          "bytes": 729362,
-          "modified": "Thu, 31 Oct 2019 18:13:48 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Companion.xlsx",
           "text": "Excel File (0.98 MB)",
           "status": 200,
@@ -373,13 +648,6 @@
           "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1617_l_2a_11212017.zip",
-          "text": "Flat and SAS File  (ZIP 677 KB)",
-          "status": 200,
-          "bytes": 693623,
-          "modified": "Thu, 31 Oct 2019 18:13:45 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Companion.xlsx",
           "text": "Excel File (0.98 MB)",
           "status": 200,
@@ -388,147 +656,126 @@
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Layout.xls",
-          "text": "Excel File (31.5 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/2017074_Documentation_CCD_201516.zip",
-          "text": "ZIP (635 KB)"
+          "text": "Excel File (31.5 KB)",
+          "status": 200,
+          "bytes": 32256,
+          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx",
-          "text": "Crossfile Companion (411 KB)"
+          "text": "Crossfile Companion (411 KB)",
+          "status": 200,
+          "bytes": 421368,
+          "modified": "Tue, 12 Dec 2017 15:49:46 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2015-16_CCD_LEA-Level_Data_10.12.17.xlsx",
-          "text": "Master Layout (16 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_csv.zip",
-          "text": "Flat File (ZIP 0.97 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_sas.zip",
-          "text": "SAS File (ZIP 1.19 MB)"
+          "text": "Master Layout (16 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html",
+          "status": 200,
+          "bytes": 16484,
+          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory.xlsx",
-          "text": "Excel File ( 756 KB)"
+          "text": "Excel File ( 756 KB)",
+          "status": 200,
+          "bytes": 657904,
+          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory_layout.xlsx",
-          "text": "Excel File (17 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_csv.zip",
-          "text": "Flat File (ZIP 2.58 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_sas.zip",
-          "text": "SAS File (ZIP 3.52 MB)"
+          "text": "Excel File (17 KB)",
+          "status": 200,
+          "bytes": 17434,
+          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership.xlsx",
-          "text": "Excel File (659 KB)"
+          "text": "Excel File (659 KB)",
+          "status": 200,
+          "bytes": 675804,
+          "modified": "Fri, 08 Dec 2017 15:53:46 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership_layout.xlsx",
-          "text": "Excel File (25 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/CCD_LEA_059_1516_W_1a_011717_csv.zip",
-          "text": "Flat File (ZIP 822 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1516_w_1a_011717_sas.zip",
-          "text": "SAS File (ZIP 1 MB)"
+          "text": "Excel File (25 KB)",
+          "status": 200,
+          "bytes": 25992,
+          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff.xlsx",
-          "text": "Excel File (625 KB)"
+          "text": "Excel File (625 KB)",
+          "status": 200,
+          "bytes": 640758,
+          "modified": "Fri, 08 Dec 2017 15:53:46 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff_layout.xlsx",
-          "text": "Excel File (16 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_csv.zip",
-          "text": "Flat File (ZIP 306 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_sas.zip",
-          "text": "SAS File (ZIP 378 KB)"
+          "text": "Excel File (16 KB)",
+          "status": 200,
+          "bytes": 16722,
+          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA.xlsx",
-          "text": "Excel File (624 KB)"
+          "text": "Excel File (624 KB)",
+          "status": 200,
+          "bytes": 638995,
+          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA_layout.xlsx",
-          "text": "Excel File (13 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_csv.zip",
-          "text": "Flat File (ZIP 277 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_sas.zip",
-          "text": "SAS File (ZIP 344 KB)"
+          "text": "Excel File (13 KB)",
+          "status": 200,
+          "bytes": 13087,
+          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL.xlsx",
-          "text": "Excel File (623 KB)"
+          "text": "Excel File (623 KB)",
+          "status": 200,
+          "bytes": 638430,
+          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL_layout.xlsx",
-          "text": "Excel File (13 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/2016077_CCD_201415_Data_File_Documentation.zip",
-          "text": "ZIP (586 KB)"
+          "text": "Excel File (13 KB)",
+          "status": 200,
+          "bytes": 12917,
+          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2014-15_CCD_LEA-Level_Data.xlsx",
-          "text": "Master Layout (17 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_txt.zip",
-          "text": "Flat File (ZIP 925 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_sas.zip",
-          "text": "SAS File (ZIP 1.05 MB)"
+          "text": "Master Layout (17 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html",
+          "status": 200,
+          "bytes": 16849,
+          "modified": "Wed, 01 Feb 2017 15:02:50 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory.xlsx",
-          "text": "Excel File (649 KB)"
+          "text": "Excel File (649 KB)",
+          "status": 200,
+          "bytes": 663597,
+          "modified": "Mon, 07 Nov 2016 13:46:57 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory_File_Layout.xlsx",
-          "text": "Excel File (40 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_0216161a_txt.zip",
-          "text": "Flat File (ZIP 2.58 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_02161601a_sas.zip",
-          "text": "SAS File (ZIP 3.62 MB)"
+          "text": "Excel File (40 KB)",
+          "status": 200,
+          "bytes": 40171,
+          "modified": "Mon, 07 Nov 2016 13:49:19 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_Membership.xlsx",
-          "text": "Excel File (773 KB)"
+          "text": "Excel File (773 KB)",
+          "status": 200,
+          "bytes": 790629,
+          "modified": "Wed, 04 Jan 2017 18:46:13 GMT"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Membership_File_Layout.xlsx",
           "text": "Excel File (158 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_txt.zip",
-          "text": "Flat File (ZIP 791 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_sas.zip",
-          "text": "SAS File (ZIP 980 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Staff.xlsx",
@@ -539,14 +786,6 @@
           "text": "Excel File (44 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_txt.zip",
-          "text": "Flat File (ZIP 287 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_sas.zip",
-          "text": "SAS File (ZIP 374 KB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA SPEC ED.xlsx",
           "text": "Excel File (616 KB)"
         },
@@ -555,20 +794,188 @@
           "text": "Excel File (17 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_txt.zip",
-          "text": "Flat File (ZIP 282 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_sas.zip",
-          "text": "SAS File (ZIP 353 KB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_ELL.xlsx",
           "text": "Excel File (614 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA ELL_File_Layout.xlsx",
           "text": "Excel File (14 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sas.zip",
+          "text": "SAS Code"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sps.zip",
+          "text": "SPSS Code"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sas.zip",
+          "text": "SAS Format"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sps.zip",
+          "text": "SPSS Code"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/2010_LEA_2A_doc.zip",
+          "text": "ZIP (550 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
+          "text": "2009-10 Errata Report"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_csv.zip",
+          "text": "Flat File (ZIP 1.04 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_w_0a_04082019_sas.zip",
+          "text": "SAS File (ZIP 1.45 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1819_Directory_DataNotes.xlsx",
+          "text": "Directory Data Notes"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx",
+          "text": "State Data Notes"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip",
+          "text": "Flat and SAS File  (ZIP 2.50 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip",
+          "text": "Flat and SAS File  (ZIP 50.0 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip",
+          "text": "Flat and SAS File  (ZIP 6.77 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip",
+          "text": "Flat and SAS File  (ZIP 712 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip",
+          "text": "Flat and SAS File  (ZIP 680 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/2019052_Documentation_CCD.zip",
+          "text": "ZIP (608 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx",
+          "text": "State Data Notes"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1617_w_1a_11212017.zip",
+          "text": "Flat and SAS File  (ZIP 2.25 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1617_l_2a_11212017.zip",
+          "text": "Flat and SAS File  (ZIP 50.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1617_l_2a_11212017.zip",
+          "text": "Flat and SAS File  (ZIP 7.17 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1617_l_2a_11212017.zip",
+          "text": "Flat and SAS File  (ZIP 712 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1617_l_2a_11212017.zip",
+          "text": "Flat and SAS File  (ZIP 677 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/2017074_Documentation_CCD_201516.zip",
+          "text": "ZIP (635 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_csv.zip",
+          "text": "Flat File (ZIP 0.97 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1516_w_1a_011717_sas.zip",
+          "text": "SAS File (ZIP 1.19 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_csv.zip",
+          "text": "Flat File (ZIP 2.58 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1516_w_1a_011717_sas.zip",
+          "text": "SAS File (ZIP 3.52 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/CCD_LEA_059_1516_W_1a_011717_csv.zip",
+          "text": "Flat File (ZIP 822 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1516_w_1a_011717_sas.zip",
+          "text": "SAS File (ZIP 1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_csv.zip",
+          "text": "Flat File (ZIP 306 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1516_w_1a_011717_sas.zip",
+          "text": "SAS File (ZIP 378 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_csv.zip",
+          "text": "Flat File (ZIP 277 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1516_w_1a_011717_sas.zip",
+          "text": "SAS File (ZIP 344 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/2016077_CCD_201415_Data_File_Documentation.zip",
+          "text": "ZIP (586 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_txt.zip",
+          "text": "Flat File (ZIP 925 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1415_w_0216161ar_sas.zip",
+          "text": "SAS File (ZIP 1.05 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_0216161a_txt.zip",
+          "text": "Flat File (ZIP 2.58 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1415_w_02161601a_sas.zip",
+          "text": "SAS File (ZIP 3.62 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_txt.zip",
+          "text": "Flat File (ZIP 791 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1415_w_0216161a_sas.zip",
+          "text": "SAS File (ZIP 980 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_txt.zip",
+          "text": "Flat File (ZIP 287 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_002089_1415_w_0216161a_sas.zip",
+          "text": "SAS File (ZIP 374 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_txt.zip",
+          "text": "Flat File (ZIP 282 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_046141_1415_w_0216161a_sas.zip",
+          "text": "SAS File (ZIP 353 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_csv.zip",
@@ -591,10 +998,6 @@
           "text": "ZIP (3.9&nbsp;MB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sas.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag131a_Documentation.zip",
           "text": "ZIP (391 KB)"
         },
@@ -607,16 +1010,8 @@
           "text": "ZIP (5.5&nbsp;MB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sps.zip",
-          "text": "SPSS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_supp_txt.zip",
           "text": "ZIP (4.2 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sas.zip",
-          "text": "SAS Format"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_documentation.zip",
@@ -629,10 +1024,6 @@
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_supp_sas.zip",
           "text": "ZIP (5.1 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sps.zip",
-          "text": "SPSS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag111a_txt.zip",
@@ -665,10 +1056,6 @@
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag102a_sas.zip",
           "text": "SAS Format"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/2010_LEA_2A_doc.zip",
-          "text": "ZIP (550 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/txt/pau102alay.txt",
@@ -1217,6 +1604,42 @@
         {
           "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip",
           "text": "SPSS Code"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/ccddata.asp",
+          "text": "Data Files"
+        },
+        {
+          "url": "javascript:location.href='/ccd/ccddata.asp'",
+          "text": "CCD DATA FILES"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/files.asp",
+          "text": "CCD Data File Tool"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/districtsearch/",
+          "text": "District Locator\u2014NCES ID"
+        },
+        {
+          "url": "https://ies.ed.gov/nces-statistical-products-release-calendar",
+          "text": "Statistical Products Release Calendar"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/datatables/api/Lookup/",
+          "text": "[loaded by page]"
+        },
+        {
+          "url": "https://api.ies.ed.gov/web/navigation/v1/header",
+          "text": "[loaded by page]"
+        },
+        {
+          "url": "https://api.ies.ed.gov/web/navigation/v1/footer",
+          "text": "[loaded by page]"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/datatables/api/File",
+          "text": "[loaded by page]"
         }
       ]
     },
@@ -1236,6 +1659,12 @@
           "target": "https://nces.ed.gov/ccd/f33agency.asp",
           "ok": true,
           "count": 130
+        },
+        {
+          "kind": "dir",
+          "target": "https://www2.census.gov/programs-surveys/school-finances/tables/",
+          "ok": true,
+          "count": 0
         }
       ],
       "files": [
@@ -1896,10 +2325,771 @@
           "kind": "dir",
           "target": "https://www2.census.gov/programs-surveys/saipe/datasets/",
           "ok": true,
-          "count": 0
+          "count": 160
         }
       ],
-      "files": []
+      "files": [
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ak.txt",
+          "text": "sd24-ak.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-al.txt",
+          "text": "sd24-al.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ar.txt",
+          "text": "sd24-ar.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Mon, 09 Nov 2026 00:49:59 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-az.txt",
+          "text": "sd24-az.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ca.txt",
+          "text": "sd24-ca.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-co.txt",
+          "text": "sd24-co.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ct.txt",
+          "text": "sd24-ct.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-dc.txt",
+          "text": "sd24-dc.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-de.txt",
+          "text": "sd24-de.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-fl.txt",
+          "text": "sd24-fl.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ga.txt",
+          "text": "sd24-ga.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-hi.txt",
+          "text": "sd24-hi.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ia.txt",
+          "text": "sd24-ia.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-id.txt",
+          "text": "sd24-id.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-il.txt",
+          "text": "sd24-il.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-in.txt",
+          "text": "sd24-in.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ks.txt",
+          "text": "sd24-ks.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ky.txt",
+          "text": "sd24-ky.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-la.txt",
+          "text": "sd24-la.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ma.txt",
+          "text": "sd24-ma.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-md.txt",
+          "text": "sd24-md.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-me.txt",
+          "text": "sd24-me.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-mi.txt",
+          "text": "sd24-mi.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-mn.txt",
+          "text": "sd24-mn.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-mo.txt",
+          "text": "sd24-mo.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ms.txt",
+          "text": "sd24-ms.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-mt.txt",
+          "text": "sd24-mt.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nc.txt",
+          "text": "sd24-nc.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nd.txt",
+          "text": "sd24-nd.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ne.txt",
+          "text": "sd24-ne.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nh.txt",
+          "text": "sd24-nh.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nj.txt",
+          "text": "sd24-nj.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nm.txt",
+          "text": "sd24-nm.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-nv.txt",
+          "text": "sd24-nv.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ny.txt",
+          "text": "sd24-ny.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-oh.txt",
+          "text": "sd24-oh.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ok.txt",
+          "text": "sd24-ok.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-or.txt",
+          "text": "sd24-or.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-pa.txt",
+          "text": "sd24-pa.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ri.txt",
+          "text": "sd24-ri.txt",
+          "status": 200,
+          "bytes": 0,
+          "modified": "Thu, 19 Feb 2026 21:30:28 GMT"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-sc.txt",
+          "text": "sd24-sc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-sd.txt",
+          "text": "sd24-sd.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-tn.txt",
+          "text": "sd24-tn.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-tx.txt",
+          "text": "sd24-tx.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-ut.txt",
+          "text": "sd24-ut.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-va.txt",
+          "text": "sd24-va.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-vt.txt",
+          "text": "sd24-vt.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-wa.txt",
+          "text": "sd24-wa.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-wi.txt",
+          "text": "sd24-wi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-wv.txt",
+          "text": "sd24-wv.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/sd24-wy.txt",
+          "text": "sd24-wy.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/ussd24.csv",
+          "text": "ussd24.csv"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/ussd24.txt",
+          "text": "ussd24.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2024/2024-school-districts/ussd24.xls",
+          "text": "ussd24.xls"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ak.txt",
+          "text": "sd23-ak.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-al.txt",
+          "text": "sd23-al.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ar.txt",
+          "text": "sd23-ar.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-az.txt",
+          "text": "sd23-az.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ca.txt",
+          "text": "sd23-ca.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-co.txt",
+          "text": "sd23-co.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ct.txt",
+          "text": "sd23-ct.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-dc.txt",
+          "text": "sd23-dc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-de.txt",
+          "text": "sd23-de.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-fl.txt",
+          "text": "sd23-fl.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ga.txt",
+          "text": "sd23-ga.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-hi.txt",
+          "text": "sd23-hi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ia.txt",
+          "text": "sd23-ia.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-id.txt",
+          "text": "sd23-id.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-il.txt",
+          "text": "sd23-il.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-in.txt",
+          "text": "sd23-in.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ks.txt",
+          "text": "sd23-ks.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ky.txt",
+          "text": "sd23-ky.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-la.txt",
+          "text": "sd23-la.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ma.txt",
+          "text": "sd23-ma.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-md.txt",
+          "text": "sd23-md.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-me.txt",
+          "text": "sd23-me.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-mi.txt",
+          "text": "sd23-mi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-mn.txt",
+          "text": "sd23-mn.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-mo.txt",
+          "text": "sd23-mo.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ms.txt",
+          "text": "sd23-ms.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-mt.txt",
+          "text": "sd23-mt.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nc.txt",
+          "text": "sd23-nc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nd.txt",
+          "text": "sd23-nd.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ne.txt",
+          "text": "sd23-ne.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nh.txt",
+          "text": "sd23-nh.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nj.txt",
+          "text": "sd23-nj.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nm.txt",
+          "text": "sd23-nm.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-nv.txt",
+          "text": "sd23-nv.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ny.txt",
+          "text": "sd23-ny.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-oh.txt",
+          "text": "sd23-oh.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ok.txt",
+          "text": "sd23-ok.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-or.txt",
+          "text": "sd23-or.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-pa.txt",
+          "text": "sd23-pa.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ri.txt",
+          "text": "sd23-ri.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-sc.txt",
+          "text": "sd23-sc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-sd.txt",
+          "text": "sd23-sd.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-tn.txt",
+          "text": "sd23-tn.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-tx.txt",
+          "text": "sd23-tx.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-ut.txt",
+          "text": "sd23-ut.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-va.txt",
+          "text": "sd23-va.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-vt.txt",
+          "text": "sd23-vt.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-wa.txt",
+          "text": "sd23-wa.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-wi.txt",
+          "text": "sd23-wi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-wv.txt",
+          "text": "sd23-wv.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/sd23-wy.txt",
+          "text": "sd23-wy.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/ussd23.txt",
+          "text": "ussd23.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2023/2023-school-districts/ussd23.xls",
+          "text": "ussd23.xls"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ak.txt",
+          "text": "sd22-ak.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-al.txt",
+          "text": "sd22-al.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ar.txt",
+          "text": "sd22-ar.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-az.txt",
+          "text": "sd22-az.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ca.txt",
+          "text": "sd22-ca.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-co.txt",
+          "text": "sd22-co.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ct.txt",
+          "text": "sd22-ct.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-dc.txt",
+          "text": "sd22-dc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-de.txt",
+          "text": "sd22-de.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-fl.txt",
+          "text": "sd22-fl.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ga.txt",
+          "text": "sd22-ga.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-hi.txt",
+          "text": "sd22-hi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ia.txt",
+          "text": "sd22-ia.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-id.txt",
+          "text": "sd22-id.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-il.txt",
+          "text": "sd22-il.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-in.txt",
+          "text": "sd22-in.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ks.txt",
+          "text": "sd22-ks.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ky.txt",
+          "text": "sd22-ky.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-la.txt",
+          "text": "sd22-la.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ma.txt",
+          "text": "sd22-ma.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-md.txt",
+          "text": "sd22-md.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-me.txt",
+          "text": "sd22-me.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-mi.txt",
+          "text": "sd22-mi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-mn.txt",
+          "text": "sd22-mn.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-mo.txt",
+          "text": "sd22-mo.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ms.txt",
+          "text": "sd22-ms.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-mt.txt",
+          "text": "sd22-mt.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nc.txt",
+          "text": "sd22-nc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nd.txt",
+          "text": "sd22-nd.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ne.txt",
+          "text": "sd22-ne.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nh.txt",
+          "text": "sd22-nh.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nj.txt",
+          "text": "sd22-nj.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nm.txt",
+          "text": "sd22-nm.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-nv.txt",
+          "text": "sd22-nv.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ny.txt",
+          "text": "sd22-ny.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-oh.txt",
+          "text": "sd22-oh.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ok.txt",
+          "text": "sd22-ok.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-or.txt",
+          "text": "sd22-or.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-pa.txt",
+          "text": "sd22-pa.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ri.txt",
+          "text": "sd22-ri.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-sc.txt",
+          "text": "sd22-sc.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-sd.txt",
+          "text": "sd22-sd.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-tn.txt",
+          "text": "sd22-tn.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-tx.txt",
+          "text": "sd22-tx.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-ut.txt",
+          "text": "sd22-ut.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-va.txt",
+          "text": "sd22-va.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-vt.txt",
+          "text": "sd22-vt.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-wa.txt",
+          "text": "sd22-wa.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-wi.txt",
+          "text": "sd22-wi.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-wv.txt",
+          "text": "sd22-wv.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/sd22-wy.txt",
+          "text": "sd22-wy.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/ussd22.txt",
+          "text": "ussd22.txt"
+        },
+        {
+          "url": "https://www2.census.gov/programs-surveys/saipe/datasets/2022/2022-school-districts/ussd22.xls",
+          "text": "ussd22.xls"
+        }
+      ]
     },
     {
       "id": "edge_boundaries",
@@ -1928,25 +3118,11 @@
           "modified": "Mon, 09 Mar 2026 16:30:25 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/TL_2025_SD.zip",
-          "text": "Layers by District Type (169 MB)",
-          "status": 200,
-          "bytes": 173386423,
-          "modified": "Tue, 02 Dec 2025 21:41:10 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL24_SY2324.zip",
           "text": "Single Composite File (210 MB)",
           "status": 200,
           "bytes": 220804724,
           "modified": "Fri, 15 Nov 2024 01:20:00 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/TL_2024_SD.zip",
-          "text": "Layers by District Type (164 MB)",
-          "status": 200,
-          "bytes": 172700516,
-          "modified": "Fri, 15 Nov 2024 01:21:00 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL23_SY2223.zip",
@@ -1956,18 +3132,39 @@
           "modified": "Mon, 27 Jan 2025 10:57:14 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/TL_2023_SD.zip",
-          "text": "Layers by District Type (164 MB)",
-          "status": 200,
-          "bytes": 172125195,
-          "modified": "Wed, 17 Jan 2024 16:08:16 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL22_SY2122.zip",
           "text": "Single Composite File (200 MB)",
           "status": 200,
           "bytes": 210054005,
           "modified": "Mon, 14 Nov 2022 18:49:32 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/TL_2025_SD.zip",
+          "text": "Layers by District Type (169 MB)",
+          "status": 200,
+          "bytes": 173386423,
+          "modified": "Tue, 02 Dec 2025 21:41:10 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SchoolDistrict_BoundaryChanges_2025.xlsx",
+          "text": "School District Boundary Changes Files",
+          "status": 200,
+          "bytes": 318671,
+          "modified": "Wed, 04 Mar 2026 20:31:26 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/TL_2024_SD.zip",
+          "text": "Layers by District Type (164 MB)",
+          "status": 200,
+          "bytes": 172700516,
+          "modified": "Fri, 15 Nov 2024 01:21:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/TL_2023_SD.zip",
+          "text": "Layers by District Type (164 MB)",
+          "status": 200,
+          "bytes": 172125195,
+          "modified": "Wed, 17 Jan 2024 16:08:16 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2022_SD.zip",
@@ -1991,25 +3188,11 @@
           "modified": "Tue, 02 Nov 2021 15:10:41 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL20_SY1920.zip",
-          "text": "Single Composite File (207 MB)",
-          "status": 200,
-          "bytes": 207810158,
-          "modified": "Wed, 03 Mar 2021 14:55:30 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2020_SD.zip",
           "text": "Layers by District Type (149 MB)",
           "status": 200,
           "bytes": 156316228,
           "modified": "Thu, 25 Feb 2021 19:36:49 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL19_SY1819.zip",
-          "text": "Single Composite File (184 MB)",
-          "status": 200,
-          "bytes": 193949961,
-          "modified": "Mon, 28 Oct 2019 17:44:47 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2019_SD.zip",
@@ -2019,25 +3202,11 @@
           "modified": "Mon, 28 Oct 2019 17:44:42 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL18_SY1718.zip",
-          "text": "Single Composite File (184 MB)",
-          "status": 200,
-          "bytes": 193736137,
-          "modified": "Mon, 03 Dec 2018 14:43:47 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2018_SD.zip",
           "text": "Layers by District Type (145 MB)",
           "status": 200,
           "bytes": 152836421,
           "modified": "Mon, 03 Dec 2018 14:43:43 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL17_SY1516.zip",
-          "text": "Single Composite File (196 MB)",
-          "status": 200,
-          "bytes": 206058018,
-          "modified": "Fri, 16 Mar 2018 14:11:59 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2017_SD.zip",
@@ -2047,25 +3216,11 @@
           "modified": "Wed, 14 Mar 2018 16:36:32 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL16_SY1516.zip",
-          "text": "Single Composite File (159 MB)",
-          "status": 200,
-          "bytes": 162785675,
-          "modified": "Fri, 03 Nov 2017 14:51:13 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/TL_2016_SD.zip",
           "text": "Layers by District Type (161 MB)",
           "status": 200,
           "bytes": 164321333,
           "modified": "Fri, 03 Nov 2017 14:51:52 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1314_TL15.zip",
-          "text": "Single Composite File (138 MB)",
-          "status": 200,
-          "bytes": 145174841,
-          "modified": "Wed, 17 Feb 2016 14:20:11 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2015_sd.zip",
@@ -2075,25 +3230,11 @@
           "modified": "Wed, 17 Feb 2016 14:21:03 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1314_TL14.zip",
-          "text": "Single Composite File (143 MB)",
-          "status": 200,
-          "bytes": 146666565,
-          "modified": "Mon, 29 Sep 2014 01:13:49 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2014_sd.zip",
           "text": "Layers by District Type (145 MB)",
           "status": 200,
           "bytes": 148973239,
           "modified": "Wed, 08 Oct 2014 15:21:00 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1112_TL13.zip",
-          "text": "Single Composite File (143 MB)",
-          "status": 200,
-          "bytes": 146625471,
-          "modified": "Mon, 29 Sep 2014 01:13:46 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2013_sd.zip",
@@ -2103,25 +3244,11 @@
           "modified": "Wed, 08 Oct 2014 15:45:40 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1112_TL12.zip",
-          "text": "Single Composite File (138 MB)",
-          "status": 200,
-          "bytes": 141325513,
-          "modified": "Wed, 07 Oct 2015 18:43:02 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2012_sd.zip",
           "text": "Layers by District Type (141 MB)",
           "status": 200,
           "bytes": 145080919,
           "modified": "Wed, 08 Oct 2014 14:37:30 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0910_TL11.zip",
-          "text": "Single Composite File (137 MB)",
-          "status": 200,
-          "bytes": 140785895,
-          "modified": "Mon, 29 Sep 2014 01:13:40 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2011_sd.zip",
@@ -2131,18 +3258,88 @@
           "modified": "Wed, 08 Oct 2014 14:36:55 GMT"
         },
         {
-          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0910_TL10.zip",
-          "text": "Single Composite File (138 MB)",
-          "status": 200,
-          "bytes": 141887686,
-          "modified": "Mon, 29 Sep 2014 01:13:28 GMT"
-        },
-        {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2010_sd.zip",
           "text": "Layers by District Type (142 MB)",
           "status": 200,
           "bytes": 146068787,
           "modified": "Wed, 08 Oct 2014 15:18:38 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL20_SY1920.zip",
+          "text": "Single Composite File (207 MB)",
+          "status": 200,
+          "bytes": 207810158,
+          "modified": "Wed, 03 Mar 2021 14:55:30 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL19_SY1819.zip",
+          "text": "Single Composite File (184 MB)",
+          "status": 200,
+          "bytes": 193949961,
+          "modified": "Mon, 28 Oct 2019 17:44:47 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL18_SY1718.zip",
+          "text": "Single Composite File (184 MB)",
+          "status": 200,
+          "bytes": 193736137,
+          "modified": "Mon, 03 Dec 2018 14:43:47 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL17_SY1516.zip",
+          "text": "Single Composite File (196 MB)",
+          "status": 200,
+          "bytes": 206058018,
+          "modified": "Fri, 16 Mar 2018 14:11:59 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SCHOOLDISTRICT_TL16_SY1516.zip",
+          "text": "Single Composite File (159 MB)",
+          "status": 200,
+          "bytes": 162785675,
+          "modified": "Fri, 03 Nov 2017 14:51:13 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1314_TL15.zip",
+          "text": "Single Composite File (138 MB)",
+          "status": 200,
+          "bytes": 145174841,
+          "modified": "Wed, 17 Feb 2016 14:20:11 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1314_TL14.zip",
+          "text": "Single Composite File (143 MB)",
+          "status": 200,
+          "bytes": 146666565,
+          "modified": "Mon, 29 Sep 2014 01:13:49 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1112_TL13.zip",
+          "text": "Single Composite File (143 MB)",
+          "status": 200,
+          "bytes": 146625471,
+          "modified": "Mon, 29 Sep 2014 01:13:46 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY1112_TL12.zip",
+          "text": "Single Composite File (138 MB)",
+          "status": 200,
+          "bytes": 141325513,
+          "modified": "Wed, 07 Oct 2015 18:43:02 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0910_TL11.zip",
+          "text": "Single Composite File (137 MB)",
+          "status": 200,
+          "bytes": 140785895,
+          "modified": "Mon, 29 Sep 2014 01:13:40 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0910_TL10.zip",
+          "text": "Single Composite File (138 MB)",
+          "status": 200,
+          "bytes": 141887686,
+          "modified": "Mon, 29 Sep 2014 01:13:28 GMT"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0708_TL09.zip",
@@ -2195,10 +3392,7 @@
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/tl_2006_sd.zip",
-          "text": "Layers by District Type (83 MB)",
-          "status": 200,
-          "bytes": 87039930,
-          "modified": "Tue, 27 Oct 2015 23:38:54 GMT"
+          "text": "Layers by District Type (83 MB)"
         },
         {
           "url": "https://nces.ed.gov/programs/edge/data/SCHOOLDISTRICT_SY0304_TL05.zip",
@@ -2271,10 +3465,6 @@
         {
           "url": "https://nces.ed.gov/programs/edge/data/tl_1995_sd.zip",
           "text": "Layers by District Type (56 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/programs/edge/data/EDGE_SchoolDistrict_BoundaryChanges_2025.xlsx",
-          "text": "School District Boundary Changes Files"
         }
       ]
     },
@@ -2398,14 +3588,20 @@
         {
           "kind": "page",
           "target": "https://sites.ed.gov/idea/idea-files/",
-          "ok": false,
-          "error": "403 Client Error: Forbidden for url: https://sites.ed.gov/idea/idea-files/"
+          "ok": true,
+          "count": 0
         },
         {
           "kind": "ckan",
           "target": "IDEA determinations",
           "ok": false,
           "error": "Expecting value: line 1 column 1 (char 0)"
+        },
+        {
+          "kind": "browser",
+          "target": "https://sites.ed.gov/idea/idea-files/",
+          "ok": true,
+          "count": 0
         }
       ],
       "files": []
