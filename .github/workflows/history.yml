@@ -35,7 +35,15 @@ jobs:
         run: |
           TAG="history-raw"
           gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "Historical source files" --notes "Unchanged copies of historical federal files." --prerelease
-          gh release upload "$TAG" fetch/history/raw/* --clobber
+          cd fetch/history/raw
+          mkdir -p ../bundles
+          tar -czf ../bundles/digest.tgz digest_* || true
+          tar -czf ../bundles/saipe.tgz saipe_* || true
+          tar -czf ../bundles/crdc.tgz *crdc-data.zip || true
+          tar -czf ../bundles/finance.tgz sdf* Sdf* SDF* elsec* || true
+          tar -czf ../bundles/ccd.tgz pau* ag* ccdagn* ccd_* CCD_* *Layout* || true
+          ls -la ../bundles
+          for f in ../bundles/*.tgz; do gh release upload "$TAG" "$f" --clobber; sleep 5; done
       - name: Save the report
         if: always()
         run: |
