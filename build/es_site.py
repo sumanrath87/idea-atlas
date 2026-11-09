@@ -329,6 +329,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
 </section>"""
     es_cd = dict(cd)
     es_cd.pop("t", None)
+    es_cd.pop("rg", None)
     es_cd["st"] = state
     es_cd["cats"] = [[CAT_ES.get(a, a), b] for a, b in cd.get("cats", [])]
     data = json.dumps(es_cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")

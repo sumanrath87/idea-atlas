@@ -71,6 +71,7 @@ def cell(v, status: str, unit: str) -> str:
     return text
 
 
+GROUPS_BY: dict = {}  # 2023-24 civil rights counts by race and ethnicity: {leaid: [[group, enrolled, with IEPs, with IEPs suspended], ...]}
 TRENDS: dict = {}     # district trend lines: {leaid: {"i": iep share, "s": spending, "p": child poverty}}
 LABELS: dict = {}     # words repeated on every page (table captions, headings, row names), stored once in data/labels.json
 NUMERIC = re.compile(r"^(at least )?[\d$,.\-–]+$|^—$")
@@ -420,6 +421,14 @@ def main() -> int:
     if tpath.exists():
         import gzip
         TRENDS.update(json.loads(gzip.open(tpath).read()))
+    gpath = ROOT / "clean" / "output" / "groups.csv.gz"
+    if gpath.exists():
+        order = ["AM", "AS", "BL", "HI", "HP", "TR", "WH"]
+        gdf = pd.read_csv(gpath, dtype={"leaid": str})
+        gdf["o"] = gdf.group.map(order.index)
+        for lid, g in gdf.sort_values(["leaid", "o"]).groupby("leaid"):
+            GROUPS_BY[lid] = [[x.group, *(int(getattr(x, c)) if getattr(x, c + "_status") == "ok" else None for c in ("enr", "iep", "oos"))]
+                              for x in g.itertuples() if x.enr_status != "ok" or x.enr > 0]
     by_id = d.set_index("leaid")
     dpath = ROOT / "clean" / "output" / "detail.csv.gz"
     detail = pd.read_csv(dpath, dtype=str, index_col=0, keep_default_na=False) if dpath.exists() else pd.DataFrame()
@@ -686,6 +695,20 @@ def section(title: str, intro: str, rows: list[list[str]], src: list[str], sid: 
   {extra}
   <p class="source">Source: {E(sources)}. <a href="{BASE}methods/#sources">About the sources</a></p>
 </section>"""
+
+
+# ---------------------------------------------------------------- race and ethnicity (2023-24 civil rights counts)
+
+def grp_block(which: str, cd: dict) -> str:
+    """A collapsed table, built in the browser from cd["rg"]: each group's rate beside the rate for all other students."""
+    if not cd.get("rg"):
+        return ""
+    summ = "By race and ethnicity: students with IEPs" if which == "iep" else "By race and ethnicity: out-of-school suspensions of students with IEPs"
+    return f"""<details class="full grp"><summary>{summ}</summary>
+<p class="hint">Groups are the race and ethnicity categories used in federal data. Each group's figure is shown beside the same figure for all other students in the district,
+the comparison federal reviews use. A figure is not shown when a group has fewer than 10 students. Figures describe what was reported, not why they differ.
+Source: Civil Rights Data Collection, 2023–24.</p>
+<div class="jg" data-g="{which}"></div></details>"""
 
 
 # ---------------------------------------------------------------- full detail
@@ -970,6 +993,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     def q(x):
         return None if x is None or pd.isna(x) else round(float(x), 1)
     cd = {"st": st_name, "m": {}, "id": r.leaid, "s2": r.state}
+    if GROUPS_BY.get(r.leaid):
+        cd["rg"] = GROUPS_BY[r.leaid]
     for k in [m[0] for m in MEASURES]:
         code = STATUS.get(str(r[k + "_status"]), ("5", ""))[0]
         cd["m"][k] = [q(r[k]) if code in ("0", "1") else None, code,
@@ -1002,10 +1027,10 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 {parent}{kids}
 {glance_html}
 {howto}
-{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), trend=ot_iep, more=chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
+{sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr) + grp_block("iep", cd), ("typical", "504", "categories"), trend=ot_iep, more=chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
 {sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",), pic=chart("settings", "Time in a general class, school-age students with IEPs"), pic2=rng(["env_80plus", "env_lt40", "env_separate"]))}
 {sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",), pic=chart("exit", "How students with IEPs left school, 2023–24"), pic2=rng(["grad_regular", "dropout"]))}
-{sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"), trend=ot_dc)}
+{sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr) + grp_block("oos", cd), ("discipline", "504"), trend=ot_dc)}
 {sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"), trend=ot_sp)}
 {sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",), trend=ot_pv)}
 <section aria-labelledby="s-state">

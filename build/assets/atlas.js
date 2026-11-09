@@ -395,8 +395,37 @@
     });
   }
 
+  // Race and ethnicity, 2023-24: each group's rate beside the rate for all other students (counts from the Civil Rights Data Collection).
+  var GROUP_NAMES = { AM: ["American Indian or Alaska Native", "Indígena americano o nativo de Alaska"], AS: ["Asian", "Asiático"], BL: ["Black or African American", "Negro o afroamericano"],
+    HI: ["Hispanic or Latino", "Hispano o latino"], HP: ["Native Hawaiian or Other Pacific Islander", "Nativo de Hawái u otras islas del Pacífico"], TR: ["Two or more races", "Dos o más razas"], WH: ["White", "Blanco"] };
+  function groupTable(cd, which, cls) {
+    var rg = cd.rg; if (!rg || !rg.length) return "";
+    var iep = which === "iep", num = iep ? 2 : 3, den = iep ? 1 : 2;
+    var ok = rg.every(function (g) { return g[num] != null && g[den] != null; });
+    var tn = 0, td = 0; rg.forEach(function (g) { tn += g[num] || 0; td += g[den] || 0; });
+    var n0 = function (v) { return v == null ? tr("Withheld or not reported", "Retenido o no informado") : v.toLocaleString("en-US"); };
+    var r100 = function (a, b) { return b == null || a == null ? "—" : b < 10 ? tr("Fewer than 10 students", "Menos de 10 estudiantes") : (100 * a / b).toFixed(1); };
+    var rows = rg.map(function (g) {
+      var nm = GROUP_NAMES[g[0]] ? (ES ? GROUP_NAMES[g[0]][1] : GROUP_NAMES[g[0]][0]) : g[0];
+      return '<tr><th scope="row">' + esc(nm) + "</th><td>" + n0(g[den]) + "</td><td>" + n0(g[num]) + "</td><td>" + r100(g[num], g[den]) + "</td><td>" +
+        (ok && g[den] != null ? r100(tn - g[num], td - g[den]) : "—") + "</td></tr>";
+    }).join("");
+    var cap = iep ? tr("Students with IEPs by race and ethnicity, 2023–24", "Estudiantes con IEP por raza y origen étnico, 2023–24")
+      : tr("Out-of-school suspensions of students with IEPs, by race and ethnicity, 2023–24", "Suspensiones fuera de la escuela de estudiantes con IEP, por raza y origen étnico, 2023–24");
+    var head = iep ? [tr("Group", "Grupo"), tr("Students enrolled", "Estudiantes inscritos"), tr("Students with IEPs", "Estudiantes con IEP"), tr("Per 100 students in the group", "Por cada 100 estudiantes del grupo"), tr("Per 100 all other students", "Por cada 100 de todos los demás estudiantes")]
+      : [tr("Group", "Grupo"), tr("Students with IEPs", "Estudiantes con IEP"), tr("Received one or more out-of-school suspensions", "Recibieron una o más suspensiones fuera de la escuela"), tr("Per 100 students with IEPs in the group", "Por cada 100 estudiantes con IEP del grupo"), tr("Per 100 all other students with IEPs", "Por cada 100 de todos los demás estudiantes con IEP")];
+    return '<table class="' + (cls || "profile") + '"><caption>' + esc(cap) + "</caption><thead><tr>" + head.map(function (h) { return '<th scope="col">' + esc(h) + "</th>"; }).join("") + "</tr></thead><tbody>" + rows + "</tbody></table>";
+  }
+  function fillGroups(cd) {
+    Array.prototype.forEach.call(document.querySelectorAll(".jg[data-g]"), function (slot) {
+      var t = groupTable(cd, slot.getAttribute("data-g"));
+      slot.outerHTML = t ? '<div class="table-wrap" role="region" tabindex="0" aria-label="' + esc(slot.getAttribute("data-g") === "iep" ? tr("Students with IEPs by race and ethnicity", "Estudiantes con IEP por raza y origen étnico") : tr("Suspensions by race and ethnicity", "Suspensiones por raza y origen étnico")) + '">' + t + "</div>" : "";
+    });
+  }
+
   function buildTables(cd) {
     buildTrendTables(cd);
+    fillGroups(cd);
     if (!document.querySelector(".jt[data-t]")) return;
     // repeated words are stored once in data/labels.json; numbers in the table data point into that list
     fetch(BASE + "data/labels.json").then(function (r) { return r.json(); }).then(function (L) { fillTables(cd, L); }).catch(function () { fillTables(cd, []); });
@@ -833,7 +862,7 @@
 
   // Shared with the report assistant (report.js), so reports draw the same charts as the site.
   window.ATLAS = { BASE: BASE, ES: ES, tr: tr, esc: esc, load: load, data: function () { return DATA; }, index: function () { return INDEX; },
-    rangeChart: rangeChart, partsBar: partsBar, catsChart: catsChart, trendChart: trendChart, yearLabel: yearLabel, svgEl: svgEl };
+    rangeChart: rangeChart, partsBar: partsBar, catsChart: catsChart, trendChart: trendChart, groupTable: groupTable, yearLabel: yearLabel, svgEl: svgEl };
 
   document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

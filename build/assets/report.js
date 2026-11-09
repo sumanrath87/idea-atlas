@@ -12,8 +12,10 @@
     { id: "s-disc", en: "Discipline and safety", es: "Disciplina y seguridad", keys: ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], chart: "range", trend: "d", terms: ["discipline"] },
     { id: "s-fund", en: "Funding", es: "Fondos", keys: ["spend_per_pupil", "idea_federal_per_student"], chart: "range", trend: "s", terms: ["spending", "idea_money"] },
     { id: "s-comm", en: "Community", es: "Comunidad", keys: ["child_poverty"], chart: "range", trend: "p", terms: ["poverty"] },
-    { id: "hist", en: "Over the years: your state and the nation", es: "A lo largo de los años: su estado y el país", keys: [], terms: ["years"] }
+    { id: "hist", en: "Over the years: your state and the nation", es: "A lo largo de los años: su estado y el país", keys: [], terms: ["years"] },
+    { id: "grp", en: "Students by race and ethnicity", es: "Estudiantes por raza y origen étnico", keys: [], terms: [], fam: false }
   ];
+  function defaultTopics(aud) { return TOPICS.filter(function (t) { return aud !== "family" || t.fam !== false; }).map(function (t) { return t.id; }); }
   var AUD = {
     family: { en: ["A family", "A clear guide in plain words, with pictures, explanations of every term, and the questions you want to bring to a meeting."],
               es: ["Una familia", "Una guía clara en palabras sencillas, con dibujos, explicaciones de cada término y las preguntas que quiere llevar a una reunión."] },
@@ -86,7 +88,7 @@
   }
 
   /* ------------------------------------------------------------ the assistant */
-  var state = { step: 0, aud: "family", id: null, name: "", topics: TOPICS.map(function (t) { return t.id; }), comps: [], xa: null, asks: null, own: "",
+  var state = { step: 0, aud: "family", id: null, name: "", topics: defaultTopics("family"), topicsTouched: false, comps: [], xa: null, asks: null, own: "",
     tables: true, dict: true, age: "", cat: "", stage: "" };
   function stepIds() {
     return state.aud === "family" ? ["aud", "dist", "child", "topics", "asks", "review"] : state.aud === "leader" ? ["aud", "dist", "topics", "comps", "review"] : ["aud", "dist", "topics", "detail", "review"];
@@ -115,6 +117,8 @@
     var q = new URLSearchParams(location.search);
     if (q.get("aud") && AUD[q.get("aud")]) state.aud = q.get("aud");
     if (q.get("id")) state.id = q.get("id");
+    if (!q.get("topics")) state.topics = defaultTopics(state.aud);
+    if (q.get("topics")) state.topicsTouched = true;
     if (q.get("topics")) state.topics = q.get("topics").split(",").filter(function (t) { return TOPICS.some(function (x) { return x.id === t; }); });
     if (q.get("comps")) state.comps = q.get("comps").split(",").filter(Boolean).slice(0, 3);
     if (q.get("own")) state.own = q.get("own");
@@ -307,12 +311,13 @@
 
   function save() {
     var f = $("#rpt-form"), id = cur(); if (!f) return;
-    if (id === "aud") { var a = $('input[name="aud"]:checked', f); if (a) state.aud = a.value; }
+    if (id === "aud") { var a = $('input[name="aud"]:checked', f); if (a) state.aud = a.value; if (!state.topicsTouched) state.topics = defaultTopics(state.aud); }
     if (id === "child") {
       state.age = ($('input[name="age"]:checked', f) || {}).value || "";
       state.stage = ($('input[name="stage"]:checked', f) || {}).value || "";
       state.cat = $("#rpt-cat").value;
     }
+    if (id === "topics") state.topicsTouched = true;
     if (id === "topics") state.topics = $$('input[name="topic"]:checked', f).map(function (x) { return x.value; });
     if (id === "asks") {
       var box = $("#rpt-asks");
@@ -522,6 +527,11 @@
     rows.push(["trend", "year_start", "value"]);
     var names = { i: "iep_per100", s: "spend_per_pupil_2024usd", p: "child_poverty_per100", d: "oos_iep_per100", dc: "oos_nodisability_per100" };
     Object.keys(cd.tr || {}).forEach(function (k) { (cd.tr[k] || []).forEach(function (p) { rows.push([names[k] || k, p[0], p[1]]); }); });
+    if (cd.rg) {
+      rows.push([]);
+      rows.push(["race_ethnicity_group_2023_24", "students_enrolled", "students_with_ieps", "students_with_ieps_one_or_more_oos"]);
+      cd.rg.forEach(function (g) { rows.push(g); });
+    }
     return rows.map(function (r) { return r.map(q).join(","); }).join("\r\n");
   }
 
@@ -597,6 +607,15 @@
 
     chosen.forEach(function (t) {
       if (t.id === "hist") return;
+      if (t.id === "grp") {
+        if (!cd.rg) return;
+        sec("r-grp", L(t), "<p>" + tr("These tables show, for each race and ethnicity group used in federal data, how many students have IEPs and how many students with IEPs received an out-of-school suspension in 2023–24. Each group's figure is shown beside the same figure for all other students in the district, the comparison federal reviews use. Every state also reviews these patterns each year, as IDEA requires. The figures describe what was reported, not why they differ.",
+            "Estas tablas muestran, para cada grupo de raza y origen étnico que se usa en los datos federales, cuántos estudiantes tienen un IEP y cuántos estudiantes con IEP recibieron una suspensión fuera de la escuela en 2023–24. La cifra de cada grupo aparece junto a la misma cifra para todos los demás estudiantes del distrito, la comparación que usan las revisiones federales. Cada estado también revisa estos patrones cada año, como exige IDEA. Las cifras describen lo que se informó, no por qué son distintas.") + "</p>" +
+          A.groupTable(cd, "iep", "profile rpt-t") + A.groupTable(cd, "oos", "profile rpt-t") +
+          '<p class="rpt-note">' + tr("A figure is not shown when a group has fewer than 10 students.", "No se muestra una cifra cuando un grupo tiene menos de 10 estudiantes.") + "</p>" +
+          '<p class="source">' + tr("Source: Civil Rights Data Collection, 2023–24 (U.S. Department of Education, Office for Civil Rights), summed from schools to the district.", "Fuente: Civil Rights Data Collection, 2023–24 (Departamento de Educación de EE. UU., Oficina de Derechos Civiles), sumada de las escuelas al distrito.") + "</p>");
+        return;
+      }
       var s = $('section[aria-labelledby="' + t.id + '"]', doc); if (!s) return;
       var body = list(plainItems(s));
       body += chartBox("c-main", t.chart === "settings" ? tr("Time in a general class", "Tiempo en una clase de educación general") : t.chart === "exit" ? tr("How students with IEPs left school", "Cómo salieron de la escuela los estudiantes con IEP") : tr("Where this district sits among " + st + " districts", "Dónde se ubica este distrito entre los distritos de " + st)).replace('class="chart rpt-fig c-main"', 'class="chart rpt-fig c-main" data-kind="' + t.chart + '" data-keys="' + t.keys.join(",") + '"');
