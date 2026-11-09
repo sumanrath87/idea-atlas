@@ -1,31 +1,32 @@
 # Discovery report
 
-Run: 2026-11-09T00:52:39+00:00
+Run: 2026-11-09T01:02:27+00:00
 
 ## IDEA Part B child count, by district (LEA)
-Expected year: 2024-25. Files found: 0.
+Expected year: 2024-25. Files found: 1.
 - checked page `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
-- checked ckan `"IDEA Section 618 LEA Part B Child Count"`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Child+Count%22&rows=20
-- checked ckan `"Local Level Data File"`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22Local+Level+Data+File%22&rows=20
-- checked browser `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
+- checked browser `https://data.ed.gov/dataset/idea-section-618-lea-part-b-child-count`: 0 links
+- checked direct `https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv`: 1 links
+  - bchildcountdisabilitycategorylea2024-25.csv: https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv (2.5 MB)
 
 ## IDEA Part B educational environments, by district (LEA)
-Expected year: 2024-25. Files found: 0.
+Expected year: 2024-25. Files found: 1.
 - checked page `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
-- checked ckan `"IDEA Section 618 LEA Part B Educational Environments"`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Educational+Environments%22&rows=20
-- checked browser `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
+- checked browser `https://data.ed.gov/dataset/idea-section-618-lea-part-b-educational-environments`: 0 links
+- checked direct `https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv`: 1 links
+  - beducationalenvironmentslea2024-25.csv: https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv (2.1 MB)
 
 ## IDEA Part B exiting, by district (LEA)
 Expected year: 2022-23. Files found: 0.
 - checked page `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
-- checked ckan `"IDEA Section 618 LEA Part B Exiting"`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Exiting%22&rows=20
-- checked ckan `IDEA 618 exiting LEA`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+618+exiting+LEA&rows=20
+- checked browser `https://data.ed.gov/dataset/idea-section-618-lea-part-b-exiting`: 0 links
+- checked browser `https://data.ed.gov/dataset/idea-section-618-data-products`: 0 links
 - checked browser `https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products`: 0 links
 
 ## Civil Rights Data Collection, district and school files
-Expected year: 2023-24. Files found: 59.
+Expected year: 2023-24. Files found: 57.
 - checked page `https://civilrightsdata.ed.gov/data`: 0 links
-- checked browser `https://civilrightsdata.ed.gov/data`: 62 links
+- checked browser `https://civilrightsdata.ed.gov/data`: 60 links
   - Download: https://civilrightsdata.ed.gov/assets/ocr/docs/2023-24-crdc-data.zip (99.6 MB)
   - Download: https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-school-form.pdf (2.3 MB)
   - Download: https://civilrightsdata.ed.gov/assets/downloads/2023-24-crdc-lea-form.pdf (0.5 MB)
@@ -53,42 +54,43 @@ Expected year: 2023-24. Files found: 59.
   - Download: https://civilrightsdata.ed.gov/assets/for-researchers/data-notes/Data-Notes-CRDC-2017-18.pdf (0.5 MB)
 
 ## Common Core of Data, district directory and enrollment
-Expected year: 2024-25. Files found: 248.
+Expected year: 2024-25. Files found: 463.
 - checked page `https://nces.ed.gov/ccd/files.asp`: 0 links
-- checked json `https://nces.ed.gov/ccd/datatables/api/File`: 0 links
+- checked json `https://nces.ed.gov/ccd/datatables/api/File/0/5/0/7/0/0`: 363 links
 - checked page `https://nces.ed.gov/ccd/pubagency.asp`: 250 links
-  - Release Notes: https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip (0.0 MB)
-  - Companion File: https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Companion.xlsx (1.0 MB)
-  - Record Layout (29.5 KB): https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Layout.xlsx (0.0 MB)
-  - Excel File (906 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Companion.xlsx (0.9 MB)
-  - Excel File (30 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Layout.xlsx (0.0 MB)
-  - Excel File (1.14 MB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Companion.xlsx (1.2 MB)
-  - Excel File (24.6 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Layout.xlsx (0.0 MB)
-  - Excel File (1.14 MB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Companion.xlsx (1.2 MB)
-  - Excel File (24 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Layout.xlsx (0.0 MB)
-  - Excel File (1.14 MB): https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Companion.xlsx (1.2 MB)
-  - Excel File (23.6 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Layout.xlsx (0.0 MB)
-  - Excel File (1.14 MB): https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Companion.xlsx (1.2 MB)
-  - Excel File (23.5 KB): https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Layout.xlsx (0.0 MB)
-  - Release Notes: https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip (0.0 MB)
-  - Excel File (826 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Companion.xlsx (0.8 MB)
-  - Excel File (53.0 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Layout.xls (0.1 MB)
-  - Excel File (0.98 MB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Companion.xlsx (1.0 MB)
-  - Excel File (37.5 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Layout.xls (0.0 MB)
-  - Excel File (0.98 MB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Companion.xlsx (1.0 MB)
-  - Excel File (32.5 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Layout.xls (0.0 MB)
-  - Excel File (0.98 MB): https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Companion.xlsx (1.0 MB)
-  - Excel File (31.5 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Layout.xls (0.0 MB)
-  - Excel File (0.98 MB): https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Companion.xlsx (1.0 MB)
-  - Excel File (31.5 KB): https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Layout.xls (0.0 MB)
-  - Crossfile Companion (411 KB): https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx (0.4 MB)
+  - 2025 - 2026 | Local Education Agency (School District) Universe Survey Data | Flat and Sas Files (26 MB): https://nces.ed.gov/ccd/data/zip/ccd_lea_029_2526_w_0a_050626.zip (2.8 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.76 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2425_w_1a_073025.zip (2.8 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (62 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2425_l_1a_073025.zip (68.5 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (5.8 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2425_l_1a_073025.zip (10.7 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.56 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2324_w_1a_073124.zip (2.7 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (58.6 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2324_l_1a_073124.zip (61.5 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (9.84 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2324_l_1a_073124.zip (10.3 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (35 MB): https://nces.ed.gov/ccd/data/zip/ccd_lea_032_2324_l_1a_pub_051425.zip (3.6 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (62 MB): https://nces.ed.gov/ccd/data/zip/ccd_lea_040_2324_l_1a_pub_051425.zip (6.4 MB)
+  - 2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.56 MB): https://nces.ed.gov/ccd/data/zip/ccd_lea_029_2223_w_1a_083023.zip (2.7 MB)
+  - 2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (1.32 GB): https://nces.ed.gov/ccd/data/zip/ccd_lea_052_2223_l_1a_083023.zip (1426.8 MB)
+  - 2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (9.81 MB): https://nces.ed.gov/ccd/data/zip/ccd_lea_059_2223_l_1a_083023.zip (10.3 MB)
+  - 2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (3.4 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_032_2223_l_1a_pub_050824.zip (3.6 MB)
+  - 2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (6.5 MB): https://nces.ed.gov/ccd/Data/zip/CCD_LEA_040_2223_L_1a_PUB_050824.zip (6.9 MB)
+  - 2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.5 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2122_w_1a_071722.zip (2.7 MB)
+  - 2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (60.5 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2122_l_1a_071722.zip (63.4 MB)
+  - 2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (10 MB): https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2122_l_1a_071722.zip (10.4 MB)
+  - 2025 - 2026 | Local Education Agency (School District) Universe Survey Data | Companion File (75 KB): https://nces.ed.gov/ccd/xls/SY_2025-26_LEA_Directory_Companion_2026-022.xlsx (0.1 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (53 KB): https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Directory_Companion_2026-005d.xlsx (0.1 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (40 KB): https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Membership_Companion_2026-005d.xlsx (0.0 MB)
+  - 2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (44 KB): https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Staff_Companion_2026-005d.xlsx (0.0 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (37 KB): https://nces.ed.gov/ccd/xls/2023-24_LEA_Dropout_PUB_Companion_2026-006pd.xlsx (0.0 MB)
+  - 2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (39 KB): https://nces.ed.gov/ccd/xls/2023-24_LEA_Completer_PUB_Companion_2026-007pd.xlsx (0.0 MB)
+  - 2025 - 2026 | Local Education Agency (School District) Universe Survey Data | State Data Notes (99 KB): https://nces.ed.gov/ccd/xls/SY_2025-26_0a_Preliminary_Directory_Data_Notes.xlsx (0.1 MB)
+  - 2025 - 2026 | Local Education Agency (School District) Universe Survey Data | SPSS Read Program (9 KB): https://nces.ed.gov/ccd/data/txt/Code_to_create_LEA_Directory_File_2025-26_0a.txt (0.0 MB)
 
 ## School District Finance Survey (F-33)
-Expected year: FY2023. Files found: 158.
+Expected year: FY2023. Files found: 234.
 - checked page `https://nces.ed.gov/ccd/f33agency.asp`: 130 links
-- checked json `https://nces.ed.gov/ccd/datatables/api/File`: 0 links
+- checked json `https://nces.ed.gov/ccd/datatables/api/File/1/5/0/5/0/0`: 159 links
 - checked page `https://nces.ed.gov/ccd/f33agency.asp`: 130 links
 - checked dir `https://www2.census.gov/programs-surveys/school-finances/tables/`: 28 links
+  - 2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (2.94 MB): https://nces.ed.gov/ccd/xls/2026-002_FY22_F33_Version2a_CompanionFile.xlsx (3.0 MB)
   - 24elsec_prelim.xlsx: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/24elsec_prelim.xlsx (0.0 MB)
   - elsec24.txt: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.txt (size unknown)
   - elsec24.xlsx: https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/elsec24.xlsx (12.6 MB)
@@ -113,7 +115,6 @@ Expected year: FY2023. Files found: 158.
   - elsec22_sumtables.xlsx: https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22_sumtables.xlsx (0.3 MB)
   - elsec22f.txt: https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.txt (size unknown)
   - elsec22f.xls: https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xls (35.8 MB)
-  - elsec22f.xlsx: https://www2.census.gov/programs-surveys/school-finances/tables/2022/secondary-education-finance/elsec22f.xlsx (8.2 MB)
 
 ## Small Area Income and Poverty Estimates, school districts
 Expected year: 2024. Files found: 160.
@@ -195,7 +196,6 @@ Expected year: SY2024-25. Files found: 13.
 
 ## IDEA state determinations
 Expected year: 2026. Files found: 0.
-- checked page `https://sites.ed.gov/idea/idea-files/`: 0 links
-- checked ckan `IDEA determinations Part B`: failed: 404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+determinations+Part+B&rows=20
+- checked page `https://sites.ed.gov/idea/idea-files/`: failed: 500 Server Error: Internal Server Error for url: https://sites.ed.gov/idea/idea-files/
 - checked browser `https://www.ed.gov/laws-and-policy/individuals-disabilities/idea/idea-files`: 0 links
 - checked browser `https://sites.ed.gov/idea/idea-files/`: 0 links

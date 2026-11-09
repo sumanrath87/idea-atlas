@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-09T00:52:39+00:00",
+  "run_at": "2026-11-09T01:02:27+00:00",
   "sources": [
     {
       "id": "idea_child_count",
@@ -13,25 +13,27 @@
           "count": 0
         },
         {
-          "kind": "ckan",
-          "target": "\"IDEA Section 618 LEA Part B Child Count\"",
-          "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Child+Count%22&rows=20"
-        },
-        {
-          "kind": "ckan",
-          "target": "\"Local Level Data File\"",
-          "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22Local+Level+Data+File%22&rows=20"
-        },
-        {
           "kind": "browser",
-          "target": "https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products",
+          "target": "https://data.ed.gov/dataset/idea-section-618-lea-part-b-child-count",
           "ok": true,
           "count": 0
+        },
+        {
+          "kind": "direct",
+          "target": "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv",
+          "ok": true,
+          "count": 1
         }
       ],
-      "files": []
+      "files": [
+        {
+          "url": "https://data.ed.gov/dataset/16968dd3-87bd-4e4a-92ed-50f03e6c4941/resource/00a5a1b6-835b-4f4e-9de6-bfb43f877087/download/bchildcountdisabilitycategorylea2024-25.csv",
+          "text": "bchildcountdisabilitycategorylea2024-25.csv",
+          "status": 200,
+          "bytes": 2459148,
+          "modified": "Thu, 08 Oct 2026 19:38:44 GMT"
+        }
+      ]
     },
     {
       "id": "idea_environments",
@@ -45,19 +47,27 @@
           "count": 0
         },
         {
-          "kind": "ckan",
-          "target": "\"IDEA Section 618 LEA Part B Educational Environments\"",
-          "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Educational+Environments%22&rows=20"
-        },
-        {
           "kind": "browser",
-          "target": "https://data.ed.gov/collections/individuals-with-disabilities-education-act-idea-section-618-data-products",
+          "target": "https://data.ed.gov/dataset/idea-section-618-lea-part-b-educational-environments",
           "ok": true,
           "count": 0
+        },
+        {
+          "kind": "direct",
+          "target": "https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv",
+          "ok": true,
+          "count": 1
         }
       ],
-      "files": []
+      "files": [
+        {
+          "url": "https://data.ed.gov/dataset/5f068d7a-c35a-484f-94a8-0c129032e231/resource/50569ac2-24b6-487b-9f45-4a3be65e4e5f/download/beducationalenvironmentslea2024-25.csv",
+          "text": "beducationalenvironmentslea2024-25.csv",
+          "status": 200,
+          "bytes": 2073890,
+          "modified": "Thu, 08 Oct 2026 19:42:00 GMT"
+        }
+      ]
     },
     {
       "id": "idea_exiting",
@@ -71,16 +81,16 @@
           "count": 0
         },
         {
-          "kind": "ckan",
-          "target": "\"IDEA Section 618 LEA Part B Exiting\"",
-          "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=%22IDEA+Section+618+LEA+Part+B+Exiting%22&rows=20"
+          "kind": "browser",
+          "target": "https://data.ed.gov/dataset/idea-section-618-lea-part-b-exiting",
+          "ok": true,
+          "count": 0
         },
         {
-          "kind": "ckan",
-          "target": "IDEA 618 exiting LEA",
-          "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+618+exiting+LEA&rows=20"
+          "kind": "browser",
+          "target": "https://data.ed.gov/dataset/idea-section-618-data-products",
+          "ok": true,
+          "count": 0
         },
         {
           "kind": "browser",
@@ -106,7 +116,7 @@
           "kind": "browser",
           "target": "https://civilrightsdata.ed.gov/data",
           "ok": true,
-          "count": 62
+          "count": 60
         }
       ],
       "files": [
@@ -457,14 +467,6 @@
         {
           "url": "https://civilrightsdata.ed.gov/estimations/2000",
           "text": "Download"
-        },
-        {
-          "url": "https://civilrightsdata.ed.gov/api/v1.0/SurveyYearsList?cutoff=10",
-          "text": "[loaded by page]"
-        },
-        {
-          "url": "https://civilrightsdata.ed.gov/api/v1.0/AuthEnvConfig?issuer=icam&env=prod",
-          "text": "[loaded by page]"
         }
       ]
     },
@@ -481,9 +483,9 @@
         },
         {
           "kind": "json",
-          "target": "https://nces.ed.gov/ccd/datatables/api/File",
+          "target": "https://nces.ed.gov/ccd/datatables/api/File/0/5/0/7/0/0",
           "ok": true,
-          "count": 0
+          "count": 363
         },
         {
           "kind": "page",
@@ -494,284 +496,564 @@
       ],
       "files": [
         {
-          "url": "https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip",
-          "text": "Release Notes",
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_2526_w_0a_050626.zip",
+          "text": "2025 - 2026 | Local Education Agency (School District) Universe Survey Data | Flat and Sas Files (26 MB)",
           "status": 200,
-          "bytes": 34497,
-          "modified": "Wed, 21 Aug 2019 09:56:30 GMT"
+          "bytes": 2754502,
+          "modified": "Wed, 01 Jul 2026 20:16:37 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2425_w_1a_073025.zip",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.76 MB)",
+          "status": 200,
+          "bytes": 2830266,
+          "modified": "Fri, 26 Dec 2025 22:31:08 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2425_l_1a_073025.zip",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (62 MB)",
+          "status": 200,
+          "bytes": 68497561,
+          "modified": "Mon, 29 Dec 2025 00:58:22 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2425_l_1a_073025.zip",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (5.8 MB)",
+          "status": 200,
+          "bytes": 10741735,
+          "modified": "Mon, 29 Dec 2025 00:47:55 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2324_w_1a_073124.zip",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.56 MB)",
+          "status": 200,
+          "bytes": 2687516,
+          "modified": "Tue, 12 Nov 2024 13:47:22 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2324_l_1a_073124.zip",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (58.6 MB)",
+          "status": 200,
+          "bytes": 61522459,
+          "modified": "Sun, 10 Nov 2024 20:04:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2324_l_1a_073124.zip",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (9.84 MB)",
+          "status": 200,
+          "bytes": 10318990,
+          "modified": "Tue, 12 Nov 2024 13:48:13 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_032_2324_l_1a_pub_051425.zip",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (35 MB)",
+          "status": 200,
+          "bytes": 3570197,
+          "modified": "Tue, 24 Mar 2026 18:12:06 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_040_2324_l_1a_pub_051425.zip",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (62 MB)",
+          "status": 200,
+          "bytes": 6380145,
+          "modified": "Tue, 24 Mar 2026 18:50:44 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_2223_w_1a_083023.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.56 MB)",
+          "status": 200,
+          "bytes": 2693547,
+          "modified": "Thu, 11 Jan 2024 16:52:18 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_2223_l_1a_083023.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (1.32 GB)",
+          "status": 200,
+          "bytes": 1426797186,
+          "modified": "Wed, 10 Jan 2024 16:01:42 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_2223_l_1a_083023.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (9.81 MB)",
+          "status": 200,
+          "bytes": 10296810,
+          "modified": "Thu, 11 Jan 2024 16:52:55 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_032_2223_l_1a_pub_050824.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (3.4 MB)",
+          "status": 200,
+          "bytes": 3555416,
+          "modified": "Tue, 28 Jan 2025 15:59:10 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/CCD_LEA_040_2223_L_1a_PUB_050824.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (6.5 MB)",
+          "status": 200,
+          "bytes": 6855551,
+          "modified": "Thu, 10 Oct 2024 12:37:35 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2122_w_1a_071722.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.5 MB)",
+          "status": 200,
+          "bytes": 2674905,
+          "modified": "Wed, 07 Dec 2022 13:07:57 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2122_l_1a_071722.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (60.5 MB)",
+          "status": 200,
+          "bytes": 63445735,
+          "modified": "Wed, 07 Dec 2022 13:06:27 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2122_l_1a_071722.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (10 MB)",
+          "status": 200,
+          "bytes": 10430635,
+          "modified": "Wed, 07 Dec 2022 13:08:54 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2025-26_LEA_Directory_Companion_2026-022.xlsx",
+          "text": "2025 - 2026 | Local Education Agency (School District) Universe Survey Data | Companion File (75 KB)",
+          "status": 200,
+          "bytes": 76212,
+          "modified": "Wed, 01 Jul 2026 15:34:55 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Directory_Companion_2026-005d.xlsx",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (53 KB)",
+          "status": 200,
+          "bytes": 53907,
+          "modified": "Tue, 23 Dec 2025 17:19:20 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Membership_Companion_2026-005d.xlsx",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (40 KB)",
+          "status": 200,
+          "bytes": 40570,
+          "modified": "Tue, 23 Dec 2025 17:20:06 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2024-25_LEA_Staff_Companion_2026-005d.xlsx",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | Companion File (44 KB)",
+          "status": 200,
+          "bytes": 44572,
+          "modified": "Tue, 23 Dec 2025 17:21:32 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2023-24_LEA_Dropout_PUB_Companion_2026-006pd.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (37 KB)",
+          "status": 200,
+          "bytes": 37170,
+          "modified": "Tue, 24 Mar 2026 18:15:28 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2023-24_LEA_Completer_PUB_Companion_2026-007pd.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (39 KB)",
+          "status": 200,
+          "bytes": 39386,
+          "modified": "Tue, 24 Mar 2026 18:57:06 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2025-26_0a_Preliminary_Directory_Data_Notes.xlsx",
+          "text": "2025 - 2026 | Local Education Agency (School District) Universe Survey Data | State Data Notes (99 KB)",
+          "status": 200,
+          "bytes": 100780,
+          "modified": "Wed, 01 Jul 2026 15:34:55 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/Code_to_create_LEA_Directory_File_2025-26_0a.txt",
+          "text": "2025 - 2026 | Local Education Agency (School District) Universe Survey Data | SPSS Read Program (9 KB)",
+          "status": 200,
+          "bytes": 8983,
+          "modified": "Wed, 01 Jul 2026 15:34:55 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2024-25_CCD_Final_2a_Data_Notes.xlsx",
+          "text": "2024 - 2025 | Local Education Agency (School District) Universe Survey Data | State Data Notes (207 KB)",
+          "status": 200,
+          "bytes": 210984,
+          "modified": "Thu, 11 Jun 2026 19:00:25 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_LEA_Directory_Companion_2024-252.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (53 KB)",
+          "status": 200,
+          "bytes": 54217,
+          "modified": "Mon, 11 Nov 2024 17:05:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_LEA_Membership_Companion_2024-252.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (40 KB)",
+          "status": 200,
+          "bytes": 41373,
+          "modified": "Mon, 11 Nov 2024 17:05:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_LEA_Staff_Companion_2024-252.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | Companion File (44 KB)",
+          "status": 200,
+          "bytes": 45333,
+          "modified": "Mon, 11 Nov 2024 17:05:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_LEA_Directory_Companion_2024-152.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Companion File (50 KB)",
+          "status": 200,
+          "bytes": 51460,
+          "modified": "Wed, 10 Jan 2024 20:21:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_LEA_Membership_Companion_2024-152.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Companion File (40 KB)",
+          "status": 200,
+          "bytes": 40849,
+          "modified": "Wed, 10 Jan 2024 20:21:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_LEA_Staff_Companion_2024-152.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Companion File (43 KB)",
+          "status": 200,
+          "bytes": 44381,
+          "modified": "Wed, 10 Jan 2024 20:21:00 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_Final_1a_Data_Notes.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | State Data Notes (246 KB)",
+          "status": 200,
+          "bytes": 252814,
+          "modified": "Mon, 11 Nov 2024 12:24:42 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_Dropouts_Data_Notes.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | State Data Notes (69 KB)",
+          "status": 200,
+          "bytes": 69734,
+          "modified": "Tue, 24 Mar 2026 18:25:53 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2023-24_Completers_Data_Notes.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Universe Survey Data | State Data Notes (61 KB)",
+          "status": 200,
+          "bytes": 62144,
+          "modified": "Tue, 24 Mar 2026 19:03:28 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_Provisional_1a_Data_Notes.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | State Data Notes (158 KB)",
+          "status": 200,
+          "bytes": 161943,
+          "modified": "Wed, 10 Jan 2024 15:47:40 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2022-23_LEA_Dropout_PUB_Companion.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Companion File (38 KB)",
+          "status": 200,
+          "bytes": 39092,
+          "modified": "Wed, 18 Dec 2024 20:25:27 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_Dropouts_Data_Notes.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | State Data Notes (77 KB)",
+          "status": 200,
+          "bytes": 78598,
+          "modified": "Wed, 18 Dec 2024 20:16:16 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2022-23_LEA_Completer_PUB_Companion.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | Companion File (39 KB)",
+          "status": 200,
+          "bytes": 39575,
+          "modified": "Wed, 04 Dec 2024 18:03:45 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2022-23_Completers_Data_Notes.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Universe Survey Data | State Data Notes (76 KB)",
+          "status": 200,
+          "bytes": 78067,
+          "modified": "Thu, 10 Oct 2024 11:12:03 GMT"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY2021_Membership_Staff_Lunch_DataNotes_2022-150.xlsx",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | State Data Notes (174 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2021-22_LEA_Directory_Companion.xlsx",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Companion File (53 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2021-22_LEA_Membership_Companion.xlsx",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Companion File (40 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2021-22_LEA_Staff_Companion.xlsx",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | Companion File (44 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY_2021-22_Membership_Staff_Lunch_DataNotes.xlsx",
+          "text": "2021 - 2022 | Local Education Agency (School District) Universe Survey Data | State Data Notes (92 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_2021_w_1a_080621.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.51 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_2021_l_1a_080621.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (51.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_2021_l_1a_080621.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (7.63 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2020-21_LEA_Directory_Companion.xlsx",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Companion File (1.10 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2020-21_LEA_Membership_Companion.xlsx",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Companion File (1.41 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2020-21_LEA_Staff_Companion.xlsx",
+          "text": "2020 - 2021 | Local Education Agency (School District) Universe Survey Data | Companion File (1.47 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2019-20_LEA_Directory_Companion.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Companion File (847 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2019-20_LEA_Membership_Companion.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Companion File (1.15 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2019-20_LEA_Staff_Companion.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Companion File (1.15 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2019-20_LEA_IDEA_Companion.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Companion File (1.14 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Companion.xlsx",
-          "text": "Companion File",
-          "status": 200,
-          "bytes": 966892,
-          "modified": "Fri, 27 Mar 2020 11:41:10 GMT"
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (732 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Membership_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (1.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Staff_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (1.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_IDEA_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (1.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_EL_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (1.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Dropout_PUB_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (38 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Completer_PUB_Companion.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Companion File (38 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/SY_2018-19_Prelim_Dir_0a_CCD_Nonfiscal_Release_Notes.zip",
+          "text": "Release Notes"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2018-19_LEA_Directory_Layout.xlsx",
-          "text": "Record Layout (29.5 KB)",
-          "status": 200,
-          "bytes": 30310,
-          "modified": "Mon, 05 Aug 2019 10:46:25 GMT"
+          "text": "Record Layout (29.5 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Companion.xlsx",
-          "text": "Excel File (906 KB)",
-          "status": 200,
-          "bytes": 928721,
-          "modified": "Tue, 01 Oct 2019 17:49:20 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Companion File (906 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Directory_Layout.xlsx",
-          "text": "Excel File (30 KB)",
-          "status": 200,
-          "bytes": 30793,
-          "modified": "Tue, 15 Oct 2019 13:36:12 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Record Layout (30 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Companion.xlsx",
-          "text": "Excel File (1.14 MB)",
-          "status": 200,
-          "bytes": 1200562,
-          "modified": "Tue, 01 Oct 2019 17:52:34 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Companion File (1.14 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Membership_Layout.xlsx",
-          "text": "Excel File (24.6 KB)",
-          "status": 200,
-          "bytes": 25289,
-          "modified": "Tue, 15 Oct 2019 13:37:22 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Record Layout (24.6 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Companion.xlsx",
-          "text": "Excel File (1.14 MB)",
-          "status": 200,
-          "bytes": 1201716,
-          "modified": "Tue, 01 Oct 2019 17:53:16 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Companion File (1.14 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_Staff_Layout.xlsx",
-          "text": "Excel File (24 KB)",
-          "status": 200,
-          "bytes": 24618,
-          "modified": "Tue, 15 Oct 2019 13:37:41 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Record Layout (24 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Companion.xlsx",
-          "text": "Excel File (1.14 MB)",
-          "status": 200,
-          "bytes": 1199266,
-          "modified": "Tue, 01 Oct 2019 17:51:34 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Companion File (1.14 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_IDEA_Layout.xlsx",
-          "text": "Excel File (23.6 KB)",
-          "status": 200,
-          "bytes": 24245,
-          "modified": "Tue, 15 Oct 2019 13:36:59 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Record Layout (23.6 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Companion.xlsx",
-          "text": "Excel File (1.14 MB)",
-          "status": 200,
-          "bytes": 1199090,
-          "modified": "Tue, 01 Oct 2019 17:50:36 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Companion File (1.14 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2017-18_LEA_EL_Layout.xlsx",
-          "text": "Excel File (23.5 KB)",
-          "status": 200,
-          "bytes": 24100,
-          "modified": "Tue, 15 Oct 2019 13:36:34 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip",
-          "text": "Release Notes",
-          "status": 200,
-          "bytes": 23085,
-          "modified": "Mon, 05 Aug 2019 14:20:11 GMT"
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Record Layout (23.5 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Companion.xlsx",
-          "text": "Excel File (826 KB)",
-          "status": 200,
-          "bytes": 846151,
-          "modified": "Mon, 14 Jan 2019 14:10:02 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Companion File (826 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Directory_Layout.xls",
-          "text": "Excel File (53.0 KB)",
-          "status": 200,
-          "bytes": 54272,
-          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Record Layout (53 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Companion.xlsx",
-          "text": "Excel File (0.98 MB)",
-          "status": 200,
-          "bytes": 1035334,
-          "modified": "Wed, 07 Aug 2019 17:55:59 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Companion File (.98 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Membership_Layout.xls",
-          "text": "Excel File (37.5 KB)",
-          "status": 200,
-          "bytes": 38400,
-          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Record Layout (37.5 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Companion.xlsx",
-          "text": "Excel File (0.98 MB)",
-          "status": 200,
-          "bytes": 1032447,
-          "modified": "Wed, 07 Aug 2019 17:56:16 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Companion File (.98 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_Staff_Layout.xls",
-          "text": "Excel File (32.5 KB)",
-          "status": 200,
-          "bytes": 33280,
-          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Record Layout (32.5 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Companion.xlsx",
-          "text": "Excel File (0.98 MB)",
-          "status": 200,
-          "bytes": 1030446,
-          "modified": "Wed, 07 Aug 2019 17:55:42 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Companion File (.98 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_IDEA_Layout.xls",
-          "text": "Excel File (31.5 KB)",
-          "status": 200,
-          "bytes": 32256,
-          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Record Layout (31.5 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Companion.xlsx",
-          "text": "Excel File (0.98 MB)",
-          "status": 200,
-          "bytes": 1034576,
-          "modified": "Wed, 07 Aug 2019 18:03:31 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Companion File (.98 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2016-17_LEA_EL_Layout.xls",
-          "text": "Excel File (31.5 KB)",
-          "status": 200,
-          "bytes": 32256,
-          "modified": "Tue, 08 Jan 2019 16:09:52 GMT"
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Record Layout (31.5 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx",
-          "text": "Crossfile Companion (411 KB)",
-          "status": 200,
-          "bytes": 421368,
-          "modified": "Tue, 12 Dec 2017 15:49:46 GMT"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2015-16_CCD_LEA-Level_Data_10.12.17.xlsx",
-          "text": "Master Layout (16 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html",
-          "status": 200,
-          "bytes": 16484,
-          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
+          "url": "https://nces.ed.gov/ccd/data/zip/SY_2016-1_Universe_2a_CCD_Nonfiscal_Release_Notes.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Release Notes"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory.xlsx",
-          "text": "Excel File ( 756 KB)",
-          "status": 200,
-          "bytes": 657904,
-          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Companion File (756 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Directory_layout.xlsx",
-          "text": "Excel File (17 KB)",
-          "status": 200,
-          "bytes": 17434,
-          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Record Layout (17 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership.xlsx",
-          "text": "Excel File (659 KB)",
-          "status": 200,
-          "bytes": 675804,
-          "modified": "Fri, 08 Dec 2017 15:53:46 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Companion File (659 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Membership_layout.xlsx",
-          "text": "Excel File (25 KB)",
-          "status": 200,
-          "bytes": 25992,
-          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Record Layout (25 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff.xlsx",
-          "text": "Excel File (625 KB)",
-          "status": 200,
-          "bytes": 640758,
-          "modified": "Fri, 08 Dec 2017 15:53:46 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Companion File (625 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_Staff_layout.xlsx",
-          "text": "Excel File (16 KB)",
-          "status": 200,
-          "bytes": 16722,
-          "modified": "Fri, 08 Dec 2017 15:53:32 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Record Layout (16 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA.xlsx",
-          "text": "Excel File (624 KB)",
-          "status": 200,
-          "bytes": 638995,
-          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Companion File (624 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_IDEA_layout.xlsx",
-          "text": "Excel File (13 KB)",
-          "status": 200,
-          "bytes": 13087,
-          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Record Layout (13 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL.xlsx",
-          "text": "Excel File (623 KB)",
-          "status": 200,
-          "bytes": 638430,
-          "modified": "Fri, 08 Dec 2017 15:53:45 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Companion File (623 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Companion_LEA_ELL_layout.xlsx",
-          "text": "Excel File (13 KB)",
-          "status": 200,
-          "bytes": 12917,
-          "modified": "Fri, 08 Dec 2017 15:53:31 GMT"
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Record Layout (13KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2014-15_CCD_LEA-Level_Data.xlsx",
-          "text": "Master Layout (17 KB)      https://www2.ed.gov/about/inits/ed/edfacts/file-specifications.html",
-          "status": 200,
-          "bytes": 16849,
-          "modified": "Wed, 01 Feb 2017 15:02:50 GMT"
+          "url": "https://nces.ed.gov/ccd/xls/2015-16_CCD_Crossfile_Companion.xlsx",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Cross-file Companion (411 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory.xlsx",
-          "text": "Excel File (649 KB)",
-          "status": 200,
-          "bytes": 663597,
-          "modified": "Mon, 07 Nov 2016 13:46:57 GMT"
+          "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2015-16_CCD_LEA-Level_Data_10.12.17.xlsx",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Master Layout (16 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory_File_Layout.xlsx",
-          "text": "Excel File (40 KB)",
-          "status": 200,
-          "bytes": 40171,
-          "modified": "Mon, 07 Nov 2016 13:49:19 GMT"
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20Directory.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (649 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20Directory_File_Layout.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Record Layout (40 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_Membership.xlsx",
-          "text": "Excel File (773 KB)",
-          "status": 200,
-          "bytes": 790629,
-          "modified": "Wed, 04 Jan 2017 18:46:13 GMT"
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (773 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20Membership_File_Layout.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Record Layout (158 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20Staff.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (643 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20Staff_File_Layout.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Record Layout (44 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20SPEC%20ED.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (616 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20SPEC%20ED_File_Layout.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Record Layout (17 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_ELL.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (614 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15%20CCD%20Companion_LEA%20ELL_File_Layout.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Record Layout (14 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/Master_Layout_2014-15_CCD_LEA-Level_Data.xlsx",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Master Layout (17 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory.xlsx",
+          "text": "Excel File (649 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Directory_File_Layout.xlsx",
+          "text": "Excel File (40 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA Membership_File_Layout.xlsx",
@@ -794,20 +1076,24 @@
           "text": "Excel File (17 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/2014-15_CCD_Companion_LEA_ELL.xlsx",
-          "text": "Excel File (614 KB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/xls/2014-15 CCD Companion_LEA ELL_File_Layout.xlsx",
           "text": "Excel File (14 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sas.zip",
-          "text": "SAS Code"
+          "text": "2013 - 2014 | Local Education Agency (School District) Universe Survey Data | SAS Code (2 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/Read_LEA_File_2013-14_sps.zip",
-          "text": "SPSS Code"
+          "text": "2013 - 2014 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/Read_LEA_File_2012-13_sas.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | SAS Formats (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/Read_LEA_File_2012-13_sps.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_LEA_File_2012-13_sas.zip",
@@ -818,8 +1104,1016 @@
           "text": "SPSS Code"
         },
         {
+          "url": "https://nces.ed.gov/ccd/data/zip/2010_LEA_2A_doc.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (550KB)"
+        },
+        {
           "url": "https://nces.ed.gov/ccd/Data/zip/2010_LEA_2A_doc.zip",
           "text": "ZIP (550 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1920_w_1a_082120.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.51 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1920_l_1a_082120.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (44.0 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1920_l_1a_082120.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (7.43 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1920_l_1a_082120.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (714 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1920_Membership_Staff_SpecialPopulations_DataNotes.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Universe Survey Data | State Data Notes (83 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1819_l_1a_091019.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1819_l_1a_091019.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (53.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_1819_l_1a_091019.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (7.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_2_89_1819_l_1a_091019.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (764 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_141_1819_l_1a_091019.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (732 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1819_Membership_Staff_SpecialPopulations_DataNotes.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | State Data Notes (99 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_032_1819_l_1a_pub_071321.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (3.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1819_Dropouts_DataNotes.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | State Data Notes (31 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/CCD_LEA_040_1819_L_1a_PUB_071321.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (6.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1819_Completers_DataNotes.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Universe Survey Data | State Data Notes (31 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (2.50 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (50.0 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (6.77 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (712 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (680 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx",
+          "text": "2017 - 2018 | Local Education Agency (School District) Universe Survey Data | State Data Notes"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1617_w_1a_11212017_csv.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Flat File (995 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1617_w_1a_11212017_sas.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | SAS File (1.28 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1617_l_2a_11212017.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (50.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_1617_l_2a_11212017.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (7.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_2_89_1617_l_2a_11212017.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (712 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_141_1617_l_2a_11212017.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Flat and SAS Files (677 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | Data Notes"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/2019052_Documentation_CCD.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Universe Survey Data | General Documentation (608 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1516_w_1a_011717_csv.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Flat File (.97 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1516_w_1a_011717_sas.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | SAS File (1.19 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1516_w_1a_011717_csv.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Flat File (2.58 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1516_w_1a_011717_sas.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | SAS File (3.52 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/CCD_LEA_059_1516_W_1a_011717_csv.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Flat File (822 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_1516_w_1a_011717_sas.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | SAS File (1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_002089_1516_w_1a_011717_csv.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Flat File (306 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_002089_1516_w_1a_011717_sas.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | SAS File (378 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_141_1516_w_1a_011717_csv.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | Flat File (277 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_141_1516_w_1a_011717_sas.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | SAS File (344 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/2017074_Documentation_CCD_201516.zip",
+          "text": "2015 - 2016 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (635 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1415_w_0216161ar_txt.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Flat File (925 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_029_1415_w_0216161ar_sas.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | SAS File (1.05 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1415_w_0216161a_txt.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Flat File (2.58 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_052_1415_w_02161601a_sas.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | SAS File (3.62 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_1415_w_0216161a_txt.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Flat File (791 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_059_1415_w_0216161a_sas.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | SAS File (980 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_002089_1415_w_0216161a_txt.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Flat File (287 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_002089_1415_w_0216161a_sas.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | SAS File (374 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_046141_1415_w_0216161a_txt.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Flat File (282 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccd_lea_046141_1415_w_0216161a_sas.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | SAS File (353 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/2016077_CCD_201415_Data_File_Documentation.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (586 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_csv.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Excel File (2.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/EDGE_GEOIDS_201415_PUBLIC_LEA_COMPANIONFILE.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | Companion File (26.6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/2017010_EDGE_GEOIDS_201415_160913_Documentation.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Universe Survey Data | General Documentation (963 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_txt.zip",
+          "text": "2013 - 2014 | Local Education Agency (School District) Universe Survey Data | Flat File (3.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_sas.zip",
+          "text": "2013 - 2014 | Local Education Agency (School District) Universe Survey Data | SAS File (5.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau131alay.txt",
+          "text": "2013 - 2014 | Local Education Agency (School District) Universe Survey Data | Record Layout (40.8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag121a_supp_txt.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | Flat File (4.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag121a_supp_sas.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | SAS File (5.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag121a_documentation.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (223 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau121alay.txt",
+          "text": "2012 - 2013 | Local Education Agency (School District) Universe Survey Data | Record Layout (48.9 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag111a_txt.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | Flat File (4.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag111a_sas.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | SAS File (6.44 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag111a_documentation.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (306 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau111alay.txt",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | Record Layout (48.9 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/ag111a_sascode.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | SAS Formats (2.18 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/ag111a_spsscode.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6.1 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag102a_txt.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | Flat File (4.11 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag102a_sas7bdat.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | SAS File (5.72 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau102alay.txt",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | Record Layout (39.1 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/Read_ag102a_sas.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | SAS Formats (1.89 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/Read_ag102a_sps.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Universe Survey Data | SPSS Code (5.12 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr091a_txt.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | Flat File (153 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr091a_sas.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | SAS File (185 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/2015090_LEA_PU.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | General Documentation (27 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/dr09lay1a.txt",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | Record Layout (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag092a_txt.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | Flat File (1.72 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag092a_sas.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | SAS File (2.27 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau092alay.txt",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | Record Layout (19 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_08.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | SAS Formats (1.77 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/Read_ag092a_sps.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3.02 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag081a_txt.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | Flat File (1.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag081a_sas.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | SAS File (9.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau081agen.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (442 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau081alay.txt",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | Record Layout (17 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_081a.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | SAS Formats (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_081a.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr08p1a_txt.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | Flat File (176 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr08p1a_sas.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | SAS File (220 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/INdr08p1a_gen.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (177 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr08lay1a.txt",
+          "text": "2008 - 2009 | Local Education Agency (School District) Universe Survey Data | Record Layout (3.4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr07p1b_txt.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | Flat File (179 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr07p1b_sas.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | SAS File (237 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/indr071b_gen.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (183 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr07lay1b.txt",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | Record Layout (1.5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag071b_txt.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | Flat File (1.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag071b_sas.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | SAS File (2.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau071bgen.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (413 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau071blay.txt",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | Record Layout (16 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_PAU_07b.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | SAS Code (3.6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SPSS_PAU_07b.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Universe Survey Data | SPSS Code (413 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr06p1b_txt.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | Flat File (178 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr06p1b_sas.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | SAS File (212 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/indr061b_gen.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (256 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr06lay1b.txt",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | Record Layout (1.5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag061c_dat.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | Flat File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag061c_sas.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | SAS File (2.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau061cgen.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (242 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau061clay.txt",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | Record Layout (30 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_Pau_06.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SPSS_PAU_06.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Universe Survey Data | SPSS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag051a_dat.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | Flat File (1.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag051a_sas.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | SAS File (10.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau051agen.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (215 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau051alay.txt",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | Record Layout (25 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_Pau_05.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SPSS_PAU_05.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | SPSS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr05p1b_dat.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | Flat File (964 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr05p1b_sas.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | SAS File (1.0 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp051bgen.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (279 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/dr05p1b.txt",
+          "text": "2005 - 2006 | Local Education Agency (School District) Universe Survey Data | Record Layout (7 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr041a_dat.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | Flat File (463 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr041a_sas.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | SAS File (477 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr041agen.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (119 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr04lay1a.txt",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | Record Layout (7 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag041c_dat.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | Flat File (1.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag041c_sas.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | SAS File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau041cgen.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (229 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau041clay.txt",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | Record Layout (24 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_Pau_041c.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SPSS_PAU_041c.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Universe Survey Data | SPSS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr031a_dat.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | Flat File (462 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr031a_sas.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | SAS File (476 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr031agen.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (117 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr03lay1a.txt",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | Record Layout (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag031b_dat.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | Flat File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag031b_sas.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | SAS File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau031bgen.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (137 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau031blay.txt",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | Record Layout (34 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_03.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | SAS Code (5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_03.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag021a_dat.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | Flat File (1.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag021a.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | SAS File (2.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau021agen.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (121 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau021alay.txt",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | Record Layout (34 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_02.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | SAS Code (5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_02.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | SPSS Code (5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr021a_dat.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | Flat File (467 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr021a_sas.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | SAS File (480 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/agdr021agen.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (95 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/agdr02lay1a.txt",
+          "text": "2002 - 2003 | Local Education Agency (School District) Universe Survey Data | Record Layout (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag011a_dat.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | Flat File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag011a.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | SAS File (2.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau01gen.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (84 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau01lay.txt",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | Record Layout (32 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_01.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_01.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr010d_dat.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | Flat File (2.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr010d.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | SAS File (33.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp01genr0d.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (136 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/drp01lay0d.txt",
+          "text": "2001 - 2002 | Local Education Agency (School District) Universe Survey Data | Record Layout (58 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag001a_dat.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | Flat File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag001a.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | SAS File (2.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau00gen.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (110 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau00lay.txt",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | Record Layout (32 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_Pau_00.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_00.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr001b_dat.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | Flat File (2.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr001b_sd2.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | SAS File (2.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp00gen1b.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (139 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/drp00lay1b.txt",
+          "text": "2000 - 2001 | Local Education Agency (School District) Universe Survey Data | Record Layout (58 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp991b_dat.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | Flat File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr991b.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | SAS File (2.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp99gen1b.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (156 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/drp99lay1b.txt",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | Record Layout (31 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag991b_dat.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | Flat File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag991b.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | SAS File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau99genr.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (104 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau99lay.txt",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | Record Layout (34 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_99.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_99.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr981b_dat.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | Flat File (1.9 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr981b.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | SAS File (2.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/drp98gen1b.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (140 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/drp98lay1b.txt",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | Record Layout (31 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag981c_dat.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | Flat File (1.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ag981c.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | SAS File (1.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau98rgen.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (103 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau98lay.txt",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | Record Layout (25 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_98.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_98.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Universe Survey Data | SPSS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau97data.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | Flat File (1.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/ccdagn97.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | SAS File (1.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau97gen.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (80 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau97lay.txt",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | Record Layout (17 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_97.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | SAS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_97.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr971c_dat.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | Flat File (1.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr971c.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | SAS File (2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/dr97gen1c.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (145 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/drp97lay1c.txt",
+          "text": "1997 - 1998 | Local Education Agency (School District) Universe Survey Data | Record Layout (31 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau96data.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Universe Survey Data | Flat File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau96gen.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (103 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau96lay.txt",
+          "text": "1996 - 1997 | Local Education Agency (School District) Universe Survey Data | Record Layout (17 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_96.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Universe Survey Data | SAS Code (6 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_96.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau95data.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Universe Survey Data | Flat File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau95gen.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (106 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau95lay.txt",
+          "text": "1995 - 1996 | Local Education Agency (School District) Universe Survey Data | Record Layout (23 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip//pau/SAS_Pau_95.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Universe Survey Data | SAS Code (7KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_95.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau94datr.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Universe Survey Data | Flat File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau94gen.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (138 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau94lay.txt",
+          "text": "1994 - 1995 | Local Education Agency (School District) Universe Survey Data | Record Layout (23 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_94.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Universe Survey Data | SAS Code (7KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_94.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau93data.zip",
+          "text": "1993 - 1994 | Local Education Agency (School District) Universe Survey Data | Flat File (1.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau93gen.zip",
+          "text": "1993 - 1994 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (129 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau93lay.txt",
+          "text": "1993 - 1994 | Local Education Agency (School District) Universe Survey Data | Record Layout (20 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_93.zip",
+          "text": "1993 - 1994 | Local Education Agency (School District) Universe Survey Data | SAS Code (7KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_93.zip",
+          "text": "1993 - 1994 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau92data.zip",
+          "text": "1992 - 1993 | Local Education Agency (School District) Universe Survey Data | Flat File (1.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau92gen.zip",
+          "text": "1992 - 1993 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (109 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau92lay.txt",
+          "text": "1992 - 1993 | Local Education Agency (School District) Universe Survey Data | Record Layout (23 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_92.zip",
+          "text": "1992 - 1993 | Local Education Agency (School District) Universe Survey Data | SAS Code (7 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_92.zip",
+          "text": "1992 - 1993 | Local Education Agency (School District) Universe Survey Data | SPSS Code (8 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau91data.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Universe Survey Data | Flat File (889 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau91gen.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Universe Survey Data | General Documentation (ZIP) (138 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau91lay.txt",
+          "text": "1991 - 1992 | Local Education Agency (School District) Universe Survey Data | Record Layout (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_91.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Universe Survey Data | SAS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_91.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau90data.zip",
+          "text": "1990 - 1991 | Local Education Agency (School District) Universe Survey Data | Flat File (869 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau90lay.txt",
+          "text": "1990 - 1991 | Local Education Agency (School District) Universe Survey Data | Record Layout (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_90.zip",
+          "text": "1990 - 1991 | Local Education Agency (School District) Universe Survey Data | SAS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_90.zip",
+          "text": "1990 - 1991 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau89data.zip",
+          "text": "1989 - 1990 | Local Education Agency (School District) Universe Survey Data | Flat File (879 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau89lay.txt",
+          "text": "1989 - 1990 | Local Education Agency (School District) Universe Survey Data | Record Layout (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_89.zip",
+          "text": "1989 - 1990 | Local Education Agency (School District) Universe Survey Data | SAS Code (4 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_89.zip",
+          "text": "1989 - 1990 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau88data.zip",
+          "text": "1988 - 1989 | Local Education Agency (School District) Universe Survey Data | Flat File (863 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau88lay.txt",
+          "text": "1988 - 1989 | Local Education Agency (School District) Universe Survey Data | Record Layout (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_88.zip",
+          "text": "1988 - 1989 | Local Education Agency (School District) Universe Survey Data | SAS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_88.zip",
+          "text": "1988 - 1989 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau87data.zip",
+          "text": "1987 - 1988 | Local Education Agency (School District) Universe Survey Data | Flat File (852 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau87lay.txt",
+          "text": "1987 - 1988 | Local Education Agency (School District) Universe Survey Data | Record Layout (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_87.zip",
+          "text": "1987 - 1988 | Local Education Agency (School District) Universe Survey Data | SAS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_87.zip",
+          "text": "1987 - 1988 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/pau86data.zip",
+          "text": "1986 - 1987 | Local Education Agency (School District) Universe Survey Data | Flat File (712 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/pau86lay.txt",
+          "text": "1986 - 1987 | Local Education Agency (School District) Universe Survey Data | Record Layout (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_86.zip",
+          "text": "1986 - 1987 | Local Education Agency (School District) Universe Survey Data | SAS Code (3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip",
+          "text": "1986 - 1987 | Local Education Agency (School District) Universe Survey Data | SPSS Code (3 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/xls/Errata_Report_for_2009_10_CCD_School_File_1a.xlsx",
@@ -838,36 +2132,8 @@
           "text": "Directory Data Notes"
         },
         {
-          "url": "https://nces.ed.gov/ccd/xls/SY1718_Membership_Staff_Special_Populations_DataNotes.xlsx",
-          "text": "State Data Notes"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1718_w_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 2.50 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_052_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 50.0 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_059_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 6.77 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_2_89_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 712 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_141_1718_l_1a_083118.zip",
-          "text": "Flat and SAS File  (ZIP 680 KB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/2019052_Documentation_CCD.zip",
           "text": "ZIP (608 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/xls/SY1617_DataNotes.xlsx",
-          "text": "State Data Notes"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/ccd_lea_029_1617_w_1a_11212017.zip",
@@ -994,20 +2260,8 @@
           "text": "ZIP (2.40&nbsp;MB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_txt.zip",
-          "text": "ZIP (3.9&nbsp;MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag131a_Documentation.zip",
           "text": "ZIP (391 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau131alay.txt",
-          "text": "Flat File (40.8&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag131a_supp_sas.zip",
-          "text": "ZIP (5.5&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/ag121a_supp_txt.zip",
@@ -1070,20 +2324,8 @@
           "text": "SPSS Code"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag092a_txt.zip",
-          "text": "ZIP (1.72 MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sas.zip",
           "text": "SAS Format"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau092alay.txt",
-          "text": "Flat File (19&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag092a_sas.zip",
-          "text": "ZIP (2.27 MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau/Read_ag092a_sps.zip",
@@ -1096,10 +2338,6 @@
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_091a.zip",
           "text": "SAS Format"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_08.zip",
-          "text": "ZIP (1.8 KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau091agen.zip",
@@ -1118,32 +2356,8 @@
           "text": "SPSS Code"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag081a_txt.zip",
-          "text": "ZIP (1.5 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_081a.zip",
-          "text": "SAS Format"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau081agen.zip",
           "text": "ZIP (442 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau081alay.txt",
-          "text": "Flat File (17&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag081a_sas.zip",
-          "text": "ZIP (2 MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_081a.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag071b_txt.zip",
-          "text": "ZIP (1.6&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_PAU_07b.zip",
@@ -1154,20 +2368,8 @@
           "text": "ZIP (413 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau071blay.txt",
-          "text": "Flat File (16&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag071b_sas.zip",
-          "text": "ZIP (2.1&nbsp;MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_07b.zip",
           "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag061c_dat.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_06.zip",
@@ -1178,20 +2380,8 @@
           "text": "ZIP (242 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau061clay.txt",
-          "text": "Flat File (30&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag061c_sas.zip",
-          "text": "ZIP (2.1&nbsp;MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_06.zip",
           "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag051a_dat.zip",
-          "text": "ZIP (1.6&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_05.zip",
@@ -1202,20 +2392,8 @@
           "text": "ZIP (215 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau051alay.txt",
-          "text": "Flat File (25&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag051a_sas.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_05.zip",
           "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag041c_dat.zip",
-          "text": "ZIP (1.7&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_041c.zip",
@@ -1226,92 +2404,20 @@
           "text": "ZIP (229 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau041clay.txt",
-          "text": "Flat File (24 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag041c_sas.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SPSS_PAU_041c.zip",
           "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag031b_dat.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_03.zip",
-          "text": "SAS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau031bgen.zip",
           "text": "ZIP (137 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau031blay.txt",
-          "text": "Flat File (34&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag031b_sas.zip",
-          "text": "ZIP (2&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_03.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag021a_dat.zip",
-          "text": "ZIP (1.9&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_02.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau021agen.zip",
           "text": "ZIP (121 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau021alay.txt",
-          "text": "Flat File (34&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag021a.zip",
-          "text": "ZIP (2.1&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_02.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag011a_dat.zip",
-          "text": "ZIP (2&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_01.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau01gen.zip",
           "text": "ZIP (84 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau01lay.txt",
-          "text": "Flat File (32&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag011a.zip",
-          "text": "ZIP (2.1&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_01.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag001a_dat.zip",
-          "text": "ZIP (2&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_00.zip",
@@ -1322,112 +2428,20 @@
           "text": "ZIP (110 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau00lay.txt",
-          "text": "Flat File (32&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag001a.zip",
-          "text": "ZIP (2.3&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_00.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag991b_dat.zip",
-          "text": "ZIP (2&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_99.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau99genr.zip",
           "text": "ZIP (104 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau99lay.txt",
-          "text": "Flat File (34&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag991b.zip",
-          "text": "ZIP (2&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_99.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag981c_dat.zip",
-          "text": "ZIP (1.9&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_98.zip",
-          "text": "SAS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau98rgen.zip",
           "text": "ZIP (103 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau98lay.txt",
-          "text": "Flat File (25&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ag981c.zip",
-          "text": "ZIP (1.9&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_98.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau97data.zip",
-          "text": "ZIP (1.6&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_97.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau97gen.zip",
           "text": "ZIP (80 KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau97lay.txt",
-          "text": "Flat File (17&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/ccdagn97.zip",
-          "text": "ZIP (1.9&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_97.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau96data.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_96.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau96gen.zip",
           "text": "ZIP (103 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau96lay.txt",
-          "text": "Flat File (17&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_96.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau95data.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/pau/SAS_Pau_95.zip",
@@ -1438,172 +2452,20 @@
           "text": "ZIP (106&nbsp;KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau95lay.txt",
-          "text": "Flat File (23&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_95.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau94datr.zip",
-          "text": "ZIP (1.8&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_94.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau94gen.zip",
           "text": "ZIP (138&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau94lay.txt",
-          "text": "Flat File (23&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_94.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau93data.zip",
-          "text": "ZIP (1.7&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_93.zip",
-          "text": "SAS Code"
         },
         {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau93gen.zip",
           "text": "ZIP (129&nbsp;KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau93lay.txt",
-          "text": "Flat File (20&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_93.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau92data.zip",
-          "text": "ZIP (1.9&nbsp;MB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_92.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau92gen.zip",
           "text": "ZIP (109&nbsp;KB)"
         },
         {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau92lay.txt",
-          "text": "Flat File (23&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_92.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau91data.zip",
-          "text": "ZIP (889&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_91.zip",
-          "text": "SAS Code"
-        },
-        {
           "url": "https://nces.ed.gov/ccd/Data/zip/pau91gen.zip",
           "text": "ZIP (138 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau91lay.txt",
-          "text": "Flat File (4 KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_91.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau90data.zip",
-          "text": "ZIP (869&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_90.zip",
-          "text": "SAS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau90lay.txt",
-          "text": "Flat File (3&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_90.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau89data.zip",
-          "text": "ZIP (879&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_89.zip",
-          "text": "SAS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau89lay.txt",
-          "text": "Flat File (3&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_89.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau88data.zip",
-          "text": "ZIP (863&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_88.zip",
-          "text": "SAS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau88lay.txt",
-          "text": "Flat File (3&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_88.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau87data.zip",
-          "text": "ZIP (852&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_87.zip",
-          "text": "SAS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau87lay.txt",
-          "text": "Flat File (3&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_87.zip",
-          "text": "SPSS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/pau86data.zip",
-          "text": "ZIP (712&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SAS_Pau_86.zip",
-          "text": "SAS Code"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/txt/pau86lay.txt",
-          "text": "Flat File (3&nbsp;KB)"
-        },
-        {
-          "url": "https://nces.ed.gov/ccd/data/zip/SPSS_PAU_86.zip",
-          "text": "SPSS Code"
         }
       ]
     },
@@ -1620,9 +2482,9 @@
         },
         {
           "kind": "json",
-          "target": "https://nces.ed.gov/ccd/datatables/api/File",
+          "target": "https://nces.ed.gov/ccd/datatables/api/File/1/5/0/5/0/0",
           "ok": true,
-          "count": 0
+          "count": 159
         },
         {
           "kind": "page",
@@ -1638,6 +2500,13 @@
         }
       ],
       "files": [
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2026-002_FY22_F33_Version2a_CompanionFile.xlsx",
+          "text": "2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (2.94 MB)",
+          "status": 200,
+          "bytes": 3016808,
+          "modified": "Tue, 17 Mar 2026 15:05:16 GMT"
+        },
         {
           "url": "https://www2.census.gov/programs-surveys/school-finances/tables/2024/secondary-education-finance/24elsec_prelim.xlsx",
           "text": "24elsec_prelim.xlsx",
@@ -1913,10 +2782,7 @@
         },
         {
           "url": "https://nces.ed.gov/ccd/data/txt/sdf16_1a_layout.txt",
-          "text": "Flat File (33.4&nbsp;KB)",
-          "status": 200,
-          "bytes": 34256,
-          "modified": "Fri, 17 May 2019 17:21:19 GMT"
+          "text": "Flat File (33.4&nbsp;KB)"
         },
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf16_1a_sas7bdat.zip",
@@ -2389,6 +3255,306 @@
         {
           "url": "https://nces.ed.gov/ccd/data/zip/sdf901a.sas.zip",
           "text": "ZIP (2.3&nbsp;MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/txt/sdf24_1a.txt",
+          "text": "2023 - 2024 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (22 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2026011_F33_FY24_Version1a_CompanionFile.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File\r\n (63 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2026011_F33_FY24_sdf1a_Tables.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Finance Survey (F-33) Data | Data Tables (103 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2026011_F33_FY24_Version1a_StateNotes.xlsx",
+          "text": "2023 - 2024 | Local Education Agency (School District) Finance Survey (F-33) Data | State Data Notes (41 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf23_2a.zip",
+          "text": "2022 - 2023 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (4.4 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/F-33_FY23_Companion_File_2a.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (2.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/F-33_FY23_State_Notes_2a.xlsx",
+          "text": "2022 - 2023 | Local Education Agency (School District) Finance Survey (F-33) Data | State Data Notes (41 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf22_2a_xlxs.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | Excel File (16.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf22_2a_txt.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (4.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf22_2a_sas7bdat.zip",
+          "text": "2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (6.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/txt/sdf22_2a_layout.txt",
+          "text": "2021 - 2022 | Local Education Agency (School District) Finance Survey (F-33) Data | Record Layout (50 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf21_2a_xlsx.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | Excel File (15 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf21_2a_txt.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (4.1 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf21_2a_sas7bdat.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (5.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2025048_FY21_F33_Version2a_CompanionFile.xlsx",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (2.2 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/txt/sdf21_2a_layout.txt",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | Record Layout (43 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf21_1a_spss.zip",
+          "text": "2020 - 2021 | Local Education Agency (School District) Finance Survey (F-33) Data | SPSS Code (5.09 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf20_2a_xlsx.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Finance Survey (F-33) Data | Excel File (15.5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf20_2a_txt.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Finance Survey (F-33) Data | Flate File (5.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf20_2a_sas7bdat.zip",
+          "text": "2019 - 2020 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (5.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2025308_FY20_F33_Version2a_CompanionFile.xlsx",
+          "text": "2019 - 2020 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (1.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/txt/sdf20_2a_layout.txt",
+          "text": "2019 - 2020 | Local Education Agency (School District) Finance Survey (F-33) Data | Record Layout (40 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf19_2a_xlsx.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | Excel File (19.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf19_2a.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (3.24 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf19_2a_sas.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (4.76 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/xls/2021306_FY19_F33_Version2a_CompanionFile.xlsx",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | Companion File (1.49 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf19_2a_layout.txt",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | Record Layout (34 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf19_2a_spss.zip",
+          "text": "2018 - 2019 | Local Education Agency (School District) Finance Survey (F-33) Data | SPSS Code (5 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf18_1a.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (3.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/txt/sdf18_1a_layout.txt",
+          "text": "2017 - 2018 | Local Education Agency (School District) Finance Survey (F-33) Data | Record Layout (34 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/Data/zip/sdf18_1a_spss_code.zip",
+          "text": "2017 - 2018 | Local Education Agency (School District) Finance Survey (F-33) Data | SPSS Code (4.41 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf17_1a.zip",
+          "text": "2016 - 2017 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (3.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf15_1a.sas7bdat.zip",
+          "text": "2014 - 2015 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (4.34 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a_survey_form.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Finance Survey (F-33) Data | Survey Form (158 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf13_1a_spss_code.zip",
+          "text": "2012 - 2013 | Local Education Agency (School District) Finance Survey (F-33) Data | SPSS Code (4.50 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/Sdf1a_documenation_files.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (982 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf121a_spss_code.zip",
+          "text": "2011 - 2012 | Local Education Agency (School District) Finance Survey (F-33) Data | SPSS Code (4.3 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf11_1a_gen.zip",
+          "text": "2010 - 2011 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (918 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf101agen.zip",
+          "text": "2009 - 2010 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (970 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf091agen.zip",
+          "text": "2008 - 2009 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (780 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf081agen.zip",
+          "text": "2007 - 2008 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (769 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf071agen.zip",
+          "text": "2006 - 2007 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (249 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf061agen.zip",
+          "text": "2005 - 2006 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (407 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf051a.txt.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf051a.sas.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (4.1 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf051cgen.zip",
+          "text": "2004 - 2005 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (487 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf041bgen.zip",
+          "text": "2003 - 2004 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (300 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf031bgen.zip",
+          "text": "2002 - 2003 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (403 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf021cgen.zip",
+          "text": "2001 - 2002 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (182 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf011d.txt",
+          "text": "2000 - 2001 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf011d_sas.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.9 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf011dgen.zip",
+          "text": "2000 - 2001 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (608 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf001d.txt",
+          "text": "1999 - 2000 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf001dgen.zip",
+          "text": "1999 - 2000 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (166 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf991c.txt",
+          "text": "1998 - 1999 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf991c_sas.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.8 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf99gen1c.zip",
+          "text": "1998 - 1999 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (174 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf981e.txt",
+          "text": "1997 - 1998 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf981e_sas.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf981egen.zip",
+          "text": "1997 - 1998 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (144 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf97d1a.txt",
+          "text": "1996 - 1997 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.5 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf97d1a_sas.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf971agen.zip",
+          "text": "1996 - 1997 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (132 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf96c1b.txt",
+          "text": "1995 - 1996 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf96c1b_sas.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf96c1bgen.zip",
+          "text": "1995 - 1996 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (150 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf95c1d.txt",
+          "text": "1994 - 1995 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf95c1d_sas.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf95c1dgen.zip",
+          "text": "1994 - 1995 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (133 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf921a.txt",
+          "text": "1991 - 1992 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (2.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf921a_sas.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (3.6 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf921agen.zip",
+          "text": "1991 - 1992 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (217 KB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/txt/sdf901a.txt",
+          "text": "1989 - 1990 | Local Education Agency (School District) Finance Survey (F-33) Data | Flat File (1.7 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf901a_sas.zip",
+          "text": "1989 - 1990 | Local Education Agency (School District) Finance Survey (F-33) Data | SAS File (2.3 MB)"
+        },
+        {
+          "url": "https://nces.ed.gov/ccd/data/zip/sdf901agen.zip",
+          "text": "1989 - 1990 | Local Education Agency (School District) Finance Survey (F-33) Data | General Documentation (ZIP) (1.5 MB)"
         }
       ]
     },
@@ -3670,14 +4836,8 @@
         {
           "kind": "page",
           "target": "https://sites.ed.gov/idea/idea-files/",
-          "ok": true,
-          "count": 0
-        },
-        {
-          "kind": "ckan",
-          "target": "IDEA determinations Part B",
           "ok": false,
-          "error": "404 Client Error: Not Found for url: https://catalog.data.gov/api/3/action/package_search?q=IDEA+determinations+Part+B&rows=20"
+          "error": "500 Server Error: Internal Server Error for url: https://sites.ed.gov/idea/idea-files/"
         },
         {
           "kind": "browser",
