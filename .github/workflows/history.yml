@@ -34,8 +34,11 @@ jobs:
       - name: State measures
         if: inputs.step == 'state'
         run: python fetch/history/download_state.py
+      - name: State reports (PDF)
+        if: inputs.step == 'apr'
+        run: python fetch/history/download_apr_pdfs.py
       - name: Keep the extra files
-        if: inputs.step == 'more' || inputs.step == 'state'
+        if: inputs.step == 'more' || inputs.step == 'state' || inputs.step == 'apr'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
