@@ -1,0 +1,25 @@
+name: Test upload login
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check login (password is never printed)
+        env:
+          DH_HOST: ${{ secrets.DH_HOST }}
+          DH_USER: ${{ secrets.DH_USER }}
+          DH_PASS: ${{ secrets.DH_PASS }}
+        run: |
+          sudo apt-get -qq update >/dev/null && sudo apt-get -qq install -y sshpass >/dev/null
+          H="$(printf '%s' "$DH_HOST" | tr -d '\r\n ')"; U="$(printf '%s' "$DH_USER" | tr -d '\r\n ')"
+          export SSHPASS="$(printf '%s' "$DH_PASS" | tr -d '\r\n')"
+          echo "host length ${#H}, user length ${#U}, password length ${#SSHPASS}"
+          echo "--- methods the server offers"
+          ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=none -o BatchMode=yes "$U@$H" true 2>&1 | grep -iE "permission denied|authentications" | head -3 || true
+          echo "--- password login over SFTP"
+          echo "pwd" > b.txt
+          sshpass -e sftp -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o PreferredAuthentications=password,keyboard-interactive -b b.txt "$U@$H" 2>&1 | sed "s/$SSHPASS/****/g" | tail -5 || true
