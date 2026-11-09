@@ -89,6 +89,38 @@ def modern(year: int):
     return out.rename(columns={"index": "leaid", "LEAID": "leaid"})
 
 
+OSEP = Path("/home/claude/hist/raw/osep")
+
+
+def membership(year: int) -> pd.Series:
+    """District totals from the CCD membership file, read in pieces (the 2022-23 file is very large)."""
+    tag = f"{str(year)[2:]}{str(year + 1)[2:]}"
+    z = next(iter(RAW.glob(f"ccd_lea_052_{tag}_*.zip")))
+    with zipfile.ZipFile(z) as zf:
+        n = [x for x in zf.namelist() if x.lower().endswith(".csv")][0]
+        parts = []
+        for ch in pd.read_csv(zf.open(n), dtype=str, usecols=["LEAID", "STUDENT_COUNT", "TOTAL_INDICATOR"], chunksize=2_000_000, encoding="latin-1"):
+            ch = ch[ch.TOTAL_INDICATOR.str.contains("Education Unit Total", na=False)]
+            parts.append(ch)
+    m = pd.concat(parts)
+    return m.groupby("LEAID").STUDENT_COUNT.apply(lambda x: pd.to_numeric(x, errors="coerce").max())
+
+
+def osep(year: int):
+    f = next(iter(OSEP.glob(f"*lea{year}-{str(year + 1)[2:]}.csv")))
+    lines = f.read_bytes().decode("latin-1").splitlines()
+    start = next(i for i, l in enumerate(lines) if l.lstrip("\ufeffï»¿").startswith("School Year"))
+    d = pd.read_csv(io.StringIO("\n".join(lines[start:])), dtype=str, keep_default_na=False)
+    d = d[d["NCES LEA ID"].str.strip() != ""]
+    sp = pd.Series(pd.to_numeric(d["Combined Early Childhood and School Age Total"], errors="coerce").values,
+                   index=d["NCES LEA ID"].str.strip().str.zfill(7))
+    mem = membership(year)
+    sp.index.name = None
+    mem.index.name = None
+    out = pd.DataFrame({"speced": sp}).join(pd.DataFrame({"member": mem}), how="inner").reset_index()
+    return out.rename(columns={"index": "leaid"})
+
+
 def files():
     """(fall year, kind, path, layout, two-digit suffix)"""
     out = []
@@ -104,26 +136,47 @@ def files():
     for y, z in [(2007, "ag071b_txt.zip"), (2008, "ag081a_txt.zip"), (2009, "ag092a_txt.zip"), (2010, "ag102a_txt.zip"),
                  (2011, "ag111a_txt.zip"), (2012, "ag121a_supp_txt.zip"), (2013, "ag131a_supp_txt.zip")]:
         out.append((y, "tab", RAW / z, None, str(y)[2:]))
-    for y in range(2014, 2018):
+    for y in range(2014, 2020):
         out.append((y, "modern", None, None, ""))
+    for y in range(2020, 2024):
+        out.append((y, "osep", None, None, ""))
     return out
 
 
-def screen(series):
-    """1) Drop a state's year when its districts' combined rate is far from that state's usual level (a sign the
-    state reported IEP counts in a different way that year, for example at a regional or state agency).
-    2) Drop a single-year spike that both neighbouring years contradict."""
-    import numpy as np
-    agg = {}
-    for lid, ys in series.items():
-        for y, v in ys.items():
-            agg.setdefault((lid[:2], y), []).append(v)
-    st_year = {k: float(np.median(v)) for k, v in agg.items() if len(v) >= 5}
-    by_state = {}
-    for (st, y), v in st_year.items():
-        by_state.setdefault(st, []).append(v)
-    usual = {st: float(np.median(v)) for st, v in by_state.items()}
-    bad = {(st, y) for (st, y), v in st_year.items() if usual.get(st) and abs(v - usual[st]) / usual[st] > 0.30}
+FIPS_NAME = {"01": "Alabama", "02": "Alaska", "04": "Arizona", "05": "Arkansas", "06": "California", "08": "Colorado", "09": "Connecticut",
+             "10": "Delaware", "11": "District of Columbia", "12": "Florida", "13": "Georgia", "15": "Hawaii", "16": "Idaho", "17": "Illinois",
+             "18": "Indiana", "19": "Iowa", "20": "Kansas", "21": "Kentucky", "22": "Louisiana", "23": "Maine", "24": "Maryland",
+             "25": "Massachusetts", "26": "Michigan", "27": "Minnesota", "28": "Mississippi", "29": "Missouri", "30": "Montana", "31": "Nebraska",
+             "32": "Nevada", "33": "New Hampshire", "34": "New Jersey", "35": "New Mexico", "36": "New York", "37": "North Carolina",
+             "38": "North Dakota", "39": "Ohio", "40": "Oklahoma", "41": "Oregon", "42": "Pennsylvania", "44": "Rhode Island", "45": "South Carolina",
+             "46": "South Dakota", "47": "Tennessee", "48": "Texas", "49": "Utah", "50": "Vermont", "51": "Virginia", "53": "Washington",
+             "54": "West Virginia", "55": "Wisconsin", "56": "Wyoming"}
+
+
+def official(st: str, y: int):
+    """The state's official share served (Digest of Education Statistics), straight or interpolated between published years."""
+    states = json.loads((Path(__file__).resolve().parent / "output" / "states.json").read_text())
+    d = {int(k): v["pct"] for k, v in states.get(FIPS_NAME.get(st, ""), {}).items() if v.get("pct")}
+    if not d:
+        return None
+    if y in d:
+        return d[y]
+    lo = max((k for k in d if k < y), default=None)
+    hi = min((k for k in d if k > y), default=None)
+    if lo is None or hi is None:
+        return d[lo if lo is not None else hi] if (lo or hi) and abs((lo or hi) - y) <= 2 else None
+    return d[lo] + (d[hi] - d[lo]) * (y - lo) / (hi - lo)
+
+
+def screen(series, sums):
+    """1) Leave out a state's year when its districts' combined rate is far (over 35%) from the state's official share served
+    that year, a sign the state reported IEP counts differently (for example, at a regional or state agency).
+    2) Leave out a single-year spike that both neighbouring years contradict."""
+    bad = set()
+    for (st, y), (sp, mem) in sums.items():
+        ref = official(st, y)
+        if ref and mem and abs(100 * sp / mem - ref) / ref > 0.35:
+            bad.add((st, y))
     out, spikes = {}, 0
     for lid, ys in series.items():
         keep = {y: v for y, v in ys.items() if (lid[:2], y) not in bad}
@@ -142,10 +195,11 @@ def screen(series):
 def main():
     OUT.mkdir(exist_ok=True)
     series: dict[str, dict[int, float]] = {}
+    sums: dict = {}
     report = []
     for y, kind, z, lay, yy in files():
         try:
-            df = fixed(z, lay, yy) if kind == "fixed" else tabbed(z, yy) if kind == "tab" else modern(y)
+            df = fixed(z, lay, yy) if kind == "fixed" else tabbed(z, yy) if kind == "tab" else osep(y) if kind == "osep" else modern(y)
         except Exception as e:  # noqa: BLE001
             report.append(f"{y}: failed {e}")
             continue
@@ -159,9 +213,12 @@ def main():
         good = df[ok]
         for lid, m, s in zip(good.leaid, good.member, good.speced):
             series.setdefault(lid, {})[y] = round(100 * s / m, 1)
+        g2 = good.assign(st=good.leaid.str[:2]).groupby("st")[["speced", "member"]].sum()
+        for st, row in g2.iterrows():
+            sums[(st, y)] = (row.speced, row.member)
         nat = 100 * good.speced.sum() / good.member.sum() if len(good) else 0
         report.append(f"{y}: {len(df):,} rows, {len(good):,} usable, overall {nat:.1f} per 100")
-    series, dropped = screen(series)
+    series, dropped = screen(series, sums)
     report.append(f"Quality screen: dropped {dropped['state_years']} state-years with unusual reporting and {dropped['spikes']} one-year spikes")
     report.append("State-years dropped: " + ", ".join(sorted(dropped["which"]))[:1500])
     (OUT / "district_iep.json").write_text(json.dumps(series, separators=(",", ":")))

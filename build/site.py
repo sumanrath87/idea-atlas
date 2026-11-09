@@ -384,7 +384,8 @@ def main() -> int:
         import gzip, zipfile
         tr_all = json.loads(gzip.open(tp).read())
         lines = ["leaid,measure,year,value"]
-        nm = {"i": "students_with_ieps_per_100_enrolled (fall year)", "s": "current_spending_per_student_2024_dollars (fiscal year)", "p": "children_5_17_in_poverty_per_100 (estimate year)"}
+        nm = {"i": "students_with_ieps_per_100_enrolled (fall year)", "s": "current_spending_per_student_2024_dollars (fiscal year)", "p": "children_5_17_in_poverty_per_100 (estimate year)",
+              "d": "out_of_school_suspension_students_with_ieps_per_100 (fall year)", "n": "out_of_school_suspension_students_without_disabilities_per_100 (fall year)"}
         for lid, ms in sorted(tr_all.items()):
             for k, ys in ms.items():
                 for y, v in sorted(ys.items(), key=lambda kv: int(kv[0])):
@@ -613,7 +614,7 @@ every learning setting, every way students left special education, civil rights 
 {explain("status")}
 {detail}
 {f"""<h2>Trends file</h2>
-<p>Each district's trend lines, one row per district, measure, and year: students with IEPs per 100 enrolled (1991–92 onward), spending per student in 2024 dollars (fiscal year 1990 onward), and child poverty (2003 onward).
+<p>Each district's trend lines, one row per district, measure, and year: students with IEPs per 100 enrolled (1991–92 onward), spending per student in 2024 dollars (fiscal year 1990 onward), child poverty (2003 onward), and out-of-school suspension for students with and without disabilities (2013–14 onward).
 See <a href="{BASE}methods/#trends">how the trends are made</a>.</p>
 <p><a class="button" href="{BASE}download/{tname}" download>Download {E(tname)}</a></p>""" if tname else ""}
 
@@ -884,7 +885,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     tr = tr or {}
     cd_tr = {}
 
-    def over_time(code, cur, label, unit, yfmt, src, what):
+    def over_time(code, cur, label, unit, yfmt, src, what, comp=None):
         """A plain sentence, a small chart and a table for one measure over time. Returns (visible part, numbers-layer part)."""
         pts = {int(y): v for y, v in (tr.get(code) or {}).items()}
         if cur[1] is not None and pd.notna(cur[1]):
@@ -896,6 +897,15 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
         a, b = ys[0], ys[-1]
         say = what.format(a=yfmt(a), b=yfmt(b), va=f(pts[a]), vb=f(pts[b]))
         cd_tr[code] = [[y, pts[y]] for y in ys]
+        if comp:                                   # a second, quieter line for comparison (same years where available)
+            ccode, ccur, csay = comp
+            cp = {int(y): v for y, v in (tr.get(ccode) or {}).items()}
+            if ccur is not None and pd.notna(ccur):
+                cp[cur[0]] = round(float(ccur), 1)
+            if len(cp) >= 2:
+                cy = sorted(cp)
+                cd_tr[code + "c"] = [[y, cp[y]] for y in cy]
+                say += " " + csay.format(a=yfmt(cy[0]), b=yfmt(cy[-1]), va=f(cp[cy[0]]), vb=f(cp[cy[-1]]))
         vis = (f'<h3 class="ot-h">Over time</h3><ul class="plain"><li>{figs(say)}</li></ul>'
                + chart("trend", f"{label}, {yfmt(a)} to {yfmt(b)}. Dashed lines join years without a figure.", code))
         # the year-by-year table is built in the browser from the same numbers as the chart
@@ -911,6 +921,10 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     ot_sp = over_time("s", (2024, r.spend_per_pupil if str(r.spend_per_pupil_status) == "ok" else None), "Spending per student, in 2024 dollars", "usd", fy,
                       "Earlier years: NCES and Census Bureau school district finance surveys, adjusted for inflation with the Consumer Price Index (Bureau of Labor Statistics).",
                       "Adjusted for inflation, the district spent about {va} per student in {a} and about {vb} in {b}.")
+    ot_dc = over_time("d", (2023, r.oos_idea if str(r.oos_idea_status) == "ok" else None), "Out-of-school suspension, students with IEPs, per 100", "per100", sy,
+                      "Earlier years: Civil Rights Data Collection, 2013–14, 2015–16, 2017–18, 2020–21, and 2021–22, summed from schools to the district. 2020–21 was a pandemic year with much remote learning.",
+                      "About {va} of every 100 students with IEPs received an out-of-school suspension in {a}, compared with about {vb} in {b}.",
+                      comp=("n", r.oos_nodis if str(r.oos_nodis_status) == "ok" else None, "For students without disabilities, it was about {va} in {a} and about {vb} in {b}."))
     ot_pv = over_time("p", (2024, r.child_poverty if str(r.child_poverty_status) == "ok" else None), "Children ages 5 to 17 in poverty, per 100", "per100", str,
                       "Earlier years: Census Bureau Small Area Income and Poverty Estimates, 2003 onward.",
                       "About {va} of every 100 children in the district's area lived in poverty in {a}, and about {vb} in {b}.")
@@ -966,7 +980,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 {sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr), ("typical", "504", "categories"), trend=ot_iep, more=chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}
 {sec("Where students learn", "<p>School-age students with IEPs, 2024–25.</p>", ["env_80plus", "env_lt40", "env_separate"], ["idea_env"], "s-where", "per 100 students with IEPs, ages 5 to 21", full_where(dr), ("settings",), pic=chart("settings", "Time in a general class, school-age students with IEPs"), pic2=rng(["env_80plus", "env_lt40", "env_separate"]))}
 {sec("Leaving school", "<p>Students with IEPs, ages 14 to 21, who left school in 2023–24.</p>", ["grad_regular", "dropout"], ["idea_exit"], "s-leave", "per 100 students with IEPs who left school", full_leave(dr), ("leaving",), pic=chart("exit", "How students with IEPs left school, 2023–24"), pic2=rng(["grad_regular", "dropout"]))}
-{sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"))}
+{sec("Discipline and safety", "<p>School year 2023–24.</p>" + check + partial, ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"], ["crdc"], "s-disc", "per 100 students in each group", full_disc(dr), ("discipline", "504"), trend=ot_dc)}
 {sec("Funding", "<p>Fiscal year 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ["fin", "idea_cc"], "s-fund", "dollars", full_fund(dr), ("spending", "idea_money"), trend=ot_sp)}
 {sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",), trend=ot_pv)}
 <section aria-labelledby="s-state">
@@ -1089,12 +1103,15 @@ A rating describes the state, not any one district.</p></section>
 tables 204.30, 204.60, 204.70, 219.90, and 203.20, editions 2013 to 2023. Where editions overlap, the newest is used. Years the tables do not report are shown as dashed lines, never filled in.</p>
 <p>The <strong>Over time</strong> lines on district pages use:</p>
 <ul>
-<li><strong>Students with IEPs per 100 enrolled:</strong> Common Core of Data district files, 1991–92 to 2017–18, then this atlas's current year. Before using a year, I check each state:
-if its districts' combined rate that year is more than 30% away from the state's usual level, which usually means the state reported IEP counts differently (for example, at a regional agency), the whole state-year is left out.
+<li><strong>Students with IEPs per 100 enrolled:</strong> Common Core of Data district files, 1991–92 to 2019–20, then the Department of Education's district child count files, 2020–21 to 2024–25.
+Before using a year, I check each state: if its districts' combined rate that year is more than 35% away from the state's official share served (Digest of Education Statistics), which usually means the state reported
+IEP counts differently that year (for example, at a regional agency), the whole state-year is left out.
 A single year that both neighbouring years contradict is also left out.</li>
 <li><strong>Spending per student:</strong> NCES school district finance surveys (F-33), fiscal years 1990, 1992, and 1995 to 2018, and the Census Bureau's Annual Survey of School System Finances, fiscal years 2019 to 2024.
 Earlier years are adjusted to 2024 dollars with the Consumer Price Index for All Urban Consumers (Bureau of Labor Statistics), averaged over each July to June school year.</li>
 <li><strong>Child poverty:</strong> Census Bureau Small Area Income and Poverty Estimates for school districts, 2003 to 2024.</li>
+<li><strong>Out-of-school suspension:</strong> Civil Rights Data Collection, 2013–14, 2015–16, 2017–18, 2020–21, 2021–22, and 2023–24, with school counts summed to the district.
+Students with IEPs and students without disabilities are each counted per 100 students in that group. 2020–21 was a pandemic year with much remote learning, so suspensions were far lower that year.</li>
 </ul>
 <p>Districts sometimes merge, split, or change ID numbers. Trend lines follow the district's current federal ID, so a district that changed shape may show a jump. The trend file can be downloaded on the <a href="{BASE}download/">download page</a>.</p></section>
 

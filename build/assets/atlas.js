@@ -468,16 +468,24 @@
   }
 
   // A district's own line over time: thin line, end values labelled, dashed across missing years.
-  function trendChart(body, pts, money) {
+  function trendChart(body, pts, money, comp) {
     if (!pts || pts.length < 3) return false;
     var W = 640, H = 170, L = 10, R = 80, T = 18, B = 26;
     var x0 = pts[0][0], x1 = pts[pts.length - 1][0];
-    var mx = Math.max.apply(null, pts.map(function (p) { return p[1]; })) * 1.15 || 1;
+    var all = pts.concat(comp || []);
+    var mx = Math.max.apply(null, all.map(function (p) { return p[1]; })) * 1.15 || 1;
+    if (comp) { x0 = Math.min(x0, comp[0][0]); x1 = Math.max(x1, comp[comp.length - 1][0]); }
     var X = function (x) { return L + (W - L - R) * (x - x0) / Math.max(1, x1 - x0); };
     var Y = function (v) { return T + (H - T - B) * (1 - v / mx); };
     var fmtv = function (v) { return money ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1); };
     var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "range trend", focusable: "false" });
     svgEl("line", { x1: L, x2: W - R, y1: Y(0), y2: Y(0), class: "track" }, svg);
+    if (comp && comp.length > 1) {
+      svgEl("path", { d: comp.map(function (p, i) { return (i ? "L" : "M") + X(p[0]) + "," + Y(p[1]); }).join(" "), class: "tcomp" }, svg);
+      var cl = comp[comp.length - 1], ct = svgEl("text", { x: X(cl[0]) + 10, y: Y(cl[1]) + 4.5, class: "lab" }, svg); ct.textContent = fmtv(cl[1]);
+      body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-line" style="background:var(--accent)"></span>' + tr("Students with IEPs", "Estudiantes con IEP") +
+        '</li><li><span class="k-line k-comp"></span>' + tr("Students without disabilities", "Estudiantes sin discapacidades") + "</li></ul>");
+    }
     var seg = "M" + X(pts[0][0]) + "," + Y(pts[0][1]);
     for (var i = 1; i < pts.length; i++) {
       var a = pts[i - 1], b = pts[i];
@@ -519,7 +527,7 @@
         else if (kind === "exit") ok = cd.ex ? partsBar(body, [[tr("Regular diploma", "Diploma regular"), cd.ex[0]], [tr("Alternate diploma or certificate", "Diploma alternativo o certificado"), cd.ex[1]], [tr("Reached the maximum age", "Llegó a la edad máxima"), cd.ex[2]],
               [tr("Dropped out", "Abandonó la escuela"), cd.ex[3]], [tr("Died", "Falleció"), cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
         else if (kind === "cats") ok = catsChart(body, cd.cats || []);
-        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s"); }
+        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s", (cd.tr || {})[k + "c"]); }
         if (!ok) fig.remove();
       });
     });

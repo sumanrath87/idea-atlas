@@ -286,7 +286,9 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
 {sec("Al terminar la escuela", "s-leave", "<p>Estudiantes con IEP de 14 a 21 años que salieron de la escuela en 2023–24.</p>", ["grad_regular", "dropout"], ("leaving",),
      pic=chart_es("exit", "Cómo salieron de la escuela los estudiantes con IEP, 2023–24"), src="salidas de IDEA Parte B por distrito, 2023–24")}
 {sec("Disciplina y seguridad", "s-disc", "<p>Año escolar 2023–24.</p>", ["oos_idea", "oos_nodis", "oos_504", "expulsion_idea", "restraint_physical_idea", "restraint_mechanical_idea", "seclusion_idea", "referral_idea", "arrest_idea"],
-     ("discipline", "504"), src="Civil Rights Data Collection (Oficina de Derechos Civiles), 2023–24")}
+     ("discipline", "504"), extra=ot("d", "Suspensión fuera de la escuela, estudiantes con IEP, por cada 100",
+     "Aproximadamente {va} de cada 100 estudiantes con IEP recibieron una suspensión fuera de la escuela en {a}, comparado con aproximadamente {vb} en {b}.", sy),
+     src="Civil Rights Data Collection (Oficina de Derechos Civiles), 2023–24; años anteriores desde 2013–14")}
 {sec("Fondos", "s-fund", "<p>Año fiscal 2024.</p>", ["spend_per_pupil", "idea_federal_per_student"], ("spending", "idea_money"),
      extra=ot("s", "Gasto por estudiante, en dólares de 2024", "Ajustado por la inflación, el distrito gastó aproximadamente {va} por estudiante en {a} y aproximadamente {vb} en {b}.", fy),
      src="Encuesta Anual de Finanzas de los Sistemas Escolares (Oficina del Censo), año fiscal 2024")}
