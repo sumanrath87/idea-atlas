@@ -465,6 +465,8 @@ def main() -> int:
         (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join(f"<sitemap><loc>{ATLAS_ORIGIN}{BASE}{f}</loc></sitemap>\n" for f in ("sitemap-pages.xml", "sitemap-districts.xml", "sitemap-distritos.xml")) + "</sitemapindex>\n")
         (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {ATLAS_ORIGIN}{BASE}sitemap.xml\n")
+        # Google Search Console ownership file (keep, or verification lapses)
+        (OUT / "googlef3b5977bf63b92cf.html").write_text("google-site-verification: googlef3b5977bf63b92cf.html")
     domain = ATLAS_ORIGIN.split("://", 1)[-1].rstrip("/")
     if BASE == "/" and domain != "www.sumanrath.org":
         write("CNAME", domain + "\n")       # custom address for GitHub Pages
