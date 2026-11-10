@@ -1,0 +1,21 @@
+name: Move release tags to rewritten history
+
+# One-time job: after the history rewrite, point the two data-release tags at their rewritten commits.
+# Run by hand only.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          git tag -f history-raw 8d092f35189c08e8eb3b803800b9ba33d0e7c1af
+          git tag -f raw-2026-11-09 3cc58a7366d9eada74461dc864badc282283bc44
+          git push --force origin refs/tags/history-raw refs/tags/raw-2026-11-09
