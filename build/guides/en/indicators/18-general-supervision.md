@@ -4,6 +4,7 @@ description: What federal indicator 18 measures: the share of problems a state f
 lede: Federal indicator 18 measures the share of problems a state finds in its districts that are fixed within a year. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 18
+pair: es/guias/indicadores/18-supervision-general
 related: indicators/17-state-systemic-improvement-plan, indicators
 reviewed: 2026-11-10
 ---

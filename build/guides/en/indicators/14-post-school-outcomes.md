@@ -4,6 +4,7 @@ description: What federal indicator 14 measures: what young people with IEPs are
 lede: Federal indicator 14 measures what young people with IEPs are doing a year after leaving high school. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 14
+pair: es/guias/indicadores/14-resultados-despues-de-la-escuela
 related: indicators/13-secondary-transition, indicators/15-resolution-sessions, indicators
 reviewed: 2026-11-10
 ---

@@ -4,6 +4,7 @@ description: What federal indicator 8 measures: the share of parents of children
 lede: Federal indicator 8 measures the share of parents of children with IEPs who say the school helped them take part in their child's education. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 8
+pair: es/guias/indicadores/8-participacion-de-los-padres
 related: indicators/7-preschool-outcomes, indicators/9-disproportionate-representation, indicators
 reviewed: 2026-11-10
 ---

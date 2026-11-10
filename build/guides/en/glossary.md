@@ -4,6 +4,7 @@ description: Plain-language definitions of special education terms used in IDEA 
 lede: Special education has a vocabulary of its own. Here are the words you will meet most often in the atlas, in IEP meetings, and in state reports, in plain language.
 group: start
 order: 30
+pair: es/guias/glosario
 related: how-to-read-district-data, iep-meeting-questions, indicators
 reviewed: 2026-11-10
 ---

@@ -4,6 +4,7 @@ description: What federal indicator 12 measures: the share of toddlers moving fr
 lede: Federal indicator 12 measures the share of toddlers moving from early intervention who have an IEP in place by their third birthday. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 12
+pair: es/guias/indicadores/12-transicion-de-la-primera-infancia
 related: indicators/11-timely-evaluation, indicators/13-secondary-transition, indicators
 reviewed: 2026-11-10
 ---

@@ -4,6 +4,7 @@ description: What federal indicator 3 measures: participation and proficiency of
 lede: Federal indicator 3 measures participation and proficiency of students with IEPs on state tests in grades 4, 8, and high school. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 3
+pair: es/guias/indicadores/3-evaluaciones-estatales
 related: indicators/2-dropout, indicators/4-suspension-and-expulsion, indicators
 reviewed: 2026-11-10
 ---

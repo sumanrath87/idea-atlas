@@ -4,6 +4,7 @@ description: What federal indicator 10 measures: disproportionate representation
 lede: Federal indicator 10 measures disproportionate representation by race or ethnicity in specific disability categories that results from inappropriate identification. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 10
+pair: es/guias/indicadores/10-representacion-desproporcionada-por-categoria
 related: indicators/9-disproportionate-representation, indicators/11-timely-evaluation, indicators
 reviewed: 2026-11-10
 ---

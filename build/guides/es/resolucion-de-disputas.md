@@ -36,7 +36,7 @@ Cada [página estatal]({base}es/estados/) muestra cuatro cifras de los datos fed
 
 Estas cifras son difíciles de comparar entre estados. Los estados grandes tienen más disputas porque tienen más estudiantes. Algunos estados resuelven más problemas de manera informal antes de que se presente una queja. Un estado con muy pocas quejas puede tener pocos problemas, o familias que no saben cómo presentarlas. Comparar a un estado consigo mismo a lo largo del tiempo dice más que ordenar a los estados de mayor a menor.
 
-Dos indicadores federales usan estos datos. El [indicador 15]({base}guides/indicators/15-resolution-sessions/) (en inglés) informa qué parte de las reuniones de resolución terminó en un acuerdo por escrito, y el [indicador 16]({base}guides/indicators/16-mediation/) (en inglés) informa qué parte de las mediaciones terminó en un acuerdo.
+Dos indicadores federales usan estos datos. El [indicador 15]({base}es/guias/indicadores/15-sesiones-de-resolucion/) informa qué parte de las reuniones de resolución terminó en un acuerdo por escrito, y el [indicador 16]({base}es/guias/indicadores/16-mediacion/) informa qué parte de las mediaciones terminó en un acuerdo.
 
 ## Preguntas que puede hacer
 

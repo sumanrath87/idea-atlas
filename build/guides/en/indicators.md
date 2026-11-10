@@ -4,6 +4,7 @@ description: What the 18 federal IDEA Part B indicators measure, which ones are 
 lede: Every year, each state reports to the U.S. Department of Education on 18 measures of how special education is working. Some measure results for students. Others measure whether required steps happened on time. This guide explains the system, and links to a short page on each indicator.
 group: indicators
 order: 5
+pair: es/guias/indicadores
 related: beyond-compliance, how-to-read-district-data, glossary
 reviewed: 2026-11-10
 ---

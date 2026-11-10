@@ -4,6 +4,7 @@ description: What federal indicator 1 measures: the share of students with IEPs 
 lede: Federal indicator 1 measures the share of students with IEPs who leave school with a regular high school diploma. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 1
+pair: es/guias/indicadores/1-graduacion
 related: indicators/2-dropout, indicators
 reviewed: 2026-11-10
 ---

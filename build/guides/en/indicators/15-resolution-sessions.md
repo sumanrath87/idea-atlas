@@ -4,6 +4,7 @@ description: What federal indicator 15 measures: the share of resolution meeting
 lede: Federal indicator 15 measures the share of resolution meetings, held after a due process complaint, that end in a written settlement. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 15
+pair: es/guias/indicadores/15-sesiones-de-resolucion
 related: indicators/14-post-school-outcomes, indicators/16-mediation, indicators
 reviewed: 2026-11-10
 ---

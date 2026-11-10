@@ -4,6 +4,7 @@ description: What federal indicator 6 measures: where preschool children with IE
 lede: Federal indicator 6 measures where preschool children with IEPs, ages 3 to 5, receive their services. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 6
+pair: es/guias/indicadores/6-ambientes-preescolares
 related: indicators/5-educational-environments, indicators/7-preschool-outcomes, indicators
 reviewed: 2026-11-10
 ---

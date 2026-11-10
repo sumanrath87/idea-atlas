@@ -36,7 +36,7 @@ AUTHOR = {"en": ("Suman Rath, Ph.D.", "Suman Rath, Ph.D., is an assistant profes
                  "Estudia la educación inclusiva, las políticas educativas, las comunidades de práctica, la voz de los estudiantes y el cambio "
                  "que nace en las escuelas y las comunidades. Creó IDEA Atlas.")}
 GROUPS = {"en": [("start", "Start here"), ("numbers", "Reading the numbers"), ("indicators", "The federal indicators"), ("essay", "Beyond compliance")],
-          "es": [("start", "Para empezar"), ("numbers", "Cómo leer las cifras"), ("indicator", "Indicadores federales")]}
+          "es": [("start", "Para empezar"), ("numbers", "Cómo leer las cifras"), ("indicators", "Indicadores federales")]}
 MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 
@@ -136,6 +136,8 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
         byline = f'Por <a href="{SITE}/">{E(name)}</a> · Revisado el {E(rev)} · Unos {minutes} minutos de lectura'
         about = f'<aside class="author" aria-labelledby="ab-h"><h2 id="ab-h">Sobre el autor</h2><p>{E(bio)}</p><p><a href="{SITE}/">sumanrath.org</a> · <a href="{ORCID}">perfil de investigador en ORCID</a></p></aside>'
         crumbs = [("IDEA Atlas", BASE + "es/"), ("Guías", BASE + "es/guias/")]
+        if g["rel"].startswith("indicadores/"):
+            crumbs.append(("Los indicadores federales", BASE + "es/guias/indicadores/"))
         note = '<p class="hint">Referencias como 34 CFR 300.114 remiten al reglamento federal de educación especial: título 34 del Código de Regulaciones Federales (Code of Federal Regulations), parte 300, sección 114. Información general, no asesoría legal. Las reglas pueden variar según el estado; la agencia de educación de su estado y su Centro de Información y Capacitación para Padres pueden explicarle cómo se aplican donde usted vive.</p>'
     related = [allg[r.strip()] for r in g.get("related", "").split(",") if r.strip() in allg]
     rel_html = ""
@@ -184,9 +186,9 @@ def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write) -> list[str]:
             if g["rel"] == "":
                 continue
             extra = ""
-            if g["rel"] == "indicators":
-                kids = sorted([k for k in gs if k["rel"].startswith("indicators/")], key=lambda k: k["order"])
-                extra = _list_html(kids, BASE, "All 18 indicators", "ind-all")
+            if g["rel"] in ("indicators", "indicadores"):
+                kids = sorted([k for k in gs if k["rel"].startswith(g["rel"] + "/")], key=lambda k: k["order"])
+                extra = _list_html(kids, BASE, "All 18 indicators" if lang == "en" else "Los 18 indicadores", "ind-all")
             write(root + g["rel"] + "/index.html", render(g, allg, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, extra_list=extra))
             paths.append(root + g["rel"] + "/")
         write(root + "index.html", hub(gs, lang, BASE=BASE, page=page))
@@ -203,7 +205,7 @@ def hub(gs: list[dict], lang: str, *, BASE: str, page) -> str:
     intro = next((g for g in gs if g["rel"] == ""), None)
     secs = []
     for key, label in GROUPS[lang]:
-        items = sorted([g for g in gs if g.get("group") == key and g["rel"] and not g["rel"].startswith("indicators/")], key=lambda g: g["order"])
+        items = sorted([g for g in gs if g.get("group") == key and g["rel"] and not g["rel"].startswith(("indicators/", "indicadores/"))], key=lambda g: g["order"])
         if items:
             secs.append(_list_html(items, BASE, label, "grp-" + key))
     if lang == "en":

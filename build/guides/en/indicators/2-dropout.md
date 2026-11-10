@@ -4,6 +4,7 @@ description: What federal indicator 2 measures: the share of students with IEPs 
 lede: Federal indicator 2 measures the share of students with IEPs who leave school by dropping out. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 2
+pair: es/guias/indicadores/2-abandono-escolar
 related: indicators/1-graduation, indicators/3-assessment, indicators
 reviewed: 2026-11-10
 ---

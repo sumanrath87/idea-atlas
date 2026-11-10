@@ -42,7 +42,7 @@ Como estas decisiones varían, un distrito identificado en un estado podría no 
 
 Tres indicadores federales miran preguntas cercanas, con métodos distintos:
 
-- Los [indicadores 9 y 10]({base}guides/indicators/9-disproportionate-representation/) (en inglés) preguntan si algún distrito tiene representación desproporcionada por raza o etnia en educación especial, en general y por categoría de discapacidad, que sea resultado de una identificación inapropiada. La meta de ambos es 0%.
+- Los [indicadores 9]({base}es/guias/indicadores/9-representacion-desproporcionada/) y [10]({base}es/guias/indicadores/10-representacion-desproporcionada-por-categoria/) preguntan si algún distrito tiene representación desproporcionada por raza o etnia en educación especial, en general y por categoría de discapacidad, que sea resultado de una identificación inapropiada. La meta de ambos es 0%.
 - El [indicador 4B]({base}es/guias/indicadores/4-suspension-y-expulsion/) pregunta si algún distrito tiene una discrepancia significativa por raza o etnia en las suspensiones largas y las expulsiones de estudiantes con IEP, y políticas o prácticas que contribuyen a ella y no siguen IDEA.
 
 ## Cómo leer las cifras del atlas

@@ -4,6 +4,7 @@ description: What federal indicator 16 measures: the share of mediations that en
 lede: Federal indicator 16 measures the share of mediations that end in a written agreement. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 16
+pair: es/guias/indicadores/16-mediacion
 related: indicators/15-resolution-sessions, indicators/17-state-systemic-improvement-plan, indicators
 reviewed: 2026-11-10
 ---

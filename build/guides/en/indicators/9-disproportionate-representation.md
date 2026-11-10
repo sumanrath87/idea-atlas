@@ -4,6 +4,7 @@ description: What federal indicator 9 measures: whether districts have dispropor
 lede: Federal indicator 9 measures whether districts have disproportionate representation by race or ethnicity in special education that results from inappropriate identification. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 9
+pair: es/guias/indicadores/9-representacion-desproporcionada
 related: indicators/8-parent-involvement, indicators/10-disproportionate-representation-by-category, indicators
 reviewed: 2026-11-10
 ---

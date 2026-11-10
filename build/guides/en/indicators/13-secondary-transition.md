@@ -4,6 +4,7 @@ description: What federal indicator 13 measures: whether IEPs for students 16 an
 lede: Federal indicator 13 measures whether IEPs for students 16 and older include every required part of transition planning. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 13
+pair: es/guias/indicadores/13-transicion-secundaria
 related: indicators/12-early-childhood-transition, indicators/14-post-school-outcomes, indicators
 reviewed: 2026-11-10
 ---

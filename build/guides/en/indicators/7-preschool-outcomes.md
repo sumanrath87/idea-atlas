@@ -4,6 +4,7 @@ description: What federal indicator 7 measures: whether preschool children with 
 lede: Federal indicator 7 measures whether preschool children with IEPs make progress in social-emotional skills, early learning, and meeting their own needs. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 7
+pair: es/guias/indicadores/7-resultados-preescolares
 related: indicators/6-preschool-environments, indicators/8-parent-involvement, indicators
 reviewed: 2026-11-10
 ---
