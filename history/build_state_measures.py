@@ -9,8 +9,8 @@ import re
 
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/state")
-APR = Path(sys.argv[2] if len(sys.argv) > 2 else "/home/claude/hist/raw/apr")   # each state's FFY 2024 SPP/APR, as text (pdftotext -layout)
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/state")
+APR = Path(sys.argv[2] if len(sys.argv) > 2 else "raw/apr")   # each state's FFY 2024 SPP/APR, as text (pdftotext -layout)
 Y24 = "2024–25"   # FFY 2024 covers the 2024–25 school year (indicators 8, 11, 12)
 APR_IND = [  # key, indicator number, English, Spanish, note label (en, es), note (en, es)
     ("b8", "8", "Parents of children with IEPs who said the school helped them take part in their child's education",

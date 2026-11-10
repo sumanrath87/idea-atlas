@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/crdc")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/crdc")
 OUT = Path(__file__).resolve().parent / "output"
 RACES = ("HI", "AM", "AS", "HP", "BL", "WH", "TR")
 

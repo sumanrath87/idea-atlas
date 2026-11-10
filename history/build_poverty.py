@@ -6,7 +6,7 @@ import re
 import sys
 from pathlib import Path
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/saipe")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/saipe")
 OUT = Path(__file__).resolve().parent / "output"
 series = {}
 for f in sorted(RAW.glob("saipe_*_ussd*.txt")):

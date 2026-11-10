@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/digest")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/digest")
 OUT = Path(__file__).resolve().parent / "output"
 OUT.mkdir(exist_ok=True)
 

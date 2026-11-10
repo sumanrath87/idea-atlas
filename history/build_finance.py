@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/finance")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/finance")
 OUT = Path(__file__).resolve().parent / "output"
 # CPI-U semiannual averages (H1, H2), FRED CUUS0000SA0
 CPI = {1989: (None, 122.6), 1990: (128.7, 132.6), 1991: (135.2, 137.2), 1992: (139.2, 141.4), 1993: (143.7, 145.3), 1994: (147.2, 149.3),

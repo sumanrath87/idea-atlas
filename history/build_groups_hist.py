@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/crdc")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/crdc")
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "build" / "history" / "groups"
 G = ["AM", "AS", "BL", "HI", "HP", "TR", "WH"]

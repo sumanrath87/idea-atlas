@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pandas as pd
 
-RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/claude/hist/raw/ccd")
+RAW = Path(sys.argv[1] if len(sys.argv) > 1 else "raw/ccd")
 OUT = Path(__file__).resolve().parent / "output"
 
 
@@ -89,7 +89,7 @@ def modern(year: int):
     return out.rename(columns={"index": "leaid", "LEAID": "leaid"})
 
 
-OSEP = Path("/home/claude/hist/raw/osep")
+OSEP = Path("raw/osep")
 
 
 def membership(year: int) -> pd.Series:
