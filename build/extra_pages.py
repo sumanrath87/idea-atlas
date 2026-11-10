@@ -12,7 +12,6 @@ HERE = Path(__file__).resolve().parent
 ASSETS = HERE / "assets"
 REVIEWED_EN = "November 10, 2026"
 REVIEWED_ES = "10 de noviembre de 2026"
-MEDIA = "https://www.montclair.edu/university-communications/media-relations/"
 
 
 # ---------------------------------------------------------------- small pieces
@@ -91,8 +90,7 @@ The data are shared under a <a href="https://creativecommons.org/licenses/by/4.0
 <section aria-labelledby="r-contact"><h2 id="r-contact">Talk with the creator</h2>
 <p>Dr. Suman Rath built IDEA Atlas. He is an assistant professor of special education leadership in the Department of Educational Leadership at
 Montclair State University and studies how special education policy is put into practice. He can explain what the numbers show and what they leave out.</p>
-<p>To arrange an interview, write through the <a href="{SITE}/contact/">contact page on sumanrath.org</a> or contact
-<a href="{MEDIA}">Montclair State University Media Relations</a>.</p></section>
+<p>To arrange an interview, write through the <a href="{SITE}/contact/">contact page on sumanrath.org</a>.</p></section>
 """
     return page("For reporters", body, desc="Using IDEA Atlas in reporting: what the atlas covers, how to get the data, how to cite it, and how to reach its creator.",
                 path=BASE + "for-reporters/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
