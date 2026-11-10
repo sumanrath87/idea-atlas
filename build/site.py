@@ -33,6 +33,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / BASE.strip("/")
 ASSETS = Path(__file__).resolve().parent / "assets"
 PREVIEW = "--preview" in sys.argv
+# Visitor counting: GoatCounter (no cookies, no personal data). Set ATLAS_GOATCOUNTER to the account code to switch it on.
+GOATCOUNTER = os.environ.get("ATLAS_GOATCOUNTER", "").strip()
 E = html.escape
 
 KEEP_UPPER = {"ISD", "CISD", "USD", "ROE", "BOCES", "KIPP", "CSD", "SD", "ESD", "II", "III", "IV", "VI", "JT",
@@ -220,20 +222,22 @@ UI = {
     "en": {"skip": "Skip to main content", "sub": "Special education data for every U.S. school district", "nav_label": "IDEA Atlas",
            "nav": [("", "Map and search"), ("states/", "States"), ("guides/", "Guides"), ("compare/", "Compare"), ("report/", "Make a report"), ("history/", "History"), ("methods/", "About the data")],
            "all_tools": "", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
-           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
+           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{base}for-reporters/">For reporters</a> · <a href="{base}accessibility/">Accessibility</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
+           "cite": 'Cite: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
            "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia")],
            "all_tools": "", "crumb": "Ruta de navegación", "suffix": "IDEA Atlas", "version": "Versión",
-           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
+           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a> · <a href="{base}es/accesibilidad/">Accesibilidad</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
+           "cite": 'Cómo citar: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Versión {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
            "other": "English", "other_label": "View this page in English"},
 }
 
 
 def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...] = (),
-         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "") -> str:
+         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "", og_image: str = "assets/og.png") -> str:
     """Page frame. alt is the same page in the other language, if there is one."""
     u = UI[lang]
     robots = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""
@@ -250,6 +254,10 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
     links = "".join(f'<li><a href="{BASE}{p_}">{E(t)}</a></li>' for p_, t in u["nav"] if GUIDES_LIVE[0] or "guide" not in p_ and "guias" not in p_)
     tools = f'<li><a href="{SITE}/tools/">{u["all_tools"]}</a></li>' if u["all_tools"] else ""
     home = BASE + ("es/" if lang == "es" else "")
+    og_text = "" if "og:title" in extra_head else (f'<meta property="og:title" content="{E(title)}">'
+                                                   f'<meta property="og:description" content="{E(desc)}">')
+    counter = (f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
+               if GOATCOUNTER and not PREVIEW else "")
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -260,7 +268,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <meta name="description" content="{E(desc)}">
 {robots}
 <link rel="canonical" href="{ATLAS_ORIGIN}{path}">{alt_head}
-<meta property="og:type" content="website"><meta property="og:site_name" content="IDEA Atlas"><meta property="og:image" content="{ATLAS_ORIGIN}{BASE}assets/og.png"><meta name="twitter:card" content="summary_large_image">{extra_head}
+<meta property="og:type" content="website"><meta property="og:site_name" content="IDEA Atlas"><meta property="og:url" content="{ATLAS_ORIGIN}{path}">{og_text}<meta property="og:image" content="{ATLAS_ORIGIN}{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">{extra_head}{counter}
 <link rel="stylesheet" href="{BASE}assets/atlas.css">{css}
 {js}
 </head>
@@ -287,6 +295,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <footer class="site">
   <div class="wrap">
     <p>{u["foot1"].format(v=VERSION, site=SITE, base=BASE)}</p>
+    <p class="cite-line">{u["cite"].format(v=VERSION, doi=DOI)}</p>
     <p>{E(u["foot2"])}</p>
   </div>
 </footer>
@@ -324,7 +333,7 @@ def main() -> int:
     GUIDES_LIVE[0] = bool(guides_mod.published() or os.environ.get("ATLAS_GUIDES"))
     if GUIDES_LIVE[0]:
         es_site.GUIDES_P[0] = (f'<p class="more-path">Empiece con una <a href="{BASE}es/guias/">guía</a>: cómo leer las cifras de su distrito, '
-                               f'el ambiente menos restrictivo y preguntas para la reunión del IEP, en palabras sencillas.</p>')
+                               f'el ambiente menos restrictivo, la disciplina, las quejas y la mediación, y preguntas para la reunión del IEP, en palabras sencillas.</p>')
     d = pd.read_csv(ROOT / "clean" / "output" / "districts.csv", dtype={"leaid": str, "zip": str, "part_of": str},
                     low_memory=False)
     d = d[~d.status.isin(["Closed", "Inactive", "Future"])].copy()
@@ -516,13 +525,33 @@ def main() -> int:
                                ("Least restrictive environment, explained with real numbers", BASE + "guides/least-restrictive-environment/"),
                                ("The federal special education indicators, explained", BASE + "guides/indicators/"),
                                ("Beyond compliance: what the indicators miss", BASE + "guides/beyond-compliance/")]}
+    import extra_pages
+
+    def og_images(code, en, es, n_d, iep_sum, iep_rate):
+        """Share images for a state's English and Spanish pages."""
+        rel_en, rel_es = f"assets/og/state-{states_mod.slug(en)}.png", f"assets/og/estado-{states_mod.slug(es)}.png"
+        kids = f"{int(iep_sum):,}" if iep_sum else None
+        rate = f"{iep_rate:.1f}" if iep_rate is not None else None
+        extra_pages.og_state(OUT / rel_en, title=f"Special education in {en}",
+                             line1=(f"{kids} students with IEPs in 2024–25, about {rate} of every 100 students" if kids and rate else "Special education data, district by district"),
+                             line2=f"Data for {n_d:,} school {'district' if n_d == 1 else 'districts'}, in plain words",
+                             rate=iep_rate, footer="A project by Dr. Suman Rath")
+        extra_pages.og_state(OUT / rel_es, title=f"Educación especial en {es}",
+                             line1=(f"{kids} estudiantes con IEP en 2024–25, unos {rate} de cada 100 estudiantes" if kids and rate else "Datos de educación especial, distrito por distrito"),
+                             line2=f"Datos de {n_d:,} {'distrito escolar' if n_d == 1 else 'distritos escolares'}, en palabras sencillas",
+                             rate=iep_rate, footer="Un proyecto del Dr. Suman Rath")
+        return rel_en, rel_es
+
+    write("for-reporters/index.html", extra_pages.reporters_page(page=page, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, VERSION=VERSION, DOI=DOI, n_districts=len(d)))
+    write("accessibility/index.html", extra_pages.accessibility_page("en", page=page, BASE=BASE, SITE=SITE))
+    write("es/accesibilidad/index.html", extra_pages.accessibility_page("es", page=page, BASE=BASE, SITE=SITE))
     state_paths = states_mod.build(d, st_med, nat_med, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, page=page, write=write, fmt=fmt, figs=figs, everyday=everyday,
                                    MEASURES=MEASURES, SOURCES=SOURCES, STATE_NOTES=STATE_NOTES, es_site=es_site, hist=hist_states,
-                                   sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain, guide_links=glinks)
+                                   sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain, guide_links=glinks, og=og_images)
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
-        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "es/", "es/historia/", "es/informe/"]
+        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/"]
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
@@ -661,6 +690,8 @@ Words such as "Withheld for privacy" explain why a figure is not shown.</p>
 
 
 def report_page() -> str:
+    import extra_pages
+    STORY = extra_pages.story("en", SITE)
     body = f"""
 <div class="rpt-intro">
   <h1>Make a report</h1>
@@ -672,7 +703,8 @@ def report_page() -> str:
   </ul>
 </div>
 <div id="rpt-app" class="rpt-app"><noscript><p>The report assistant needs JavaScript. Each <a href="{BASE}">district page</a> has the same information.</p></noscript></div>
-<div id="rpt-out" hidden></div>"""
+<div id="rpt-out" hidden></div>
+{STORY}"""
     return page("Make a report", body, desc="Make a printable special education report about any U.S. school district, written for a family, a school leader, or a researcher.",
                 path=BASE + "report/", scripts=("atlas.js", "report.js"), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/informe/")
 
@@ -1210,6 +1242,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 
 
 def methods_page() -> str:
+    import extra_pages
+    PRIVACY = extra_pages.privacy_section(bool(GOATCOUNTER))
     src_rows = "".join(f"<tr><th scope=\"row\">{E(v[0])}</th><td>{E(v[1])}</td><td>{E(v[2])}</td></tr>" for v in SOURCES.values())
     dict_rows = "".join(f"<tr><th scope=\"row\"><code>{m[0]}</code></th><td>{E(m[2])}</td><td>{E(m[6])}</td></tr>" for m in MEASURES)
     status_rows = "".join(f"<tr><th scope=\"row\"><code>{k}</code></th><td>{E(v[1] or 'A real figure')}</td></tr>" for k, v in STATUS.items())
@@ -1222,7 +1256,7 @@ def methods_page() -> str:
 <li><a href="#what">What the tool shows</a></li><li><a href="#sources">Sources</a></li><li><a href="#rules">Data rules</a></li>
 <li><a href="#measures">How each measure is calculated</a></li><li><a href="#zip">ZIP code search</a></li>
 <li><a href="#det">State ratings</a></li><li><a href="#limits">Known limits</a></li><li><a href="#dictionary">Data dictionary</a></li>
-<li><a href="#trends">History and trends</a></li><li><a href="#words">Words explained</a></li><li><a href="#updates">Updates and versions</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
+<li><a href="#trends">History and trends</a></li><li><a href="#words">Words explained</a></li><li><a href="#updates">Updates and versions</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#cite">How to cite</a></li></ul></nav>
 
 <section aria-labelledby="what"><h2 id="what">What the tool shows</h2>
 <p>I built IDEA Atlas so that families, educators, and researchers can see, in one place, what public federal data say about special education
@@ -1306,6 +1340,7 @@ Students with IEPs and students without disabilities are each counted per 100 st
 <p>A check runs every month. When an agency posts a new file, IDEA Atlas is rebuilt and reviewed before it goes live, and the version number changes.
 This is version {VERSION}.</p></section>
 
+{PRIVACY}
 <section aria-labelledby="cite"><h2 id="cite">How to cite</h2>
 <p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set]. https://doi.org/{DOI}</p>
 <p>Online tool: <a href="{ATLAS_ORIGIN}{BASE}">{ATLAS_ORIGIN}{BASE}</a>. The data files for each version are kept permanently at <a href="https://doi.org/{DOI}">doi.org/{DOI}</a>.</p>

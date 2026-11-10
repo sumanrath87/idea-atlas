@@ -4,6 +4,7 @@ description: What the federal discipline figures count, what IDEA requires when 
 lede: The atlas shows how often students with IEPs were suspended, expelled, restrained, secluded, or referred to police, next to the same figures for other students. This guide explains where those numbers come from, what protections IDEA gives students, and what to ask.
 group: numbers
 order: 30
+pair: es/guias/disciplina
 related: how-to-read-district-data, disproportionality, indicators/4-suspension-and-expulsion, iep-meeting-questions
 reviewed: 2026-11-10
 ---

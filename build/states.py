@@ -58,7 +58,7 @@ def _isnum(v) -> bool:
 
 
 def build(d, st_med, nat_med, *, BASE, ATLAS_ORIGIN, page, write, fmt, figs, everyday, MEASURES, SOURCES, STATE_NOTES,
-          es_site, hist: dict, sm: dict | None, names: StateNames, explain, guide_links: dict | None = None) -> list[str]:
+          es_site, hist: dict, sm: dict | None, names: StateNames, explain, guide_links: dict | None = None, og=None) -> list[str]:
     """Write every state page and both hubs. Returns the paths written, for the sitemap."""
     units = {m[0]: m[4] for m in MEASURES}
     short = {m[0]: m[3] for m in MEASURES}
@@ -124,9 +124,14 @@ def build(d, st_med, nat_med, *, BASE, ATLAS_ORIGIN, page, write, fmt, figs, eve
 
         args = dict(code=code, n=n, enr=enr, iep_sum=iep_sum, iep_rate=iep_rate, det=det, med=med, lo=lo, hi=hi, nat=nat,
                     pts=pts, upts=upts, disp=disp, units=units, short=short)
-        write(p_en + "index.html", _page_en(en, p_en, p_es, cd, ind_rows_en, drows_en, sm, BASE=BASE, page=page, fmt=fmt, figs=figs,
+        pg_en, pg_es = page, page
+        if og:
+            import functools
+            img_en, img_es = og(code, en, es, n, iep_sum, iep_rate)
+            pg_en, pg_es = functools.partial(page, og_image=img_en), functools.partial(page, og_image=img_es)
+        write(p_en + "index.html", _page_en(en, p_en, p_es, cd, ind_rows_en, drows_en, sm, BASE=BASE, page=pg_en, fmt=fmt, figs=figs,
                                             everyday=everyday, SOURCES=SOURCES, note=STATE_NOTES.get(code), explain=explain, guides=guide_links, **args))
-        write(p_es + "index.html", _page_es(es, p_es, p_en, cd_es, ind_rows_es, drows_es, sm, BASE=BASE, page=page, fmt=fmt, es_site=es_site,
+        write(p_es + "index.html", _page_es(es, p_es, p_en, cd_es, ind_rows_es, drows_es, sm, BASE=BASE, page=pg_es, fmt=fmt, es_site=es_site,
                                             note=es_site.STATE_NOTES_ES.get(code), **args))
         paths += [p_en, p_es]
         sub_en = []

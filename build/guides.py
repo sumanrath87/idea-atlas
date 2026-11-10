@@ -144,6 +144,8 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
         rel_html = (f'<nav class="related" aria-labelledby="rel-h"><h2 id="rel-h">{hd}</h2><ul>' +
                     "".join(f'<li><a href="{url(r, BASE)}">{E(r["title"])}</a><span class="sub">{E(r.get("description", ""))}</span></li>' for r in related) +
                     "</ul></nav>")
+    import extra_pages
+    story = extra_pages.story(lang, SITE)
     path = url(g, BASE)
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"], "description": g.get("description", ""),
           "inLanguage": lang, "dateModified": g.get("reviewed", ""), "mainEntityOfPage": ATLAS_ORIGIN + path,
@@ -161,6 +163,7 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
 {h}
 {extra_list}
 {note}
+{story}
 {about}
 {rel_html}
 </article>"""

@@ -4,6 +4,7 @@ description: The ways IDEA lets families and schools settle disagreements, the t
 lede: When a family and a school disagree about a child's special education, IDEA offers several ways to settle it. Each state reports how often each one is used. This guide explains the options and what those counts can and cannot tell you.
 group: numbers
 order: 40
+pair: es/guias/resolucion-de-disputas
 related: iep-meeting-questions, indicators/15-resolution-sessions, indicators/16-mediation, how-to-read-district-data
 reviewed: 2026-11-10
 ---

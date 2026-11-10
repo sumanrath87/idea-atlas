@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use IDEA Atlas or its data, please cite it as below."
+title: "IDEA Atlas: Special education data for every U.S. school district"
+type: dataset
+version: "2026.1"
+date-released: 2026-11-09
+doi: 10.5281/zenodo.24083644
+url: "https://atlas.sumanrath.org/"
+repository-code: "https://github.com/sumanrath87/idea-atlas"
+license: CC-BY-4.0
+authors:
+  - family-names: Rath
+    given-names: Suman
+    orcid: "https://orcid.org/0000-0002-7497-6335"
+    affiliation: "Montclair State University"
+keywords:
+  - special education
+  - Individuals with Disabilities Education Act
+  - school districts
+  - education policy

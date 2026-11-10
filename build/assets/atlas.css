@@ -615,3 +615,11 @@ nav.related li > a:hover, ul.guide-cards li > a:hover { color: var(--accent); te
 ul.guide-cards .sub, nav.related .sub { font-size: .88rem; line-height: 1.5; }
 p.guide-link { font-size: .92rem; margin: .2rem 0 .8rem; color: var(--ink-2); }
 @media print { section.beyond { background: none; border: 1px solid #999; } nav.related { display: none; } }
+
+/* Share your story (guides and report pages) */
+aside.story { margin: 2.2rem 0 0; padding: .9rem 1.1rem; background: var(--wash, #f6f2e8); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; max-width: var(--measure); }
+aside.story h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; margin: 0 0 .3rem; }
+aside.story p { margin: .3rem 0; }
+aside.story p:last-child a { font-weight: 600; }
+footer.site .cite-line { font-size: .88rem; }
+@media print { aside.story { display: none !important; } }

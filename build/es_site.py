@@ -397,6 +397,9 @@ Todas las cifras vienen de datos federales públicos.</p>
 
 
 def report_es(*, BASE, page) -> str:
+    import extra_pages
+    from measures import SITE
+    STORY = extra_pages.story("es", SITE)
     body = f"""
 <div class="rpt-intro">
   <h1>Crear un informe</h1>
@@ -408,6 +411,7 @@ def report_es(*, BASE, page) -> str:
   </ul>
 </div>
 <div id="rpt-app" class="rpt-app"><noscript><p>El asistente necesita JavaScript. Cada <a href="{BASE}es/">página de distrito</a> tiene la misma información.</p></noscript></div>
-<div id="rpt-out" hidden></div>"""
+<div id="rpt-out" hidden></div>
+{STORY}"""
     return page("Crear un informe", body, desc="Cree un informe para imprimir sobre la educación especial en cualquier distrito escolar de EE. UU., para una familia, un líder escolar o un investigador.",
                 path=BASE + "es/informe/", scripts=("atlas.js", "report.js"), crumbs=[("IDEA Atlas", BASE + "es/")], lang="es", alt=BASE + "report/")

@@ -4,6 +4,7 @@ description: What IDEA requires states to check when students of one race or eth
 lede: IDEA requires every state to check, each year, whether students of any race or ethnicity are identified for special education, placed in separate settings, or disciplined at markedly higher rates than other students in a district. This guide explains the rule, the arithmetic behind it, and how to read the related figures in the atlas.
 group: numbers
 order: 50
+pair: es/guias/desproporcionalidad
 related: discipline, indicators/9-disproportionate-representation, indicators/10-disproportionate-representation-by-category, indicators/4-suspension-and-expulsion
 reviewed: 2026-11-10
 ---

@@ -37,11 +37,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pandas numpy markdown
+      - run: pip install pandas numpy markdown pillow fonttools brotli
       - name: Build the site
         env:
           ATLAS_BASE: /
           ATLAS_ORIGIN: https://atlas.sumanrath.org
+          # Visitor counter (GoatCounter). Empty until the account code is set as a repository variable.
+          ATLAS_GOATCOUNTER: ${{ vars.ATLAS_GOATCOUNTER }}
         run: |
           # Search engines stay out until launch is approved (change the default below at launch).
           if [ "${{ github.event.inputs.preview || 'no' }}" = "no" ]; then python build/site.py; else python build/site.py --preview; fi
