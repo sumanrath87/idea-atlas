@@ -131,6 +131,7 @@ def st_es(name: str) -> str:
     return STATE_ES.get(n, n)
 
 
+GUIDES_P = [""]   # set by site.py once guides are published
 STATE_PATHS: dict = {}   # set by site.py: state code -> Spanish state page
 
 
@@ -377,6 +378,8 @@ Todas las cifras vienen de datos federales públicos.</p>
   Las cifras describen lo que los distritos y los estados informaron. No son calificaciones y no pueden mostrar la calidad de los servicios de un distrito.
   La experiencia de su familia y los informes del propio distrito agregan lo que los números no pueden.</p>
   <p class="more-path"><a href="{BASE}es/informe/">Cree un informe</a> para imprimir sobre cualquier distrito, escrito para una familia, un líder escolar o un investigador.</p>
+  <p class="more-path">Vea la página de <a href="{BASE}es/estados/">su estado</a>: cómo se comparan sus distritos, sus resultados en los indicadores federales y todos sus distritos.</p>
+  {GUIDES_P[0]}
   <p class="more-path">Vea también <a href="{BASE}es/historia/">cincuenta años de educación especial</a>, desde 1975 hasta hoy, para el país y cada estado.</p>
 </section>
 <section aria-labelledby="words-h">

@@ -885,13 +885,13 @@
   // marking the section being read. Built from the h2 headings, so the page itself carries no extra text.
   function initOnPage() {
     var main = document.getElementById("main"); if (!main || main.querySelector("nav.onpage, nav.toc, .toc")) return;
-    var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id]"), function (h) { return h.offsetParent !== null; });
+    var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id], :scope > article > section > h2[id]"), function (h) { return h.offsetParent !== null; });
     if (hs.length < 4) return;
     var nav = document.createElement("nav");
     nav.className = "onpage"; nav.setAttribute("aria-labelledby", "onpage-h");
     nav.innerHTML = '<div class="onpage-in"><p id="onpage-h" class="onpage-h">' + (ES ? "En esta página" : "On this page") + "</p><ul>" +
       hs.map(function (h) { return '<li><a href="#' + h.id + '">' + esc(h.textContent) + "</a></li>"; }).join("") + "</ul></div>";
-    var after = main.querySelector(":scope > .page-tools") || main.querySelector(":scope > h1");
+    var after = main.querySelector(":scope > .page-tools") || main.querySelector(":scope > h1") || main.querySelector(":scope > article > .byline");
     if (after) after.parentNode.insertBefore(nav, after.nextSibling); else main.insertBefore(nav, main.firstChild);
     document.documentElement.classList.add("has-onpage");
     var links = nav.querySelectorAll("a"), current = null, ticking = false;

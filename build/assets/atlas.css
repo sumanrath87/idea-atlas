@@ -584,3 +584,34 @@ ul.guide-list { list-style: none; padding: 0; }
 ul.guide-list li { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
 .rpt-cta { margin-top: 3rem; }
 section[aria-labelledby="s-cmp"] tbody th[scope=row] { min-width: 11.5rem; }
+
+/* ---------- guides ---------- */
+article.guide > section > p, article.guide > section > ul, article.guide > section > ol { max-width: var(--measure); }
+article.guide > section > p { color: var(--ink); }
+article.guide .byline { font-size: .9rem; color: var(--muted); margin: 0 0 2.2rem; }
+article.guide h2 { margin-top: 2.2em; }
+article.guide li { margin: .35rem 0; }
+article.guide blockquote { margin: 1rem 0; padding: .6rem 1.1rem; border-left: 2px solid var(--accent); background: var(--wash); font-family: var(--serif); font-size: 1.12rem; max-width: var(--measure); }
+article.guide blockquote p { margin: .2rem 0; }
+article.guide table { max-width: 46rem; }
+article.guide td { font-variant-numeric: tabular-nums; }
+section.beyond { margin-top: 3rem; padding: .3rem clamp(1.2rem, 3vw, 2rem) 1rem; background: var(--wash); border-radius: 14px; max-width: 52rem; }
+section.beyond h2 { margin-top: .9em; }
+section.beyond > p { color: var(--ink-2) !important; }
+section.beyond ul { list-style: none; padding: 0; }
+section.beyond li { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; padding: .45rem 0 .45rem 1.4rem; position: relative; }
+section.beyond li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: .55rem; height: .55rem; border-radius: 50%; border: 1.6px solid var(--accent); }
+section.g-sources { font-size: .9rem; color: var(--ink-2); }
+section.g-sources li { overflow-wrap: anywhere; }
+aside.author { margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: .4rem; max-width: var(--measure); }
+aside.author h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; margin: 1rem 0 .3rem; }
+aside.author p { font-size: .95rem; color: var(--ink-2); }
+nav.related { margin-top: 2rem; }
+nav.related h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; }
+nav.related ul, ul.guide-cards { list-style: none; padding: 0; margin: .6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0 2rem; }
+nav.related li, ul.guide-cards li { max-width: none; border-top: 1px solid var(--rule); padding: .75rem 0 .9rem; display: flex; flex-direction: column; gap: .2rem; }
+nav.related li > a, ul.guide-cards li > a { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); text-decoration: none; line-height: 1.3; }
+nav.related li > a:hover, ul.guide-cards li > a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+ul.guide-cards .sub, nav.related .sub { font-size: .88rem; line-height: 1.5; }
+p.guide-link { font-size: .92rem; margin: .2rem 0 .8rem; color: var(--ink-2); }
+@media print { section.beyond { background: none; border: 1px solid #999; } nav.related { display: none; } }

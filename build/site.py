@@ -106,6 +106,27 @@ def grade_word(code, es: bool = False):
     return GRADE_WORDS.get(code, code.lstrip("0") or code)
 
 
+GUIDE_FOR = {"s-who": ("how-to-read-district-data", "How to read your district's special education data"),
+             "s-where": ("least-restrictive-environment", "Least restrictive environment, explained with real numbers"),
+             "s-leave": ("indicators/1-graduation", "What the federal graduation indicator counts"),
+             "s-disc": ("discipline", "Discipline data for students with disabilities")}
+
+
+def guide_link(sid: str) -> str:
+    """One link per section to the guide that explains it, once guides are published."""
+    if not GUIDES_LIVE[0] or sid not in GUIDE_FOR:
+        return ""
+    rel, t = GUIDE_FOR[sid]
+    return f'<p class="guide-link">Guide: <a href="{BASE}guides/{rel}/">{E(t)}</a></p>'
+
+
+def guides_path() -> str:
+    if not GUIDES_LIVE[0]:
+        return ""
+    return (f'<p class="more-path">Start with a <a href="{BASE}guides/">guide</a>: how to read district figures, what the law requires, '
+            f'questions for IEP meetings, and the federal indicators, in plain words.</p>')
+
+
 def explain(*keys: str) -> str:
     """Short "What is ...?" explainers: closed by default, one click to open, read well with a screen reader.
     On district pages the answer is filled from data/terms.json; without scripts a link leads to the glossary."""
@@ -297,6 +318,11 @@ def classify(values: np.ndarray) -> list[float]:
 
 
 def main() -> int:
+    import guides as guides_mod
+    GUIDES_LIVE[0] = bool(guides_mod.published() or os.environ.get("ATLAS_GUIDES"))
+    if GUIDES_LIVE[0]:
+        es_site.GUIDES_P[0] = (f'<p class="more-path">Empiece con una <a href="{BASE}es/guias/">guía</a>: cómo leer las cifras de su distrito, '
+                               f'el ambiente menos restrictivo y preguntas para la reunión del IEP, en palabras sencillas.</p>')
     d = pd.read_csv(ROOT / "clean" / "output" / "districts.csv", dtype={"leaid": str, "zip": str, "part_of": str},
                     low_memory=False)
     d = d[~d.status.isin(["Closed", "Inactive", "Future"])].copy()
@@ -478,9 +504,18 @@ def main() -> int:
     hist_states = json.loads((Path(__file__).resolve().parent / "history" / "states.json").read_text())
     smp = Path(__file__).resolve().parent / "history" / "state_measures.json"
     SHORT_TERMS[0] = False
+    glinks = None
+    guide_paths = []
+    if GUIDES_LIVE[0]:
+        guide_paths = guides_mod.build(BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, write=write)
+        glinks = {"hub": BASE + "guides/", "indicators": BASE + "guides/indicators/", "disputes": BASE + "guides/dispute-resolution/",
+                  "featured": [("How to read your district's special education data", BASE + "guides/how-to-read-district-data/"),
+                               ("Least restrictive environment, explained with real numbers", BASE + "guides/least-restrictive-environment/"),
+                               ("The federal special education indicators, explained", BASE + "guides/indicators/"),
+                               ("Beyond compliance: what the indicators miss", BASE + "guides/beyond-compliance/")]}
     state_paths = states_mod.build(d, st_med, nat_med, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, page=page, write=write, fmt=fmt, figs=figs, everyday=everyday,
                                    MEASURES=MEASURES, SOURCES=SOURCES, STATE_NOTES=STATE_NOTES, es_site=es_site, hist=hist_states,
-                                   sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain)
+                                   sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain, guide_links=glinks)
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
@@ -488,7 +523,7 @@ def main() -> int:
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
-        (OUT / "sitemap-pages.xml").write_text(sm(stat + state_paths))
+        (OUT / "sitemap-pages.xml").write_text(sm(stat + state_paths + guide_paths))
         (OUT / "sitemap-districts.xml").write_text(sm([f"district/{i}/" for i in ids]))
         (OUT / "sitemap-distritos.xml").write_text(sm([f"es/distrito/{i}/" for i in ids]))
         (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -561,6 +596,8 @@ Every figure comes from public federal data.</p>
     <li><span class="depth" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
       <a href="{BASE}download/">Work with the data</a><span>Download the full file and read how every figure is made.</span></li>
   </ul>
+  <p class="more-path">See <a href="{BASE}states/">your state</a>: how its districts compare, its results on federal indicators, and every district in one list.</p>
+  {guides_path()}
   <p class="more-path">Or see <a href="{BASE}history/">fifty years of special education</a>, from 1975 to today, for the nation and every state.</p>
 </section>
 
@@ -765,6 +802,7 @@ def section(title: str, intro: str, rows: list[list[str]], src: list[str], sid: 
   {intro}{plain}
   {pic}{trend}
   {explain(*terms) if terms else ""}
+  {guide_link(sid)}
   <details class="numbers"><summary>The numbers: this district, the state, and the nation</summary>
   {detail_table(f"{title}: {unit_note}", ["Measure", "This district", "State median", "Middle half of state districts", "National median"], rows, sid + "-cap", "profile")}
   {explain("middle") if sid == "s-who" else ""}{pic2}{more}
