@@ -4,6 +4,7 @@ description: What federal indicator 11 measures: the share of children evaluated
 lede: Federal indicator 11 measures the share of children evaluated for special education within 60 days of parent consent, or the state's own timeline. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 11
+pair: es/guias/indicadores/11-evaluacion-a-tiempo
 related: indicators/10-disproportionate-representation-by-category, indicators/12-early-childhood-transition, indicators
 reviewed: 2026-11-10
 ---

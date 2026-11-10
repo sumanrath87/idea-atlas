@@ -48,7 +48,7 @@ Muchos distritos también mandan a los estudiantes a casa antes de tiempo o pide
 
 ## Cómo usan los indicadores federales los datos de disciplina
 
-Los estados informan sobre disciplina en el [indicador federal 4]({base}guides/indicators/4-suspension-and-expulsion/) (en inglés). Este mira las suspensiones y expulsiones de más de 10 días en un año escolar y pregunta si algún distrito muestra una discrepancia significativa, en general y por raza y etnia. Los estados también revisan los datos de disciplina para detectar desproporcionalidad significativa por raza y etnia, que se explica en [su propia guía]({base}es/guias/desproporcionalidad/).
+Los estados informan sobre disciplina en el [indicador federal 4]({base}es/guias/indicadores/4-suspension-y-expulsion/). Este mira las suspensiones y expulsiones de más de 10 días en un año escolar y pregunta si algún distrito muestra una discrepancia significativa, en general y por raza y etnia. Los estados también revisan los datos de disciplina para detectar desproporcionalidad significativa por raza y etnia, que se explica en [su propia guía]({base}es/guias/desproporcionalidad/).
 
 ## Preguntas que puede hacer
 

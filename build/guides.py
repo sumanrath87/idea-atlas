@@ -36,7 +36,7 @@ AUTHOR = {"en": ("Suman Rath, Ph.D.", "Suman Rath, Ph.D., is an assistant profes
                  "Estudia la educación inclusiva, las políticas educativas, las comunidades de práctica, la voz de los estudiantes y el cambio "
                  "que nace en las escuelas y las comunidades. Creó IDEA Atlas.")}
 GROUPS = {"en": [("start", "Start here"), ("numbers", "Reading the numbers"), ("indicators", "The federal indicators"), ("essay", "Beyond compliance")],
-          "es": [("start", "Para empezar"), ("numbers", "Cómo leer las cifras")]}
+          "es": [("start", "Para empezar"), ("numbers", "Cómo leer las cifras"), ("indicator", "Indicadores federales")]}
 MONTHS_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 

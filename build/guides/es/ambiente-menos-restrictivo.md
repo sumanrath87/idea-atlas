@@ -34,7 +34,7 @@ Cada otoño, los distritos informan cuánto del día escolar pasa en una clase g
 | Centro residencial | Una escuela donde los estudiantes también viven |
 | Hogar u hospital | Enseñanza en casa o en un hospital |
 
-El atlas muestra las tres primeras como tasas por cada 100 estudiantes con IEP, y los lugares separados juntos. Estas mismas cifras forman el indicador federal 5, que cada estado informa cada año.
+El atlas muestra las tres primeras como tasas por cada 100 estudiantes con IEP, y los lugares separados juntos. Estas mismas cifras forman el [indicador federal 5]({base}es/guias/indicadores/5-ambientes-educativos/), que cada estado informa cada año.
 
 ## Cómo leer la cifra de su distrito
 

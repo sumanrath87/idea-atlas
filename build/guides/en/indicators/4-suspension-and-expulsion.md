@@ -4,6 +4,7 @@ description: What federal indicator 4 measures: whether districts suspend or exp
 lede: Federal indicator 4 measures whether districts suspend or expel students with IEPs for more than 10 days at markedly higher rates, overall and by race and ethnicity. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 4
+pair: es/guias/indicadores/4-suspension-y-expulsion
 related: indicators/3-assessment, indicators/5-educational-environments, indicators
 reviewed: 2026-11-10
 ---

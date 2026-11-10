@@ -227,9 +227,9 @@ UI = {
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
-           "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia")],
+           "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/comparar/", "Comparar"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia"), ("es/acerca-de-los-datos/", "Acerca de los datos")],
            "all_tools": "", "crumb": "Ruta de navegación", "suffix": "IDEA Atlas", "version": "Versión",
-           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a> · <a href="{base}es/accesibilidad/">Accesibilidad</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
+           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}es/acerca-de-los-datos/#cite">Cómo citar</a> · <a href="{site}/contact/">Informar un error</a> · <a href="{base}download/" hreflang="en">Descargar los datos (en inglés)</a> · <a href="{base}es/accesibilidad/">Accesibilidad</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
            "cite": 'Cómo citar: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Versión {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
            "other": "English", "other_label": "View this page in English"},
@@ -544,6 +544,11 @@ def main() -> int:
 
     write("for-reporters/index.html", extra_pages.reporters_page(page=page, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, VERSION=VERSION, DOI=DOI, n_districts=len(d)))
     write("accessibility/index.html", extra_pages.accessibility_page("en", page=page, BASE=BASE, SITE=SITE))
+    write("embed/index.html", extra_pages.embed_page(BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN))
+    extra_pages.embed_data(OUT, SOURCES, MEASURES, {c: n for c, n in STATE_NAMES[0].en.items()}, {c: n for c, n in STATE_NAMES[0].es.items()})
+    write("es/comparar/index.html", extra_pages.compare_es(page=page, BASE=BASE, explain_es=lambda B, *k, full=True: es_site.explain_es(B, *k, full=full)))
+    write("es/acerca-de-los-datos/index.html", extra_pages.about_es(page=page, BASE=BASE, SITE=SITE, ATLAS_ORIGIN=ATLAS_ORIGIN, VERSION=VERSION, DOI=DOI,
+                                                                   SOURCES=SOURCES, MEASURES=MEASURES, es_site=es_site, counter_on=bool(GOATCOUNTER)))
     write("es/accesibilidad/index.html", extra_pages.accessibility_page("es", page=page, BASE=BASE, SITE=SITE))
     state_paths = states_mod.build(d, st_med, nat_med, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, page=page, write=write, fmt=fmt, figs=figs, everyday=everyday,
                                    MEASURES=MEASURES, SOURCES=SOURCES, STATE_NOTES=STATE_NOTES, es_site=es_site, hist=hist_states,
@@ -551,7 +556,7 @@ def main() -> int:
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
-        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/"]
+        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/", "es/comparar/", "es/acerca-de-los-datos/"]
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
@@ -731,7 +736,7 @@ def compare_page() -> str:
 {explain("per100", "median", "status", "years", "iep", "504", "settings", "leaving", "discipline", "spending", "idea_money", "poverty")}
 """
     return page("Compare districts", body, desc="Compare special education figures for up to four school districts side by side.",
-                path=BASE + "compare/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+                path=BASE + "compare/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/comparar/")
 
 
 DETAIL_PREFIX = {"cc": "Child count", "ev": "Learning setting", "ex": "Leaving", "cr": "Civil rights", "fin": "Finance ($000s)", "pov": "Poverty"}
@@ -1027,6 +1032,7 @@ TYPE_PLAIN = {
 
 
 def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
+    import extra_pages
     TABLES.clear()
     SHORT_TERMS[0] = True
     name = r.display
@@ -1225,6 +1231,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
   <p>These figures describe what was reported. They are not grades. See <a href="{BASE}methods/">methods and sources</a> for how each one is made.</p>
   {explain("median", "status", "years")}
   <p>Federal ID for this district: {r.leaid}. This is the National Center for Education Statistics (NCES) number, useful when looking up the district in other federal data.</p>
+  {extra_pages.embed_snippet("en", leaid=r.leaid, name=name, ATLAS_ORIGIN=ATLAS_ORIGIN, BASE=BASE)}
   <p>Cite this page: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}district/{r.leaid}/ https://doi.org/{DOI}</p>
 </section>
 """
@@ -1347,7 +1354,7 @@ This is version {VERSION}.</p></section>
 <p>To report an error, please use the <a href="{SITE}/contact/">contact page</a>.</p></section>
 """
     return page("Methods and sources", body, desc="How IDEA Atlas figures are made: sources, data rules, calculations, limits, and data dictionary.",
-                path=BASE + "methods/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+                path=BASE + "methods/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/acerca-de-los-datos/")
 
 
 if __name__ == "__main__":

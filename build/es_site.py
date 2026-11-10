@@ -342,6 +342,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
   <h2 id="s-more">Sobre estas cifras</h2>
   <p>Estas cifras describen lo que se informó. No son calificaciones. Algunas cifras son de años escolares distintos.</p>
   {explain_es(BASE, "median", "status", "years")}
+  {__import__("extra_pages").embed_snippet("es", leaid=r.leaid, name=name, ATLAS_ORIGIN=ATLAS_ORIGIN, BASE=BASE)}
   <p>Cómo citar esta página: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Versión {VERSION}). {E(name)}. {ATLAS_ORIGIN}{BASE}es/distrito/{r.leaid}/</p>
 </section>"""
     es_cd = dict(cd)

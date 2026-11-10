@@ -4,6 +4,7 @@ description: What federal indicator 5 measures: how much of the school day stude
 lede: Federal indicator 5 measures how much of the school day students with IEPs, ages 5 to 21, spend in general classes. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 5
+pair: es/guias/indicadores/5-ambientes-educativos
 related: indicators/4-suspension-and-expulsion, indicators/6-preschool-environments, indicators
 reviewed: 2026-11-10
 ---

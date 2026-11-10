@@ -236,3 +236,221 @@ def og_state(out: Path, *, title: str, line1: str, line2: str, rate: float | Non
         d.ellipse([cx, cy, cx + 22, cy + 22], fill=blue if i < shaded else grey)
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, "PNG", optimize=True)
+
+
+# ---------------------------------------------------------------- Spanish: compare and about the data
+
+def compare_es(*, page, BASE, explain_es) -> str:
+    body = f"""
+<h1>Comparar distritos</h1>
+<p class="lede">Elija de dos a cuatro distritos para ver sus cifras lado a lado, con la mediana nacional como referencia.</p>
+<form id="c-form" role="search" novalidate>
+  <label for="c-q">Agregue un distrito por nombre o código postal</label>
+  <div class="row"><input id="c-q" type="search" autocomplete="off" aria-describedby="c-hint"><button type="submit">Buscar</button></div>
+  <p id="c-hint" class="hint">Hasta cuatro distritos. El enlace en la barra de direcciones guarda su elección, así que puede guardarlo o compartirlo.</p>
+</form>
+<div id="c-results" aria-live="polite"></div>
+<h2 id="c-chosen-h">Distritos elegidos</h2>
+<ul id="c-chosen" class="chosen" aria-labelledby="c-chosen-h"></ul>
+<div class="page-tools"><button type="button" data-print>Imprimir esta comparación</button></div>
+<p id="c-status" class="hint" aria-live="polite"></p>
+<figure id="c-chart" class="chart" aria-hidden="true" hidden><figcaption>Cada fila muestra los distritos elegidos en la misma escala. El círculo marca la mediana nacional.</figcaption><div class="chart-body"></div></figure>
+<div id="c-wrap" class="table-wrap" role="region" tabindex="0" aria-labelledby="c-caption" hidden>
+  <table id="c-table" class="profile compare"><caption id="c-caption">Cifras lado a lado</caption><thead></thead><tbody></tbody></table>
+</div>
+<h2>Palabras que se usan aquí</h2>
+{explain_es(BASE, "per100", "median", "status", "years", "iep", "504", "settings", "leaving", "discipline", "spending", "idea_money", "poverty", full=True)}
+"""
+    return page("Comparar distritos", body, desc="Compare las cifras de educación especial de hasta cuatro distritos escolares, lado a lado.",
+                path=BASE + "es/comparar/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE + "es/")], lang="es", alt=BASE + "compare/")
+
+
+def about_es(*, page, BASE, SITE, ATLAS_ORIGIN, VERSION, DOI, SOURCES, MEASURES, es_site, counter_on: bool) -> str:
+    src_rows = "".join(f'<tr><th scope="row">{E(v[0])}</th><td>{E(v[1])}</td><td>{E(v[2])}</td></tr>' for v in SOURCES.values())
+    dict_rows = "".join(f'<tr><th scope="row"><code>{m[0]}</code></th><td>{E(es_site.SHORT_ES.get(m[0], m[3]))}</td></tr>' for m in MEASURES)
+    status_rows = "".join(f'<tr><th scope="row">{E(k)}</th><td>{E(v.capitalize())}</td></tr>' for k, v in es_site.STATUS_ES.items())
+    notes = "".join(f"<li>{E(v)}</li>" for v in es_site.STATE_NOTES_ES.values())
+    terms = "".join(f'<dt>{E(q)}</dt><dd>{E(a)}</dd>' for q, a in es_site.TERMS_ES.values())
+    priv = ("IDEA Atlas no tiene publicidad, no pide iniciar sesión y no usa cookies. Para saber cuántas personas lo usan, cuenta las visitas con "
+            "<a href=\"https://www.goatcounter.com/\">GoatCounter</a>, un contador que respeta la privacidad: no usa cookies ni reúne información personal. "
+            "Solo se guardan totales: qué páginas se vieron, qué sitios enlazaron a ellas e información general como el país, el tamaño de la pantalla y el navegador."
+            if counter_on else "IDEA Atlas no tiene publicidad, no pide iniciar sesión, no usa cookies y no rastrea a nadie.")
+    body = f"""
+<h1>Acerca de los datos</h1>
+<p class="lede">Cómo se hace cada cifra de IDEA Atlas, de dónde viene y lo que no puede decirle.</p>
+<div class="page-tools"><button type="button" data-print>Imprimir esta página</button></div>
+
+<section aria-labelledby="what"><h2 id="what">Qué muestra la herramienta</h2>
+<p>Creé IDEA Atlas para que las familias, los educadores y los investigadores puedan ver, en un solo lugar, lo que dicen los datos federales públicos sobre la
+educación especial en cada distrito escolar. Muestra a quiénes se atiende, dónde aprenden los estudiantes, cómo salen de la escuela, la disciplina y la seguridad,
+los planes de la Sección 504, los fondos y la pobreza infantil. No clasifica ni califica a los distritos. Las cifras describen lo que se informó.</p></section>
+
+<section aria-labelledby="sources"><h2 id="sources">Fuentes</h2>
+<p>Cada cifra viene de una fuente federal pública. Cada archivo se descarga sin cambios, con su fecha, se revisa y se guarda una copia. Los nombres de las fuentes están en inglés, como las publica cada agencia.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-labelledby="src-cap"><table><caption id="src-cap">Fuentes y años escolares</caption>
+<thead><tr><th scope="col">Fuente</th><th scope="col">Año</th><th scope="col">Agencia</th></tr></thead><tbody>{src_rows}</tbody></table></div></section>
+
+<section aria-labelledby="rules"><h2 id="rules">Reglas de los datos</h2>
+<ul>
+<li><strong>Tasas por cada 100.</strong> La mayoría de las cifras se muestran por cada 100 estudiantes de un grupo, para que distritos de distinto tamaño se lean igual.</li>
+<li><strong>Grupo mínimo de 10.</strong> No se muestra una tasa cuando el grupo que describe tiene menos de 10 estudiantes.</li>
+<li><strong>Retenido por privacidad.</strong> Las agencias retienen las cifras pequeñas para proteger a los estudiantes. Estas cifras nunca se estiman.</li>
+<li><strong>Al menos.</strong> Cuando se retiene una parte pequeña de una cifra, el resto se muestra como un mínimo ("al menos").</li>
+<li><strong>Registros combinados.</strong> La ciudad de Nueva York se informa como un solo distrito en algunos archivos y como 32 distritos geográficos en otros. IDEA Atlas muestra un registro combinado de la ciudad y mantiene los 32 distritos como registros enlazados.</li>
+<li><strong>Revisión de conteos.</strong> Cuando el conteo de estudiantes con IEP de los datos de derechos civiles de un distrito es muy distinto de su conteo de IDEA, sus cifras de disciplina llevan una nota.</li>
+</ul>
+<div class="table-wrap" role="region" tabindex="0" aria-labelledby="st-cap"><table><caption id="st-cap">Palabras de estado que se usan en los datos</caption>
+<thead><tr><th scope="col">En los archivos (en inglés)</th><th scope="col">Qué significa en el sitio</th></tr></thead><tbody>{status_rows}</tbody></table></div></section>
+
+<section aria-labelledby="measures"><h2 id="measures">Cómo se calcula cada medida</h2>
+<p>Cada tasa es el número de estudiantes de una categoría dividido entre el número de estudiantes del grupo, multiplicado por 100. Las tasas de disciplina cuentan estudiantes, no incidentes.
+El gasto por estudiante es el gasto corriente dividido entre la inscripción de otoño. Los fondos federales de IDEA por estudiante son los ingresos federales de IDEA que el distrito recibió a través del estado, divididos entre su conteo de IDEA.</p>
+<p>El mapa agrupa los distritos en cinco tonos, de claro a oscuro, cada uno con más o menos el mismo número de distritos. Los tonos muestran más o menos de algo; no significan mejor o peor.</p></section>
+
+<section aria-labelledby="det"><h2 id="det">Calificaciones estatales</h2>
+<p>Cada año, el Departamento de Educación de EE. UU. revisa cómo cada estado aplica IDEA y le da una de cuatro calificaciones: cumple los requisitos, necesita ayuda,
+necesita intervención o necesita intervención sustancial. Las calificaciones de 2026 se basan en datos del año fiscal federal 2024. Una calificación describe al estado, no a un distrito.</p></section>
+
+<section aria-labelledby="limits"><h2 id="limits">Límites conocidos</h2>
+<ul>
+<li>Las fuentes cubren años escolares distintos. Cada cifra muestra su propio año.</li>
+<li>Los archivos federales reflejan lo que informaron los estados y los distritos. Los errores de informe se mantienen, y las agencias a veces corrigen los archivos.</li>
+<li>El conteo de IDEA puede incluir a niños que el distrito atiende pero que no están inscritos, como niños de preescolar y estudiantes que sus padres pusieron en escuelas privadas. Esto sube la tasa por cada 100 inscritos en algunos lugares.</li>
+<li>Los distritos pequeños suelen tener cifras retenidas.</li>
+{notes}
+<li>Las zonas de código postal son aproximaciones de las rutas del correo.</li>
+<li>Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.</li>
+<li>Es información general, no asesoría legal.</li>
+</ul></section>
+
+<section aria-labelledby="dictionary"><h2 id="dictionary">Diccionario de datos</h2>
+<p>Los archivos para descargar están en inglés. Esta tabla da el nombre de cada columna y su medida. El <a href="{BASE}methods/#dictionary">diccionario completo</a> (en inglés) indica el grupo de cada medida.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-labelledby="dd-cap"><table><caption id="dd-cap">Medidas del archivo para descargar</caption>
+<thead><tr><th scope="col">Columna</th><th scope="col">Medida</th></tr></thead><tbody>{dict_rows}</tbody></table></div>
+<p><a href="{BASE}download/">Descargar los datos</a> (página en inglés).</p></section>
+
+<section aria-labelledby="words"><h2 id="words">Palabras explicadas</h2>
+<dl class="glossary">{terms}</dl></section>
+
+<section aria-labelledby="updates"><h2 id="updates">Actualizaciones y versiones</h2>
+<p>Cada mes se revisa si las agencias publicaron archivos nuevos. Cuando hay uno, IDEA Atlas se vuelve a construir y se revisa antes de publicarse, y cambia el número de versión. Esta es la versión {VERSION}.</p></section>
+
+<section aria-labelledby="privacy"><h2 id="privacy">Privacidad</h2><p>{priv}</p></section>
+
+<section aria-labelledby="cite"><h2 id="cite">Cómo citar</h2>
+<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Versión {VERSION}) [Herramienta en línea y conjunto de datos]. https://doi.org/{DOI}</p>
+<p>Herramienta en línea: <a href="{ATLAS_ORIGIN}{BASE}">{ATLAS_ORIGIN}{BASE}</a>. Los archivos de cada versión se guardan de forma permanente en <a href="https://doi.org/{DOI}">doi.org/{DOI}</a>.</p>
+<p>Para informar un error, use la <a href="{SITE}/contact/">página de contacto</a>.</p></section>
+"""
+    return page("Acerca de los datos", body, desc="Cómo se hacen las cifras de IDEA Atlas: fuentes, reglas de los datos, cálculos, límites y diccionario de datos.",
+                path=BASE + "es/acerca-de-los-datos/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE + "es/")], lang="es", alt=BASE + "methods/")
+
+
+# ---------------------------------------------------------------- embeddable district card
+
+EMBED_KEYS = [("id_rate", "Students with IEPs, per 100 students enrolled", "Estudiantes con IEP, por cada 100 estudiantes inscritos"),
+              ("env_80plus", "In a general class 80% or more of the day, per 100 students with IEPs", "En una clase general el 80% o más del día, por cada 100 estudiantes con IEP"),
+              ("grad_regular", "Left school with a regular diploma, per 100 students with IEPs who left", "Salieron con un diploma regular, por cada 100 estudiantes con IEP que salieron"),
+              ("oos_idea", "Out-of-school suspension, per 100 students with IEPs", "Suspensión fuera de la escuela, por cada 100 estudiantes con IEP")]
+
+
+def embed_data(OUT: Path, SOURCES, MEASURES, state_names_en: dict, state_names_es: dict) -> None:
+    """Small files for the embeddable card: one per two-digit state code, plus labels and national medians."""
+    import json
+    v = json.loads((OUT / "data" / "values.json").read_text())
+    keys = [k for k, _, _ in EMBED_KEYS]
+    pos = [next(i for i, m in enumerate(v["measures"]) if m["key"] == k) for k in keys]
+    src = {m[0]: m[5] for m in MEASURES}
+    meta = {"v": v.get("version"), "m": [{"k": k, "en": en, "es": es, "u": v["measures"][p]["unit"], "nat": v["measures"][p].get("national_median"),
+                                          "y": SOURCES[src[k]][1]} for (k, en, es), p in zip(EMBED_KEYS, pos)],
+            "status": v["status"], "st_en": state_names_en, "st_es": state_names_es}
+    shards: dict = {}
+    for i, lid in enumerate(v["ids"]):
+        n = v["names"][i]
+        shards.setdefault(lid[:2], {})[lid] = [n[0], n[1], [v["values"][i][p] for p in pos], "".join(v["codes"][i][p] for p in pos)]
+    d = OUT / "data" / "embed"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")))
+    for k, rows in shards.items():
+        (d / f"{k}.json").write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")))
+
+
+def embed_page(*, BASE: str, ATLAS_ORIGIN: str) -> str:
+    """One page, /embed/?id=<district ID>&lang=en|es, made to sit inside an iframe on another site."""
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IDEA Atlas district card</title>
+<style>
+:root {{ --ink:#20232a; --muted:#5c6370; --rule:#e2ddd2; --accent:#8a2a2b; }}
+* {{ box-sizing: border-box; }}
+body {{ margin: 0; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: #fbf9f5; }}
+.card {{ border: 1px solid var(--rule); border-top: 4px solid var(--accent); border-radius: 6px; padding: 14px 16px; background: #fff; }}
+.brand {{ font: 600 13px/1 Georgia, serif; color: var(--accent); margin: 0 0 6px; letter-spacing: .01em; }}
+h1 {{ font: 600 19px/1.25 Georgia, serif; margin: 0; }}
+.place {{ color: var(--muted); margin: 2px 0 10px; font-size: 14px; }}
+dl {{ margin: 0; display: grid; gap: 8px; }}
+dl div {{ border-top: 1px solid var(--rule); padding-top: 7px; }}
+dt {{ font-size: 13.5px; color: var(--muted); }}
+dd {{ margin: 1px 0 0; font-size: 14px; }}
+dd b {{ font-size: 18px; color: var(--ink); }}
+.foot {{ margin: 10px 0 0; font-size: 13px; color: var(--muted); }}
+a {{ color: var(--accent); }}
+a:focus-visible {{ outline: 3px solid #2a5ea8; outline-offset: 2px; }}
+</style>
+</head>
+<body>
+<main class="card" id="card" aria-live="polite"><p class="brand">IDEA Atlas</p><p>Loading…</p></main>
+<script>
+(function () {{
+  var BASE = "{BASE}", ORIGIN = "{ATLAS_ORIGIN}";
+  var q = new URLSearchParams(location.search), id = (q.get("id") || "").replace(/[^0-9A-Za-z]/g, ""), es = q.get("lang") === "es";
+  if (es) document.documentElement.lang = "es";
+  var T = es ? {{nat: "Mediana nacional", see: "Ver todas las cifras", none: "No se encontró este distrito.", at: "al menos ", rep: "No se informó", title: "Datos de educación especial", src: "Datos federales públicos."}}
+             : {{nat: "National median", see: "See all the figures", none: "This district was not found.", at: "at least ", rep: "Not reported", title: "Special education data", src: "Public federal data."}};
+  var ST_ES = {{"Withheld for privacy": "Retenido por privacidad", "Fewer than 10 students": "Menos de 10 estudiantes", "Flagged for data quality": "Marcado por la calidad de los datos",
+               "Not reported": "No se informó", "No students in this group": "No hay estudiantes en este grupo"}};
+  function esc(s) {{ return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {{ return {{"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;","'":"&#39;"}}[c]; }}); }}
+  function f(v, u) {{ return u === "usd" ? "$" + Math.round(v).toLocaleString("en-US") : Number(v).toLocaleString("en-US", {{minimumFractionDigits: 1, maximumFractionDigits: 1}}); }}
+  var card = document.getElementById("card");
+  function fail() {{ card.innerHTML = '<p class="brand">IDEA Atlas</p><p>' + T.none + '</p><p class="foot"><a href="' + ORIGIN + BASE + '" target="_blank" rel="noopener">atlas.sumanrath.org</a></p>'; }}
+  if (!id) return fail();
+  Promise.all([fetch(BASE + "data/embed/meta.json").then(function (r) {{ return r.json(); }}),
+               fetch(BASE + "data/embed/" + id.slice(0, 2) + ".json").then(function (r) {{ return r.ok ? r.json() : {{}}; }})]).then(function (x) {{
+    var meta = x[0], row = x[1][id]; if (!row) return fail();
+    var st = (es ? meta.st_es : meta.st_en)[row[1]] || row[1];
+    document.title = row[0] + " | IDEA Atlas";
+    var items = meta.m.map(function (m, j) {{
+      var c = row[3].charAt(j), v = row[2][j], val;
+      if (c === "0" && v != null) val = "<b>" + f(v, m.u) + "</b>";
+      else if (c === "1" && v != null) val = T.at + "<b>" + f(v, m.u) + "</b>";
+      else {{ var s = meta.status[c] || "Not reported"; val = es ? (ST_ES[s] || s) : s; }}
+      var nat = m.nat != null ? " · " + T.nat + " " + f(m.nat, m.u) : "";
+      return "<div><dt>" + esc(es ? m.es : m.en) + " (" + esc(m.y) + ")</dt><dd>" + val + nat + "</dd></div>";
+    }}).join("");
+    var link = ORIGIN + BASE + (es ? "es/distrito/" : "district/") + id + "/";
+    card.innerHTML = '<p class="brand">IDEA Atlas · ' + T.title + '</p><h1>' + esc(row[0]) + '</h1><p class="place">' + esc(st) + '</p><dl>' + items + '</dl>' +
+      '<p class="foot">' + T.src + ' <a href="' + link + '" target="_blank" rel="noopener">' + T.see + '<span style="position:absolute;left:-9999px"> (' + (es ? "se abre en una pestaña nueva" : "opens in a new tab") + ')</span></a></p>';
+  }}).catch(fail);
+}})();
+</script>
+</body>
+</html>
+"""
+
+
+def embed_snippet(lang: str, *, leaid: str, name: str, ATLAS_ORIGIN: str, BASE: str) -> str:
+    """The 'embed this district' box for a district page."""
+    src = f"{ATLAS_ORIGIN}{BASE}embed/?id={leaid}" + ("&amp;lang=es" if lang == "es" else "")
+    title = (f"Datos de educación especial de {name}, IDEA Atlas" if lang == "es" else f"Special education data for {name}, IDEA Atlas")
+    code = f'<iframe src="{src}" title="{E(title)}" width="100%" height="430" style="border:0;max-width:480px" loading="lazy"></iframe>'
+    if lang == "es":
+        return (f'<details class="embed"><summary>Insertar este distrito en su sitio web</summary>'
+                f'<p>Copie este código y péguelo en su sitio web o blog para mostrar una tarjeta con cuatro cifras clave de este distrito y un enlace a esta página.</p>'
+                f'<label for="emb-code">Código para insertar</label><textarea id="emb-code" readonly rows="4">{E(code)}</textarea></details>')
+    return (f'<details class="embed"><summary>Embed this district on your website</summary>'
+            f'<p>Copy this code into your website or blog to show a card with four key figures for this district and a link back to this page.</p>'
+            f'<label for="emb-code">Embed code</label><textarea id="emb-code" readonly rows="4">{E(code)}</textarea></details>')

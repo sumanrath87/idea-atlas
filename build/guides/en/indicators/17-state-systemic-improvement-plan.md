@@ -4,6 +4,7 @@ description: What federal indicator 17 measures: each state's multi-year plan to
 lede: Federal indicator 17 measures each state's multi-year plan to improve one chosen result for students with disabilities. Here is how it is counted, where to find it, and what it leaves out.
 group: indicator
 order: 17
+pair: es/guias/indicadores/17-plan-estatal-de-mejora-sistemica
 related: indicators/16-mediation, indicators/18-general-supervision, indicators
 reviewed: 2026-11-10
 ---

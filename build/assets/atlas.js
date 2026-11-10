@@ -29,7 +29,7 @@
   function cellText(i, m) {
     var mi = DATA.measures.indexOf(m), code = DATA.codes[i].charAt(mi), v = DATA.values[i][mi];
     if (code === "0") return fmt(v, m.unit);
-    if (code === "1") return "at least " + fmt(v, m.unit);
+    if (code === "1") return tr("at least ", "al menos ") + fmt(v, m.unit);
     var s_ = DATA.status[code] || "Not reported";
     return ES ? (STATUS_ES[s_] || s_) : s_;
   }
@@ -790,14 +790,14 @@
     var H = y0 + groups.reduce(function (a, g) { return a + 34 + g[1].length * rowH; }, 0);
     var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "range", focusable: "false" }), y = y0;
     groups.forEach(function (gr) {
-      var h = svgEl("text", { x: 0, y: y + 22, class: "grp" }, svg); h.textContent = gr[0]; y += 34;
+      var h = svgEl("text", { x: 0, y: y + 22, class: "grp" }, svg); h.textContent = cGroup(gr[0]); y += 34;
       gr[1].forEach(function (mj) {
         var m = mj[0], j = mj[1], cy = y + rowH / 2, g = svgEl("g", {}, svg);
         var vals = idx.map(function (i) { var c = DATA.codes[i][j]; return (c === "0" || c === "1") ? DATA.values[i][j] : null; });
         var mx = Math.max.apply(null, vals.concat([m.national_median || 0]).map(function (x) { return x || 0; })) * 1.1 || 1;
         var X = function (x) { return L + (R - L) * Math.max(0, x) / mx; };
-        svgEl("title", {}, g).textContent = m.short + ": " + idx.map(function (i, n) { return DATA.names[i][0] + " " + (vals[n] == null ? "not shown" : f1(vals[n], m.unit)); }).join("; ") + "; national median " + f1(m.national_median, m.unit);
-        var t = svgEl("text", { x: 0, y: cy + 4.5, class: "lab" }, g); t.textContent = m.short;
+        svgEl("title", {}, g).textContent = cShort(m) + ": " + idx.map(function (i, n) { return DATA.names[i][0] + " " + (vals[n] == null ? tr("not shown", "no se muestra") : f1(vals[n], m.unit)); }).join("; ") + tr("; national median ", "; mediana nacional ") + f1(m.national_median, m.unit);
+        var t = svgEl("text", { x: 0, y: cy + 4.5, class: "lab" }, g); t.textContent = cShort(m);
         svgEl("line", { x1: L, x2: R, y1: cy, y2: cy, class: "track" }, g);
         if (m.national_median != null) svgEl("circle", { cx: X(m.national_median), cy: cy, r: 4.5, class: "nat" }, g);
         vals.forEach(function (v, n) { if (v != null) mark(g, SHAPES[n], X(v), cy, 6, SERIES[n]); });
@@ -807,11 +807,15 @@
     body.appendChild(svg);
     body.insertAdjacentHTML("beforebegin", '<ul class="chart-key">' + idx.map(function (i, n) {
       return '<li><svg viewBox="-8 -8 16 16" width="14" height="14" aria-hidden="true">' + (function () { var tmp = document.createElementNS(SVGNS, "g"); mark(tmp, SHAPES[n], 0, 0, 5.5, SERIES[n]); return tmp.innerHTML; })() + '</svg>' + esc(DATA.names[i][0]) + '</li>';
-    }).join("") + '<li><span class="k-nat"></span>National median</li></ul>');
+    }).join("") + '<li><span class="k-nat"></span>' + tr("National median", "Mediana nacional") + '</li></ul>');
     fig.hidden = false;
   }
 
   /* ------------------------------------------------------------ compare */
+  var C_ES = {}, C_GROUP_ES = {"Who is served": "Quiénes reciben servicios", "Where students learn": "Dónde aprenden los estudiantes", "Leaving school": "Al salir de la escuela",
+    "Discipline and safety": "Disciplina y seguridad", "Funding": "Fondos", "Community": "Comunidad"};
+  function cShort(m) { return ES ? (C_ES[m.key] || m.short) : m.short; }
+  function cGroup(g) { return ES ? (C_GROUP_ES[g] || g) : g; }
   function initCompare() {
     var form = document.getElementById("c-form"); if (!form) return;
     var q = document.getElementById("c-q"), res = document.getElementById("c-results"), chosenEl = document.getElementById("c-chosen");
@@ -819,59 +823,59 @@
     var chosen = [];
     function save() { history.replaceState(null, "", chosen.length ? "?ids=" + chosen.join(",") : location.pathname); }
     function add(id) {
-      if (chosen.indexOf(id) >= 0) { status.textContent = DATA.names[INDEX[id]][0] + " is already chosen."; return; }
-      if (chosen.length >= 4) { status.textContent = "You can compare up to four districts. Remove one first."; return; }
+      if (chosen.indexOf(id) >= 0) { status.textContent = DATA.names[INDEX[id]][0] + tr(" is already chosen.", " ya está elegido."); return; }
+      if (chosen.length >= 4) { status.textContent = tr("You can compare up to four districts. Remove one first.", "Puede comparar hasta cuatro distritos. Quite uno primero."); return; }
       chosen.push(id); save(); draw(); res.innerHTML = "";
-      status.textContent = DATA.names[INDEX[id]][0] + " added. " + chosen.length + " of 4 chosen.";
+      status.textContent = DATA.names[INDEX[id]][0] + tr(" added. ", " agregado. ") + chosen.length + tr(" of 4 chosen.", " de 4 elegidos.");
       q.value = ""; q.focus();
     }
     function remove(id) {
       chosen = chosen.filter(function (x) { return x !== id; }); save(); draw();
-      status.textContent = DATA.names[INDEX[id]][0] + " removed. " + chosen.length + " chosen.";
+      status.textContent = DATA.names[INDEX[id]][0] + tr(" removed. ", " quitado. ") + chosen.length + tr(" chosen.", " elegidos.");
     }
     function draw() {
       chosenEl.innerHTML = chosen.map(function (id) {
         var i = INDEX[id];
-        return "<li><a href=\"" + BASE + "district/" + id + "/\">" + esc(DATA.names[i][0]) + "</a> <span class=\"sub\">" + esc(place(i)) + "</span> " +
-          "<button type=\"button\" class=\"link\" data-remove=\"" + id + "\" aria-label=\"Remove " + esc(DATA.names[i][0]) + "\">Remove</button></li>";
-      }).join("") || "<li class=\"sub\">None yet.</li>";
+        return "<li><a href=\"" + BASE + tr("district/", "es/distrito/") + id + "/\">" + esc(DATA.names[i][0]) + "</a> <span class=\"sub\">" + esc(place(i)) + "</span> " +
+          "<button type=\"button\" class=\"link\" data-remove=\"" + id + "\" aria-label=\"" + tr("Remove ", "Quitar ") + esc(DATA.names[i][0]) + "\">" + tr("Remove", "Quitar") + "</button></li>";
+      }).join("") || "<li class=\"sub\">" + tr("None yet.", "Ninguno todavía.") + "</li>";
       Array.prototype.forEach.call(chosenEl.querySelectorAll("[data-remove]"), function (b) { b.addEventListener("click", function () { remove(b.getAttribute("data-remove")); }); });
       if (!chosen.length) { wrap.hidden = true; compareChart([]); return; }
       var idx = chosen.map(function (id) { return INDEX[id]; });
       compareChart(idx);
-      table.tHead.innerHTML = "<tr><th scope=\"col\">Measure</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(stName(DATA.names[i][1])) + "</span></th>"; }).join("") + "<th scope=\"col\">National median</th></tr>";
-      var rows = "<tr><th scope=\"row\">Students enrolled</th>" + idx.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : "Not reported") + "</td>"; }).join("") + "<td>—</td></tr>";
+      table.tHead.innerHTML = "<tr><th scope=\"col\">" + tr("Measure", "Medida") + "</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(stName(DATA.names[i][1])) + "</span></th>"; }).join("") + "<th scope=\"col\">" + tr("National median", "Mediana nacional") + "</th></tr>";
+      var rows = "<tr><th scope=\"row\">" + tr("Students enrolled", "Estudiantes inscritos") + "</th>" + idx.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : tr("Not reported", "No se informó")) + "</td>"; }).join("") + "<td>—</td></tr>";
       var group = "";
       DATA.measures.forEach(function (m) {
-        if (m.group !== group) { group = m.group; rows += "<tr class=\"group\"><th scope=\"rowgroup\" colspan=\"" + (idx.length + 2) + "\">" + esc(group) + "</th></tr>"; }
-        rows += "<tr><th scope=\"row\">" + esc(m.label) + "</th>" + idx.map(function (i) { return "<td>" + esc(cellText(i, m)) + "</td>"; }).join("") +
+        if (m.group !== group) { group = m.group; rows += "<tr class=\"group\"><th scope=\"rowgroup\" colspan=\"" + (idx.length + 2) + "\">" + esc(cGroup(group)) + "</th></tr>"; }
+        rows += "<tr><th scope=\"row\">" + esc(ES ? cShort(m) : m.label) + "</th>" + idx.map(function (i) { return "<td>" + esc(cellText(i, m)) + "</td>"; }).join("") +
           "<td>" + (m.national_median != null ? fmt(m.national_median, m.unit) : "—") + "</td></tr>";
       });
       table.tBodies[0].innerHTML = rows;
-      document.getElementById("c-caption").textContent = "Side-by-side figures for " + idx.map(function (i) { return DATA.names[i][0]; }).join(", ") + ". Rates per 100 students in each group unless shown in dollars.";
+      document.getElementById("c-caption").textContent = tr("Side-by-side figures for ", "Cifras lado a lado de ") + idx.map(function (i) { return DATA.names[i][0]; }).join(", ") + tr(". Rates per 100 students in each group unless shown in dollars.", ". Tasas por cada 100 estudiantes de cada grupo, salvo las cifras en dólares.");
       wrap.hidden = false;
     }
-    load().then(function () {
+    (ES ? fetch(BASE + "data/measures_es.json").then(function (r) { return r.json(); }).then(function (ms) { ms.forEach(function (x) { C_ES[x.key] = x.short; }); }) : Promise.resolve()).then(load).then(function () {
       var p = new URLSearchParams(location.search);
       (p.get("ids") || "").split(",").forEach(function (id) { if (id in INDEX && chosen.length < 4 && chosen.indexOf(id) < 0) chosen.push(id); });
       draw();
-      if (chosen.length) status.textContent = chosen.length + " district" + (chosen.length > 1 ? "s" : "") + " chosen." + (chosen.length < 4 ? " You can add up to " + (4 - chosen.length) + " more." : " That is the most you can compare at once.");
+      if (chosen.length) status.textContent = ES ? (chosen.length + (chosen.length > 1 ? " distritos elegidos." : " distrito elegido.") + (chosen.length < 4 ? " Puede agregar hasta " + (4 - chosen.length) + " más." : " Es el máximo que puede comparar a la vez.")) : (chosen.length + " district" + (chosen.length > 1 ? "s" : "") + " chosen." + (chosen.length < 4 ? " You can add up to " + (4 - chosen.length) + " more." : " That is the most you can compare at once."));
     });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var text = q.value.trim(); if (!text) return;
       load().then(function () {
         var render = function (items, title) {
-          if (!items.length) { res.innerHTML = "<p>No district matched. Try another name or ZIP code.</p>"; return; }
+          if (!items.length) { res.innerHTML = "<p>" + tr("No district matched. Try another name or ZIP code.", "Ningún distrito coincide. Pruebe otro nombre o código postal.") + "</p>"; return; }
           res.innerHTML = "<h3>" + esc(title) + "</h3><ul class=\"pick\">" + items.slice(0, 15).map(function (i) {
-            return "<li><button type=\"button\" data-add=\"" + DATA.ids[i] + "\">Add " + esc(DATA.names[i][0]) + "</button> <span class=\"sub\">" + esc(place(i)) + "</span></li>";
+            return "<li><button type=\"button\" data-add=\"" + DATA.ids[i] + "\">" + tr("Add ", "Agregar ") + esc(DATA.names[i][0]) + "</button> <span class=\"sub\">" + esc(place(i)) + "</span></li>";
           }).join("") + "</ul>";
           Array.prototype.forEach.call(res.querySelectorAll("[data-add]"), function (b) { b.addEventListener("click", function () { add(b.getAttribute("data-add")); }); });
           var first = res.querySelector("button"); if (first) first.focus();
         };
         if (/^\d{5}$/.test(text)) {
           fetch(BASE + "data/zip/" + text.slice(0, 2) + ".json").then(function (r) { return r.ok ? r.json() : {}; }).then(function (z) {
-            render((z[text] || []).filter(function (x) { return x[0] in INDEX; }).map(function (x) { return INDEX[x[0]]; }), "Districts serving ZIP code " + text);
+            render((z[text] || []).filter(function (x) { return x[0] in INDEX; }).map(function (x) { return INDEX[x[0]]; }), tr("Districts serving ZIP code ", "Distritos que atienden el código postal ") + text);
           });
         } else {
           var words = norm(text).split(" "), hits = [];
@@ -880,7 +884,7 @@
             if (words.every(function (w) { return hay.indexOf(w) >= 0; })) hits.push(i);
           }
           hits.sort(function (a, b) { return (DATA.enrollment[b] || 0) - (DATA.enrollment[a] || 0); });
-          render(hits, hits.length + " matched" + (hits.length > 15 ? "; showing the 15 largest" : ""));
+          render(hits, hits.length + tr(" matched", " coinciden") + (hits.length > 15 ? tr("; showing the 15 largest", "; se muestran los 15 más grandes") : ""));
         }
       });
     });
