@@ -338,7 +338,7 @@
       var mx = Math.max(v || 0, hi || 0, nat || 0, med || 0) * 1.12 || 1;
       var X = function (x) { return L + (R - L) * Math.max(0, x) / mx; };
       var y = top + i * rowH + rowH / 2, g = svgEl("g", {}, svg);
-      svgEl("title", {}, g).textContent = m.short + tr(": this district ", ": este distrito ") + (v == null ? tr("not shown", "sin dato") : f1(v, m.unit)) +
+      svgEl("title", {}, g).textContent = m.short + (cd.state ? "" : tr(": this district ", ": este distrito ") + (v == null ? tr("not shown", "sin dato") : f1(v, m.unit))) +
         tr("; " + cd.st + " median ", "; mediana de " + cd.st + " ") + f1(med, m.unit) + (lo != null ? tr("; middle half ", "; mitad central ") + f1(lo, m.unit) + tr(" to ", " a ") + f1(hi, m.unit) : "") +
         tr("; national median ", "; mediana nacional ") + f1(nat, m.unit);
       var lab = svgEl("text", { x: 0, y: y + 4.5, class: "lab" }, g); lab.textContent = m.short;
@@ -346,13 +346,15 @@
       if (lo != null && hi != null) svgEl("rect", { x: X(lo), y: y - 6, width: Math.max(3, X(hi) - X(lo)), height: 12, rx: 6, class: "band" }, g);
       if (med != null) svgEl("line", { x1: X(med), x2: X(med), y1: y - 10, y2: y + 10, class: "smed" }, g);
       if (nat != null) svgEl("circle", { cx: X(nat), cy: y, r: 4.5, class: "nat" }, g);
-      if (v != null) {
+      if (cd.state) {
+        var sv = svgEl("text", { x: R + 14, y: y + 4.5, class: med == null ? "na" : "val" }, g); sv.textContent = med == null ? tr("Not shown", "Sin dato") : f1(med, m.unit);
+      } else if (v != null) {
         svgEl("circle", { cx: X(v), cy: y, r: 6.5, class: "dot" }, g);
         var t = svgEl("text", { x: R + 14, y: y + 4.5, class: "val" }, g); t.textContent = (d[1] === "1" ? "≥ " : "") + f1(v, m.unit);
       } else { var n = svgEl("text", { x: R + 14, y: y + 4.5, class: "na" }, g); n.textContent = tr("Not shown", "Sin dato"); }
     });
     body.appendChild(svg);
-    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-dot"></span>' + tr("This district", "Este distrito") + '</li><li><span class="k-band"></span>' +
+    body.insertAdjacentHTML("beforebegin", '<ul class="chart-key">' + (cd.state ? "" : '<li><span class="k-dot"></span>' + tr("This district", "Este distrito") + "</li>") + '<li><span class="k-band"></span>' +
       tr("Middle half of " + esc(cd.st) + " districts", "Mitad central de los distritos de " + esc(cd.st)) + '</li><li><span class="k-med"></span>' +
       tr(esc(cd.st) + " median", "Mediana de " + esc(cd.st)) + '</li><li><span class="k-nat"></span>' + tr("National median", "Mediana nacional") + '</li></ul>');
   }
@@ -695,7 +697,8 @@
   }
 
   // A district's own line over time: thin line, end values labelled, dashed across missing years.
-  function trendChart(body, pts, money, comp, yfmt) {
+  function trendChart(body, pts, money, comp, yfmt, labels) {
+    var L1 = labels && labels[0] || tr("Students with IEPs", "Estudiantes con IEP"), L2 = labels && labels[1] || tr("Students without disabilities", "Estudiantes sin discapacidades");
     if (!pts || pts.length < 3) return false;
     var W = 640, H = 170, L = 10, R = 80, T = 18, B = 26;
     var x0 = pts[0][0], x1 = pts[pts.length - 1][0];
@@ -710,8 +713,8 @@
     if (comp && comp.length > 1) {
       svgEl("path", { d: comp.map(function (p, i) { return (i ? "L" : "M") + X(p[0]) + "," + Y(p[1]); }).join(" "), class: "tcomp" }, svg);
       var cl = comp[comp.length - 1], ct = svgEl("text", { x: X(cl[0]) + 10, y: Y(cl[1]) + 4.5, class: "lab" }, svg); ct.textContent = fmtv(cl[1]);
-      body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-line" style="background:var(--accent)"></span>' + tr("Students with IEPs", "Estudiantes con IEP") +
-        '</li><li><span class="k-line k-comp"></span>' + tr("Students without disabilities", "Estudiantes sin discapacidades") + "</li></ul>");
+      body.insertAdjacentHTML("beforebegin", '<ul class="chart-key"><li><span class="k-line" style="background:var(--accent)"></span>' + esc(L1) +
+        '</li><li><span class="k-line k-comp"></span>' + esc(L2) + "</li></ul>");
     }
     var seg = "M" + X(pts[0][0]) + "," + Y(pts[0][1]);
     for (var i = 1; i < pts.length; i++) {
@@ -738,8 +741,8 @@
     svg.setAttribute("aria-hidden", "true");
     body.appendChild(svg);
     var key = body.previousElementSibling; if (key && key.classList.contains("chart-key")) key.setAttribute("aria-hidden", "true");
-    var ser = [{ label: tr("Students with IEPs", "Estudiantes con IEP"), pts: pts }];
-    if (comp && comp.length > 1) ser.push({ label: tr("Students without disabilities", "Estudiantes sin discapacidades"), pts: comp });
+    var ser = [{ label: L1, pts: pts }];
+    if (comp && comp.length > 1) ser.push({ label: L2, pts: comp });
     var fig = body.closest("figure");
     if (fig) makeExplorer(fig, { yl: yfmt || "sy", x0: x0, x1: x1, vmax: mx, L: L, R: R, T: T, B: B, w: W, h: H, unit: "", series: comp && comp.length > 1 ? ser : [{ label: "", pts: pts }] }, function () { return true; }, fmtv);
     return true;
@@ -760,7 +763,7 @@
         else if (kind === "exit") ok = cd.ex ? partsBar(body, [[tr("Regular diploma", "Diploma regular"), cd.ex[0]], [tr("Alternate diploma or certificate", "Diploma alternativo o certificado"), cd.ex[1]], [tr("Reached the maximum age", "Llegó a la edad máxima"), cd.ex[2]],
               [tr("Dropped out", "Abandonó la escuela"), cd.ex[3]], [tr("Died", "Falleció"), cd.ex[4]]], ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]) : false;
         else if (kind === "cats") ok = catsChart(body, cd.cats || []);
-        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); ok = trendChart(body, (cd.tr || {})[k], k === "s", (cd.tr || {})[k + "c"], k === "s" ? "fy" : k === "p" ? "y" : "sy"); }
+        else if (kind === "trend") { var k = fig.getAttribute("data-keys"); var lb = fig.getAttribute("data-labels"); ok = trendChart(body, (cd.tr || {})[k], k === "s", (cd.tr || {})[k + "c"], fig.getAttribute("data-years") || (k === "s" ? "fy" : k === "p" ? "y" : "sy"), lb ? lb.split("|") : null); }
         if (!ok) fig.remove();
       });
     });
@@ -881,7 +884,7 @@
   // Wide screens: an "On this page" list of the page's sections in the empty right-hand column,
   // marking the section being read. Built from the h2 headings, so the page itself carries no extra text.
   function initOnPage() {
-    var main = document.getElementById("main"); if (!main || main.querySelector("nav.onpage")) return;
+    var main = document.getElementById("main"); if (!main || main.querySelector("nav.onpage, nav.toc, .toc")) return;
     var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id]"), function (h) { return h.offsetParent !== null; });
     if (hs.length < 4) return;
     var nav = document.createElement("nav");
@@ -905,6 +908,19 @@
     mark();
   }
 
+  // Long lists of districts: a filter box that hides rows that do not match, and says how many remain.
+  function initFilters() {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-filter-for]"), function (box) {
+      var t = document.getElementById(box.getAttribute("data-filter-for")); if (!t) return;
+      var input = box.querySelector("input"), out = box.querySelector("output"), rows = t.tBodies[0].rows;
+      input.addEventListener("input", function () {
+        var q = input.value.trim().toLowerCase(), n = 0;
+        Array.prototype.forEach.call(rows, function (r) { var hit = !q || r.cells[0].textContent.toLowerCase().indexOf(q) >= 0 || (r.cells[1] && r.cells[1].textContent.toLowerCase().indexOf(q) >= 0); r.hidden = !hit; if (hit) n++; });
+        out.textContent = q ? (ES ? n + " de " + rows.length + " distritos" : n + " of " + rows.length + " districts") : "";
+      });
+    });
+  }
+
   // Phones: the site menu folds behind one button so the page starts with its content.
   // Without scripts, or on wider screens, the full list shows as before.
   function initMenu() {
@@ -925,5 +941,5 @@
       if (e.key === "Escape" && b.getAttribute("aria-expanded") === "true") { b.click(); b.focus(); }
     });
   }
-  document.addEventListener("DOMContentLoaded", function () { initMenu(); initOnPage(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+  document.addEventListener("DOMContentLoaded", function () { initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

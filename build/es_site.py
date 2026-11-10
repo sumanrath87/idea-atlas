@@ -131,6 +131,9 @@ def st_es(name: str) -> str:
     return STATE_ES.get(n, n)
 
 
+STATE_PATHS: dict = {}   # set by site.py: state code -> Spanish state page
+
+
 def grado(code):
     """Códigos de grado de NCES en palabras; N (no aplica) y M (falta) se omiten."""
     if not isinstance(code, str) or code in ("N", "M", ""):
@@ -276,7 +279,7 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
 </section>"""
 
     state_note = f'<p class="note">{E(STATE_NOTES_ES[r.state])}</p>' if r.state in STATE_NOTES_ES else ""
-    det = DET_ES.get(r.determination_2026 if isinstance(r.determination_2026, str) else "Not available", "No disponible")
+    det = DET_ES.get(r.determination_2026.strip().capitalize() if isinstance(r.determination_2026, str) else "Not available", "No disponible")
     en = f"{BASE}district/{r.leaid}/"
     asks = "".join(f"<li>{E(q)}</li>" for q in ASK_ES)
     body = f"""
@@ -345,7 +348,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
     return page(f"{name}, {r.state}", body,
                 desc=f"Datos de educación especial de {name}, {state}, en palabras sencillas: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina, fondos y pobreza infantil.",
                 path=f"{BASE}es/distrito/{r.leaid}/", scripts=("atlas.js",), lang="es", alt=en,
-                crumbs=[("IDEA Atlas", f"{BASE}es/"), (state, f"{BASE}es/")])
+                crumbs=[("IDEA Atlas", f"{BASE}es/"), (state, STATE_PATHS.get(r.state, f"{BASE}es/estados/"))])
 
 
 def home_es(*, BASE, page, n: int) -> str:

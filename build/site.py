@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import html
 import json
+import os
 import math
 import re
 import shutil
@@ -88,6 +89,8 @@ def shared_label(x):
 
 LAST_CD: dict = {}    # chart data of the district page just built, reused by the Spanish page
 TABLES: list = []      # tables for the page being built; written into its data block and built in the browser
+STATE_NAMES = [None]   # filled in main(): state code -> names and page paths
+GUIDES_LIVE = [False]  # the Guides menu item and links appear once guides are published
 SHORT_TERMS = [False]  # district pages carry only the question; the answer comes from one shared file
 
 
@@ -192,13 +195,13 @@ def plain_lines(r, keys, st_med) -> str:
 
 UI = {
     "en": {"skip": "Skip to main content", "sub": "Special education data for every U.S. school district", "nav_label": "IDEA Atlas",
-           "nav": [("", "Map and search"), ("table/", "Table"), ("compare/", "Compare"), ("history/", "History"), ("report/", "Make a report"), ("methods/", "Methods and sources")],
-           "all_tools": "All tools", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
-           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a>',
+           "nav": [("", "Map and search"), ("states/", "States"), ("guides/", "Guides"), ("compare/", "Compare"), ("report/", "Make a report"), ("history/", "History"), ("methods/", "About the data")],
+           "all_tools": "", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
+           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
-           "nav": [("es/", "Buscar un distrito"), ("es/historia/", "Historia"), ("es/informe/", "Crear un informe")],
+           "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia")],
            "all_tools": "", "crumb": "Ruta de navegación", "suffix": "IDEA Atlas", "version": "Versión",
            "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
@@ -221,7 +224,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
     alt_head = (f'<link rel="alternate" hreflang="{lang}" href="{ATLAS_ORIGIN}{path}">'
                 f'<link rel="alternate" hreflang="{other}" href="{ATLAS_ORIGIN}{alt}">') if alt else ""
     switch = (f'<li class="lang"><a href="{alt}" hreflang="{other}" lang="{other}" aria-label="{E(u["other_label"])}">{u["other"]}</a></li>') if alt else ""
-    links = "".join(f'<li><a href="{BASE}{p_}">{E(t)}</a></li>' for p_, t in u["nav"])
+    links = "".join(f'<li><a href="{BASE}{p_}">{E(t)}</a></li>' for p_, t in u["nav"] if GUIDES_LIVE[0] or "guide" not in p_ and "guias" not in p_)
     tools = f'<li><a href="{SITE}/tools/">{u["all_tools"]}</a></li>' if u["all_tools"] else ""
     home = BASE + ("es/" if lang == "es" else "")
     return f"""<!DOCTYPE html>
@@ -457,17 +460,27 @@ def main() -> int:
         for lid, g in gdf.sort_values(["leaid", "o"]).groupby("leaid"):
             GROUPS_BY[lid] = [[x.group, *(int(getattr(x, c)) if getattr(x, c + "_status") == "ok" else None for c in ("enr", "iep", "oos"))]
                               for x in g.itertuples() if x.enr_status != "ok" or x.enr > 0]
+    import states as states_mod
+    STATE_NAMES[0] = states_mod.StateNames(d, es_site.STATE_ES)
+    es_site.STATE_PATHS = {c: BASE + STATE_NAMES[0].path(c, es=True) for c in STATE_NAMES[0].en}
     by_id = d.set_index("leaid")
     dpath = ROOT / "clean" / "output" / "detail.csv.gz"
     detail = pd.read_csv(dpath, dtype=str, index_col=0, keep_default_na=False) if dpath.exists() else pd.DataFrame()
     n = 0
-    for _, r in d.iterrows():
+    fast = os.environ.get("ATLAS_FAST")   # testing only: write a few hundred district pages
+    for _, r in (d[d.state.isin(["NJ", "AL"])] if fast else d).iterrows():
         dr = detail.loc[r.leaid] if r.leaid in detail.index else None
         write(f"district/{r.leaid}/index.html", district_page(r, st_med, nat_med, kids_of, by_id, dr, TRENDS.get(r.leaid)))
         write(f"es/distrito/{r.leaid}/index.html", es_site.district_es(r, LAST_CD, st_med, BASE=BASE, page=page, fmt=fmt, STATUS=STATUS, pd=pd,
                                                                        VERSION=VERSION, ATLAS_ORIGIN=ATLAS_ORIGIN))
         n += 1
     (OUT / "data" / "labels.json").write_text(json.dumps(list(LABELS), ensure_ascii=False, separators=(",", ":")))
+    hist_states = json.loads((Path(__file__).resolve().parent / "history" / "states.json").read_text())
+    smp = Path(__file__).resolve().parent / "history" / "state_measures.json"
+    SHORT_TERMS[0] = False
+    state_paths = states_mod.build(d, st_med, nat_med, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, page=page, write=write, fmt=fmt, figs=figs, everyday=everyday,
+                                   MEASURES=MEASURES, SOURCES=SOURCES, STATE_NOTES=STATE_NOTES, es_site=es_site, hist=hist_states,
+                                   sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain)
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
@@ -475,7 +488,7 @@ def main() -> int:
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
-        (OUT / "sitemap-pages.xml").write_text(sm(stat))
+        (OUT / "sitemap-pages.xml").write_text(sm(stat + state_paths))
         (OUT / "sitemap-districts.xml").write_text(sm([f"district/{i}/" for i in ids]))
         (OUT / "sitemap-distritos.xml").write_text(sm([f"es/distrito/{i}/" for i in ids]))
         (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1148,7 +1161,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
     desc = f"Special education data for {name}, {r.state_name.title()}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
     return page(f"{name}, {r.state}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
-                crumbs=[("IDEA Atlas", BASE), (r.state_name.title(), f"{BASE}table/?state={r.state}")])
+                crumbs=[("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)])
 
 
 def methods_page() -> str:

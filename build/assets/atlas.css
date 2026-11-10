@@ -563,3 +563,24 @@ ul.pkey li { align-items: start; }
 ul.pkey .sw { align-self: start; margin-top: .42em; }
 
 @media print { nav.onpage, .menu-btn, .terms-fallback { display: none !important; } html.has-onpage main.wrap { padding-right: 0; } }
+
+/* ---------- state pages and the states hub ---------- */
+ul.state-grid { list-style: none; padding: 0; margin: .6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 0 2rem; }
+ul.state-grid li { max-width: none; border-top: 1px solid var(--rule); padding: .7rem 0 .8rem; display: flex; flex-direction: column; gap: .1rem; }
+ul.state-grid li > a { font-family: var(--serif); font-size: 1.22rem; font-weight: 500; color: var(--ink); text-decoration: none; line-height: 1.25; }
+ul.state-grid li > a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+ul.state-grid .sub { font-size: .86rem; font-variant-numeric: lining-nums tabular-nums; }
+ul.notes { padding-left: 1.1rem; font-size: .9rem; color: var(--ink-2); }
+ul.notes li { margin: .3rem 0; }
+.filter { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin: 1rem 0 .4rem; }
+.filter label { flex-basis: 100%; }
+.filter input { max-width: 22rem; }
+.filter output { font-size: .9rem; color: var(--muted); }
+table.districts td { text-align: right; white-space: nowrap; }
+table.districts td:nth-child(2) { text-align: left; white-space: normal; color: var(--ink-2); }
+table.districts thead th:nth-child(n+3) { text-align: right; }
+table.districts tbody th a { font-weight: 500; }
+ul.guide-list { list-style: none; padding: 0; }
+ul.guide-list li { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
+.rpt-cta { margin-top: 3rem; }
+section[aria-labelledby="s-cmp"] tbody th[scope=row] { min-width: 11.5rem; }
