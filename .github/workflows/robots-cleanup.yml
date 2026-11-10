@@ -1,4 +1,4 @@
-name: Retire static robots.txt on sumanrath.org
+name: Publish robots.txt to sumanrath.org
 
 # One-time job: the static robots.txt in the DreamHost web root overrides the one
 # WordPress (AIOSEO) generates. This prints it, then renames it to robots.txt.old
@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Rename robots.txt
+      - uses: actions/checkout@v4
+      - name: Upload robots.txt
         env:
           DH_HOST: ${{ secrets.DH_HOST }}
           DH_USER: ${{ secrets.DH_USER }}
@@ -25,5 +26,4 @@ jobs:
           export LFTP_PASSWORD="$(printf '%s' "$DH_PASS" | tr -d '\r\n')"
           DH_USER="$(printf '%s' "$DH_USER" | tr -d '\r\n ')"; DH_HOST="$(printf '%s' "$DH_HOST" | tr -d '\r\n ')"
           lftp --env-password -u "$DH_USER" "sftp://$DH_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 2; \
-            cd $DH_PATH; echo '--- htaccess robots/cache lines ---'; cat .htaccess; echo '--- robots in wp-content ---'; \
-            find wp-content/cache; quit" 2>&1 | sed "s/$DH_USER/USER/g" | grep -iE "^---|robots|supercache|RewriteCond|RewriteRule|crawl" | head -80
+            cd $DH_PATH; put ops/sumanrath-robots.txt -o robots.txt; chmod 644 robots.txt; cat robots.txt; quit"
