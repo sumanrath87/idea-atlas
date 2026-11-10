@@ -193,7 +193,7 @@ UI = {
 
 
 def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...] = (),
-         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None) -> str:
+         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "") -> str:
     """Page frame. alt is the same page in the other language, if there is one."""
     u = UI[lang]
     robots = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""
@@ -220,6 +220,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <meta name="description" content="{E(desc)}">
 {robots}
 <link rel="canonical" href="{ATLAS_ORIGIN}{path}">{alt_head}
+<meta property="og:type" content="website"><meta property="og:site_name" content="IDEA Atlas"><meta property="og:image" content="{ATLAS_ORIGIN}{BASE}assets/og.png"><meta name="twitter:card" content="summary_large_image">{extra_head}
 <link rel="stylesheet" href="{BASE}assets/atlas.css">{css}
 {js}
 </head>
@@ -453,6 +454,17 @@ def main() -> int:
     (OUT / "data" / "labels.json").write_text(json.dumps(list(LABELS), ensure_ascii=False, separators=(",", ":")))
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
+    else:
+        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "es/", "es/historia/", "es/informe/"]
+        ids = list(d.leaid)
+        sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                           + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
+        (OUT / "sitemap-pages.xml").write_text(sm(stat))
+        (OUT / "sitemap-districts.xml").write_text(sm([f"district/{i}/" for i in ids]))
+        (OUT / "sitemap-distritos.xml").write_text(sm([f"es/distrito/{i}/" for i in ids]))
+        (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "".join(f"<sitemap><loc>{ATLAS_ORIGIN}{BASE}{f}</loc></sitemap>\n" for f in ("sitemap-pages.xml", "sitemap-districts.xml", "sitemap-distritos.xml")) + "</sitemapindex>\n")
+        (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {ATLAS_ORIGIN}{BASE}sitemap.xml\n")
     domain = ATLAS_ORIGIN.split("://", 1)[-1].rstrip("/")
     if BASE == "/" and domain != "www.sumanrath.org":
         write("CNAME", domain + "\n")       # custom address for GitHub Pages
@@ -463,6 +475,25 @@ def main() -> int:
 
 
 # ---------------------------------------------------------------- pages
+
+def dataset_ld() -> str:
+    """Schema.org Dataset, so the atlas appears in Google Dataset Search."""
+    ld = {"@context": "https://schema.org", "@type": "Dataset",
+          "name": "IDEA Atlas: Special education data for every U.S. school district",
+          "description": ("Public federal data on special education for every U.S. public school district: students served under IDEA and Section 504, "
+                          "where students with IEPs learn, how they leave school, discipline and safety, funding, and child poverty, "
+                          "with district trends and national and state history since 1975. Explained in plain language, in English and Spanish."),
+          "url": f"{ATLAS_ORIGIN}{BASE}", "sameAs": f"https://doi.org/{DOI}", "identifier": f"https://doi.org/{DOI}", "version": VERSION,
+          "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": True, "inLanguage": ["en", "es"],
+          "keywords": ["special education", "Individuals with Disabilities Education Act", "IDEA", "school districts", "students with disabilities",
+                       "Section 504", "education policy", "inclusive education"],
+          "creator": {"@type": "Person", "name": "Suman Rath", "url": SITE + "/", "sameAs": "https://orcid.org/0000-0002-7497-6335",
+                      "affiliation": {"@type": "Organization", "name": "Montclair State University"}},
+          "spatialCoverage": {"@type": "Place", "name": "United States"}, "temporalCoverage": "1975/2025",
+          "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": f"{ATLAS_ORIGIN}{BASE}download/"},
+                           {"@type": "DataDownload", "encodingFormat": "application/zip", "contentUrl": f"https://doi.org/{DOI}"}]}
+    return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+
 
 def home_page(n: int) -> str:
     body = f"""
@@ -529,7 +560,7 @@ Every figure comes from public federal data.</p>
 """
     return page("Special education data for every U.S. school district", body,
                 desc="Search any U.S. school district by ZIP code to see federal special education data: students served, settings, graduation, discipline, Section 504, funding, and poverty.",
-                path=BASE, scripts=("maplibre-gl.js", "atlas.js"), styles=("maplibre-gl.css",), alt=BASE + "es/")
+                path=BASE, scripts=("maplibre-gl.js", "atlas.js"), styles=("maplibre-gl.css",), alt=BASE + "es/", extra_head=dataset_ld())
 
 
 def table_page() -> str:
@@ -672,7 +703,7 @@ Code and processed data are shared under a Creative Commons Attribution 4.0 lice
 <p>Please <a href="{BASE}methods/#cite">cite IDEA Atlas</a> with its version number ({VERSION}) so others can find the same figures.</p>
 """
     return page("Download the data", body, desc="Download the full IDEA Atlas data set as CSV files: district measures with counts, and a full detail file.",
-                path=BASE + "download/", crumbs=[("IDEA Atlas", BASE)])
+                path=BASE + "download/", crumbs=[("IDEA Atlas", BASE)], extra_head=dataset_ld())
 
 
 def compare_row(label: str, k: str, unit: str, r, st_med, nat_med) -> list[str]:

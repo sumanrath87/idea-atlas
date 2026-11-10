@@ -372,7 +372,7 @@ Todas las cifras vienen de datos federales públicos.</p>
   <h2 id="words-h">Palabras explicadas</h2>
   <dl class="glossary">{gloss}</dl>
 </section>"""
-    return page("Datos de educación especial para cada distrito escolar de EE. UU.", body,
+    return page("Datos de educación especial por distrito escolar", body,
                 desc="Busque cualquier distrito escolar de EE. UU. por código postal y vea, en palabras sencillas, datos federales de educación especial: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina y fondos.",
                 path=BASE + "es/", scripts=("atlas.js",), lang="es", alt=BASE)
 
