@@ -126,16 +126,17 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
     rev = _date(g.get("reviewed", ""), lang)
     if lang == "en":
         byline = f'By <a href="{SITE}/">{E(name)}</a> · Last reviewed {E(rev)} · About {minutes} minutes to read'
-        about = f'<aside class="author" aria-labelledby="ab-h"><h2 id="ab-h">About the author</h2><p>{E(bio)}</p><p><a href="{SITE}/">sumanrath.org</a> · <a href="{ORCID}">ORCID</a></p></aside>'
+        about = f'<aside class="author" aria-labelledby="ab-h"><h2 id="ab-h">About the author</h2><p>{E(bio)}</p><p><a href="{SITE}/">sumanrath.org</a> · <a href="{ORCID}">ORCID researcher profile</a></p></aside>'
         crumbs = [("IDEA Atlas", BASE), ("Guides", BASE + "guides/")]
         if g["rel"].startswith("indicators/"):
             crumbs.append(("The federal indicators", BASE + "guides/indicators/"))
-        note = '<p class="hint">General information, not legal advice. Rules can differ by state; your state education agency and Parent Training and Information Center can tell you how they apply where you live.</p>'
+        note = ('<p class="hint">References such as 34 CFR 300.114 point to the federal special education regulations: title 34 of the Code of Federal Regulations, part 300, section 114. '
+                'General information, not legal advice. Rules can differ by state; your state education agency and Parent Training and Information Center can tell you how they apply where you live.</p>')
     else:
         byline = f'Por <a href="{SITE}/">{E(name)}</a> · Revisado el {E(rev)} · Unos {minutes} minutos de lectura'
-        about = f'<aside class="author" aria-labelledby="ab-h"><h2 id="ab-h">Sobre el autor</h2><p>{E(bio)}</p><p><a href="{SITE}/">sumanrath.org</a> · <a href="{ORCID}">ORCID</a></p></aside>'
+        about = f'<aside class="author" aria-labelledby="ab-h"><h2 id="ab-h">Sobre el autor</h2><p>{E(bio)}</p><p><a href="{SITE}/">sumanrath.org</a> · <a href="{ORCID}">perfil de investigador en ORCID</a></p></aside>'
         crumbs = [("IDEA Atlas", BASE + "es/"), ("Guías", BASE + "es/guias/")]
-        note = '<p class="hint">Información general, no asesoría legal. Las reglas pueden variar según el estado; la agencia de educación de su estado y su Centro de Información y Capacitación para Padres pueden explicarle cómo se aplican donde usted vive.</p>'
+        note = '<p class="hint">Referencias como 34 CFR 300.114 remiten al reglamento federal de educación especial: título 34 del Código de Regulaciones Federales (Code of Federal Regulations), parte 300, sección 114. Información general, no asesoría legal. Las reglas pueden variar según el estado; la agencia de educación de su estado y su Centro de Información y Capacitación para Padres pueden explicarle cómo se aplican donde usted vive.</p>'
     related = [allg[r.strip()] for r in g.get("related", "").split(",") if r.strip() in allg]
     rel_html = ""
     if related:

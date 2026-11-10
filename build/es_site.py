@@ -127,8 +127,9 @@ STATE_NOTES_ES = {
 
 
 def st_es(name: str) -> str:
-    n = name.title() if isinstance(name, str) else ""
-    return STATE_ES.get(n, n)
+    import states
+    n = states.display(name) if isinstance(name, str) else ""
+    return STATE_ES.get(n, states.ES_EXTRA.get(n, n))
 
 
 GUIDES_P = [""]   # set by site.py once guides are published
@@ -232,6 +233,10 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
     name = r.display
     state = st_es(r.state_name)
     facts = []
+    import abbrev
+    fullname = abbrev.full_name(name, r.state)
+    if fullname:
+        facts.append(("Nombre completo", fullname))
     if isinstance(r.city, str) and r.city:
         facts.append(("Ubicación", f"{r.city.title()}, {state}"))
     if isinstance(r.district_type, str):
@@ -346,7 +351,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
     es_cd["cats"] = [[CAT_ES.get(a, a), b] for a, b in cd.get("cats", [])]
     data = json.dumps(es_cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{data}</script>' + body
-    return page(f"{name}, {r.state}", body,
+    return page(f"{name}, {state}", body,
                 desc=f"Datos de educación especial de {name}, {state}, en palabras sencillas: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina, fondos y pobreza infantil.",
                 path=f"{BASE}es/distrito/{r.leaid}/", scripts=("atlas.js",), lang="es", alt=en,
                 crumbs=[("IDEA Atlas", f"{BASE}es/"), (state, STATE_PATHS.get(r.state, f"{BASE}es/estados/"))])

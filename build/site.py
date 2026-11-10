@@ -12,6 +12,8 @@ import csv
 import html
 import json
 import os
+
+import abbrev
 import math
 import re
 import shutil
@@ -181,7 +183,7 @@ def plain_lines(r, keys, st_med) -> str:
     """Layer 1: one friendly sentence per measure, with a gentle comparison to the typical district in the state."""
     unit = {m[0]: m[4] for m in MEASURES}
     short = {m[0]: m[3] for m in MEASURES}
-    state = r.state_name.title() if isinstance(r.state_name, str) else "the state"
+    state = STATE_NAMES[0].en[r.state] if STATE_NAMES[0] else (r.state_name.title() if isinstance(r.state_name, str) else "the state")
     out, zeros = [], []
     for k in keys:
         v, st = r[k], str(r[k + "_status"])
@@ -488,6 +490,7 @@ def main() -> int:
                               for x in g.itertuples() if x.enr_status != "ok" or x.enr > 0]
     import states as states_mod
     STATE_NAMES[0] = states_mod.StateNames(d, es_site.STATE_ES)
+    abbrev.STATE_NAMES.update({c: n for c, n in STATE_NAMES[0].en.items() if len(c) == 2 and c not in ("BI",)})
     es_site.STATE_PATHS = {c: BASE + STATE_NAMES[0].path(c, es=True) for c in STATE_NAMES[0].en}
     by_id = d.set_index("leaid")
     dpath = ROOT / "clean" / "output" / "detail.csv.gz"
@@ -998,8 +1001,12 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     lab = {m[0]: m[2] for m in MEASURES}
     unit = {m[0]: m[4] for m in MEASURES}
     meta = []
+    st_full = STATE_NAMES[0].en[r.state] if STATE_NAMES[0] else r.state_name.title()
+    fullname = abbrev.full_name(name, r.state)
+    if fullname:
+        meta.append(("Full name", fullname))
     if isinstance(r.city, str) and r.city:
-        meta.append(("Location", f"{r.city.title()}, {r.state_name.title()}"))
+        meta.append(("Location", f"{r.city.title()}, {st_full}"))
     if isinstance(r.district_type, str):
         meta.append(("Type", TYPE_PLAIN.get(r.district_type, r.district_type)))
     gl, gh = grade_word(r.grade_low), grade_word(r.grade_high)
@@ -1038,7 +1045,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     def rows(ks):
         return [compare_row(lab[k], k, unit[k], r, st_med, nat_med) for k in ks]
 
-    st_name = r.state_name.title() if isinstance(r.state_name, str) else "the state"
+    st_name = STATE_NAMES[0].en[r.state] if STATE_NAMES[0] else (r.state_name.title() if isinstance(r.state_name, str) else "the state")
     def rng(ks):
         return chart("range", f"Where this district sits among {st_name} districts", ",".join(ks))
 
@@ -1132,7 +1139,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
               ex("Reached Maximum Age"), ex("Dropped Out"), ex("Died")]
         if all(x is not None for x in xs) and sum(xs) >= 10:
             cd["ex"] = [xs[0], xs[1] + xs[2], xs[3], xs[4], xs[5]]
-    det = r.determination_2026 if isinstance(r.determination_2026, str) else "Not available"
+    det = r.determination_2026.strip().capitalize() if isinstance(r.determination_2026, str) else "Not available"
     state_note = f'<p class="note">{E(STATE_NOTES[r.state])}</p>' if r.state in STATE_NOTES else ""
     body = f"""
 <h1>{E(name)}</h1>
@@ -1151,7 +1158,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 {sec("Community", "<p>2024 estimate.</p>", ["child_poverty"], ["saipe"], "s-comm", "per 100 children ages 5 to 17", full_comm(dr), ("poverty",), trend=ot_pv)}
 <section aria-labelledby="s-state">
   <h2 id="s-state">State IDEA rating</h2>
-  <p>Each year the U.S. Department of Education rates how each state carries out IDEA. In 2026, {E(r.state_name.title())} was rated <strong>{E(det)}</strong>.
+  <p>Each year the U.S. Department of Education rates how each state carries out IDEA. In 2026, {E(st_name)} was rated <strong>{E(det)}</strong>.
   The rating describes the state, not this district.</p>
   {explain("rating")}
   <p class="source">Source: {E(SOURCES['det'][0])}, {E(SOURCES['det'][1])}.</p>
@@ -1197,8 +1204,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     SHORT_TERMS[0] = False
     chart_json = json.dumps(cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
-    desc = f"Special education data for {name}, {r.state_name.title()}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
-    return page(f"{name}, {r.state}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
+    desc = f"Special education data for {name}, {st_full}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
+    return page(f"{name}, {st_full}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
                 crumbs=[("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)])
 
 

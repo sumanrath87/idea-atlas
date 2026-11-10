@@ -33,7 +33,17 @@
     var s_ = DATA.status[code] || "Not reported";
     return ES ? (STATUS_ES[s_] || s_) : s_;
   }
-  function place(i) { var n = DATA.names[i]; return (n[2] ? n[2] + ", " : "") + n[1]; }
+  // Two-letter state codes in words, in the page's language.
+  var ST_NAME = {}; Object.keys(STATES).forEach(function (f) { ST_NAME[STATES[f][0]] = STATES[f][1]; });
+  ST_NAME.BI = "Bureau of Indian Education";
+  var ST_ES = {"New Jersey": "Nueva Jersey", "New York": "Nueva York", "New Mexico": "Nuevo México", "New Hampshire": "Nuevo Hampshire",
+    "North Carolina": "Carolina del Norte", "South Carolina": "Carolina del Sur", "North Dakota": "Dakota del Norte", "South Dakota": "Dakota del Sur",
+    "Pennsylvania": "Pensilvania", "Louisiana": "Luisiana", "Missouri": "Misuri", "Mississippi": "Misisipi", "West Virginia": "Virginia Occidental",
+    "Hawaii": "Hawái", "District of Columbia": "Distrito de Columbia", "Michigan": "Míchigan", "Oregon": "Oregón",
+    "Bureau of Indian Education": "Oficina de Educación Indígena", "U.S. Virgin Islands": "Islas Vírgenes de EE. UU.",
+    "Northern Mariana Islands": "Islas Marianas del Norte", "American Samoa": "Samoa Estadounidense"};
+  function stName(code) { var n = ST_NAME[code] || code; return ES ? (ST_ES[n] || n) : n; }
+  function place(i) { var n = DATA.names[i]; return (n[2] ? n[2] + ", " : "") + stName(n[1]); }
 
   /* ------------------------------------------------------------ search */
   function initSearch() {
@@ -829,7 +839,7 @@
       if (!chosen.length) { wrap.hidden = true; compareChart([]); return; }
       var idx = chosen.map(function (id) { return INDEX[id]; });
       compareChart(idx);
-      table.tHead.innerHTML = "<tr><th scope=\"col\">Measure</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(DATA.names[i][1]) + "</span></th>"; }).join("") + "<th scope=\"col\">National median</th></tr>";
+      table.tHead.innerHTML = "<tr><th scope=\"col\">Measure</th>" + idx.map(function (i) { return "<th scope=\"col\">" + esc(DATA.names[i][0]) + "<span class=\"sub\"> " + esc(stName(DATA.names[i][1])) + "</span></th>"; }).join("") + "<th scope=\"col\">National median</th></tr>";
       var rows = "<tr><th scope=\"row\">Students enrolled</th>" + idx.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : "Not reported") + "</td>"; }).join("") + "<td>—</td></tr>";
       var group = "";
       DATA.measures.forEach(function (m) {
