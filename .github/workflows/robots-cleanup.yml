@@ -25,5 +25,5 @@ jobs:
           export LFTP_PASSWORD="$(printf '%s' "$DH_PASS" | tr -d '\r\n')"
           DH_USER="$(printf '%s' "$DH_USER" | tr -d '\r\n ')"; DH_HOST="$(printf '%s' "$DH_HOST" | tr -d '\r\n ')"
           lftp --env-password -u "$DH_USER" "sftp://$DH_HOST" -e "set sftp:auto-confirm yes; set net:max-retries 2; \
-            echo '--- DH_PATH listing ---'; cd $DH_PATH; pwd; cls -la; echo '--- home listing ---'; cd ~; pwd; cls -la; \
-            echo '--- robots files ---'; find -d 3 . | grep -i robots; quit" 2>&1 | sed "s/$DH_USER/USER/g"
+            cd $DH_PATH; echo '--- htaccess robots/cache lines ---'; cat .htaccess; echo '--- robots in wp-content ---'; \
+            find wp-content/cache; quit" 2>&1 | sed "s/$DH_USER/USER/g" | grep -iE "^---|robots|supercache|RewriteCond|RewriteRule|crawl" | head -80
