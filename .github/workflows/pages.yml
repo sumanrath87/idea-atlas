@@ -54,9 +54,27 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.last.outputs.page_url || steps.retry.outputs.page_url || steps.deployment.outputs.page_url }}
     steps:
+      # GitHub Pages sometimes stalls on its side ("deployment_queued" or
+      # "try again later"). Try up to three times before reporting a failure.
       - id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
         with:
           timeout: 2400000        # 40 minutes: the site has about 39,000 pages
+      - if: steps.deployment.outcome == 'failure'
+        run: sleep 90
+      - id: retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+        with:
+          timeout: 2400000
+      - if: steps.retry.outcome == 'failure'
+        run: sleep 180
+      - id: last
+        if: steps.retry.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 2400000
