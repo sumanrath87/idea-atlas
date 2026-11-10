@@ -113,7 +113,12 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
     body_md = g["body"].replace("{base}", BASE)
     md = markdown.Markdown(extensions=["tables", "attr_list", "footnotes", "sane_lists"])
     h = md.convert(body_md)
-    h = re.sub(r"<table>", '<div class="table-wrap" role="region" tabindex="0"><table class="profile">', h).replace("</table>", "</table></div>")
+    cnt = [0]
+    def _wrap(m):
+        cnt[0] += 1
+        lab = E(g["title"]) + (" (tabla " if lang == "es" else " (table ") + str(cnt[0]) + ")"
+        return f'<div class="table-wrap" role="region" tabindex="0" aria-label="{lab}"><table class="profile">'
+    h = re.sub(r"<table>", _wrap, h).replace("</table>", "</table></div>")
     h, _n = _sections(h, lang)
     words = len(re.sub(r"<[^>]+>", " ", h).split())
     minutes = max(2, round(words / 220))
