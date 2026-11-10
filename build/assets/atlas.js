@@ -442,11 +442,24 @@
       slot.outerHTML = h;
     });
   }
-  // Explanations on district pages come from one shared file; until it arrives, each links to the glossary.
+  // Explanations on district pages come from two shared files (questions and answers), so each page
+  // carries only the term names. The questions are built as the same closed <details> a reader can open.
   function fillTerms() {
-    var ds = document.querySelectorAll("details.explain[data-term]"); if (!ds.length) return;
-    fetch(BASE + (ES ? "data/terms_es.json" : "data/terms.json")).then(function (r) { return r.json(); }).then(function (terms) {
-      Array.prototype.forEach.call(ds, function (d) { var k = d.getAttribute("data-term"); if (terms[k]) d.querySelector("p").textContent = terms[k]; });
+    var boxes = document.querySelectorAll(".explainers[data-terms]");
+    var ds = document.querySelectorAll("details.explain[data-term]");
+    if (!boxes.length && !ds.length) return;
+    var sfx = ES ? "_es.json" : ".json";
+    Promise.all([fetch(BASE + "data/terms_q" + sfx).then(function (r) { return r.json(); }),
+                 fetch(BASE + "data/terms" + sfx).then(function (r) { return r.json(); })]).then(function (res) {
+      var q = res[0], a = res[1];
+      Array.prototype.forEach.call(boxes, function (box) {
+        var keys = box.getAttribute("data-terms").split(" ").filter(function (k) { return q[k] && a[k]; });
+        if (!keys.length) return;
+        box.innerHTML = keys.map(function (k) {
+          return '<details class="explain" data-term="' + k + '"><summary>' + esc(q[k]) + "</summary><p>" + esc(a[k]) + "</p></details>";
+        }).join("");
+      });
+      Array.prototype.forEach.call(ds, function (d) { var k = d.getAttribute("data-term"); if (a[k]) d.querySelector("p").textContent = a[k]; });
     }).catch(function () {});
   }
 
@@ -864,5 +877,53 @@
   window.ATLAS = { BASE: BASE, ES: ES, tr: tr, esc: esc, load: load, data: function () { return DATA; }, index: function () { return INDEX; },
     rangeChart: rangeChart, partsBar: partsBar, catsChart: catsChart, trendChart: trendChart, groupTable: groupTable, yearLabel: yearLabel, svgEl: svgEl };
 
-  document.addEventListener("DOMContentLoaded", function () { initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+
+  // Wide screens: an "On this page" list of the page's sections in the empty right-hand column,
+  // marking the section being read. Built from the h2 headings, so the page itself carries no extra text.
+  function initOnPage() {
+    var main = document.getElementById("main"); if (!main || main.querySelector("nav.onpage")) return;
+    var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id]"), function (h) { return h.offsetParent !== null; });
+    if (hs.length < 4) return;
+    var nav = document.createElement("nav");
+    nav.className = "onpage"; nav.setAttribute("aria-labelledby", "onpage-h");
+    nav.innerHTML = '<div class="onpage-in"><p id="onpage-h" class="onpage-h">' + (ES ? "En esta página" : "On this page") + "</p><ul>" +
+      hs.map(function (h) { return '<li><a href="#' + h.id + '">' + esc(h.textContent) + "</a></li>"; }).join("") + "</ul></div>";
+    var after = main.querySelector(":scope > .page-tools") || main.querySelector(":scope > h1");
+    if (after) after.parentNode.insertBefore(nav, after.nextSibling); else main.insertBefore(nav, main.firstChild);
+    document.documentElement.classList.add("has-onpage");
+    var links = nav.querySelectorAll("a"), current = null, ticking = false;
+    function mark() {
+      ticking = false;
+      var line = window.innerHeight * 0.3, id = hs[0].id;
+      hs.forEach(function (h) { if (h.getBoundingClientRect().top <= line) id = h.id; });
+      if (id === current) return; current = id;
+      Array.prototype.forEach.call(links, function (a) {
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(mark); } }, { passive: true });
+    mark();
+  }
+
+  // Phones: the site menu folds behind one button so the page starts with its content.
+  // Without scripts, or on wider screens, the full list shows as before.
+  function initMenu() {
+    var nav = document.querySelector("header.site nav"), ul = nav && nav.querySelector("ul"); if (!ul || nav.querySelector(".menu-btn")) return;
+    ul.id = ul.id || "site-menu";
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "menu-btn"; b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", ul.id);
+    b.textContent = ES ? "Menú" : "Menu";
+    nav.insertBefore(b, ul);
+    nav.classList.add("can-fold");
+    b.addEventListener("click", function () {
+      var open = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", open ? "false" : "true");
+      nav.classList.toggle("open", !open);
+      if (!open) { var a = ul.querySelector("a"); if (a) a.focus(); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && b.getAttribute("aria-expanded") === "true") { b.click(); b.focus(); }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () { initMenu(); initOnPage(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

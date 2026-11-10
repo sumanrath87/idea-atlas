@@ -360,13 +360,14 @@
       state.topics.indexOf("hist") >= 0 ? fetchDoc(BASE + (ES ? "es/historia/" : "history/")) : Promise.resolve(null),
       getJSON(BASE + "data/state_measures.json").catch(function () { return null; })];
     jobs.push(state.topics.indexOf("grp") >= 0 ? getJSON(BASE + "data/groups/" + state.id.slice(0, 2) + ".json").catch(function () { return null; }) : Promise.resolve(null));
+    jobs.push(getJSON(BASE + (ES ? "data/terms_q_es.json" : "data/terms_q.json")).catch(function () { return null; }));
     var comps = state.aud === "leader" ? state.comps.slice(0, 3) : [];
     comps.forEach(function (c) { jobs.push(fetchDoc(districtUrl(c, false))); });
     Promise.all(jobs).then(function (r) {
-      var ctx = { doc: r[0], en: r[1], terms: r[2], meas: {}, labels: r[4], hist: r[6], spp: r[7], gh: r[8] ? r[8][state.id] : null, cd: cdOf(r[1]), comps: [] };
+      var ctx = { doc: r[0], en: r[1], terms: r[2], meas: {}, labels: r[4], hist: r[6], spp: r[7], gh: r[8] ? r[8][state.id] : null, termsQ: r[9], cd: cdOf(r[1]), comps: [] };
       r[3].forEach(function (m) { ctx.meas[m.key] = m; });
       ctx.cdL = cdOf(r[0]);
-      comps.forEach(function (c, k) { ctx.comps.push({ id: c, name: nameOf(c), cd: cdOf(r[9 + k]) }); });
+      comps.forEach(function (c, k) { ctx.comps.push({ id: c, name: nameOf(c), cd: cdOf(r[10 + k]) }); });
       render(ctx, lang);
     }).catch(function () {
       out.innerHTML = '<p class="rpt-msg">' + tr("The report could not be made. Check your connection and try again.", "No se pudo preparar el informe. Revise su conexión e inténtelo de nuevo.") + "</p>";
@@ -661,9 +662,10 @@
       if (aud !== "family") body += numbersTable(t.keys, cd, meas, L(t) + tr(": this district, the state, and the nation", ": este distrito, el estado y el país"));
       if (aud === "research" && state.tables) body += detailTables(t.id, cd, ctx.labels) + (t.trend ? trendTable(t.trend, cd, textOf($('figure[data-chart="trend"] figcaption', s)).split(",")[0]) : "");
       var tk = t.terms.slice(); $$("details.explain[data-term]", s).forEach(function (d) { var k = d.getAttribute("data-term"); if (tk.indexOf(k) < 0) tk.push(k); });
+      $$(".explainers[data-terms]", s).forEach(function (b) { b.getAttribute("data-terms").split(" ").forEach(function (k) { if (k && tk.indexOf(k) < 0) tk.push(k); }); });
       if (aud === "family") body += '<div class="rpt-terms"><h3>' + tr("Words to know", "Palabras clave") + "</h3><dl>" + tk.map(function (k) {
         var q = $('details.explain[data-term="' + k + '"] summary', doc);
-        return ctx.terms[k] ? "<dt>" + esc(q ? textOf(q) : k) + "</dt><dd>" + esc(ctx.terms[k]) + "</dd>" : "";
+        return ctx.terms[k] ? "<dt>" + esc(q ? textOf(q) : (ctx.termsQ && ctx.termsQ[k]) || k) + "</dt><dd>" + esc(ctx.terms[k]) + "</dd>" : "";
       }).join("") + "</dl></div>";
       var srcs = $$(":scope > p.source", s), src = srcs[srcs.length - 1];
       if (src) body += '<p class="source">' + esc(textOf(src).replace(/About the sources\.?$|Acerca de las fuentes\.?$/, "")) + "</p>";

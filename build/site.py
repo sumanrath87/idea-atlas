@@ -91,14 +91,28 @@ TABLES: list = []      # tables for the page being built; written into its data 
 SHORT_TERMS = [False]  # district pages carry only the question; the answer comes from one shared file
 
 
+GRADE_WORDS = {"PK": "Pre-K", "KG": "Kindergarten", "UG": "Ungraded", "AE": "Adult education"}
+
+
+def grade_word(code, es: bool = False):
+    """NCES grade codes in words. N (not applicable) and M (missing) give None, so the row is left out."""
+    if not isinstance(code, str) or code in ("N", "M", ""):
+        return None
+    if es:
+        return {"PK": "Prekínder", "KG": "Kínder", "UG": "Sin grado", "AE": "Educación de adultos"}.get(code, code.lstrip("0") or code)
+    return GRADE_WORDS.get(code, code.lstrip("0") or code)
+
+
 def explain(*keys: str) -> str:
     """Short "What is ...?" explainers: closed by default, one click to open, read well with a screen reader.
     On district pages the answer is filled from data/terms.json; without scripts a link leads to the glossary."""
     if SHORT_TERMS[0]:
-        items = "".join(f'<details class="explain" data-term="{k}"><summary>{E(TERMS[k][0])}</summary>'
-                        f'<p><a href="{BASE}methods/#term-{k}">Read the explanation</a></p></details>' for k in keys)
-    else:
-        items = "".join(f'<details class="explain"><summary>{E(TERMS[k][0])}</summary><p>{E(TERMS[k][1])}</p></details>' for k in keys)
+        # Compact marker: the browser builds the same open/close questions from data/terms_q.json and
+        # data/terms.json (one shared file instead of repeating them on 19,400 pages). Without scripts
+        # the link leads to the glossary.
+        return (f'<div class="explainers" data-terms="{" ".join(keys)}">'
+                f'<p class="terms-fallback"><a href="{BASE}methods/#words">What these words mean</a></p></div>')
+    items = "".join(f'<details class="explain"><summary>{E(TERMS[k][0])}</summary><p>{E(TERMS[k][1])}</p></details>' for k in keys)
     return f'<div class="explainers">{items}</div>'
 
 
@@ -330,6 +344,7 @@ def main() -> int:
         vals.append(row)
         stats.append(codes)
     (OUT / "data" / "terms.json").write_text(json.dumps({k: v[1] for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
+    (OUT / "data" / "terms_q.json").write_text(json.dumps({k: v[0] for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
     (OUT / "data" / "measures.json").write_text(json.dumps([{"key": m[0], "short": m[3], "unit": m[4]} for m in MEASURES], separators=(",", ":")))
     payload = {
         "version": VERSION,
@@ -413,6 +428,7 @@ def main() -> int:
     import history_page
     write("es/index.html", es_site.home_es(BASE=BASE, page=page, n=len(d)))
     (OUT / "data" / "terms_es.json").write_text(json.dumps({k: v[1] for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
+    (OUT / "data" / "terms_q_es.json").write_text(json.dumps({k: v[0] for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
     (OUT / "data" / "measures_es.json").write_text(json.dumps([{"key": m[0], "short": es_site.SHORT_ES[m[0]], "unit": m[4]} for m in MEASURES],
                                                               ensure_ascii=False, separators=(",", ":")))
     if (Path(__file__).resolve().parent / "history" / "national.json").exists():
@@ -935,8 +951,9 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
         meta.append(("Location", f"{r.city.title()}, {r.state_name.title()}"))
     if isinstance(r.district_type, str):
         meta.append(("Type", TYPE_PLAIN.get(r.district_type, r.district_type)))
-    if isinstance(r.grade_low, str) and isinstance(r.grade_high, str):
-        meta.append(("Grades", f"{r.grade_low} to {r.grade_high}"))
+    gl, gh = grade_word(r.grade_low), grade_word(r.grade_high)
+    if gl and gh:
+        meta.append(("Grades", gl if gl == gh else f"{gl} to {gh}"))
     if pd.notna(r.enrollment):
         meta.append(("Students, 2024–25", f"{r.enrollment:,.0f}"))
     parent = ""

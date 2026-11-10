@@ -131,12 +131,19 @@ def st_es(name: str) -> str:
     return STATE_ES.get(n, n)
 
 
+def grado(code):
+    """Códigos de grado de NCES en palabras; N (no aplica) y M (falta) se omiten."""
+    if not isinstance(code, str) or code in ("N", "M", ""):
+        return None
+    return {"PK": "Prekínder", "KG": "Kínder", "UG": "Sin grado", "AE": "Educación de adultos"}.get(code, code.lstrip("0") or code)
+
+
 def explain_es(BASE: str, *keys: str, full: bool = False) -> str:
     if full:
         items = "".join(f'<details class="explain"><summary>{E(TERMS_ES[k][0])}</summary><p>{E(TERMS_ES[k][1])}</p></details>' for k in keys)
     else:
-        items = "".join(f'<details class="explain" data-term="{k}"><summary>{E(TERMS_ES[k][0])}</summary>'
-                        f'<p><a href="{BASE}es/#term-{k}">Leer la explicación</a></p></details>' for k in keys)
+        return (f'<div class="explainers" data-terms="{" ".join(keys)}">'
+                f'<p class="terms-fallback"><a href="{BASE}es/#words-h">Qué significan estas palabras</a></p></div>')
     return f'<div class="explainers">{items}</div>'
 
 
@@ -225,8 +232,9 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
         facts.append(("Ubicación", f"{r.city.title()}, {state}"))
     if isinstance(r.district_type, str):
         facts.append(("Tipo", TYPE_ES.get(r.district_type, r.district_type)))
-    if isinstance(r.grade_low, str) and isinstance(r.grade_high, str):
-        facts.append(("Grados", f"{r.grade_low.replace('PK', 'Prekínder').replace('KG', 'Kínder')} a {r.grade_high}"))
+    gl, gh = grado(r.grade_low), grado(r.grade_high)
+    if gl and gh:
+        facts.append(("Grados", gl if gl == gh else f"{gl} a {gh}"))
     if pd.notna(r.enrollment):
         facts.append(("Estudiantes, 2024–25", f"{r.enrollment:,.0f}"))
     glance = []
