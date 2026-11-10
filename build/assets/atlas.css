@@ -519,3 +519,6 @@ dl.rpt-rights dt { font-weight: 700; margin-top: .7rem; } dl.rpt-rights dd { mar
 @media print { section.rpt-sec.short { break-before: auto; margin-top: 18pt; } .rpt-mine { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 table.rpt-t td.yr { white-space: nowrap; }
 table.rpt-t.years td, table.rpt-t.years thead th { text-align: right; } table.rpt-t tr.all th, table.rpt-t tr.all td { font-weight: 700; border-top: 1px solid #b9b4a8; }
+.rpt-invite { max-width: 8.5in; margin: 0 auto 3rem; background: #f6f2e8; border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: .4rem 1.4rem 1rem; }
+.rpt-invite h2 { font-size: 1.3rem; margin: .8em 0 .3em; }
+@media print { .rpt-invite { display: none !important; } }

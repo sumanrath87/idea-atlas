@@ -712,9 +712,13 @@
       '<button type="button" class="secondary" id="rpt-link">' + tr("Copy link to this report", "Copiar el enlace a este informe") + '</button><button type="button" class="secondary" id="rpt-edit">' + tr("Change my choices", "Cambiar mis opciones") +
       '</button><p class="hint">' + tr("In the print window, choose “Save as PDF” as the printer. The PDF keeps headings and text that screen readers can read.", "En la ventana de impresión, elija «Guardar como PDF» como impresora. El PDF conserva los títulos y el texto que leen los lectores de pantalla.") +
       '</p><p class="rpt-said" role="status"></p></div>';
+    var invite = '<aside class="rpt-invite" aria-labelledby="rpt-inv-h"><h2 id="rpt-inv-h">' + tr("Did this report help?", "¿Le sirvió este informe?") + "</h2><p>" +
+      tr("A five-minute survey asks how you used IDEA Atlas and what would make it better. Answers help improve the atlas and may be used in published research, shared only as grouped results or quotes without names.",
+        "Una encuesta de cinco minutos pregunta cómo usó IDEA Atlas y qué lo haría mejor. Las respuestas ayudan a mejorar el atlas y pueden usarse en investigaciones publicadas, compartidas solo como resultados agrupados o citas sin nombres.") +
+      '</p><p><a class="button secondary" href="https://www.sumanrath.org/tools/idea-atlas/' + (ES ? "#encuesta" : "#feedback") + '">' + tr("Take the survey", "Responder la encuesta") + "</a></p></aside>";
     out.innerHTML = bar + '<article class="rpt" lang="' + lang + '">' + cover + tocHtml + parts.join("") +
       '<footer class="rpt-end"><p>IDEA Atlas · ' + tr("A project by Dr. Suman Rath", "Un proyecto del Dr. Suman Rath") + " · " + location.origin + BASE + "</p><p>" +
-      tr("Figures describe what was reported to the federal government, not the quality of a district's services.", "Las cifras describen lo que se informó al gobierno federal, no la calidad de los servicios de un distrito.") + "</p></footer></article>";
+      tr("Figures describe what was reported to the federal government, not the quality of a district's services.", "Las cifras describen lo que se informó al gobierno federal, no la calidad de los servicios de un distrito.") + "</p></footer></article>" + invite;
     document.title = name + " · " + title + " | IDEA Atlas";
     document.body.classList.add("rpt-on");
     drawCharts(out, ctx);

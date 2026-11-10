@@ -180,13 +180,13 @@ UI = {
     "en": {"skip": "Skip to main content", "sub": "Special education data for every U.S. school district", "nav_label": "IDEA Atlas",
            "nav": [("", "Map and search"), ("table/", "Table"), ("compare/", "Compare"), ("history/", "History"), ("report/", "Make a report"), ("methods/", "Methods and sources")],
            "all_tools": "All tools", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
-           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a>',
+           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
            "nav": [("es/", "Buscar un distrito"), ("es/historia/", "Historia"), ("es/informe/", "Crear un informe")],
            "all_tools": "", "crumb": "Ruta de navegación", "suffix": "IDEA Atlas", "version": "Versión",
-           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a>',
+           "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{site}/contact/">Informar un error</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
            "other": "English", "other_label": "View this page in English"},
 }
@@ -657,6 +657,7 @@ every learning setting, every way students left special education, civil rights 
 <code>_count</code> and <code>_group</code> give the number of students counted and the size of the group, so you can recompute a rate or pool districts.</p>
 <p><a class="button" href="{BASE}download/{fname}" download>Download {E(fname)}</a></p>
 {explain("status")}
+<p class="note">If you use these files in research or teaching, a five-minute survey asks how. Answers help improve the atlas and may be used in published research. <a href="https://www.sumanrath.org/tools/idea-atlas/#feedback">Take the survey</a>.</p>
 {detail}
 {f"""<h2>Trends file</h2>
 <p>Each district's trend lines, one row per district, measure, and year: students with IEPs per 100 enrolled (1991–92 onward), spending per student in 2024 dollars (fiscal year 1990 onward), child poverty (2003 onward), and out-of-school suspension for students with and without disabilities (2013–14 onward).
