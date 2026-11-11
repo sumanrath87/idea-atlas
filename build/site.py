@@ -14,6 +14,7 @@ import json
 import os
 
 import abbrev
+from typeset import typeset
 import math
 import re
 import shutil
@@ -244,6 +245,9 @@ UI = {
 }
 
 
+_SEC_H2 = re.compile(r"<section\b[^>]*>\s*<h2\b[^>]*\bid=")
+
+
 def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...] = (),
          styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "", og_image: str = "assets/og.png") -> str:
     """Page frame. alt is the same page in the other language, if there is one."""
@@ -274,8 +278,10 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
                                                    f'<meta property="og:description" content="{E(desc)}">')
     counter = (f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
                if GOATCOUNTER and not PREVIEW else "")
+    # Pages long enough for an "On this page" list keep room for it from the start, so nothing moves when it appears.
+    op = ' class="op-pre"' if len(_SEC_H2.findall(body)) >= 4 else ""
     return f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="{lang}"{op}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -326,6 +332,8 @@ def write(rel: str, text: str) -> None:
     text = re.sub(r"\n{2,}", "\n", text)
     # Line breaks before block-level tags carry no meaning in HTML; dropping them keeps 39,000 pages smaller.
     text = re.sub(r">\n(?=</?(?:section|div|p|ul|ol|li|h[1-6]|figure|figcaption|details|summary|table|thead|tbody|tr|th|td|nav|main|header|footer|aside|article|meta|link|script|dl|dt|dd|form|fieldset|label|input|select|option|button|noscript|caption|title|head|body|html)\b)", ">", text)
+    if rel.endswith(".html"):
+        text = typeset(text)
     p = OUT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
@@ -402,8 +410,8 @@ def main() -> int:
             codes += code
         vals.append(row)
         stats.append(codes)
-    (OUT / "data" / "terms.json").write_text(json.dumps({k: v[1] for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
-    (OUT / "data" / "terms_q.json").write_text(json.dumps({k: v[0] for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
+    (OUT / "data" / "terms.json").write_text(json.dumps({k: typeset(v[1]) for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
+    (OUT / "data" / "terms_q.json").write_text(json.dumps({k: typeset(v[0]) for k, v in TERMS.items()}, separators=(",", ":"), ensure_ascii=False))
     (OUT / "data" / "measures.json").write_text(json.dumps([{"key": m[0], "short": m[3], "unit": m[4]} for m in MEASURES], separators=(",", ":")))
     payload = {
         "version": VERSION,
@@ -486,8 +494,8 @@ def main() -> int:
     write("methods/index.html", methods_page())
     import history_page
     write("es/index.html", es_site.home_es(BASE=BASE, page=page, n=len(d)))
-    (OUT / "data" / "terms_es.json").write_text(json.dumps({k: v[1] for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
-    (OUT / "data" / "terms_q_es.json").write_text(json.dumps({k: v[0] for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
+    (OUT / "data" / "terms_es.json").write_text(json.dumps({k: typeset(v[1]) for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
+    (OUT / "data" / "terms_q_es.json").write_text(json.dumps({k: typeset(v[0]) for k, v in es_site.TERMS_ES.items()}, ensure_ascii=False, separators=(",", ":")))
     (OUT / "data" / "measures_es.json").write_text(json.dumps([{"key": m[0], "short": es_site.SHORT_ES[m[0]], "unit": m[4]} for m in MEASURES],
                                                               ensure_ascii=False, separators=(",", ":")))
     if (Path(__file__).resolve().parent / "history" / "national.json").exists():
@@ -538,7 +546,15 @@ def main() -> int:
     glinks = None
     guide_paths = []
     if GUIDES_LIVE[0]:
-        guide_paths = guides_mod.build(BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, write=write)
+        def og_guide(lang, g):
+            """Share image for one guide, named after its address."""
+            import extra_pages as xp
+            rel = f"assets/og/{'guide' if lang == 'en' else 'guia'}-{g['rel'].replace('/', '-')}.png"
+            kind = ("Guide" if lang == "en" else "Guía") if "/" not in g["rel"] else ("Federal indicator guide" if lang == "en" else "Guía de indicadores federales")
+            xp.og_guide(OUT / rel, title=g["title"], line=g.get("description", ""), kind=kind,
+                        footer="A project by Dr. Suman Rath" if lang == "en" else "Un proyecto del Dr. Suman Rath")
+            return rel
+        guide_paths = guides_mod.build(BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, write=write, og=og_guide)
         glinks = {"hub": BASE + "guides/", "indicators": BASE + "guides/indicators/", "disputes": BASE + "guides/dispute-resolution/",
                   "featured": [("How to read your district's special education data", BASE + "guides/how-to-read-district-data/"),
                                ("Least restrictive environment, explained with real numbers", BASE + "guides/least-restrictive-environment/"),

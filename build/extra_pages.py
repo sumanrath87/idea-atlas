@@ -238,6 +238,51 @@ def og_state(out: Path, *, title: str, line1: str, line2: str, rate: float | Non
     im.save(out, "PNG", optimize=True)
 
 
+def og_guide(out: Path, *, title: str, line: str, kind: str, footer: str) -> None:
+    """A 1200 x 630 share image for a guide: brand, the guide's title and one line about it."""
+    from PIL import Image, ImageDraw
+    from typeset import typeset
+    title, line = typeset(title), typeset(line)
+    W, H = 1200, 630
+    bg, maroon, ink, muted, rule = "#fbf9f5", "#8a2a2b", "#20232a", "#5c6370", "#e2dfd6"
+    im = Image.new("RGB", (W, H), bg)
+    d = ImageDraw.Draw(im)
+    lnum = {"features": ["lnum"]}
+    d.rectangle([0, 0, 18, H], fill=maroon)
+    d.text((90, 80), "IDEA Atlas", font=_font("vollkorn", 52, 600), fill=maroon)
+    d.text((90, 150), kind, font=_font("manrope", 26, 600), fill=muted)
+    size = 62
+    while True:
+        tf = _font("vollkorn", size, 600)
+        lines = _wrap(d, title, tf, 1000)
+        if len(lines) <= 3 or size <= 46:
+            break
+        size -= 4
+    y = 205
+    for ln in lines[:3]:
+        d.text((90, y), ln, font=tf, fill=ink, **lnum)
+        y += int(size * 1.22)
+    y += 16
+    sf = _font("manrope", 27, 400)
+    room = max(0, (512 - y) // 38)
+    desc = _wrap(d, line, sf, 960)
+    if len(desc) > room:
+        desc = desc[:room]
+        if desc:
+            last = desc[-1]
+            while last and d.textlength(last + "\u2026", font=sf) > 960:
+                last = last.rsplit(" ", 1)[0]
+            desc[-1] = last.rstrip(" ,;:") + "\u2026"
+    for ln in desc:
+        d.text((90, y), ln, font=sf, fill=muted)
+        y += 38
+    d.line([(90, 532), (1110, 532)], fill=rule, width=2)
+    d.text((90, 555), "atlas.sumanrath.org", font=_font("manrope", 24, 700), fill=ink)
+    d.text((370, 555), footer, font=_font("manrope", 24, 400), fill=muted)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.save(out, "PNG", optimize=True)
+
+
 # ---------------------------------------------------------------- Spanish: compare and about the data
 
 def compare_es(*, page, BASE, explain_es) -> str:
@@ -525,8 +570,8 @@ def shared_blocks(OUT: Path, es_site) -> None:
     import json
     asks = "".join(f"<li>{E(q)}</li>" for q in es_site.ASK_ES)
     (OUT / "data").mkdir(parents=True, exist_ok=True)
-    (OUT / "data" / "shared_en.json").write_text(json.dumps({"ask": SHARED_ASK_EN}, ensure_ascii=False))
-    (OUT / "data" / "shared_es.json").write_text(json.dumps({"ask": SHARED_ASK_ES.replace("{asks}", asks)}, ensure_ascii=False))
+    (OUT / "data" / "shared_en.json").write_text(json.dumps({"ask": __import__("typeset").typeset(SHARED_ASK_EN)}, ensure_ascii=False))
+    (OUT / "data" / "shared_es.json").write_text(json.dumps({"ask": __import__("typeset").typeset(SHARED_ASK_ES.replace("{asks}", asks))}, ensure_ascii=False))
 
 
 # ---------------------------------------------------------------- page not found (GitHub Pages serves /404.html)

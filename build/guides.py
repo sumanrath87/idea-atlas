@@ -108,7 +108,7 @@ def _date(s: str, lang: str) -> str:
     return f"{d.day} de {MONTHS_ES[d.month - 1]} de {d.year}" if lang == "es" else d.strftime("%B %-d, %Y")
 
 
-def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, extra_list: str = "") -> str:
+def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, extra_list: str = "", og_image: str = "assets/og.png") -> str:
     lang = g["lang"]
     body_md = g["body"].replace("{base}", BASE)
     md = markdown.Markdown(extensions=["tables", "attr_list", "footnotes", "sane_lists"])
@@ -154,7 +154,7 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
           "author": {"@type": "Person", "name": "Suman Rath", "honorificSuffix": "Ph.D.", "url": SITE + "/", "sameAs": [ORCID],
                      "affiliation": {"@type": "Organization", "name": "Montclair State University"}},
           "publisher": {"@type": "Organization", "name": "IDEA Atlas", "url": ATLAS_ORIGIN + BASE},
-          "image": ATLAS_ORIGIN + BASE + "assets/og.png"}
+          "image": ATLAS_ORIGIN + BASE + og_image}
     extra_head = ('<meta property="og:title" content="' + E(g["title"]) + '"><meta property="og:description" content="' + E(g.get("description", "")) + '">'
                   '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False).replace("</", "<\\/") + "</script>")
     body = f"""
@@ -172,10 +172,10 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
     pair = g.get("pair")
     alt = BASE + pair + "/" if pair else None
     return page(g["title"], body, desc=g.get("description", "")[:300], path=path, scripts=("atlas.js",), crumbs=crumbs,
-                lang=lang, alt=alt, extra_head=extra_head)
+                lang=lang, alt=alt, extra_head=extra_head, og_image=og_image)
 
 
-def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write) -> list[str]:
+def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write, og=None) -> list[str]:
     """Write every guide and both hubs. Returns paths for the sitemap."""
     paths = []
     for lang in ("en", "es"):
@@ -189,7 +189,8 @@ def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write) -> list[str]:
             if g["rel"] in ("indicators", "indicadores"):
                 kids = sorted([k for k in gs if k["rel"].startswith(g["rel"] + "/")], key=lambda k: k["order"])
                 extra = _list_html(kids, BASE, "All 18 indicators" if lang == "en" else "Los 18 indicadores", "ind-all")
-            write(root + g["rel"] + "/index.html", render(g, allg, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, extra_list=extra))
+            img = og(lang, g) if og else "assets/og.png"
+            write(root + g["rel"] + "/index.html", render(g, allg, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, extra_list=extra, og_image=img))
             paths.append(root + g["rel"] + "/")
         write(root + "index.html", hub(gs, lang, BASE=BASE, page=page))
         paths.append(root)

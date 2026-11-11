@@ -84,6 +84,35 @@
     });
   }
   function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim(); }
+  // Close spellings: each typed word may be off by one letter (two for long words), as in "Newrak" for "Newark".
+  function editsWithin(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return false;
+    var prev = [], prev2 = [], cur, i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur = [i]; var low = i;
+      for (j = 1; j <= b.length; j++) {
+        var c = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) c = Math.min(c, prev2[j - 2] + 1);
+        cur[j] = c; if (c < low) low = c;
+      }
+      if (low > max) return false;
+      prev2 = prev; prev = cur;
+    }
+    return prev[b.length] <= max;
+  }
+  function fuzzyHits(words) {
+    var hits = [];
+    for (var i = 0; i < DATA.ids.length; i++) {
+      var toks = norm(DATA.names[i][0] + " " + DATA.names[i][2] + " " + DATA.names[i][1]).split(" "), miss = 0;
+      var ok = words.every(function (w) {
+        var max = w.length >= 8 ? 2 : (w.length >= 4 ? 1 : 0);
+        return toks.some(function (t) { return t.indexOf(w) === 0 || (max && (editsWithin(w, t, max) || (t.length > w.length && editsWithin(w, t.slice(0, w.length), max)))); });
+      });
+      if (ok) hits.push({i: i, s: 0, e: -(DATA.enrollment[i] || 0)});
+    }
+    return hits;
+  }
   function nameSearch(text, out) {
     var words = norm(text).split(" "), hits = [];
     for (var i = 0; i < DATA.ids.length; i++) {
@@ -93,7 +122,14 @@
         hits.push({i: i, s: score, e: -(DATA.enrollment[i] || 0)});
       }
     }
+    var close = false;
+    if (!hits.length) { hits = fuzzyHits(words); close = hits.length > 0; }
     hits.sort(function (a, b) { return a.s - b.s || a.e - b.e; });
+    if (close) {
+      var shownC = hits.slice(0, 10);
+      out.innerHTML = listHTML(shownC, tr("No exact match for “" + text + "”. Districts with a similar spelling:", "Ninguna coincidencia exacta con «" + text + "». Distritos con un nombre parecido:"));
+      return;
+    }
     if (!hits.length) { out.innerHTML = tr("<p>No district matched “" + esc(text) + "”. Check the spelling, or try a ZIP code.</p>",
       "<p>Ningún distrito coincide con «" + esc(text) + "». Revise la ortografía o pruebe con un código postal.</p>"); return; }
     var shown = hits.slice(0, 25);
@@ -299,6 +335,25 @@
     });
   }
 
+  /* ------------------------------------------------------------ long tables keep their headings in view */
+  function markTables() {
+    Array.prototype.forEach.call(document.querySelectorAll(".table-wrap"), function (w) {
+      var t = w.querySelector("table"); if (!t || !t.tHead || !t.tBodies[0]) return;
+      var tall = t.tBodies[0].rows.length > 15;
+      w.classList.toggle("tall", tall);
+      if (tall) { w.classList.remove("fits"); w.classList.toggle("fits", t.offsetWidth <= w.clientWidth + 1); }
+    });
+  }
+  function initTables() {
+    var main = document.getElementById("main"); if (!main || !window.MutationObserver) return;
+    var queued = false, run = function () { queued = false; markTables(); };
+    var later = function () { if (!queued) { queued = true; requestAnimationFrame(run); } };
+    new MutationObserver(later).observe(main, {childList: true, subtree: true});
+    window.addEventListener("resize", later);
+    main.addEventListener("toggle", later, true);
+    later();
+  }
+
   /* ------------------------------------------------------------ print and detail */
   function initTools() {
     // "Show all detail" opens the numbers and full-detail layers; explainers stay as the reader left them.
@@ -310,11 +365,24 @@
       exp.setAttribute("data-open", open ? "1" : "0");
       exp.textContent = open ? tr("Hide all detail", "Ocultar los detalles") : tr("Show all detail", "Mostrar todos los detalles");
     });
-    var before = null;
-    window.addEventListener("beforeprint", function () { before = all().map(function (d) { return d.open; }); all().forEach(function (d) { d.open = true; }); });
-    window.addEventListener("afterprint", function () { if (before) all().forEach(function (d, i) { d.open = before[i]; }); });
+    // District pages print as a short summary; "Print with all tables" adds every table.
+    var summary = !!document.querySelector("main > section.glance"), before = null;
+    window.addEventListener("beforeprint", function () {
+      if (summary && !document.body.classList.contains("print-all")) return;
+      before = all().map(function (d) { return d.open; }); all().forEach(function (d) { d.open = true; });
+    });
+    window.addEventListener("afterprint", function () {
+      if (before) all().forEach(function (d, i) { d.open = before[i]; }); before = null;
+      document.body.classList.remove("print-all");
+    });
     Array.prototype.forEach.call(document.querySelectorAll("[data-print]"), function (b) {
       b.addEventListener("click", function () { window.print(); });
+      if (!summary) return;
+      b.textContent = tr("Print a summary", "Imprimir un resumen");
+      var full = document.createElement("button"); full.type = "button"; full.className = "secondary";
+      full.textContent = tr("Print with all tables", "Imprimir con todas las tablas");
+      full.addEventListener("click", function () { document.body.classList.add("print-all"); window.print(); });
+      b.parentNode.insertBefore(full, b.nextSibling);
     });
   }
 
@@ -904,7 +972,7 @@
   function initOnPage() {
     var main = document.getElementById("main"); if (!main || main.querySelector("nav.onpage, nav.toc, .toc")) return;
     var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id], :scope > article > section > h2[id]"), function (h) { return h.offsetParent !== null; });
-    if (hs.length < 4) return;
+    if (hs.length < 4) { document.documentElement.classList.remove("op-pre"); return; }
     var nav = document.createElement("nav");
     nav.className = "onpage"; nav.setAttribute("aria-label", ES ? "En esta página" : "On this page");
     var items = hs.map(function (h) { return '<li><a href="#' + h.id + '">' + esc(h.textContent) + "</a></li>"; }).join("");
@@ -987,5 +1055,5 @@
       initAsk();
     }).catch(function () {});
   }
-  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

@@ -9,6 +9,9 @@
 @font-face { font-family: "Vollkorn"; font-weight: 400 900; font-display: swap; src: url("vollkorn-latin-ext-wght-normal.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 
+@font-face { font-family: "Manrope Fallback"; src: local("Arial"), local("Liberation Sans"), local("Helvetica"); size-adjust: 104.3%; ascent-override: 102.2%; descent-override: 28.8%; line-gap-override: 0%; }
+@font-face { font-family: "Vollkorn Fallback"; src: local("Times New Roman"), local("Liberation Serif"), local("Times"); size-adjust: 109%; ascent-override: 87.3%; descent-override: 40.4%; line-gap-override: 0%; }
+
 :root {
   --ink: #1d2126; --ink-2: #474d55; --muted: #5b6168; --paper: #fbfaf6; --panel: #ffffff;
   --rule: #e2dfd6; --accent: #8a2b2b; --accent-ink: #6e2020; --focus: #1c5cab;
@@ -16,8 +19,8 @@
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 Manrope, system-ui, sans-serif; }
-h1, h2, h3 { font-family: Vollkorn, Georgia, serif; font-weight: 500; line-height: 1.2; margin: 1.6em 0 .5em; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 Manrope, "Manrope Fallback", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-weight: 500; line-height: 1.2; margin: 1.6em 0 .5em; }
 h1 { font-size: clamp(2rem, 4vw, 2.9rem); margin-top: .6em; }
 h2 { font-size: 1.55rem; }
 h3 { font-size: 1.15rem; }
@@ -32,7 +35,7 @@ a:hover { color: var(--accent-ink); }
 header.site { border-bottom: 1px solid var(--rule); background: var(--paper); }
 header.site .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem; padding-top: 1rem; padding-bottom: 1rem; }
 .brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
-.brand-name { font-family: Vollkorn, Georgia, serif; font-size: 1.45rem; font-weight: 600; }
+.brand-name { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.45rem; font-weight: 600; }
 .brand-sub { font-size: .85rem; color: var(--muted); }
 header nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; }
 header nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: .25rem 0; border-bottom: 2px solid transparent; }
@@ -65,7 +68,7 @@ button:disabled { background: #b9b5ab; cursor: not-allowed; }
 #results .sub { color: var(--muted); font-size: .92rem; }
 
 #map { height: min(68vh, 560px); border: 1px solid var(--rule); border-radius: var(--radius); background: #f3f1ea; }
-#legend h3 { margin: .9rem 0 .3rem; font-size: 1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; }
+#legend h3 { margin: .9rem 0 .3rem; font-size: 1rem; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-weight: 600; }
 #legend ul { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; padding: 0; margin: 0; }
 #legend li { display: flex; align-items: center; gap: .45rem; font-size: .92rem; }
 .swatch { width: 1.15rem; height: 1.15rem; border-radius: 3px; border: 1px solid rgba(0,0,0,.18); display: inline-block; }
@@ -114,7 +117,7 @@ table.detail td { text-align: right; }
 table.compare th[scope=col] .sub { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; }
 table.compare td { text-align: right; }
 table.compare tbody th[scope=row], table.compare thead th:first-child { width: 32%; min-width: 14rem; }
-table.compare tr.group th { background: #f4f1e9; font-family: Vollkorn, Georgia, serif; font-size: 1.05rem; padding-top: .8rem; }
+table.compare tr.group th { background: #f4f1e9; font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.05rem; padding-top: .8rem; }
 ul.chosen, ul.pick { list-style: none; padding: 0; }
 ul.chosen li, ul.pick li { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
 ul.pick button { padding: .35rem .8rem; min-height: 2.4rem; }
@@ -122,7 +125,7 @@ ul.pick button { padding: .35rem .8rem; min-height: 2.4rem; }
 fieldset.cols { border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; padding: .6rem 1rem 1rem; margin: .5rem 0 1rem; }
 fieldset.cols legend { font-weight: 600; padding: 0 .3rem; }
 .colgroup { display: inline-block; vertical-align: top; min-width: 14rem; margin: .4rem 1.5rem .4rem 0; }
-.colgroup-h { font-weight: 600; margin: .2rem 0; font-family: Vollkorn, Georgia, serif; }
+.colgroup-h { font-weight: 600; margin: .2rem 0; font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; }
 .colgroup label { display: block; font-weight: 400; padding: .15rem 0; }
 .print-only { display: none; }
 /* layers: plain words, then the numbers, then full detail; explainers sit beside the term */
@@ -145,7 +148,7 @@ ul.paths li { background: #fff; border: 1px solid var(--rule); border-radius: 10
 ul.paths li > a { display: block; margin-bottom: .2rem; }
 
 /* ---------- refinement: calm, composed, letter-like ---------- */
-:root { --rule: #e6e1d6; --wash: #f5f0e6; --serif: Vollkorn, Georgia, serif; --measure: 44rem; }
+:root { --rule: #e6e1d6; --wash: #f5f0e6; --serif: Vollkorn, "Vollkorn Fallback", Georgia, serif; --measure: 39rem; }
 body { font-size: 1.0625rem; line-height: 1.7; letter-spacing: .003em; }
 .wrap { max-width: 1120px; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
 h1, h2, h3 { color: var(--ink); letter-spacing: -.005em; }
@@ -254,9 +257,9 @@ dl.glossary dt:target { color: var(--accent); }
 /* ---------- charts: thin marks, quiet ink, the district in the brand red ---------- */
 figure.chart { margin: 1rem 0 1.4rem; max-width: 46rem; }
 figure.chart figcaption { font-size: .88rem; color: var(--muted); margin-bottom: .5rem; }
-svg.range { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+svg.range { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; }
 svg.range .lab { font-size: 13px; fill: var(--ink-2); }
-svg.range .grp { font-family: Vollkorn, Georgia, serif; font-size: 16px; fill: var(--ink); }
+svg.range .grp { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 16px; fill: var(--ink); }
 svg.range .val { font-size: 13px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums; }
 svg.range .na { font-size: 12px; fill: var(--muted); }
 svg.range .track { stroke: var(--rule); stroke-width: 1; }
@@ -293,23 +296,23 @@ svg.trend .tgap { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 
 svg.trend .tcomp { fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-dasharray: 1 0; opacity: .75; }
 .k-line.k-comp { background: var(--muted); }
 svg.trend .tdot { fill: var(--accent); stroke: var(--paper); stroke-width: 1.5; }
-h3.ot-h { font-size: 1.05rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; color: var(--ink-2); margin: 1.4rem 0 .2rem; }
+h3.ot-h { font-size: 1.05rem; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-weight: 600; color: var(--ink-2); margin: 1.4rem 0 .2rem; }
 /* ---------- history timeline ---------- */
 .tl { margin: 1rem 0 1.6rem; max-width: 56rem; }
-.tl-svg { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+.tl-svg { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; }
 .tl-axis { stroke: var(--ink); stroke-width: 1.5; }
 .tl-tick { stroke: var(--muted); stroke-width: 1; }
 .tl-dec { font-size: 13px; fill: var(--muted); }
 .tl-data { fill: var(--muted); opacity: .55; }
 .tl-ms { fill: var(--paper); stroke: var(--accent); stroke-width: 2.5; cursor: pointer; }
 .tl-ms.on { fill: var(--accent); }
-.tl-msy { font-family: Vollkorn, Georgia, serif; font-size: 15px; fill: var(--ink-2); }
+.tl-msy { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 15px; fill: var(--ink-2); }
 .tl-now line { stroke: var(--accent); stroke-width: 2; }
 .tl-now circle { fill: none; stroke: var(--accent); stroke-width: 2; }
 .tl-now { transition: transform .25s ease; }
 .tl-controls { display: grid; gap: .5rem; margin: .6rem 0 .8rem; }
 .tl-controls label { font-weight: 600; }
-.tl-controls output { font-family: Vollkorn, Georgia, serif; font-size: 1.2rem; color: var(--accent); margin-left: .3rem; font-variant-numeric: lining-nums; }
+.tl-controls output { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.2rem; color: var(--accent); margin-left: .3rem; font-variant-numeric: lining-nums; }
 #tl-range { width: 100%; accent-color: var(--accent); min-height: 2.2rem; }
 .tl-ms-label { font-size: .88rem; color: var(--muted); margin-top: .2rem; }
 ul.tl-btns { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
@@ -317,15 +320,15 @@ ul.tl-btns { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: 
 .tl-btn:hover { background: var(--wash); color: var(--ink); }
 .tl-btn[aria-current=true] { background: var(--accent); color: #fff; border-color: var(--accent); }
 .tl-panel { background: var(--wash); border-radius: 14px; padding: .4rem clamp(1.1rem, 3vw, 1.8rem) .8rem; min-height: 9rem; }
-.tl-panel .tl-y { font-family: Vollkorn, Georgia, serif; font-size: 2.2rem; margin: .4rem 0 0; line-height: 1; color: var(--ink); font-variant-numeric: lining-nums; }
-.tl-panel .tl-m { font-family: Vollkorn, Georgia, serif; font-size: 1.2rem; line-height: 1.5; margin: .5rem 0; max-width: var(--measure); }
+.tl-panel .tl-y { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 2.2rem; margin: .4rem 0 0; line-height: 1; color: var(--ink); font-variant-numeric: lining-nums; }
+.tl-panel .tl-m { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.2rem; line-height: 1.5; margin: .5rem 0; max-width: var(--measure); }
 .tl-panel .tl-sub { font-size: .9rem; color: var(--muted); margin: .6rem 0 .1rem; }
 .tl-panel ul.plain li { font-size: 1.08rem; }
 ol.timeline.tl-static { display: none; }
 @media (prefers-reduced-motion: reduce) { .tl-now { transition: none; } }
 /* ---------- history ---------- */
 figure.chart.wide { max-width: 52rem; }
-svg.hchart { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, system-ui, sans-serif; }
+svg.hchart { width: 100%; height: auto; display: block; overflow: visible; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; }
 svg.hchart .ax { font-size: 12px; fill: var(--muted); font-variant-numeric: tabular-nums; }
 svg.hchart .mk { font-size: 11px; fill: var(--muted); }
 svg.hchart .el { font-size: 12.5px; }
@@ -346,13 +349,13 @@ template { display: none; }
 svg .xh-line { stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 3 3; }
 svg .xh-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
 svg .xh-box { fill: #fff; stroke: var(--rule); filter: drop-shadow(0 1px 2px rgba(0,0,0,.08)); }
-svg .xh-text { font-size: 12.5px; fill: var(--ink); font-family: Manrope, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+svg .xh-text { font-size: 12.5px; fill: var(--ink); font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-variant-numeric: tabular-nums; }
 svg .xh-text .xh-head { font-weight: 700; }
 ul.chart-key.toggles { gap: .3rem .5rem; }
 .k-btn { background: transparent; color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; min-height: 2.1rem; padding: .2rem .75rem; font-weight: 500; font-size: .84rem; display: inline-flex; gap: .45rem; align-items: center; }
 .k-btn:hover { background: var(--wash); color: var(--ink); }
 .k-btn[aria-pressed=false] { opacity: .5; text-decoration: line-through; }
-.h100-btn { all: unset; cursor: pointer; font-family: Manrope, system-ui, sans-serif; font-size: .82rem; color: var(--accent); border-bottom: 1px dotted currentColor; margin-left: .2rem; white-space: nowrap; }
+.h100-btn { all: unset; cursor: pointer; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-size: .82rem; color: var(--accent); border-bottom: 1px dotted currentColor; margin-left: .2rem; white-space: nowrap; }
 .h100-btn:hover { background: none; color: var(--accent-ink); border-bottom-style: solid; }
 .h100-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .h100 { display: grid; grid-template-columns: repeat(10, 14px); gap: 3px; margin: .6rem 0 .3rem; }
@@ -434,13 +437,13 @@ ol.rpt-steps .n { display: inline-grid; place-items: center; width: 1.6rem; heig
 ol.rpt-steps li.done .n { background: #f1ece2; border-color: #b9b4a8; color: var(--ink-2); }
 ol.rpt-steps li.on { color: var(--ink); font-weight: 600; } ol.rpt-steps li.on .n { background: var(--accent); border-color: var(--accent); color: #fff; }
 fieldset.rpt-fs { border: 0; margin: 0; padding: 0; min-width: 0; }
-fieldset.rpt-fs > legend { font-family: Vollkorn, Georgia, serif; font-size: 1.5rem; font-weight: 500; line-height: 1.25; padding: 0; margin-bottom: .35rem; }
+fieldset.rpt-fs > legend { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.5rem; font-weight: 500; line-height: 1.25; padding: 0; margin-bottom: .35rem; }
 fieldset.rpt-fs > legend:focus { outline: none; } fieldset.rpt-fs > legend:focus-visible { outline: 3px solid var(--focus); }
-.rpt-k { display: block; font-family: Manrope, system-ui, sans-serif; font-size: .85rem; color: var(--muted); font-weight: 500; margin-bottom: .2rem; }
+.rpt-k { display: block; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-size: .85rem; color: var(--muted); font-weight: 500; margin-bottom: .2rem; }
 .rpt-cards { display: grid; gap: .75rem; margin-top: 1rem; }
 label.rpt-card { position: relative; display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; padding: .95rem 1.1rem; border: 1px solid var(--rule); border-radius: 8px; cursor: pointer; background: var(--paper); }
 label.rpt-card input { grid-row: 1 / 3; margin-top: .35rem; width: 1.15rem; height: 1.15rem; accent-color: var(--accent); }
-label.rpt-card .t { font-family: Vollkorn, Georgia, serif; font-size: 1.2rem; }
+label.rpt-card .t { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.2rem; }
 label.rpt-card .d { color: var(--ink-2); font-size: .95rem; }
 label.rpt-card:has(input:checked) { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent); background: #fff; }
 label.rpt-card:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
@@ -464,7 +467,7 @@ dl.rpt-review dt { color: var(--muted); } dl.rpt-review dd { margin: 0; }
 article.rpt { max-width: 8.5in; margin: 0 auto 3rem; background: #fff; box-shadow: 0 1px 3px rgba(40,30,20,.12), 0 8px 30px rgba(40,30,20,.06); padding: .75in .8in; font-size: 1rem; }
 .rpt-cover { min-height: 9.2in; display: flex; flex-direction: column; border-left: 6px solid var(--accent); padding-left: .45in; margin-bottom: .6in; }
 .rpt-brand { display: flex; flex-direction: column; gap: .1rem; padding-top: .15in; }
-.rpt-logo { font-family: Vollkorn, Georgia, serif; font-size: 1.9rem; font-weight: 600; color: var(--accent); letter-spacing: .01em; }
+.rpt-logo { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1.9rem; font-weight: 600; color: var(--accent); letter-spacing: .01em; }
 .rpt-by { font-size: 1rem; color: var(--ink-2); }
 .rpt-kind { margin: 2.4in 0 .2rem; font-size: 1.1rem; color: var(--ink-2); }
 h1.rpt-title { font-size: 2.7rem; line-height: 1.1; margin: 0 0 .35in; font-weight: 500; }
@@ -477,7 +480,7 @@ nav.rpt-toc a { color: var(--ink); }
 .rpt-about { background: #f6f2e8; border-radius: 8px; padding: .8rem 1.1rem; font-size: .95rem; }
 section.rpt-sec { margin-top: .45in; }
 section.rpt-sec > h2 { display: flex; align-items: baseline; gap: .7rem; font-size: 1.7rem; border-bottom: 2px solid var(--accent); padding-bottom: .3rem; margin: 0 0 .9rem; }
-.rpt-num { font-family: Manrope, system-ui, sans-serif; font-size: .9rem; font-weight: 700; color: #fff; background: var(--accent); border-radius: 4px; padding: .1rem .5rem; position: relative; top: -.2rem; }
+.rpt-num { font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-size: .9rem; font-weight: 700; color: #fff; background: var(--accent); border-radius: 4px; padding: .1rem .5rem; position: relative; top: -.2rem; }
 section.rpt-sec h3 { font-size: 1.2rem; margin: 1.2em 0 .4em; color: var(--ink); }
 figure.rpt-fig { margin: 1rem 0; border: 1px solid var(--rule); border-radius: 8px; padding: .8rem 1rem; } figure.rpt-fig.wide svg { width: 100%; height: auto; }
 .rpt-100s { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.2rem; margin-top: 1rem; }
@@ -492,7 +495,7 @@ ol.rpt-asks { padding-left: 1.4rem; } ol.rpt-asks li { margin-bottom: 1rem; brea
 .rpt-note { font-size: .9rem; color: var(--ink-2); }
 footer.rpt-end { margin-top: .5in; border-top: 1px solid var(--rule); padding-top: .15in; font-size: .82rem; color: var(--ink-2); }
 
-@page { size: letter; margin: .7in .75in .8in; @bottom-left { content: "IDEA Atlas · A project by Dr. Suman Rath"; font: 8pt Manrope, sans-serif; color: #666; } @bottom-right { content: counter(page); font: 8pt Manrope, sans-serif; color: #666; } }
+@page { size: letter; margin: .7in .75in .8in; @bottom-left { content: "IDEA Atlas · A project by Dr. Suman Rath"; font: 8pt Manrope, "Manrope Fallback", sans-serif; color: #666; } @bottom-right { content: counter(page); font: 8pt Manrope, "Manrope Fallback", sans-serif; color: #666; } }
 @page :first { @bottom-left { content: none; } @bottom-right { content: none; } }
 @media print {
   body.rpt-on header.site, body.rpt-on footer.site, body.rpt-on .crumbs, body.rpt-on .rpt-bar, body.rpt-on .rpt-intro, body.rpt-on .page-tools, body.rpt-on .print-head, body.rpt-on .print-only { display: none !important; }
@@ -513,7 +516,7 @@ table.rpt-t.compare { table-layout: fixed; font-size: .82rem; } table.rpt-t.comp
 table.rpt-t thead th { white-space: normal !important; overflow: visible; text-overflow: clip; vertical-align: bottom; line-height: 1.25; }
 .rpt-mine { background: #eef4fc; border-left: 4px solid #1c5cab; border-radius: 0 8px 8px 0; padding: .3rem 1.1rem .5rem; margin: 1.2rem 0; } .rpt-mine h3 { margin-top: .5em !important; }
 dl.rpt-rights dt { font-weight: 700; margin-top: .7rem; } dl.rpt-rights dd { margin: .1rem 0 0; }
-.rpt-notes h3 { font-family: Manrope, system-ui, sans-serif; font-size: .95rem !important; font-weight: 700; margin: 1rem 0 0 !important; }
+.rpt-notes h3 { font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-size: .95rem !important; font-weight: 700; margin: 1rem 0 0 !important; }
 .rpt-app select { font: inherit; padding: .45rem .6rem; border: 1px solid #8f8a80; border-radius: var(--radius); min-height: 2.75rem; max-width: 100%; background: #fff; }
 .rpt-said { flex-basis: 100%; margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
 @media print { section.rpt-sec.short { break-before: auto; margin-top: 18pt; } .rpt-mine { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
@@ -526,7 +529,7 @@ table.rpt-t.years td, table.rpt-t.years thead th { text-align: right; } table.rp
 /* ---------- reading aids: "On this page" (wide screens) and the phone menu ---------- */
 nav.onpage { display: none; }
 @media (min-width: 1200px) {
-  html.has-onpage main.wrap { position: relative; padding-right: calc(clamp(1.25rem, 4vw, 2.5rem) + 15rem); }
+  html.has-onpage main.wrap, html.op-pre main.wrap { position: relative; padding-right: calc(clamp(1.25rem, 4vw, 2.5rem) + 15rem); }
   html.has-onpage nav.onpage { display: block; position: absolute; top: 0; bottom: 0; right: clamp(1.25rem, 4vw, 2.5rem); width: 13rem; }
   nav.onpage .onpage-in { position: sticky; top: 1.5rem; padding-top: 9.5rem; }
   nav.onpage .onpage-h { font-size: .8rem; color: var(--muted); margin: 0 0 .5rem; letter-spacing: .01em; }
@@ -556,6 +559,15 @@ section[id], h2[id] { scroll-margin-top: 1.25rem; }
   nav.can-fold.open ul { display: flex; }
   nav.can-fold ul a { display: block; padding: .7rem 0; border-bottom: 1px solid var(--rule); font-size: 1.02rem; }
   .crumbs ol { margin-top: 1.1rem; }
+}
+
+/* phones: the menu is folded from the start when scripts run, so the page does not jump when the Menu button appears.
+   If the script never arrives, the links come back after a few seconds. */
+@media (max-width: 640px) and (scripting: enabled) {
+  header.site .wrap .brand { padding-right: 6.5rem; }
+  header.site nav:not(.can-fold) { flex-basis: 100%; margin-top: -.75rem; }
+  header.site nav:not(.can-fold) ul { display: none; animation: nav-back 0s 8s forwards; }
+  @keyframes nav-back { to { display: flex; } }
 }
 
 /* legend keys: swatch sits on the first line of its label */
@@ -589,7 +601,7 @@ section[aria-labelledby="s-cmp"] tbody th[scope=row] { min-width: 11.5rem; }
 article.guide > section > p, article.guide > section > ul, article.guide > section > ol { max-width: var(--measure); }
 article.guide > section > p { color: var(--ink); }
 article.guide .byline { font-size: .9rem; color: var(--muted); margin: 0 0 2.2rem; }
-article.guide h2 { margin-top: 2.2em; }
+article.guide h2 { margin-top: 2.6em; }
 article.guide li { margin: .35rem 0; }
 article.guide blockquote { margin: 1rem 0; padding: .6rem 1.1rem; border-left: 2px solid var(--accent); background: var(--wash); font-family: var(--serif); font-size: 1.12rem; max-width: var(--measure); }
 article.guide blockquote p { margin: .2rem 0; }
@@ -604,10 +616,10 @@ section.beyond li::before { content: ""; position: absolute; left: 0; top: 1.05r
 section.g-sources { font-size: .9rem; color: var(--ink-2); }
 section.g-sources li { overflow-wrap: anywhere; }
 aside.author { margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: .4rem; max-width: var(--measure); }
-aside.author h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; margin: 1rem 0 .3rem; }
+aside.author h2 { font-size: 1.1rem; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-weight: 600; margin: 1rem 0 .3rem; }
 aside.author p { font-size: .95rem; color: var(--ink-2); }
 nav.related { margin-top: 2rem; }
-nav.related h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; }
+nav.related h2 { font-size: 1.1rem; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-weight: 600; }
 nav.related ul, ul.guide-cards { list-style: none; padding: 0; margin: .6rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0 2rem; }
 nav.related li, ul.guide-cards li { max-width: none; border-top: 1px solid var(--rule); padding: .75rem 0 .9rem; display: flex; flex-direction: column; gap: .2rem; }
 nav.related li > a, ul.guide-cards li > a { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); text-decoration: none; line-height: 1.3; }
@@ -618,7 +630,7 @@ p.guide-link { font-size: .92rem; margin: .2rem 0 .8rem; color: var(--ink-2); }
 
 /* Share your story (guides and report pages) */
 aside.story { margin: 2.2rem 0 0; padding: .9rem 1.1rem; background: var(--wash, #f6f2e8); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; max-width: var(--measure); }
-aside.story h2 { font-size: 1.1rem; font-family: Manrope, system-ui, sans-serif; font-weight: 600; margin: 0 0 .3rem; }
+aside.story h2 { font-size: 1.1rem; font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-weight: 600; margin: 0 0 .3rem; }
 aside.story p { margin: .3rem 0; }
 aside.story p:last-child a { font-weight: 600; }
 footer.site .cite-line { font-size: .88rem; }
@@ -633,7 +645,7 @@ details.embed textarea { display: block; width: 100%; margin-top: .3rem; font: .
 
 /* ---------- footer: three short columns ---------- */
 footer.site .foot-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.2rem 2rem; margin: .6rem 0 1.4rem; }
-footer.site .foot-h { font-family: Manrope, system-ui, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .02em; color: var(--ink-2); margin: 0 0 .45rem; }
+footer.site .foot-h { font-family: Manrope, "Manrope Fallback", system-ui, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .02em; color: var(--ink-2); margin: 0 0 .45rem; }
 footer.site .foot-nav ul { list-style: none; margin: 0; padding: 0; }
 footer.site .foot-nav li { margin: .2rem 0; }
 footer.site .foot-nav a { color: var(--ink-2); text-decoration: none; }
@@ -714,4 +726,29 @@ details.embed[open] > summary::before { transform: rotate(45deg); }
   svg [fill="#0d366b"] { fill: #c8dcf7; }
   [style*="#8a2b2b"] { background: var(--accent) !important; }
   [style*="#0d366b"] { background: #c8dcf7 !important; }
+}
+
+/* ---------- the "On this page" space is kept from the start, so text does not move when it appears ---------- */
+@media (max-width: 1199px) {
+  html.op-pre:not(.has-onpage) main > .page-tools,
+  html.op-pre:not(.has-onpage) main:not(:has(> .page-tools)) > article > .byline { margin-bottom: calc(.4rem + 2.75rem + 2px + 1.4rem); }
+}
+
+/* ---------- long tables: the column headings stay in view while scrolling ---------- */
+.table-wrap.fits { overflow: visible; }
+.table-wrap.tall:not(.fits) { max-height: min(75vh, 44rem); overflow: auto; }
+.table-wrap.tall thead th { position: sticky; top: 0; z-index: 1; background: var(--paper); box-shadow: inset 0 -1px 0 var(--rule); }
+@media print { .table-wrap.tall:not(.fits) { max-height: none; overflow: visible; } .table-wrap.tall thead th { position: static; box-shadow: none; } }
+
+/* ---------- district pages print as a short summary unless "Print with all tables" is chosen ---------- */
+@media print {
+  body:not(.print-all) main:has(> section.glance) :is(details.numbers, details.full, details.kids, .explainers, .guide-link, section.like, section.rpt-cta, section[aria-labelledby="s-ask"], [data-embed]) { display: none !important; }
+  body:not(.print-all) main:has(> section.glance) > section[aria-labelledby="s-more"]::after { content: "The full tables for this district are online at the address at the top of page 1."; display: block; margin-top: 8pt; font-size: 9.5pt; }
+  body:not(.print-all) main:lang(es):has(> section.glance) > section[aria-labelledby="s-more"]::after { content: "Las tablas completas de este distrito están en línea, en la dirección que aparece arriba en la página 1."; }
+  footer.site .foot-nav { display: none; }
+  body:not(.print-all) main:has(> section.glance) figure.chart { margin: 4pt 0 8pt; }
+  body:not(.print-all) main:has(> section.glance) figure.chart[data-chart="trend"] { max-width: 5.2in; }
+  body:not(.print-all) main:has(> section.glance) h2 { margin-top: 12pt; }
+  main:has(> section.glance) h2 { break-after: avoid; } main:has(> section.glance) h2 + p { break-before: avoid; }
+  main:has(> section.glance) figure.chart, main:has(> section.glance) ul.plain li { break-inside: avoid; }
 }
