@@ -291,6 +291,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 {robots}
 <link rel="canonical" href="{ATLAS_ORIGIN}{path}">{alt_head}
 <meta property="og:type" content="website"><meta property="og:site_name" content="IDEA Atlas"><meta property="og:url" content="{ATLAS_ORIGIN}{path}">{og_text}<meta property="og:image" content="{ATLAS_ORIGIN}{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">{extra_head}{counter}
+<script src="{BASE}assets/display.js"></script>
 <link rel="stylesheet" href="{BASE}assets/atlas.css">{css}
 {js}
 </head>
@@ -325,6 +326,32 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 </body>
 </html>
 """
+
+
+def dark_scope(css: str) -> str:
+    """Dark-mode rules apply when the device asks for dark (unless Display settings chose light) or when
+    Display settings chose dark. The rules are written once in atlas.css and repeated here for both cases."""
+    head = "@media screen and (prefers-color-scheme: dark) {"
+    out, i = [], 0
+    while True:
+        j = css.find(head, i)
+        if j < 0:
+            out.append(css[i:])
+            break
+        out.append(css[i:j])
+        k, depth = j + len(head), 1
+        while depth:
+            depth += {"{": 1, "}": -1}.get(css[k], 0)
+            k += 1
+        inner = re.sub(r"/\*.*?\*/", "", css[j + len(head):k - 1], flags=re.S)
+        rules = re.findall(r"([^{}]+)\{([^{}]*)\}", inner)
+        def scoped(pre):
+            # :where() keeps each rule's specificity as written; only the colour variables need the extra weight.
+            return "".join(",".join(pre if sel.strip() == ":root" else f":where({pre}) {sel.strip()}" for sel in sels.split(",")) + "{" + body.strip() + "}"
+                           for sels, body in rules)
+        out.append(head + scoped("html:not(.lt)") + "}\n@media screen {" + scoped("html.dk") + "}")
+        i = k
+    return "".join(out)
 
 
 def write(rel: str, text: str) -> None:
@@ -389,7 +416,9 @@ def main() -> int:
 
     # ---- assets
     for f in ASSETS.iterdir():
-        if f.name == "atlas.js":
+        if f.name == "atlas.css":
+            (OUT / "assets" / f.name).write_text(dark_scope(f.read_text()))
+        elif f.name == "atlas.js":
             (OUT / "assets" / f.name).write_text(f.read_text().replace('var BASE = "/tools/idea-atlas/";', f'var BASE = "{BASE}";'))
         else:
             shutil.copy(f, OUT / "assets" / f.name)

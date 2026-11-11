@@ -8,9 +8,10 @@
   var STATUS_ES = {"at least": "al menos", "Withheld for privacy": "Retenido por privacidad", "Fewer than 10 students": "Menos de 10 estudiantes",
     "Flagged for data quality": "Marcado por calidad de datos", "Not reported": "No se informó", "No students in this group": "No hay estudiantes en este grupo"};
   var COLORS = ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"]; // one hue, light to dark
-  function MAPDARK() { return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  function MAPDARK() { var c = document.documentElement.classList; return c.contains("dk") || (!c.contains("lt") && !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)); }
   function MAPLINE() { return MAPDARK() ? "#16181b" : "#ffffff"; }
-  var NODATA = MAPDARK() ? "#3b3e43" : "#dcd9d0";
+  function NODATA_C() { return MAPDARK() ? "#3b3e43" : "#dcd9d0"; }
+  var NODATA = NODATA_C();
   var STATES = {"01":["AL","Alabama"],"02":["AK","Alaska"],"04":["AZ","Arizona"],"05":["AR","Arkansas"],"06":["CA","California"],"08":["CO","Colorado"],"09":["CT","Connecticut"],"10":["DE","Delaware"],"11":["DC","District of Columbia"],"12":["FL","Florida"],"13":["GA","Georgia"],"15":["HI","Hawaii"],"16":["ID","Idaho"],"17":["IL","Illinois"],"18":["IN","Indiana"],"19":["IA","Iowa"],"20":["KS","Kansas"],"21":["KY","Kentucky"],"22":["LA","Louisiana"],"23":["ME","Maine"],"24":["MD","Maryland"],"25":["MA","Massachusetts"],"26":["MI","Michigan"],"27":["MN","Minnesota"],"28":["MS","Mississippi"],"29":["MO","Missouri"],"30":["MT","Montana"],"31":["NE","Nebraska"],"32":["NV","Nevada"],"33":["NH","New Hampshire"],"34":["NJ","New Jersey"],"35":["NM","New Mexico"],"36":["NY","New York"],"37":["NC","North Carolina"],"38":["ND","North Dakota"],"39":["OH","Ohio"],"40":["OK","Oklahoma"],"41":["OR","Oregon"],"42":["PA","Pennsylvania"],"44":["RI","Rhode Island"],"45":["SC","South Carolina"],"46":["SD","South Dakota"],"47":["TN","Tennessee"],"48":["TX","Texas"],"49":["UT","Utah"],"50":["VT","Vermont"],"51":["VA","Virginia"],"53":["WA","Washington"],"54":["WV","West Virginia"],"55":["WI","Wisconsin"],"56":["WY","Wyoming"],"60":["AS","American Samoa"],"66":["GU","Guam"],"69":["MP","Northern Mariana Islands"],"72":["PR","Puerto Rico"],"78":["VI","U.S. Virgin Islands"]};
   var ABBR = {}; Object.keys(STATES).forEach(function (f) { ABBR[STATES[f][0]] = STATES[f][1]; });
 
@@ -148,7 +149,7 @@
     el.removeAttribute("tabindex");
     var map = new maplibregl.Map({
       container: el, center: [-96, 38.5], zoom: 3.3, minZoom: 2, maxZoom: 11, attributionControl: false,
-      style: {version: 8, sources: {}, layers: [{id: "bg", type: "background", paint: {"background-color": (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "#1d2024" : "#f3f1ea"}}]}
+      style: {version: 8, sources: {}, layers: [{id: "bg", type: "background", paint: {"background-color": MAPDARK() ? "#1d2024" : "#f3f1ea"}}]}
     });
     map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
     map.getCanvas().setAttribute("aria-label", "Map of school districts. Use arrow keys to move and plus or minus to zoom. The table page lists the same figures.");
@@ -169,6 +170,15 @@
       map.addLayer({id: "hs-line", type: "line", source: "hs", layout: {visibility: "none"}, paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.2, 8, 1]}});
       map.addLayer({id: "state-line", type: "line", source: "states", paint: {"line-color": MAPDARK() ? "#cdc8be" : "#474d55", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.6, 8, 1.6]}});
       map.addLayer({id: "hover", type: "line", source: "base", paint: {"line-color": MAPDARK() ? "#ffffff" : "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
+      // Colours follow Display settings when the visitor changes them.
+      window.addEventListener("atlas:display", function () {
+        map.setPaintProperty("bg", "background-color", MAPDARK() ? "#1d2024" : "#f3f1ea");
+        map.setPaintProperty("base-fill", "fill-color", fill.slice(0, -1).concat([NODATA_C()]));
+        map.setPaintProperty("base-line", "line-color", MAPLINE());
+        map.setPaintProperty("hs-line", "line-color", MAPLINE());
+        map.setPaintProperty("state-line", "line-color", MAPDARK() ? "#cdc8be" : "#474d55");
+        map.setPaintProperty("hover", "line-color", MAPDARK() ? "#ffffff" : "#1d2126");
+      });
       map.once("idle", paint);
       sel.addEventListener("change", paint);
       hs.addEventListener("change", function () {
@@ -335,13 +345,101 @@
     });
   }
 
+  /* ------------------------------------------------------------ Display settings
+     Text size, spacing, colours, underlined links and less motion. The choice is saved in one cookie that
+     sumanrath.org reads too, and display.js applies it before the page is drawn. */
+  var DISP_KEYS = ["ts", "sp", "ct", "ul", "rm"];
+  function dispRead() {
+    var d = document.documentElement;
+    return {ts: d.getAttribute("data-ts") || "0", sp: d.getAttribute("data-sp") || "0", ct: d.getAttribute("data-ct") || "auto",
+            ul: d.getAttribute("data-ul") || "0", rm: d.getAttribute("data-rm") || "0"};
+  }
+  function dispApply(o) {
+    var d = document.documentElement;
+    DISP_KEYS.forEach(function (k) {
+      var off = o[k] === "0" || (k === "ct" && o[k] === "auto");
+      if (off) d.removeAttribute("data-" + k); else d.setAttribute("data-" + k, o[k]);
+    });
+    if (window.atlasDisplayScheme) window.atlasDisplayScheme();
+    var v = DISP_KEYS.filter(function (k) { return !(o[k] === "0" || (k === "ct" && o[k] === "auto")); }).map(function (k) { return k + ":" + o[k]; }).join(",");
+    var dom = /(^|\.)sumanrath\.org$/.test(location.hostname) ? "; domain=.sumanrath.org" : "";
+    document.cookie = "disp=" + encodeURIComponent(v) + "; path=/; max-age=" + (v ? 31536000 : 0) + "; SameSite=Lax" + dom + (location.protocol === "https:" ? "; Secure" : "");
+    try { if (v) localStorage.setItem("disp", v); else localStorage.removeItem("disp"); } catch (e) {}
+    try { window.dispatchEvent(new CustomEvent("atlas:display")); } catch (e) {}
+  }
+  function initDisplay() {
+    var ul = document.querySelector("header.site nav ul"), main = document.getElementById("main");
+    if (!ul || !main || document.querySelector(".disp-btn")) return;
+    var li = document.createElement("li"), b = document.createElement("button");
+    b.type = "button"; b.className = "disp-btn"; b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", "disp-panel");
+    b.textContent = tr("Display settings", "Ajustes de pantalla");
+    li.appendChild(b); ul.appendChild(li);
+    var panel = null;
+    function radios(name, legend, opts) {
+      return '<fieldset><legend>' + legend + "</legend>" + opts.map(function (o) {
+        return '<label><input type="radio" name="disp-' + name + '" value="' + o[0] + '"> ' + o[1] + "</label>";
+      }).join("") + "</fieldset>";
+    }
+    function build() {
+      panel = document.createElement("section");
+      panel.id = "disp-panel"; panel.className = "disp-panel"; panel.setAttribute("aria-labelledby", "disp-h"); panel.hidden = true;
+      panel.innerHTML = '<h2 id="disp-h" tabindex="-1">' + tr("Display settings", "Ajustes de pantalla") + "</h2>" +
+        "<p>" + tr("Changes apply right away and are saved on this device for IDEA Atlas and sumanrath.org. Your browser’s zoom and your device’s settings still work as usual.",
+                   "Los cambios se aplican de inmediato y se guardan en este dispositivo para IDEA Atlas y sumanrath.org. El zoom del navegador y los ajustes de su dispositivo siguen funcionando como siempre.") + "</p>" +
+        '<div class="disp-grid">' +
+        radios("ts", tr("Text size", "Tamaño del texto"), [["0", tr("Standard", "Normal")], ["1", tr("Larger", "Más grande")], ["2", tr("Large", "Grande")], ["3", tr("Largest (double)", "El más grande (el doble)")]]) +
+        radios("ct", tr("Colors", "Colores"), [["auto", tr("Same as my device", "Como mi dispositivo")], ["light", tr("Light", "Claro")], ["dark", tr("Dark", "Oscuro")],
+                                              ["hcl", tr("High contrast, black on white", "Alto contraste, negro sobre blanco")], ["hcd", tr("High contrast, white on black", "Alto contraste, blanco sobre negro")]]) +
+        radios("sp", tr("Spacing", "Espaciado"), [["0", tr("Standard", "Normal")], ["1", tr("More space between lines and letters", "Más espacio entre líneas y letras")]]) +
+        '<fieldset><legend>' + tr("Reading aids", "Ayudas de lectura") + "</legend>" +
+        '<label><input type="checkbox" name="disp-ul" value="1"> ' + tr("Underline all links", "Subrayar todos los enlaces") + "</label>" +
+        '<label><input type="checkbox" name="disp-rm" value="1"> ' + tr("Reduce motion", "Reducir el movimiento") + "</label></fieldset>" +
+        "</div>" +
+        '<div class="disp-actions"><button type="button" class="secondary" data-disp-reset>' + tr("Reset to standard", "Volver a lo normal") + "</button>" +
+        '<button type="button" data-disp-close>' + tr("Close", "Cerrar") + "</button></div>" +
+        '<p class="hint" aria-live="polite" data-disp-status></p>';
+      main.insertBefore(panel, main.firstChild);
+      sync();
+      panel.addEventListener("change", function (e) {
+        var t = e.target, o = dispRead(), k = t.name && t.name.slice(5);
+        if (DISP_KEYS.indexOf(k) < 0) return;
+        o[k] = t.type === "checkbox" ? (t.checked ? "1" : "0") : t.value;
+        dispApply(o);
+        panel.querySelector("[data-disp-status]").textContent = "";
+      });
+      panel.querySelector("[data-disp-reset]").addEventListener("click", function () {
+        dispApply({ts: "0", sp: "0", ct: "auto", ul: "0", rm: "0"}); sync();
+        panel.querySelector("[data-disp-status]").textContent = tr("Settings are back to standard.", "Los ajustes volvieron a lo normal.");
+      });
+      panel.querySelector("[data-disp-close]").addEventListener("click", function () { toggle(false); b.focus(); });
+      panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { toggle(false); b.focus(); } });
+    }
+    function sync() {
+      var o = dispRead();
+      Array.prototype.forEach.call(panel.querySelectorAll("input"), function (i) {
+        var k = i.name.slice(5);
+        i.checked = i.type === "checkbox" ? o[k] === "1" : o[k] === i.value;
+      });
+    }
+    function toggle(open) {
+      if (!panel) build();
+      panel.hidden = !open; b.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        sync();
+        var nav = b.closest("nav.can-fold"); if (nav && nav.classList.contains("open")) { nav.classList.remove("open"); var mb = nav.querySelector(".menu-btn"); if (mb) mb.setAttribute("aria-expanded", "false"); }
+        panel.querySelector("h2").focus();
+      }
+    }
+    b.addEventListener("click", function () { toggle(b.getAttribute("aria-expanded") !== "true"); });
+  }
+
   /* ------------------------------------------------------------ long tables keep their headings in view */
   function markTables() {
     Array.prototype.forEach.call(document.querySelectorAll(".table-wrap"), function (w) {
       var t = w.querySelector("table"); if (!t || !t.tHead || !t.tBodies[0]) return;
       var tall = t.tBodies[0].rows.length > 15;
       w.classList.toggle("tall", tall);
-      if (tall) { w.classList.remove("fits"); w.classList.toggle("fits", t.offsetWidth <= w.clientWidth + 1); }
+      if (tall && t.offsetWidth) w.classList.toggle("fits", t.offsetWidth <= w.clientWidth + 1);
     });
   }
   function initTables() {
@@ -399,15 +497,14 @@
   function f1(v, unit) { return v == null ? "" : (unit === "usd" ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1)); }
   var SHAPES = ["circle", "square", "diamond", "triangle"];
   var SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#6250d6"];
-  var DARK = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  function PAPER() { return DARK ? "#16181b" : "#fbfaf6"; }
+  function PAPER() { return MAPDARK() ? "#16181b" : "#fbfaf6"; }
   function mark(g, shape, x, y, r, fill) {
-    if (shape === "circle") return svgEl("circle", { cx: x, cy: y, r: r, fill: fill, stroke: PAPER(), "stroke-width": 2 }, g);
+    if (shape === "circle") return svgEl("circle", { cx: x, cy: y, r: r, fill: fill, stroke: PAPER(), style: "stroke: var(--paper)", "stroke-width": 2 }, g);
     var p;
     if (shape === "square") p = [[x - r, y - r], [x + r, y - r], [x + r, y + r], [x - r, y + r]];
     else if (shape === "diamond") p = [[x, y - r * 1.25], [x + r * 1.25, y], [x, y + r * 1.25], [x - r * 1.25, y]];
     else p = [[x, y - r * 1.2], [x + r * 1.15, y + r * .9], [x - r * 1.15, y + r * .9]];
-    return svgEl("polygon", { points: p.map(function (a) { return a.join(","); }).join(" "), fill: fill, stroke: PAPER(), "stroke-width": 2 }, g);
+    return svgEl("polygon", { points: p.map(function (a) { return a.join(","); }).join(" "), fill: fill, stroke: PAPER(), style: "stroke: var(--paper)", "stroke-width": 2 }, g);
   }
 
   // Dot on a range: this district, the middle half of state districts, the state median, and the national median.
@@ -1055,5 +1152,5 @@
       initAsk();
     }).catch(function () {});
   }
-  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initDisplay(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

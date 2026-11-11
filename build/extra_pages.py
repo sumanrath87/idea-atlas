@@ -114,6 +114,7 @@ def accessibility_page(lang: str, *, page, BASE, SITE) -> str:
 <li>El texto usa palabras sencillas y explica cada término, en inglés y en español.</li>
 <li>Las páginas se adaptan a pantallas pequeñas y se pueden imprimir.</li>
 </ul></section>
+<section aria-labelledby="a-disp"><h2 id="a-disp">Ajustes de pantalla</h2><p>El botón <strong>Ajustes de pantalla</strong>, en el menú de arriba, le permite agrandar el texto hasta el doble, dar más espacio entre líneas y letras, elegir colores claros, oscuros o de alto contraste, subrayar todos los enlaces y reducir el movimiento. Sus elecciones se guardan en este dispositivo y también se aplican en sumanrath.org. Estos ajustes solo cambian cómo se ve la página; no cambian lo que lee un lector de pantalla. El zoom del navegador y los ajustes de su dispositivo siguen funcionando como siempre.</p></section>
 <section aria-labelledby="a-check"><h2 id="a-check">Cómo se revisa</h2>
 <p>Antes de cada versión, cada tipo de página se revisa con el motor de pruebas automáticas axe. Las pruebas automáticas no encuentran todos los problemas, así que sus comentarios importan.</p></section>
 <section aria-labelledby="a-limits"><h2 id="a-limits">Límites conocidos</h2>
@@ -143,6 +144,7 @@ si quiere, qué tecnología de apoyo usa. Arreglar estos problemas es una priori
 <li>The writing uses plain words and explains every term, in English and Spanish.</li>
 <li>Pages adjust to small screens and can be printed.</li>
 </ul></section>
+<section aria-labelledby="a-disp"><h2 id="a-disp">Display settings</h2><p>The <strong>Display settings</strong> button in the menu at the top lets you make text up to twice as large, add space between lines and letters, choose light, dark or high-contrast colors, underline every link, and reduce motion. Your choices are saved on this device and also apply on sumanrath.org. These settings only change how pages look; they do not change what a screen reader hears. Your browser’s zoom and your device’s settings still work as usual.</p></section>
 <section aria-labelledby="a-check"><h2 id="a-check">How it is checked</h2>
 <p>Before each release, every type of page is checked with the axe automated testing engine. Automated tests do not catch every problem, so your feedback matters.</p></section>
 <section aria-labelledby="a-limits"><h2 id="a-limits">Known limits</h2>
