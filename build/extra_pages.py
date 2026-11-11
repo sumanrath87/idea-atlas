@@ -512,3 +512,18 @@ or you can write through the <a href="{SITE}/contact/">contact page</a>. Your fe
     return page("Teaching with IDEA Atlas", body,
                 desc="Four ready-to-use class activities that use IDEA Atlas data for courses in special education, teacher preparation, school leadership, and education policy.",
                 path=BASE + "teaching/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])
+
+
+# ---------------------------------------------------------------- text shared by every district page
+
+SHARED_ASK_EN = '<p>Numbers can start a conversation. If you are a parent or caregiver, these questions may help when you talk with the district or at an IEP meeting.</p> <ul class="ask"> <li>How does the district decide whether a child needs special education, and how long does an evaluation take?</li> <li>What supports help students with IEPs learn alongside their classmates in general classes?</li> <li>How are families included when an IEP is written and reviewed?</li> <li>What can a family do if they disagree with a decision?</li> <li>How does the district help students with IEPs plan for life after high school?</li> <li>Where can I read the district\'s own special education reports?</li> </ul> <p>For free, one-on-one help, every state has at least one federally funded Parent Training and Information Center. <a href="https://www.parentcenterhub.org/find-your-center/">Find your state\'s Parent Center</a>.</p>'
+SHARED_ASK_ES = '<p>Las cifras pueden abrir una conversación. Si usted es madre, padre o cuidador, estas preguntas pueden ayudarle al hablar con el distrito o en una reunión del IEP.</p> <ul class="ask">{asks}</ul> <p>Para recibir ayuda gratuita y personal, cada estado tiene al menos un Centro de Capacitación e Información para Padres con fondos federales, y muchos atienden en español. <a href="https://www.parentcenterhub.org/find-your-center/" hreflang="en">Busque el Centro de Padres de su estado</a> (sitio en inglés).</p>'
+
+
+def shared_blocks(OUT: Path, es_site) -> None:
+    """Text that is the same on all 19,400 district pages, stored once and filled in by atlas.js."""
+    import json
+    asks = "".join(f"<li>{E(q)}</li>" for q in es_site.ASK_ES)
+    (OUT / "data").mkdir(parents=True, exist_ok=True)
+    (OUT / "data" / "shared_en.json").write_text(json.dumps({"ask": SHARED_ASK_EN}, ensure_ascii=False))
+    (OUT / "data" / "shared_es.json").write_text(json.dumps({"ask": SHARED_ASK_ES.replace("{asks}", asks)}, ensure_ascii=False))

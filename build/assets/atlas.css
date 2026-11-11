@@ -627,3 +627,6 @@ details.embed { margin: 1rem 0; max-width: var(--measure); }
 details.embed summary { cursor: pointer; font-weight: 600; }
 details.embed textarea { display: block; width: 100%; margin-top: .3rem; font: .85rem/1.4 ui-monospace, Menlo, Consolas, monospace; padding: .5rem; border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; }
 @media print { details.embed { display: none !important; } }
+
+/* space for text filled in from the shared file, so nothing jumps */
+[data-shared="ask"] { min-height: 16rem; }

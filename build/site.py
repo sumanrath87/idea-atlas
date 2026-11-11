@@ -307,6 +307,8 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 def write(rel: str, text: str) -> None:
     text = re.sub(r"\n[ \t]+", "\n", text)
     text = re.sub(r"\n{2,}", "\n", text)
+    # Line breaks before block-level tags carry no meaning in HTML; dropping them keeps 39,000 pages smaller.
+    text = re.sub(r">\n(?=</?(?:section|div|p|ul|ol|li|h[1-6]|figure|figcaption|details|summary|table|thead|tbody|tr|th|td|nav|main|header|footer|aside|article|meta|link|script|dl|dt|dd|form|fieldset|label|input|select|option|button|noscript|caption|title|head|body|html)\b)", ">", text)
     p = OUT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
@@ -542,6 +544,7 @@ def main() -> int:
                              rate=iep_rate, footer="Un proyecto del Dr. Suman Rath")
         return rel_en, rel_es
 
+    extra_pages.shared_blocks(OUT, es_site)
     write("teaching/index.html", extra_pages.teaching_page(page=page, BASE=BASE, SITE=SITE, VERSION=VERSION, DOI=DOI))
     write("for-reporters/index.html", extra_pages.reporters_page(page=page, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, VERSION=VERSION, DOI=DOI, n_districts=len(d)))
     write("accessibility/index.html", extra_pages.accessibility_page("en", page=page, BASE=BASE, SITE=SITE))
@@ -1215,17 +1218,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
 </section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Questions you could ask</h2>
-  <p>Numbers can start a conversation. If you are a parent or caregiver, these questions may help when you talk with the district or at an IEP meeting.</p>
-  <ul class="ask">
-    <li>How does the district decide whether a child needs special education, and how long does an evaluation take?</li>
-    <li>What supports help students with IEPs learn alongside their classmates in general classes?</li>
-    <li>How are families included when an IEP is written and reviewed?</li>
-    <li>What can a family do if they disagree with a decision?</li>
-    <li>How does the district help students with IEPs plan for life after high school?</li>
-    <li>Where can I read the district's own special education reports?</li>
-  </ul>
-  <p>For free, one-on-one help, every state has at least one federally funded Parent Training and Information Center.
-  <a href="https://www.parentcenterhub.org/find-your-center/">Find your state's Parent Center</a>.</p>
+  <div data-shared="ask"></div>
 </section>
 <section aria-labelledby="s-more">
   <h2 id="s-more">Using these figures</h2>

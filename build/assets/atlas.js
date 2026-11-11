@@ -969,5 +969,13 @@
       '</p><label for="emb-code">' + tr("Embed code", "Código para insertar") + '</label><textarea id="emb-code" readonly rows="4"></textarea></details>';
     el.querySelector("textarea").value = code;
   }
-  document.addEventListener("DOMContentLoaded", function () { initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+  // Text that is the same on every district page is stored once (data/shared_*.json) and filled in here.
+  function initShared() {
+    var slots = document.querySelectorAll("[data-shared]"); if (!slots.length) return;
+    fetch(BASE + "data/shared_" + (ES ? "es" : "en") + ".json").then(function (r) { return r.json(); }).then(function (t) {
+      Array.prototype.forEach.call(slots, function (el) { var k = el.getAttribute("data-shared"); if (t[k]) el.outerHTML = t[k]; });
+      initAsk();
+    }).catch(function () {});
+  }
+  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();

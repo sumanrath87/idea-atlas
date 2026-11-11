@@ -333,10 +333,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
 </section>
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Preguntas que puede hacer</h2>
-  <p>Las cifras pueden abrir una conversación. Si usted es madre, padre o cuidador, estas preguntas pueden ayudarle al hablar con el distrito o en una reunión del IEP.</p>
-  <ul class="ask">{asks}</ul>
-  <p>Para recibir ayuda gratuita y personal, cada estado tiene al menos un Centro de Capacitación e Información para Padres con fondos federales, y muchos atienden en español.
-  <a href="https://www.parentcenterhub.org/find-your-center/" hreflang="en">Busque el Centro de Padres de su estado</a> (sitio en inglés).</p>
+  <div data-shared="ask"></div>
 </section>
 <section aria-labelledby="s-more">
   <h2 id="s-more">Sobre estas cifras</h2>
