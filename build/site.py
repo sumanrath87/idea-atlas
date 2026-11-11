@@ -222,7 +222,7 @@ UI = {
     "en": {"skip": "Skip to main content", "sub": "Special education data for every U.S. school district", "nav_label": "IDEA Atlas",
            "nav": [("", "Map and search"), ("states/", "States"), ("guides/", "Guides"), ("compare/", "Compare"), ("report/", "Make a report"), ("history/", "History"), ("methods/", "About the data")],
            "all_tools": "", "crumb": "Breadcrumb", "suffix": "IDEA Atlas", "version": "Version",
-           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{base}for-reporters/">For reporters</a> · <a href="{base}accessibility/">Accessibility</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
+           "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{base}teaching/">For instructors</a> · <a href="{base}for-reporters/">For reporters</a> · <a href="{base}accessibility/">Accessibility</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
            "cite": 'Cite: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
            "other": "Español", "other_label": "Ver esta página en español"},
@@ -542,6 +542,7 @@ def main() -> int:
                              rate=iep_rate, footer="Un proyecto del Dr. Suman Rath")
         return rel_en, rel_es
 
+    write("teaching/index.html", extra_pages.teaching_page(page=page, BASE=BASE, SITE=SITE, VERSION=VERSION, DOI=DOI))
     write("for-reporters/index.html", extra_pages.reporters_page(page=page, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, VERSION=VERSION, DOI=DOI, n_districts=len(d)))
     write("accessibility/index.html", extra_pages.accessibility_page("en", page=page, BASE=BASE, SITE=SITE))
     write("embed/index.html", extra_pages.embed_page(BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN))
@@ -556,7 +557,7 @@ def main() -> int:
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
-        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/", "es/comparar/", "es/acerca-de-los-datos/"]
+        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "teaching/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/", "es/comparar/", "es/acerca-de-los-datos/"]
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")

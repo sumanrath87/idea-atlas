@@ -443,14 +443,72 @@ a:focus-visible {{ outline: 3px solid #2a5ea8; outline-offset: 2px; }}
 
 
 def embed_snippet(lang: str, *, leaid: str, name: str, ATLAS_ORIGIN: str, BASE: str) -> str:
-    """The 'embed this district' box for a district page."""
-    src = f"{ATLAS_ORIGIN}{BASE}embed/?id={leaid}" + ("&amp;lang=es" if lang == "es" else "")
-    title = (f"Datos de educación especial de {name}, IDEA Atlas" if lang == "es" else f"Special education data for {name}, IDEA Atlas")
-    code = f'<iframe src="{src}" title="{E(title)}" width="100%" height="430" style="border:0;max-width:480px" loading="lazy"></iframe>'
-    if lang == "es":
-        return (f'<details class="embed"><summary>Insertar este distrito en su sitio web</summary>'
-                f'<p>Copie este código y péguelo en su sitio web o blog para mostrar una tarjeta con cuatro cifras clave de este distrito y un enlace a esta página.</p>'
-                f'<label for="emb-code">Código para insertar</label><textarea id="emb-code" readonly rows="4">{E(code)}</textarea></details>')
-    return (f'<details class="embed"><summary>Embed this district on your website</summary>'
-            f'<p>Copy this code into your website or blog to show a card with four key figures for this district and a link back to this page.</p>'
-            f'<label for="emb-code">Embed code</label><textarea id="emb-code" readonly rows="4">{E(code)}</textarea></details>')
+    """A small placeholder; atlas.js builds the 'embed this district' box from it, so the same text is not repeated on 38,000 pages."""
+    return f'<div data-embed="{leaid}" data-name="{E(name)}"></div>'
+
+
+# ---------------------------------------------------------------- Teaching with IDEA Atlas
+
+def teaching_page(*, page, BASE, SITE, VERSION, DOI) -> str:
+    g = lambda rel, t: f'<a href="{BASE}guides/{rel}/">{t}</a>'
+    body = f"""
+<h1>Teaching with IDEA Atlas</h1>
+<p class="lede">Four ready-to-use class activities for courses in special education, teacher preparation, school leadership, and education policy.
+Each one uses real public data for a district or state your students care about, and each ends with questions the numbers alone cannot answer.</p>
+
+<section aria-labelledby="t-notes"><h2 id="t-notes">Before you start</h2>
+<ul>
+<li>The atlas is free, needs no account, and works with screen readers and keyboards. Every page is also in Spanish.</li>
+<li>Students can choose a district they know: where they grew up, work, or do field placements. Search by name or ZIP code from the <a href="{BASE}">home page</a>.</li>
+<li>The figures describe what districts reported. They are not grades. The guide {g("how-to-read-district-data", "How to read your district's special education data")} is a good first reading for any activity.</li>
+<li>Times are suggestions for a single class session. Each activity also works as a short assignment.</li>
+</ul></section>
+
+<section aria-labelledby="t-1"><h2 id="t-1">Activity 1: Read a district before an IEP meeting</h2>
+<p><strong>Fits:</strong> introduction to special education, family partnerships, teacher preparation. <strong>Time:</strong> about 45 minutes.</p>
+<ol>
+<li>Each student opens a district page and reads the plain-language sentences at the top of each section.</li>
+<li>Using <a href="{BASE}report/">Make a report</a>, students create a family report for an imagined child getting ready for an annual IEP meeting.</li>
+<li>Students write three questions a family could bring to the meeting, each tied to a figure in the report. The guide {g("iep-meeting-questions", "the guide to questions for an IEP meeting")} offers models.</li>
+</ol>
+<p><strong>Discuss:</strong> Which figures would reassure a family, and which would worry them? What would a family need to know that no federal figure can show?</p></section>
+
+<section aria-labelledby="t-2"><h2 id="t-2">Activity 2: Where do students learn across one state?</h2>
+<p><strong>Fits:</strong> inclusive education, teacher preparation, school leadership. <strong>Time:</strong> about 60 minutes.</p>
+<ol>
+<li>Students open a <a href="{BASE}states/">state page</a> and find how much of the school day the typical district's students with IEPs spend in general classes.</li>
+<li>In <a href="{BASE}compare/">Compare districts</a>, they choose three districts in that state with very different figures.</li>
+<li>Students read {g("least-restrictive-environment", "the least restrictive environment guide")} and list reasons the figures might differ, such as regional programs, definitions, or how services are organized.</li>
+</ol>
+<p><strong>Discuss:</strong> The law sets the general class as the starting point for each child. What would it take for a district at the low end to change, and who would need to be part of that change?</p></section>
+
+<section aria-labelledby="t-3"><h2 id="t-3">Activity 3: Discipline data and fair comparisons</h2>
+<p><strong>Fits:</strong> school leadership, school psychology, behavior and classroom management. <strong>Time:</strong> about 60 minutes.</p>
+<ol>
+<li>Students find the out-of-school suspension rates for students with IEPs and students without disabilities on a district page, and the figures by race and ethnicity.</li>
+<li>Using the worked example in {g("disproportionality", "the significant disproportionality guide")}, they calculate a simple risk ratio from the district's figures.</li>
+<li>Students note every figure that is withheld or based on small numbers, and explain why that matters before drawing a conclusion.</li>
+</ol>
+<p><strong>Discuss:</strong> Read the "Beyond compliance" section of {g("discipline", "the discipline guide")}. If this district were cited for discipline disparities, what would a review that changes practice, rather than paperwork, look like?</p></section>
+
+<section aria-labelledby="t-4"><h2 id="t-4">Activity 4: Compliance and results in a state's federal report</h2>
+<p><strong>Fits:</strong> education policy, leadership doctoral seminars, special education administration. <strong>Time:</strong> about 75 minutes, or a short written memo.</p>
+<ol>
+<li>Students read {g("indicators", "the federal indicators explained")} and note which indicators measure results and which measure compliance.</li>
+<li>On a state page, they compare the state's results on indicators 8 (parent involvement), 11 (timely evaluation), and 13 (transition planning) with the national figures.</li>
+<li>Students read the essay {g("beyond-compliance", "Beyond compliance: what the indicators miss")} and write a one-page memo to a state director: what the state does well on paper, and one question its data cannot answer.</li>
+</ol>
+<p><strong>Discuss:</strong> Can a state meet every compliance target and still fall short for students? What evidence would show the difference?</p></section>
+
+<section aria-labelledby="t-cite"><h2 id="t-cite">Citing the atlas in student work</h2>
+<p>Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {VERSION}) [Online tool and data set].
+<a href="https://doi.org/{DOI}">https://doi.org/{DOI}</a></p>
+<p>Each district page has its own citation line at the bottom.</p></section>
+
+<section aria-labelledby="t-tell"><h2 id="t-tell">Using the atlas in your course?</h2>
+<p>I would love to hear how it went, what worked, and what your students found confusing. A <a href="{SITE}/tools/idea-atlas/#feedback">five-minute survey</a> asks how you used it,
+or you can write through the <a href="{SITE}/contact/">contact page</a>. Your feedback shapes what comes next.</p></section>
+"""
+    return page("Teaching with IDEA Atlas", body,
+                desc="Four ready-to-use class activities that use IDEA Atlas data for courses in special education, teacher preparation, school leadership, and education policy.",
+                path=BASE + "teaching/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)])

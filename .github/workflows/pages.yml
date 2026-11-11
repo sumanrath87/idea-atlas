@@ -48,6 +48,9 @@ jobs:
           # Search engines stay out until launch is approved (change the default below at launch).
           if [ "${{ github.event.inputs.preview || 'no' }}" = "no" ]; then python build/site.py; else python build/site.py --preview; fi
           N=$(ls site/district | wc -l); echo "district pages: $N"; test "$N" -gt 15000
+          # GitHub Pages sites should stay under 1 GB. Warn well before that.
+          MB=$(du -sm site | cut -f1); echo "site size: ${MB} MB"
+          if [ "$MB" -gt 950 ]; then echo "::warning::The atlas is ${MB} MB, close to the 1 GB GitHub Pages limit."; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

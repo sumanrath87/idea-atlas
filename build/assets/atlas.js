@@ -955,5 +955,19 @@
       if (e.key === "Escape" && b.getAttribute("aria-expanded") === "true") { b.click(); b.focus(); }
     });
   }
-  document.addEventListener("DOMContentLoaded", function () { initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
+  // "Embed this district" box, built from a small placeholder on each district page.
+  function initEmbed() {
+    var el = document.querySelector("[data-embed]"); if (!el) return;
+    var id = el.getAttribute("data-embed"), name = el.getAttribute("data-name") || "";
+    var origin = location.origin.indexOf("localhost") >= 0 ? "https://atlas.sumanrath.org" : location.origin;
+    var src = origin + BASE + "embed/?id=" + id + (ES ? "&lang=es" : "");
+    var title = ES ? "Datos de educación especial de " + name + ", IDEA Atlas" : "Special education data for " + name + ", IDEA Atlas";
+    var code = '<iframe src="' + src + '" title="' + esc(title) + '" width="100%" height="430" style="border:0;max-width:480px" loading="lazy"></iframe>';
+    el.innerHTML = '<details class="embed"><summary>' + tr("Embed this district on your website", "Insertar este distrito en su sitio web") + '</summary><p>' +
+      tr("Copy this code into your website or blog to show a card with four key figures for this district and a link back to this page.",
+         "Copie este código y péguelo en su sitio web o blog para mostrar una tarjeta con cuatro cifras clave de este distrito y un enlace a esta página.") +
+      '</p><label for="emb-code">' + tr("Embed code", "Código para insertar") + '</label><textarea id="emb-code" readonly rows="4"></textarea></details>';
+    el.querySelector("textarea").value = code;
+  }
+  document.addEventListener("DOMContentLoaded", function () { initEmbed(); initMenu(); initOnPage(); initFilters(); initTools(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initLike(); });
 })();
