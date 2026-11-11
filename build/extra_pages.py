@@ -31,12 +31,12 @@ def story(lang: str, SITE: str) -> str:
 
 def privacy_section(counter_on: bool) -> str:
     if counter_on:
-        txt = ("IDEA Atlas has no advertising, no sign-in, and no cookies. To know how many people use it, it counts page views with "
+        txt = ("IDEA Atlas has no advertising and no sign-in, and it sets no cookies unless you choose Display settings, which saves only those choices in one small cookie on your device. To know how many people use it, it counts page views with "
                "<a href=\"https://www.goatcounter.com/\">GoatCounter</a>, a privacy-friendly counter that does not use cookies and does not collect "
                "personal information. Only totals are kept: which pages were viewed, which sites linked to them, and general information such as "
                "country, screen size, and browser.")
     else:
-        txt = "IDEA Atlas has no advertising, no sign-in, no cookies, and no tracking."
+        txt = "IDEA Atlas has no advertising, no sign-in, and no tracking. It sets no cookies unless you choose Display settings, which saves only those choices in one small cookie on your device."
     return f'<section aria-labelledby="privacy"><h2 id="privacy">Privacy</h2><p>{txt}</p></section>'
 
 
@@ -318,10 +318,10 @@ def about_es(*, page, BASE, SITE, ATLAS_ORIGIN, VERSION, DOI, SOURCES, MEASURES,
     status_rows = "".join(f'<tr><th scope="row">{E(k)}</th><td>{E(v.capitalize())}</td></tr>' for k, v in es_site.STATUS_ES.items())
     notes = "".join(f"<li>{E(v)}</li>" for v in es_site.STATE_NOTES_ES.values())
     terms = "".join(f'<dt>{E(q)}</dt><dd>{E(a)}</dd>' for q, a in es_site.TERMS_ES.values())
-    priv = ("IDEA Atlas no tiene publicidad, no pide iniciar sesión y no usa cookies. Para saber cuántas personas lo usan, cuenta las visitas con "
+    priv = ("IDEA Atlas no tiene publicidad ni pide iniciar sesión, y no usa cookies salvo si usted elige Ajustes de pantalla, que guarda solo esas elecciones en una pequeña cookie en su dispositivo. Para saber cuántas personas lo usan, cuenta las visitas con "
             "<a href=\"https://www.goatcounter.com/\">GoatCounter</a>, un contador que respeta la privacidad: no usa cookies ni reúne información personal. "
             "Solo se guardan totales: qué páginas se vieron, qué sitios enlazaron a ellas e información general como el país, el tamaño de la pantalla y el navegador."
-            if counter_on else "IDEA Atlas no tiene publicidad, no pide iniciar sesión, no usa cookies y no rastrea a nadie.")
+            if counter_on else "IDEA Atlas no tiene publicidad, no pide iniciar sesión y no rastrea a nadie. No usa cookies salvo si usted elige Ajustes de pantalla, que guarda solo esas elecciones en una pequeña cookie en su dispositivo.")
     body = f"""
 <h1>Acerca de los datos</h1>
 <p class="lede">Cómo se hace cada cifra de IDEA Atlas, de dónde viene y lo que no puede decirle.</p>
