@@ -8,7 +8,9 @@
   var STATUS_ES = {"at least": "al menos", "Withheld for privacy": "Retenido por privacidad", "Fewer than 10 students": "Menos de 10 estudiantes",
     "Flagged for data quality": "Marcado por calidad de datos", "Not reported": "No se informó", "No students in this group": "No hay estudiantes en este grupo"};
   var COLORS = ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"]; // one hue, light to dark
-  var NODATA = "#dcd9d0";
+  function MAPDARK() { return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+  function MAPLINE() { return MAPDARK() ? "#16181b" : "#ffffff"; }
+  var NODATA = MAPDARK() ? "#3b3e43" : "#dcd9d0";
   var STATES = {"01":["AL","Alabama"],"02":["AK","Alaska"],"04":["AZ","Arizona"],"05":["AR","Arkansas"],"06":["CA","California"],"08":["CO","Colorado"],"09":["CT","Connecticut"],"10":["DE","Delaware"],"11":["DC","District of Columbia"],"12":["FL","Florida"],"13":["GA","Georgia"],"15":["HI","Hawaii"],"16":["ID","Idaho"],"17":["IL","Illinois"],"18":["IN","Indiana"],"19":["IA","Iowa"],"20":["KS","Kansas"],"21":["KY","Kentucky"],"22":["LA","Louisiana"],"23":["ME","Maine"],"24":["MD","Maryland"],"25":["MA","Massachusetts"],"26":["MI","Michigan"],"27":["MN","Minnesota"],"28":["MS","Mississippi"],"29":["MO","Missouri"],"30":["MT","Montana"],"31":["NE","Nebraska"],"32":["NV","Nevada"],"33":["NH","New Hampshire"],"34":["NJ","New Jersey"],"35":["NM","New Mexico"],"36":["NY","New York"],"37":["NC","North Carolina"],"38":["ND","North Dakota"],"39":["OH","Ohio"],"40":["OK","Oklahoma"],"41":["OR","Oregon"],"42":["PA","Pennsylvania"],"44":["RI","Rhode Island"],"45":["SC","South Carolina"],"46":["SD","South Dakota"],"47":["TN","Tennessee"],"48":["TX","Texas"],"49":["UT","Utah"],"50":["VT","Vermont"],"51":["VA","Virginia"],"53":["WA","Washington"],"54":["WV","West Virginia"],"55":["WI","Wisconsin"],"56":["WY","Wyoming"],"60":["AS","American Samoa"],"66":["GU","Guam"],"69":["MP","Northern Mariana Islands"],"72":["PR","Puerto Rico"],"78":["VI","U.S. Virgin Islands"]};
   var ABBR = {}; Object.keys(STATES).forEach(function (f) { ABBR[STATES[f][0]] = STATES[f][1]; });
 
@@ -110,7 +112,7 @@
     el.removeAttribute("tabindex");
     var map = new maplibregl.Map({
       container: el, center: [-96, 38.5], zoom: 3.3, minZoom: 2, maxZoom: 11, attributionControl: false,
-      style: {version: 8, sources: {}, layers: [{id: "bg", type: "background", paint: {"background-color": "#f3f1ea"}}]}
+      style: {version: 8, sources: {}, layers: [{id: "bg", type: "background", paint: {"background-color": (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "#1d2024" : "#f3f1ea"}}]}
     });
     map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
     map.getCanvas().setAttribute("aria-label", "Map of school districts. Use arrow keys to move and plus or minus to zoom. The table page lists the same figures.");
@@ -127,10 +129,10 @@
       map.addSource("states", {type: "geojson", data: BASE + "data/states.json"});
       map.addLayer({id: "base-fill", type: "fill", source: "base", paint: {"fill-color": fill, "fill-opacity": 0.92}});
       map.addLayer({id: "hs-fill", type: "fill", source: "hs", layout: {visibility: "none"}, paint: {"fill-color": fill, "fill-opacity": 0.92}});
-      map.addLayer({id: "base-line", type: "line", source: "base", paint: {"line-color": "#ffffff", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.15, 8, 1]}});
-      map.addLayer({id: "hs-line", type: "line", source: "hs", layout: {visibility: "none"}, paint: {"line-color": "#ffffff", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.2, 8, 1]}});
-      map.addLayer({id: "state-line", type: "line", source: "states", paint: {"line-color": "#474d55", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.6, 8, 1.6]}});
-      map.addLayer({id: "hover", type: "line", source: "base", paint: {"line-color": "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
+      map.addLayer({id: "base-line", type: "line", source: "base", paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.15, 8, 1]}});
+      map.addLayer({id: "hs-line", type: "line", source: "hs", layout: {visibility: "none"}, paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.2, 8, 1]}});
+      map.addLayer({id: "state-line", type: "line", source: "states", paint: {"line-color": MAPDARK() ? "#cdc8be" : "#474d55", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.6, 8, 1.6]}});
+      map.addLayer({id: "hover", type: "line", source: "base", paint: {"line-color": MAPDARK() ? "#ffffff" : "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
       map.once("idle", paint);
       sel.addEventListener("change", paint);
       hs.addEventListener("change", function () {
@@ -329,13 +331,15 @@
   function f1(v, unit) { return v == null ? "" : (unit === "usd" ? "$" + Math.round(v).toLocaleString("en-US") : (+v).toFixed(1)); }
   var SHAPES = ["circle", "square", "diamond", "triangle"];
   var SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#6250d6"];
+  var DARK = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  function PAPER() { return DARK ? "#16181b" : "#fbfaf6"; }
   function mark(g, shape, x, y, r, fill) {
-    if (shape === "circle") return svgEl("circle", { cx: x, cy: y, r: r, fill: fill, stroke: "#fbfaf6", "stroke-width": 2 }, g);
+    if (shape === "circle") return svgEl("circle", { cx: x, cy: y, r: r, fill: fill, stroke: PAPER(), "stroke-width": 2 }, g);
     var p;
     if (shape === "square") p = [[x - r, y - r], [x + r, y - r], [x + r, y + r], [x - r, y + r]];
     else if (shape === "diamond") p = [[x, y - r * 1.25], [x + r * 1.25, y], [x, y + r * 1.25], [x - r * 1.25, y]];
     else p = [[x, y - r * 1.2], [x + r * 1.15, y + r * .9], [x - r * 1.15, y + r * .9]];
-    return svgEl("polygon", { points: p.map(function (a) { return a.join(","); }).join(" "), fill: fill, stroke: "#fbfaf6", "stroke-width": 2 }, g);
+    return svgEl("polygon", { points: p.map(function (a) { return a.join(","); }).join(" "), fill: fill, stroke: PAPER(), "stroke-width": 2 }, g);
   }
 
   // Dot on a range: this district, the middle half of state districts, the state median, and the national median.
@@ -902,13 +906,19 @@
     var hs = Array.prototype.filter.call(main.querySelectorAll(":scope > section > h2[id], :scope > article > section > h2[id]"), function (h) { return h.offsetParent !== null; });
     if (hs.length < 4) return;
     var nav = document.createElement("nav");
-    nav.className = "onpage"; nav.setAttribute("aria-labelledby", "onpage-h");
-    nav.innerHTML = '<div class="onpage-in"><p id="onpage-h" class="onpage-h">' + (ES ? "En esta página" : "On this page") + "</p><ul>" +
-      hs.map(function (h) { return '<li><a href="#' + h.id + '">' + esc(h.textContent) + "</a></li>"; }).join("") + "</ul></div>";
-    var after = main.querySelector(":scope > .page-tools") || main.querySelector(":scope > h1") || main.querySelector(":scope > article > .byline");
+    nav.className = "onpage"; nav.setAttribute("aria-label", ES ? "En esta página" : "On this page");
+    var items = hs.map(function (h) { return '<li><a href="#' + h.id + '">' + esc(h.textContent) + "</a></li>"; }).join("");
+    // Wide screens: a list beside the text. Phones and tablets: a small "Jump to a section" menu under the title.
+    nav.innerHTML = '<div class="onpage-in"><p class="onpage-h" aria-hidden="true">' + (ES ? "En esta página" : "On this page") + "</p><ul>" + items + "</ul></div>" +
+      '<details class="onpage-fold"><summary>' + (ES ? "Ir a una sección" : "Jump to a section") + "</summary><ul>" + items + "</ul></details>";
+    var fold = nav.querySelector(".onpage-fold");
+    fold.addEventListener("click", function (e) { if (e.target.tagName === "A") fold.open = false; });
+    var lede = main.querySelector(":scope > .lede"), ex = lede && lede.nextElementSibling;
+    var after = main.querySelector(":scope > .page-tools") || main.querySelector(":scope > article > .byline") ||
+      (lede ? (ex && ex.classList.contains("explainers") ? ex : lede) : null) || main.querySelector(":scope > h1");
     if (after) after.parentNode.insertBefore(nav, after.nextSibling); else main.insertBefore(nav, main.firstChild);
     document.documentElement.classList.add("has-onpage");
-    var links = nav.querySelectorAll("a"), current = null, ticking = false;
+    var links = nav.querySelectorAll(".onpage-in a"), current = null, ticking = false;
     function mark() {
       ticking = false;
       var line = window.innerHeight * 0.3, id = hs[0].id;

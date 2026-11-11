@@ -225,6 +225,10 @@ UI = {
            "foot1": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}methods/#cite">How to cite</a> · <a href="{site}/contact/">Report an error</a> · <a href="{base}download/">Download the data</a> · <a href="{base}teaching/">For instructors</a> · <a href="{base}for-reporters/">For reporters</a> · <a href="{base}accessibility/">Accessibility</a> · <a href="{site}/tools/idea-atlas/#feedback">Share feedback</a> · <a href="{site}/tools/">All tools</a>',
            "cite": 'Cite: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Version {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "General information only, not legal advice. Figures describe what was reported, not the quality of a district's services.",
+           "foot_label": "More from IDEA Atlas", "foot_by": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>.',
+           "foot_cols": [("About the data", [("methods/", "How the figures are made"), ("download/", "Download the data"), ("methods/#cite", "How to cite"), ("accessibility/", "Accessibility")]),
+                         ("For instructors and reporters", [("teaching/", "Teaching with IDEA Atlas"), ("for-reporters/", "For reporters"), ("guides/", "Guides")]),
+                         ("Help", [("@/contact/", "Report an error"), ("@/tools/idea-atlas/#feedback", "Share feedback"), ("@/tools/", "More free tools")])],
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
            "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/comparar/", "Comparar"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia"), ("es/acerca-de-los-datos/", "Acerca de los datos")],
@@ -232,6 +236,10 @@ UI = {
            "foot1": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>. <a href="{base}es/acerca-de-los-datos/#cite">Cómo citar</a> · <a href="{site}/contact/">Informar un error</a> · <a href="{base}download/" hreflang="en">Descargar los datos (en inglés)</a> · <a href="{base}es/accesibilidad/">Accesibilidad</a> · <a href="{site}/tools/idea-atlas/#encuesta">Dar su opinión</a>',
            "cite": 'Cómo citar: Rath, S. (2026). <cite>IDEA Atlas: Special education data for every U.S. school district</cite> (Versión {v}). <a href="https://doi.org/{doi}">https://doi.org/{doi}</a>',
            "foot2": "Información general, no asesoría legal. Las cifras describen lo que se informó, no la calidad de los servicios de un distrito.",
+           "foot_label": "Más de IDEA Atlas", "foot_by": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>.',
+           "foot_cols": [("Sobre los datos", [("es/acerca-de-los-datos/", "Cómo se hacen las cifras"), ("download/|en", "Descargar los datos (en inglés)"), ("es/acerca-de-los-datos/#cite", "Cómo citar"), ("es/accesibilidad/", "Accesibilidad")]),
+                         ("Para empezar", [("es/guias/", "Guías"), ("es/informe/", "Crear un informe"), ("es/comparar/", "Comparar distritos")]),
+                         ("Ayuda", [("@/contact/", "Informar un error"), ("@/tools/idea-atlas/#encuesta", "Dar su opinión")])],
            "other": "English", "other_label": "View this page in English"},
 }
 
@@ -254,6 +262,14 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
     links = "".join(f'<li><a href="{BASE}{p_}">{E(t)}</a></li>' for p_, t in u["nav"] if GUIDES_LIVE[0] or "guide" not in p_ and "guias" not in p_)
     tools = f'<li><a href="{SITE}/tools/">{u["all_tools"]}</a></li>' if u["all_tools"] else ""
     home = BASE + ("es/" if lang == "es" else "")
+    def _fl(href, text):
+        hl = ""
+        if href.endswith("|en"):
+            href, hl = href[:-3], ' hreflang="en"'
+        url = SITE + href[1:] if href.startswith("@") else BASE + href
+        return f'<li><a href="{url}"{hl}>{E(text)}</a></li>'
+    foot_cols = "".join(f'<div class="foot-col"><h2 class="foot-h">{E(h)}</h2><ul>' + "".join(_fl(a, t) for a, t in items) + "</ul></div>"
+                        for h, items in u["foot_cols"])
     og_text = "" if "og:title" in extra_head else (f'<meta property="og:title" content="{E(title)}">'
                                                    f'<meta property="og:description" content="{E(desc)}">')
     counter = (f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
@@ -263,7 +279,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:,">
+<link rel="icon" href="{BASE}assets/icon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="{BASE}assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="{BASE}assets/icon-180.png"><meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#16181b" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
 <title>{E(title)} | {u["suffix"]}</title>
 <meta name="description" content="{E(desc)}">
 {robots}
@@ -294,9 +310,10 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 </main>
 <footer class="site">
   <div class="wrap">
-    <p>{u["foot1"].format(v=VERSION, site=SITE, base=BASE)}</p>
+    <nav class="foot-nav" aria-label="{E(u["foot_label"])}">{foot_cols}</nav>
+    <p class="foot-by">{u["foot_by"].format(v=VERSION, site=SITE)}</p>
     <p class="cite-line">{u["cite"].format(v=VERSION, doi=DOI)}</p>
-    <p>{E(u["foot2"])}</p>
+    <p class="foot-note">{E(u["foot2"])}</p>
   </div>
 </footer>
 </body>
@@ -545,6 +562,8 @@ def main() -> int:
         return rel_en, rel_es
 
     extra_pages.shared_blocks(OUT, es_site)
+    write("404.html", extra_pages.not_found_page(page=page, BASE=BASE))
+    shutil.copy(ASSETS / "favicon.ico", OUT / "favicon.ico")
     write("teaching/index.html", extra_pages.teaching_page(page=page, BASE=BASE, SITE=SITE, VERSION=VERSION, DOI=DOI))
     write("for-reporters/index.html", extra_pages.reporters_page(page=page, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, VERSION=VERSION, DOI=DOI, n_districts=len(d)))
     write("accessibility/index.html", extra_pages.accessibility_page("en", page=page, BASE=BASE, SITE=SITE))

@@ -527,3 +527,39 @@ def shared_blocks(OUT: Path, es_site) -> None:
     (OUT / "data").mkdir(parents=True, exist_ok=True)
     (OUT / "data" / "shared_en.json").write_text(json.dumps({"ask": SHARED_ASK_EN}, ensure_ascii=False))
     (OUT / "data" / "shared_es.json").write_text(json.dumps({"ask": SHARED_ASK_ES.replace("{asks}", asks)}, ensure_ascii=False))
+
+
+# ---------------------------------------------------------------- page not found (GitHub Pages serves /404.html)
+
+def not_found_page(*, page, BASE) -> str:
+    body = f"""
+<h1>We could not find that page</h1>
+<p class="lede">The address may be mistyped, or the page may have moved. You can search for a district below, or start from one of these pages.</p>
+<section aria-labelledby="find-h" class="panel">
+  <h2 id="find-h">Find a district</h2>
+  <form id="search-form" role="search" novalidate>
+    <label for="q">ZIP code or district name</label>
+    <div class="row">
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false" aria-describedby="q-hint">
+      <button type="submit">Search</button>
+    </div>
+    <p id="q-hint" class="hint">For example, 07042 or Montclair.</p>
+  </form>
+  <div id="results" aria-live="polite"></div>
+</section>
+<section aria-labelledby="go-h">
+  <h2 id="go-h">Other places to start</h2>
+  <ul>
+    <li><a href="{BASE}">The atlas home page and map</a></li>
+    <li><a href="{BASE}states/">Every state</a></li>
+    <li><a href="{BASE}guides/">Guides in plain words</a></li>
+    <li><a href="{BASE}report/">Make a report</a></li>
+  </ul>
+</section>
+<section aria-labelledby="es-h" lang="es">
+  <h2 id="es-h">¿Busca la versión en español?</h2>
+  <p>No encontramos esa página. Puede <a href="{BASE}es/">buscar un distrito en español</a>, ver <a href="{BASE}es/estados/">todos los estados</a> o leer las <a href="{BASE}es/guias/">guías</a>.</p>
+</section>
+"""
+    return page("Page not found", body, desc="This page could not be found. Search for a district or start from the IDEA Atlas home page.",
+                path=BASE + "404.html", scripts=("atlas.js",), extra_head='<meta name="robots" content="noindex">')
