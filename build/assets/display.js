@@ -2,7 +2,6 @@
 (function () {
   var d = document.documentElement, v = "", m = document.cookie.match(/(?:^|; )disp=([^;]*)/);
   if (m) v = decodeURIComponent(m[1]);
-  if (!v) { try { v = localStorage.getItem("disp") || ""; } catch (e) {} }
   var o = {};
   v.split(",").forEach(function (p) { var k = p.split(":"); if (k[0] && k[1]) o[k[0]] = k[1]; });
   if (/^[1-3]$/.test(o.ts || "")) d.setAttribute("data-ts", o.ts);

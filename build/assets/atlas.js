@@ -364,7 +364,7 @@
     var v = DISP_KEYS.filter(function (k) { return !(o[k] === "0" || (k === "ct" && o[k] === "auto")); }).map(function (k) { return k + ":" + o[k]; }).join(",");
     var dom = /(^|\.)sumanrath\.org$/.test(location.hostname) ? "; domain=.sumanrath.org" : "";
     document.cookie = "disp=" + encodeURIComponent(v) + "; path=/; max-age=" + (v ? 31536000 : 0) + "; SameSite=Lax" + dom + (location.protocol === "https:" ? "; Secure" : "");
-    try { if (v) localStorage.setItem("disp", v); else localStorage.removeItem("disp"); } catch (e) {}
+    try { localStorage.removeItem("disp"); } catch (e) {}
     try { window.dispatchEvent(new CustomEvent("atlas:display")); } catch (e) {}
   }
   function initDisplay() {
