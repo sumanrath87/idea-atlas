@@ -162,6 +162,76 @@ and, if you like, what assistive technology you use. Fixing these problems is a 
                 path=BASE + "accessibility/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/accesibilidad/")
 
 
+def help_page(lang: str, *, page, BASE, SITE) -> str:
+    """Help using the atlas: how to search, read a district page, use the map, table, compare and report, and get in touch."""
+    if lang == "es":
+        body = f"""
+<h1>Ayuda</h1>
+<p class="lede">Respuestas cortas para usar IDEA Atlas. Si algo no queda claro, escríbame.</p>
+<section aria-labelledby="h-find"><h2 id="h-find">Encontrar su distrito</h2>
+<p>Escriba un código postal de cinco dígitos o parte del nombre del distrito en la <a href="{BASE}es/">búsqueda</a>. La búsqueda tolera pequeños errores de escritura.
+Un código postal puede cruzar varios distritos; en ese caso verá una lista para elegir.</p></section>
+<section aria-labelledby="h-read"><h2 id="h-read">Leer la página de un distrito</h2>
+<p>Cada página empieza con unas pocas oraciones sencillas. Debajo puede abrir las cifras y el detalle completo cuando quiera. Cada cifra indica su año escolar,
+y cada término tiene una explicación corta que se abre con un clic.</p>
+<p>Las cifras se comparan con el distrito típico del estado y del país. No son calificaciones: describen lo que se informó.</p></section>
+<section aria-labelledby="h-missing"><h2 id="h-missing">Si falta una cifra</h2>
+<p>Las agencias ocultan los números pequeños para proteger la privacidad de los estudiantes, y una tasa no se muestra cuando hay menos de 10 estudiantes en el grupo.
+Las cifras que faltan nunca se estiman. Las fuentes federales se publican en distintos calendarios, por eso los años no siempre coinciden.</p></section>
+<section aria-labelledby="h-more"><h2 id="h-more">Otras maneras de usar el atlas</h2>
+<ul>
+<li><a href="{BASE}es/comparar/">Comparar distritos</a>: ponga de dos a cuatro distritos lado a lado.</li>
+<li><a href="{BASE}es/informe/">Crear un informe</a>: responda unas preguntas cortas y obtenga un informe para imprimir o guardar como PDF, para una familia, un líder escolar o un investigador.</li>
+<li><a href="{BASE}es/estados/">Estados</a>: cómo se comparan los distritos de un estado y sus resultados en los indicadores federales.</li>
+<li><a href="{BASE}es/historia/">Historia</a>: cincuenta años de educación especial, desde 1975.</li>
+<li><a href="{BASE}table/" hreflang="en">Tabla de distritos</a> (en inglés): ordene todos los distritos de un estado y descargue lo que ve.</li>
+</ul></section>
+<section aria-labelledby="h-keys"><h2 id="h-keys">Teclado y lectores de pantalla</h2>
+<p>El mapa se mueve con las flechas y se acerca o aleja con las teclas más y menos. La búsqueda y la tabla dan la misma información sin el mapa.
+El botón <strong>Ajustes de pantalla</strong> agranda el texto, cambia los colores y reduce el movimiento. Vea la página de <a href="{BASE}es/accesibilidad/">accesibilidad</a>.</p></section>
+<section aria-labelledby="h-print"><h2 id="h-print">Imprimir o guardar</h2>
+<p>Todas las páginas se pueden imprimir. Para guardar un PDF, elija Imprimir en su navegador y luego Guardar como PDF.</p></section>
+<section aria-labelledby="h-contact"><h2 id="h-contact">Escríbame</h2>
+<p>Para informar un error en una cifra o pedir ayuda, use la <a href="{SITE}/contact/">página de contacto</a>. Diga el distrito y la cifra, si los sabe.
+Este sitio ofrece información general, no asesoría legal.</p></section>
+"""
+        return page("Ayuda", body, desc="Cómo usar IDEA Atlas: buscar un distrito, leer sus cifras, comparar, crear un informe, imprimir y pedir ayuda.",
+                    path=BASE + "es/ayuda/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE + "es/")], lang="es", alt=BASE + "help/")
+    body = f"""
+<h1>Help</h1>
+<p class="lede">Short answers for using IDEA Atlas. If something is still unclear, write to me.</p>
+<section aria-labelledby="h-find"><h2 id="h-find">Find your district</h2>
+<p>Type a five-digit ZIP code or part of the district's name into the <a href="{BASE}">search</a>. Search forgives small typing mistakes.
+A ZIP code can cross several districts; if it does, you will see a list to choose from.</p></section>
+<section aria-labelledby="h-read"><h2 id="h-read">Read a district page</h2>
+<p>Each page opens with a few plain sentences. Below them you can open the numbers and the full detail whenever you like. Every figure shows its school year,
+and every term has a short explanation that opens with one click.</p>
+<p>Figures are set beside the typical district in the state and the nation. They are not grades; they describe what was reported.</p></section>
+<section aria-labelledby="h-missing"><h2 id="h-missing">If a figure is missing</h2>
+<p>Agencies withhold small numbers to protect students' privacy, and a rate is not shown when fewer than 10 students are in the group.
+Missing figures are never estimated. Federal sources are released on different schedules, so the school years do not always match.</p></section>
+<section aria-labelledby="h-more"><h2 id="h-more">Other ways to use the atlas</h2>
+<ul>
+<li><a href="{BASE}compare/">Compare districts</a>: put two to four districts side by side.</li>
+<li><a href="{BASE}report/">Make a report</a>: answer a few short questions and get a report to print or save as a PDF, written for a family, a school leader, or a researcher.</li>
+<li><a href="{BASE}table/">Table of districts</a>: sort every district in a state by any measure, choose your columns, and download what you see.</li>
+<li><a href="{BASE}states/">States</a>: how a state's districts compare and its results on federal indicators.</li>
+<li><a href="{BASE}history/">History</a>: fifty years of special education, from 1975 to today.</li>
+<li><a href="{BASE}download/">Download the data</a> and read <a href="{BASE}methods/">how every figure is made</a>.</li>
+</ul></section>
+<section aria-labelledby="h-keys"><h2 id="h-keys">Keyboard and screen readers</h2>
+<p>The map moves with the arrow keys and zooms with the plus and minus keys. Search and the table give the same information without the map.
+The <strong>Display settings</strong> button makes text larger, changes colors, and reduces motion. See the <a href="{BASE}accessibility/">accessibility page</a>.</p></section>
+<section aria-labelledby="h-print"><h2 id="h-print">Print or save</h2>
+<p>Every page can be printed. To save a PDF, choose Print in your browser, then Save as PDF.</p></section>
+<section aria-labelledby="h-contact"><h2 id="h-contact">Get in touch</h2>
+<p>To report an error in a figure or ask for help, use the <a href="{SITE}/contact/">contact page</a>. Name the district and the figure if you can.
+This site offers general information, not legal advice.</p></section>
+"""
+    return page("Help", body, desc="How to use IDEA Atlas: find a district, read its figures, compare, make a report, print, and get help.",
+                path=BASE + "help/", scripts=("atlas.js",), crumbs=[("IDEA Atlas", BASE)], alt=BASE + "es/ayuda/")
+
+
 # ---------------------------------------------------------------- share images
 
 _FONTS: dict = {}

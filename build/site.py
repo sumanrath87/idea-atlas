@@ -229,7 +229,7 @@ UI = {
            "foot_label": "More from IDEA Atlas", "foot_by": 'IDEA Atlas, version {v}. Built from public federal data by <a href="{site}/">Dr. Suman Rath</a>.',
            "foot_cols": [("About the data", [("methods/", "How the figures are made"), ("download/", "Download the data"), ("methods/#cite", "How to cite"), ("accessibility/", "Accessibility")]),
                          ("For instructors and reporters", [("teaching/", "Teaching with IDEA Atlas"), ("for-reporters/", "For reporters"), ("guides/", "Guides")]),
-                         ("Help", [("@/contact/", "Report an error"), ("@/tools/idea-atlas/#feedback", "Share feedback"), ("@/tools/", "More free tools")])],
+                         ("Help", [("help/", "Help using the atlas"), ("@/contact/", "Report an error"), ("@/tools/idea-atlas/#feedback", "Share feedback"), ("@/tools/", "More free tools")])],
            "other": "Español", "other_label": "Ver esta página en español"},
     "es": {"skip": "Saltar al contenido principal", "sub": "Datos de educación especial para cada distrito escolar de EE. UU.", "nav_label": "IDEA Atlas en español",
            "nav": [("es/", "Buscar un distrito"), ("es/estados/", "Estados"), ("es/guias/", "Guías"), ("es/comparar/", "Comparar"), ("es/informe/", "Crear un informe"), ("es/historia/", "Historia"), ("es/acerca-de-los-datos/", "Acerca de los datos")],
@@ -240,7 +240,7 @@ UI = {
            "foot_label": "Más de IDEA Atlas", "foot_by": 'IDEA Atlas, versión {v}. Creado con datos federales públicos por <a href="{site}/">Dr. Suman Rath</a>.',
            "foot_cols": [("Sobre los datos", [("es/acerca-de-los-datos/", "Cómo se hacen las cifras"), ("download/|en", "Descargar los datos (en inglés)"), ("es/acerca-de-los-datos/#cite", "Cómo citar"), ("es/accesibilidad/", "Accesibilidad")]),
                          ("Para empezar", [("es/guias/", "Guías"), ("es/informe/", "Crear un informe"), ("es/comparar/", "Comparar distritos")]),
-                         ("Ayuda", [("@/contact/", "Informar un error"), ("@/tools/idea-atlas/#encuesta", "Dar su opinión")])],
+                         ("Ayuda", [("es/ayuda/", "Ayuda para usar el atlas"), ("@/contact/", "Informar un error"), ("@/tools/idea-atlas/#encuesta", "Dar su opinión")])],
            "other": "English", "other_label": "View this page in English"},
 }
 
@@ -618,13 +618,15 @@ def main() -> int:
     write("es/acerca-de-los-datos/index.html", extra_pages.about_es(page=page, BASE=BASE, SITE=SITE, ATLAS_ORIGIN=ATLAS_ORIGIN, VERSION=VERSION, DOI=DOI,
                                                                    SOURCES=SOURCES, MEASURES=MEASURES, es_site=es_site, counter_on=bool(GOATCOUNTER)))
     write("es/accesibilidad/index.html", extra_pages.accessibility_page("es", page=page, BASE=BASE, SITE=SITE))
+    write("help/index.html", extra_pages.help_page("en", page=page, BASE=BASE, SITE=SITE))
+    write("es/ayuda/index.html", extra_pages.help_page("es", page=page, BASE=BASE, SITE=SITE))
     state_paths = states_mod.build(d, st_med, nat_med, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, page=page, write=write, fmt=fmt, figs=figs, everyday=everyday,
                                    MEASURES=MEASURES, SOURCES=SOURCES, STATE_NOTES=STATE_NOTES, es_site=es_site, hist=hist_states,
                                    sm=json.loads(smp.read_text()) if smp.exists() else None, names=STATE_NAMES[0], explain=explain, guide_links=glinks, og=og_images)
     if PREVIEW:
         write("robots.txt", "User-agent: *\nDisallow: /\n")
     else:
-        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "teaching/", "accessibility/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/", "es/comparar/", "es/acerca-de-los-datos/"]
+        stat = ["", "table/", "compare/", "history/", "report/", "methods/", "download/", "for-reporters/", "teaching/", "accessibility/", "help/", "es/", "es/historia/", "es/informe/", "es/accesibilidad/", "es/ayuda/", "es/comparar/", "es/acerca-de-los-datos/"]
         ids = list(d.leaid)
         sm = lambda locs: ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                            + "".join(f"<url><loc>{ATLAS_ORIGIN}{BASE}{x}</loc></url>\n" for x in locs) + "</urlset>\n")
@@ -671,6 +673,8 @@ def home_page(n: int) -> str:
 <h1>IDEA Atlas</h1>
 <p class="lede">Look up any U.S. public school district and see, in plain words, how it serves students with disabilities.
 Every figure comes from public federal data.</p>
+<p class="hint">Figures are the newest federal data available, mostly from the 2024–25 and 2023–24 school years. Each figure shows its own year.
+See the <a href="{BASE}methods/#sources">sources and years</a>.</p>
 {explain("idea", "iep", "504")}
 
 <section aria-labelledby="find-h" class="panel">
@@ -711,7 +715,7 @@ Every figure comes from public federal data.</p>
   <p class="hint">The map shows the same figures as the <a href="{BASE}table/">table</a>, which works well with a screen reader.
   Select a district on the map, or use the search above, to open its profile.</p>
   <div class="controls">
-    <div><label for="measure">Show</label> <select id="measure"></select></div>
+    <div><label for="measure">Show on the map</label> <select id="measure"></select></div>
     <div><label for="zoom-state">Go to state</label> <select id="zoom-state"><option value="">United States</option></select></div>
     <div class="check"><input type="checkbox" id="hs-layer"> <label for="hs-layer">Show high school districts</label></div>
   </div>

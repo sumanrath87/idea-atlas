@@ -361,6 +361,8 @@ def home_es(*, BASE, page, n: int) -> str:
 <h1>IDEA Atlas en español</h1>
 <p class="lede">Busque cualquier distrito escolar público de EE. UU. y vea, en palabras sencillas, cómo atiende a los estudiantes con discapacidades.
 Todas las cifras vienen de datos federales públicos.</p>
+<p class="hint">Las cifras son los datos federales más recientes, en su mayoría de los años escolares 2024–25 y 2023–24. Cada cifra indica su propio año.
+Vea las <a href="{BASE}es/acerca-de-los-datos/#sources">fuentes y los años</a>.</p>
 {explain_es(BASE, "idea", "iep", "504", full=True)}
 <section aria-labelledby="find-h" class="panel">
   <h2 id="find-h">Buscar un distrito</h2>
