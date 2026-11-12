@@ -802,3 +802,35 @@ html:is([data-ct="hcl"], [data-ct="hcd"]) svg [stroke="#e6e1d6"], html:is([data-
 :is(p, li, dd, td) a { overflow-wrap: anywhere; }
 select { max-width: 100%; }
 .controls > * { min-width: 0; max-width: 100%; }
+
+/* Ask a question */
+.qa-examples { list-style: none; padding: 0; margin: .2rem 0 .6rem; display: flex; flex-wrap: wrap; gap: .4rem .6rem; }
+.qa-examples li { margin: 0; }
+button.link-btn { all: unset; color: var(--accent); text-decoration: underline; text-underline-offset: .15em; cursor: pointer; padding: .3rem 0; min-height: 1.5rem; line-height: 1.4; }
+button.link-btn:hover { color: var(--accent-ink); }
+button.link-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.qa-examples button.link-btn { border: 1px solid var(--rule); border-radius: 999px; padding: .3rem .8rem; text-decoration: none; font-size: .95rem; }
+#qa-out h3 { margin-top: 1.2rem; }
+#qa-out h3:focus { outline: none; }
+#qa-out h3:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.qa-asked { color: var(--muted); font-size: .92rem; margin-top: -.3rem; }
+.qa-note { border-left: 4px solid var(--accent); padding: .4rem .8rem; background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.qa-card { border-top: 1px solid var(--rule); padding-top: .4rem; margin-top: .8rem; }
+.qa-card h4 { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-weight: 500; font-size: 1.1rem; margin: .6rem 0 .1rem; }
+.qa-list { padding-left: 1.2rem; }
+.qa-list li { margin: .35rem 0; }
+.qa-ctx { color: var(--muted); }
+.qa-guides { padding-left: 1.2rem; }
+.qa-guides li { margin: .5rem 0; }
+.qa-guides p { margin: .15rem 0 0; color: var(--ink-2); font-size: .95rem; }
+.qa-choices { padding-left: 1.2rem; }
+.qa-table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+.qa-table caption { text-align: left; color: var(--muted); font-size: .9rem; padding-bottom: .3rem; }
+.qa-table th, .qa-table td { border-bottom: 1px solid var(--rule); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+.qa-table td { font-variant-numeric: tabular-nums; }
+.qa-more { margin: .4rem 0 0; }
+.qa-foot { margin-top: 1rem; }
+.qa-fb { border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: .6rem; }
+.qa-fb-q { margin: 0 0 .3rem; font-weight: 600; }
+.qa-fb-btns button { margin-right: .4rem; }
+@media print { .qa-fb, #qa-form, .qa-examples, #qa-examples-h { display: none; } }

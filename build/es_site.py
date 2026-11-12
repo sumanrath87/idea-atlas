@@ -376,6 +376,28 @@ Vea las <a href="{BASE}es/acerca-de-los-datos/#sources">fuentes y los años</a>.
   </form>
   <div id="results" aria-live="polite"></div>
 </section>
+
+<section aria-labelledby="qa-title" class="panel qa">
+  <h2 id="qa-title">Haga una pregunta</h2>
+  <p class="hint">Pregunte con sus propias palabras, en español o en inglés. Las respuestas vienen solo de las cifras y las guías de este atlas, nunca de suposiciones. Lo que escribe no se guarda ni se envía a ningún lugar, salvo que usted elija enviarlo para ayudar al atlas a aprender.</p>
+  <form id="qa-form" role="search" aria-label="Haga una pregunta" novalidate>
+    <label for="qa-q">Su pregunta</label>
+    <div class="row">
+      <input id="qa-q" name="ask" type="search" autocomplete="off" spellcheck="true" aria-describedby="qa-examples-h">
+      <button type="submit">Preguntar</button>
+    </div>
+  </form>
+  <p class="hint" id="qa-examples-h">Pruebe una de estas:</p>
+  <ul class="qa-examples">
+    <li><button type="button" class="link-btn" data-qa-example>¿Cuántos estudiantes tienen IEP en 07042?</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>Comparar suspensiones en Newark y Paterson, NJ</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>Graduación en Nueva Jersey</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>La escuela manda a mi hijo a casa temprano</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>¿Qué es un plan 504?</button></li>
+  </ul>
+  <p id="qa-live" class="visually-hidden" aria-live="polite"></p>
+  <div id="qa-out"></div>
+</section>
 <section aria-labelledby="what-h">
   <h2 id="what-h">Qué muestra esta herramienta</h2>
   <p>IDEA Atlas cubre {n:,} distritos escolares públicos, incluidos los distritos de escuelas chárter. Cada página de distrito empieza con unas pocas oraciones sencillas

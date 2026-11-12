@@ -175,6 +175,29 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
                 lang=lang, alt=alt, extra_head=extra_head, og_image=og_image)
 
 
+def _plain(md: str) -> str:
+    t = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", md)
+    t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", t)
+    t = re.sub(r"[*_`>#|]", "", t)
+    t = re.sub(r"^\s*[-+]\s+", "", t, flags=re.M)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def search_index(lang: str, BASE: str) -> list[dict]:
+    """Sections of every guide as plain text, for the "Ask a question" box (data/guides_<lang>.json)."""
+    out = []
+    for g in load(lang):
+        if g["rel"] == "":
+            continue
+        secs = [{"id": "", "h": g.get("title", ""), "x": _plain(g.get("lede", "") or g.get("description", ""))}]
+        for chunk in re.split(r"^## ", g["body"], flags=re.M)[1:]:
+            head, _, rest = chunk.partition("\n")
+            h = _plain(head)
+            secs.append({"id": _slugify(h), "h": h, "x": _plain(rest)[:1500]})
+        out.append({"r": g["rel"], "t": g.get("title", ""), "u": url(g, BASE), "s": secs})
+    return out
+
+
 def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write, og=None) -> list[str]:
     """Write every guide and both hubs. Returns paths for the sitemap."""
     paths = []
@@ -193,6 +216,8 @@ def build(*, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, write, og=None) -> l
             write(root + g["rel"] + "/index.html", render(g, allg, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, page=page, extra_list=extra, og_image=img))
             paths.append(root + g["rel"] + "/")
         write(root + "index.html", hub(gs, lang, BASE=BASE, page=page))
+        import json as _json
+        write(f"data/guides_{lang}.json", _json.dumps(search_index(lang, BASE), ensure_ascii=False, separators=(",", ":")))
         paths.append(root)
     return paths
 
@@ -221,5 +246,21 @@ def hub(gs: list[dict], lang: str, *, BASE: str, page) -> str:
         crumbs = [("IDEA Atlas", BASE + "es/")]
         alt = BASE + "guides/"
         desc = "Guías en palabras sencillas sobre los datos de educación especial y la ley."
-    body = f'<h1>{E(title)}</h1><p class="lede">{E(lede)}</p>' + "".join(secs)
+    if lang == "en":
+        ask = ('<section aria-labelledby="qa-title" class="panel qa"><h2 id="qa-title">Describe your situation</h2>'
+               '<p class="hint">Say what is happening in your own words, and the matching guide sections will appear. Nothing you type is saved or sent anywhere unless you choose to send it.</p>'
+               '<form id="qa-form" role="search" aria-label="Search the guides" novalidate><label for="qa-q">What is happening?</label><div class="row">'
+               '<input id="qa-q" name="ask" type="search" autocomplete="off" spellcheck="true" aria-describedby="qa-ex"><button type="submit">Find guides</button></div></form>'
+               '<p class="hint" id="qa-ex">For example: <button type="button" class="link-btn" data-qa-example>The school keeps calling me to pick him up early</button> or '
+               '<button type="button" class="link-btn" data-qa-example>I disagree with the IEP team</button></p>'
+               '<p id="qa-live" class="visually-hidden" aria-live="polite"></p><div id="qa-out"></div></section>')
+    else:
+        ask = ('<section aria-labelledby="qa-title" class="panel qa"><h2 id="qa-title">Describa su situación</h2>'
+               '<p class="hint">Cuente lo que pasa con sus propias palabras y aparecerán las secciones de las guías que corresponden. Lo que escribe no se guarda ni se envía a ningún lugar, salvo que usted elija enviarlo.</p>'
+               '<form id="qa-form" role="search" aria-label="Buscar en las guías" novalidate><label for="qa-q">¿Qué está pasando?</label><div class="row">'
+               '<input id="qa-q" name="ask" type="search" autocomplete="off" spellcheck="true" aria-describedby="qa-ex"><button type="submit">Buscar guías</button></div></form>'
+               '<p class="hint" id="qa-ex">Por ejemplo: <button type="button" class="link-btn" data-qa-example>La escuela me llama para recoger a mi hijo temprano</button> o '
+               '<button type="button" class="link-btn" data-qa-example>No estoy de acuerdo con el equipo del IEP</button></p>'
+               '<p id="qa-live" class="visually-hidden" aria-live="polite"></p><div id="qa-out"></div></section>')
+    body = f'<h1>{E(title)}</h1><p class="lede">{E(lede)}</p>' + ask + "".join(secs)
     return page(title, body, desc=desc, path=BASE + ("guides/" if lang == "en" else "es/guias/"), scripts=("atlas.js",), crumbs=crumbs, lang=lang, alt=alt)

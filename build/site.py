@@ -690,6 +690,28 @@ See the <a href="{BASE}methods/#sources">sources and years</a>.</p>
   <div id="results" aria-live="polite"></div>
 </section>
 
+<section aria-labelledby="qa-title" class="panel qa">
+  <h2 id="qa-title">Ask a question</h2>
+  <p class="hint">Ask in your own words, in English or Spanish. Answers come only from this atlas's figures and guides, never from guesses. Nothing you type is saved or sent anywhere unless you choose to send it to help the atlas learn.</p>
+  <form id="qa-form" role="search" aria-label="Ask a question" novalidate>
+    <label for="qa-q">Your question</label>
+    <div class="row">
+      <input id="qa-q" name="ask" type="search" autocomplete="off" spellcheck="true" aria-describedby="qa-examples-h">
+      <button type="submit">Ask</button>
+    </div>
+  </form>
+  <p class="hint" id="qa-examples-h">Try one of these:</p>
+  <ul class="qa-examples">
+    <li><button type="button" class="link-btn" data-qa-example>How many students have IEPs in 07042?</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>Compare suspensions in Newark and Paterson, NJ</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>Graduation rate in New Jersey</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>The school keeps sending my son home early</button></li>
+    <li><button type="button" class="link-btn" data-qa-example>What is a 504 plan?</button></li>
+  </ul>
+  <p id="qa-live" class="visually-hidden" aria-live="polite"></p>
+  <div id="qa-out"></div>
+</section>
+
 <section aria-labelledby="paths-h">
   <h2 id="paths-h">Choose how deep to go</h2>
   <p class="hint">From simplest to most detailed.</p>

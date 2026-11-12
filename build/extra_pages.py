@@ -34,7 +34,7 @@ def privacy_section(counter_on: bool) -> str:
         txt = ("IDEA Atlas has no advertising and no sign-in, and it sets no cookies unless you choose Display settings, which saves only those choices in one small cookie on your device. To know how many people use it, it counts page views with "
                "<a href=\"https://www.goatcounter.com/\">GoatCounter</a>, a privacy-friendly counter that does not use cookies and does not collect "
                "personal information. Only totals are kept: which pages were viewed, which sites linked to them, and general information such as "
-               "country, screen size, and browser.")
+               "country, screen size, and browser. The “Ask a question” box answers in your browser and does not save what you type. After an answer, it counts only the kind of answer and whether you marked it helpful. Your question’s words are sent only if you press “Send this question”, without your name, so it can be reviewed to improve the atlas.")
     else:
         txt = "IDEA Atlas has no advertising, no sign-in, and no tracking. It sets no cookies unless you choose Display settings, which saves only those choices in one small cookie on your device."
     return f'<section aria-labelledby="privacy"><h2 id="privacy">Privacy</h2><p>{txt}</p></section>'
@@ -390,7 +390,7 @@ def about_es(*, page, BASE, SITE, ATLAS_ORIGIN, VERSION, DOI, SOURCES, MEASURES,
     terms = "".join(f'<dt>{E(q)}</dt><dd>{E(a)}</dd>' for q, a in es_site.TERMS_ES.values())
     priv = ("IDEA Atlas no tiene publicidad ni pide iniciar sesión, y no usa cookies salvo si usted elige Ajustes de pantalla, que guarda solo esas elecciones en una pequeña cookie en su dispositivo. Para saber cuántas personas lo usan, cuenta las visitas con "
             "<a href=\"https://www.goatcounter.com/\">GoatCounter</a>, un contador que respeta la privacidad: no usa cookies ni reúne información personal. "
-            "Solo se guardan totales: qué páginas se vieron, qué sitios enlazaron a ellas e información general como el país, el tamaño de la pantalla y el navegador."
+            "Solo se guardan totales: qué páginas se vieron, qué sitios enlazaron a ellas e información general como el país, el tamaño de la pantalla y el navegador. El cuadro «Haga una pregunta» responde en su navegador y no guarda lo que usted escribe. Después de una respuesta, solo cuenta el tipo de respuesta y si usted la marcó como útil. Las palabras de su pregunta se envían solo si usted pulsa «Enviar esta pregunta», sin su nombre, para revisarlas y mejorar el atlas."
             if counter_on else "IDEA Atlas no tiene publicidad, no pide iniciar sesión y no rastrea a nadie. No usa cookies salvo si usted elige Ajustes de pantalla, que guarda solo esas elecciones en una pequeña cookie en su dispositivo.")
     body = f"""
 <h1>Acerca de los datos</h1>
