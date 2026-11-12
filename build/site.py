@@ -722,7 +722,7 @@ See the <a href="{BASE}methods/#sources">sources and years</a>.</p>
   <p id="measure-note" class="note"></p>
   {explain("per100", "typical")}
   <div id="map" role="region" aria-label="Map of school districts. Use arrow keys to move and plus or minus to zoom." tabindex="0"></div>
-  <div id="legend" aria-labelledby="legend-h"><h3 id="legend-h">Legend</h3><ul id="legend-list"></ul></div>
+  <div id="legend" aria-labelledby="legend-h"><h3 id="legend-h">Legend</h3><ul id="legend-list"><li class="hint">The legend appears when the map has loaded. Without the map, the <a href="{BASE}table/">table</a> shows the same figures.</li></ul></div>
   <p id="map-status" class="visually-hidden" aria-live="polite"></p>
 </section>
 
