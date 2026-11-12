@@ -704,9 +704,7 @@ See the <a href="{BASE}methods/#sources">sources and years</a>.</p>
   <ul class="qa-examples">
     <li><button type="button" class="link-btn" data-qa-example>How many students have IEPs in 07042?</button></li>
     <li><button type="button" class="link-btn" data-qa-example>Compare suspensions in Newark and Paterson, NJ</button></li>
-    <li><button type="button" class="link-btn" data-qa-example>Graduation rate in New Jersey</button></li>
     <li><button type="button" class="link-btn" data-qa-example>The school keeps sending my son home early</button></li>
-    <li><button type="button" class="link-btn" data-qa-example>What is a 504 plan?</button></li>
   </ul>
   <p id="qa-live" class="visually-hidden" aria-live="polite"></p>
   <div id="qa-out"></div>

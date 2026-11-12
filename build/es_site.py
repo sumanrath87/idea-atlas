@@ -391,9 +391,7 @@ Vea las <a href="{BASE}es/acerca-de-los-datos/#sources">fuentes y los años</a>.
   <ul class="qa-examples">
     <li><button type="button" class="link-btn" data-qa-example>¿Cuántos estudiantes tienen IEP en 07042?</button></li>
     <li><button type="button" class="link-btn" data-qa-example>Comparar suspensiones en Newark y Paterson, NJ</button></li>
-    <li><button type="button" class="link-btn" data-qa-example>Graduación en Nueva Jersey</button></li>
     <li><button type="button" class="link-btn" data-qa-example>La escuela manda a mi hijo a casa temprano</button></li>
-    <li><button type="button" class="link-btn" data-qa-example>¿Qué es un plan 504?</button></li>
   </ul>
   <p id="qa-live" class="visually-hidden" aria-live="polite"></p>
   <div id="qa-out"></div>

@@ -1191,8 +1191,8 @@
   var QA = {
     // measure key: [English phrases, Spanish phrases] (written without accents; text is normalized first)
     topics: {
-      id_rate: [["iep", "ieps", "special education", "special ed", "sped", "students with disabilities", "kids with disabilities", "children with disabilities", "with a disability", "disability", "disabilities", "how many students", "how many kids", "how many children", "identified", "eligible", "served", "receive services", "get services"],
-                ["iep", "educacion especial", "estudiantes con discapacidad", "estudiantes con discapacidades", "ninos con discapacidad", "ninos con discapacidades", "discapacidad", "discapacidades", "cuantos estudiantes", "cuantos ninos", "reciben servicios"]],
+      id_rate: [["iep", "ieps", "special education", "special ed", "sped", "students with disabilities", "kids with disabilities", "children with disabilities", "with a disability", "disability", "disabilities", "identified", "eligible", "served", "receive services", "get services"],
+                ["iep", "educacion especial", "estudiantes con discapacidad", "estudiantes con discapacidades", "ninos con discapacidad", "ninos con discapacidades", "discapacidad", "discapacidades", "reciben servicios"]],
       pct_504: [["504", "section 504", "504 plan", "504 plans"], ["504", "plan 504", "planes 504", "seccion 504"]],
       env_80plus: [["general class", "general classes", "general education", "general ed", "gen ed", "regular class", "regular classroom", "regular classes", "inclusion", "included", "inclusive", "mainstream", "mainstreamed", "least restrictive", "lre", "with other kids", "with peers", "with classmates"],
                    ["clase general", "clases generales", "educacion general", "aula regular", "clase regular", "inclusion", "incluidos", "inclusiva", "ambiente menos restrictivo", "con otros ninos", "con sus companeros"]],
@@ -1220,6 +1220,52 @@
       idea_federal_per_student: [["federal money", "federal funds", "federal funding", "idea money", "idea funds", "idea funding", "federal idea"],
                                  ["fondos federales", "dinero federal", "fondos de idea", "dinero de idea", "financiamiento federal"]],
       child_poverty: [["poverty", "poor", "low income", "low-income", "income"], ["pobreza", "pobres", "bajos ingresos", "ingresos"]]
+    },
+    // Common nicknames and abbreviations for large districts: phrase -> [state, exact district name]
+    aliases: [
+      [["nyc", "new york city", "nyc doe", "nycdoe", "nyc public schools", "ciudad de nueva york"], "NY", "New York City Public Schools"],
+      [["lausd", "la unified", "los angeles unified", "los angeles schools"], "CA", "Los Angeles Unified"],
+      [["dcps", "dc public schools", "washington dc", "dc schools", "d c public schools", "washington d c"], "DC", "District of Columbia Public Schools"],
+      [["philly", "philadelphia", "filadelfia", "school district of philadelphia"], "PA", "Philadelphia City SD"],
+      [["las vegas", "vegas", "clark county school district"], "NV", "Clark County"],
+      [["miami", "miami dade", "mdcps", "dade county"], "FL", "Miami-Dade"],
+      [["denver", "denver public schools"], "CO", "School District No. 1 in the county of Denver and State of C"],
+      [["hisd"], "TX", "Houston ISD"], [["disd"], "TX", "Dallas ISD"], [["aisd", "austin"], "TX", "Austin ISD"],
+      [["sfusd", "san francisco"], "CA", "San Francisco Unified"], [["sdusd", "san diego"], "CA", "San Diego Unified"],
+      [["jcps", "louisville"], "KY", "Jefferson County"], [["cms", "charlotte"], "NC", "Charlotte-Mecklenburg Schools"],
+      [["mcps", "montgomery county md", "montgomery county maryland"], "MD", "Montgomery County Public Schools"],
+      [["pgcps", "prince george s", "prince georges", "prince george s county"], "MD", "Prince George's County Public Schools"],
+      [["fcps"], "VA", "Fairfax County Public Schools"], [["detroit", "dpscd"], "MI", "Detroit Public Schools Community District"],
+      [["seattle", "seattle public schools"], "WA", "Seattle School District No. 1"], [["atlanta public schools", "aps atlanta"], "GA", "Atlanta Public Schools"],
+      [["boston public schools", "bps boston"], "MA", "Boston"], [["memphis", "mscs"], "TN", "Memphis-Shelby County Schools"],
+      [["nashville", "metro nashville", "mnps"], "TN", "Davidson County"], [["orlando", "ocps"], "FL", "Orange"], [["tampa"], "FL", "Hillsborough"],
+      [["jacksonville", "duval county"], "FL", "Duval"], [["fort lauderdale", "broward county"], "FL", "Broward"], [["baltimore city"], "MD", "Baltimore City Public Schools"],
+      [["albuquerque", "aps albuquerque"], "NM", "Albuquerque"], [["milwaukee", "mps milwaukee"], "WI", "Milwaukee School District"], [["honolulu", "hawaii doe"], "HI", "Hawaii Department of Education"],
+      [["puerto rico department of education", "departamento de educacion de puerto rico"], "PR", "Puerto Rico Department of Education"]
+    ],
+    enrollWords: [["how big", "how large", "enrollment", "enrolled", "total students", "students attend", "kids attend", "how many students", "how many kids", "how many children", "size of", "number of students", "student population"],
+                  ["cuantos estudiantes", "cuantos alumnos", "cuantos ninos", "matricula", "inscritos", "tamano", "que tan grande", "numero de estudiantes", "poblacion estudiantil"]],
+    catWords: [["autism", "autistic", "dyslexia", "adhd", "add", "speech", "language impairment", "learning disability", "learning disabilities", "specific learning", "emotional disturbance", "emotional", "behavioral disorder",
+                "intellectual disability", "intellectual disabilities", "hearing", "deaf", "vision", "blind", "down syndrome", "developmental delay", "other health impairment", "ohi", "traumatic brain injury", "orthopedic", "multiple disabilities", "category", "categories", "type of disability", "types of disabilities", "kinds of disabilities"],
+               ["autismo", "autista", "dislexia", "tdah", "habla", "lenguaje", "discapacidad de aprendizaje", "discapacidades de aprendizaje", "emocional", "discapacidad intelectual", "sordo", "sordera", "audicion", "vision", "ciego", "sindrome de down", "retraso del desarrollo", "categoria", "categorias", "tipo de discapacidad", "tipos de discapacidad"]],
+    unsupported: [["test score", "test scores", "reading scores", "math scores", "state test", "proficiency", "teacher", "teachers", "staff", "staffing", "class size", "ratio", "aide ratio", "wait list", "waitlist", "wait time", "bus", "busing", "transportation",
+                   "therapy hours", "voucher", "vouchers", "private school", "tuition", "bullying", "attendance", "absent", "absenteeism", "chronic absence", "ranking", "rating of schools", "great schools", "greatschools", "reviews", "lunch", "covid"],
+                  ["calificaciones de examenes", "examen estatal", "maestros", "maestro", "personal", "tamano de la clase", "lista de espera", "autobus", "transporte", "horas de terapia", "escuela privada", "colegiatura", "acoso escolar", "bullying", "asistencia", "ausencias", "resenas", "almuerzo"]],
+    intents: {
+      greet: [["hi", "hello", "hey", "good morning", "good afternoon", "good evening"], ["hola", "buenos dias", "buenas tardes", "buenas noches", "buenas"]],
+      thanks: [["thank you", "thanks", "thank u", "thx", "great thanks", "awesome", "ok", "okay", "cool", "got it", "great", "perfect"], ["gracias", "muchas gracias", "mil gracias", "vale", "entendido", "perfecto", "listo"]],
+      help: [["help", "what can you do", "what can i ask", "how does this work", "how do i use", "how to use", "what is this", "instructions", "examples"], ["ayuda", "que puede hacer", "que puedo preguntar", "como funciona", "como se usa", "que es esto", "instrucciones", "ejemplos"]],
+      about: [["where does the data come from", "where is the data from", "data source", "data sources", "sources", "source", "accurate", "accuracy", "reliable", "trust", "how often", "updated", "update", "methodology", "methods", "how is it calculated", "how are the figures"],
+              ["de donde vienen los datos", "fuente", "fuentes", "exactos", "confiable", "confiables", "con que frecuencia", "actualiza", "actualizan", "metodologia", "metodos", "como se calcula"]],
+      error: [["wrong", "error", "mistake", "incorrect", "not right", "inaccurate", "doesn t match", "does not match", "outdated"], ["equivocado", "equivocada", "error", "incorrecto", "incorrecta", "no coincide", "desactualizado"]],
+      download: [["download", "csv", "excel", "spreadsheet", "raw data", "data file", "dataset", "api"], ["descargar", "descarga", "hoja de calculo", "archivo de datos", "datos en bruto"]],
+      report: [["make a report", "report", "print", "pdf", "printable", "handout", "one pager"], ["informe", "reporte", "imprimir", "pdf", "para imprimir"]],
+      history: [["history", "1975", "since 1975", "over the years", "decades", "historical", "long term"], ["historia", "desde 1975", "a lo largo de los anos", "decadas", "historico"]],
+      embed: [["embed", "widget", "put on my website", "on my website", "my website", "my site", "my blog", "iframe"], ["insertar", "incrustar", "en mi sitio web", "mi pagina web", "mi blog"]],
+      contact: [["contact", "contact you", "email you", "reach you", "talk to someone", "talk to a person", "get in touch", "phone number"], ["contacto", "contactar", "escribirle", "hablar con alguien", "comunicarme"]],
+      who: [["who made", "who built", "who created", "who runs", "who are you", "who is behind", "author"], ["quien hizo", "quien creo", "quien esta detras", "autor", "quien es usted"]],
+      compare: [["compare", "comparison", "side by side", "versus", "vs"], ["comparar", "comparacion", "lado a lado"]],
+      spanish: [["in spanish", "espanol", "spanish version"], ["en ingles", "english", "version en ingles"]]
     },
     groups: {
       suspension: ["oos_idea", "oos_nodis", "oos_504"],
@@ -1282,7 +1328,7 @@
     rankWords: [["best", "worst", "rank", "ranking", "ranked", "top", "highest", "lowest", "most", "least", "better", "good", "bad", "quality", "should i move", "which district is"],
                 ["mejor", "mejores", "peor", "peores", "ranking", "clasificacion", "mas alto", "mas baja", "mas bajo", "mas alta", "buena", "bueno", "mala", "malo", "calidad", "deberia mudarme"]],
     legalWords: [["can they", "can the school", "can a school", "is it legal", "legal", "allowed", "illegal", "rights", "my rights", "lawyer", "attorney", "sue", "complaint", "due process", "refuse", "refused", "denied", "won t", "wont", "not following", "violat", "my child", "my son", "my daughter", "my kid", "help me", "what should i do", "what can i do"],
-                 ["pueden", "puede la escuela", "es legal", "legal", "ilegal", "derechos", "mis derechos", "abogado", "demandar", "queja", "debido proceso", "se niegan", "negaron", "no cumplen", "mi hijo", "mi hija", "mi nino", "que debo hacer", "que puedo hacer", "ayuda"]],
+                 ["pueden", "puede la escuela", "es legal", "legal", "ilegal", "derechos", "mis derechos", "abogado", "demandar", "queja", "debido proceso", "se niegan", "negaron", "no cumplen", "mi hijo", "mi hija", "mi nino", "que debo hacer", "que puedo hacer", "necesito ayuda con"]],
     trendWords: [["over time", "trend", "trends", "history", "change", "changed", "changing", "since", "increase", "increased", "decrease", "decreased", "growing", "rising", "falling", "years ago", "last year", "past"],
                  ["con el tiempo", "tendencia", "tendencias", "historia", "cambio", "cambiado", "desde", "aumento", "aumentado", "disminucion", "bajado", "subido", "hace anos", "el ano pasado"]],
     nationWords: [["nation", "national", "nationally", "united states", "the us", "in the us", "across the country", "the country", "america", "u s", "nationwide", "all districts"],
@@ -1290,7 +1336,7 @@
     // Everyday ways of describing a problem, pointing to a guide (English path, Spanish path).
     guideHints: [
       [["sent home", "send him home", "send her home", "sends him home", "sends her home", "pick him up", "pick her up", "pick up my", "call me to come", "calls me to", "shortened day", "shorter day", "shortened school day", "half day", "partial day", "suspended", "suspension", "expelled", "kicked out", "behavior", "behaviour", "bip", "fba", "manifestation", "10 days", "ten days", "removed from class", "removal", "discipline", "restraint", "seclusion", "police", "arrest"],
-       ["lo mandan a casa", "la mandan a casa", "manda a mi hijo a casa", "manda a mi hija a casa", "mandan a mi hijo a casa", "mandan a mi hija a casa", "manda a casa", "mandan a casa", "a casa temprano", "lo mandan", "la mandan", "lo suspenden", "la suspenden", "me llaman para recoger", "me llaman para que lo recoja", "recogerlo", "recogerla", "dia reducido", "horario reducido", "medio dia", "suspendido", "suspendida", "suspension", "expulsado", "expulsion", "conducta", "comportamiento", "disciplina", "10 dias", "diez dias", "lo sacan de clase", "aislamiento", "sujecion", "policia"],
+       ["lo mandan a casa", "la mandan a casa", "manda a mi hijo a casa", "manda a mi hija a casa", "mandan a mi hijo a casa", "mandan a mi hija a casa", "manda a casa", "mandan a casa", "a casa temprano", "lo mandan", "la mandan", "lo suspenden", "la suspenden", "sujetado", "sujetada", "sujetar", "sujetaron", "inmovilizar", "inmovilizaron", "restringido", "lo encerraron", "la encerraron", "arrestado", "arrestaron", "me llaman para recoger", "me llaman para que lo recoja", "recogerlo", "recogerla", "dia reducido", "horario reducido", "medio dia", "suspendido", "suspendida", "suspension", "expulsado", "expulsion", "conducta", "comportamiento", "disciplina", "10 dias", "diez dias", "lo sacan de clase", "aislamiento", "sujecion", "policia"],
        "discipline", "disciplina"],
       [["separate class", "separate school", "separate setting", "different school", "another school", "special program", "self contained", "self-contained", "not with other kids", "not with his class", "not with her class", "inclusion", "included", "general class", "general education", "lre", "least restrictive", "placement", "special school", "out of district", "resource room", "pulled out", "pull out", "push in", "co-teaching", "co teaching", "aide", "paraprofessional"],
        ["clase separada", "escuela separada", "otra escuela", "programa especial", "no esta con los otros ninos", "inclusion", "incluido", "clase general", "ambiente menos restrictivo", "ubicacion", "escuela especial", "lo sacan del salon", "asistente", "ayudante"],
@@ -1310,8 +1356,8 @@
       [["evaluation", "evaluate", "evaluated", "testing", "tested", "assessment", "60 days", "sixty days", "eligible", "eligibility", "qualify", "referral for special education"],
        ["evaluacion", "evaluar", "evaluado", "pruebas", "60 dias", "sesenta dias", "elegible", "elegibilidad", "califica"],
        "indicators/11-timely-evaluation", "indicadores/11-evaluacion-a-tiempo"],
-      [["transition", "after high school", "college", "job", "jobs", "work after", "age 16", "turning 18", "adult services", "post secondary", "postsecondary"],
-       ["transicion", "despues de la secundaria", "universidad", "trabajo", "empleo", "16 anos", "cumple 18", "servicios para adultos"],
+      [["transition", "after high school", "college", "job", "jobs", "work after", "age 16", "age 18", "turns 18", "turning 18", "turn 18", "transfer of rights", "become an adult", "adult services", "post secondary", "postsecondary", "graduate with an iep", "age 21", "aging out"],
+       ["transicion", "despues de la secundaria", "universidad", "trabajo", "empleo", "16 anos", "cumple 18", "18 anos", "mayoria de edad", "servicios para adultos", "21 anos"],
        "indicators/13-secondary-transition", "indicadores/13-transicion-secundaria"],
       [["preschool", "pre k", "pre-k", "early intervention", "turning 3", "turns 3", "age 3", "toddler", "part c"],
        ["preescolar", "intervencion temprana", "cumple 3", "3 anos", "tres anos", "nino pequeno"],
@@ -1343,11 +1389,12 @@
     function nameIndex() {
       if (NAMEIDX) return NAMEIDX;
       var gen = {}; QA.generic.forEach(function (w) { gen[w] = 1; });
-      NAMEIDX = {byTok: {}, core: [], full: []};
+      NAMEIDX = {byTok: {}, core: [], full: [], city: {}};
       for (var i = 0; i < DATA.ids.length; i++) {
         var full = norm(DATA.names[i][0]).replace(/\b\d+\b/g, " ").replace(/\s+/g, " ").trim().split(" ");
-        var core = full.filter(function (w) { return w && !gen[w] && w.length > 1; });
+        var core = full.filter(function (w) { return w && !gen[w] && w.length > 1 && !/\d/.test(w); });
         NAMEIDX.core[i] = core; NAMEIDX.full[i] = full;
+        var city = norm(DATA.names[i][2] || ""); if (city) (NAMEIDX.city[city] = NAMEIDX.city[city] || []).push(i);
         if (core.length) (NAMEIDX.byTok[core[0]] = NAMEIDX.byTok[core[0]] || []).push(i);
       }
       NAMEIDX.vocab = Object.keys(NAMEIDX.byTok);
@@ -1359,6 +1406,10 @@
       if (COMMON) return COMMON;
       COMMON = {};
       QA.stop.concat(QA.generic).forEach(function (w) { COMMON[w] = 1; });
+      var addW = function (ph) { norm(ph).split(" ").forEach(function (w) { if (w.length > 2) COMMON[w] = 1; }); };
+      var walk = function (o) { if (typeof o === "string") addW(o); else if (Array.isArray(o)) o.forEach(walk); else if (o && typeof o === "object") Object.keys(o).forEach(function (k) { walk(o[k]); }); };
+      [QA.topics, QA.groupWords, QA.definitions, QA.rankWords, QA.legalWords, QA.trendWords, QA.nationWords, QA.enrollWords, QA.catWords, QA.unsupported, QA.intents].forEach(walk);
+      QA.guideHints.forEach(function (h) { walk(h[0]); walk(h[1]); });
       (GUIDES || []).forEach(function (g) { g.s.forEach(function (x) { norm(x.h + " " + x.x).split(" ").forEach(function (w) { if (w.length > 1) COMMON[w] = 1; }); }); });
       return COMMON;
     }
@@ -1395,6 +1446,22 @@
             cands.push({i: i, score: core.length * 10 + extra * 3 + (f === w ? 5 : 0) - pen, span: span, len: core.length});
           });
         });
+        if (!cands.length && !skip[w]) {
+          // No district is named this way: try it as a city, and use the districts based there.
+          for (var n = 3; n >= 1 && !cands.length; n--) {
+            if (p + n > words.length) continue;
+            var ph = words.slice(p, p + n).join(" "), inCity = idx.city[ph];
+            if (!inCity) continue;
+            if (n === 1 && common[ph] && !(words.length <= 2 || capitalized(ph))) continue;
+            inCity.forEach(function (i) { if (!stateFilter || DATA.names[i][1] === stateFilter) cands.push({i: i, score: 1, span: n, len: 1}); });
+          }
+          if (cands.length) {
+            cands.sort(function (a, b) { return (DATA.enrollment[b.i] || 0) - (DATA.enrollment[a.i] || 0); });
+            cands = cands.filter(function (c) { return (DATA.enrollment[c.i] || 0) > 0; }).slice(0, 12);
+            if (cands.length) { for (var u2 = p; u2 < p + cands[0].span; u2++) used[u2] = 1; mentions.push(cands.map(function (c) { return c.i; })); }
+            continue;
+          }
+        }
         if (!cands.length) continue;
         var best = Math.max.apply(null, cands.map(function (c) { return c.len; }));
         cands = cands.filter(function (c) { return c.len === best; });
@@ -1443,6 +1510,28 @@
       }
       return hit;
     }
+    function findStates(text) {
+      var found = [], tt = " " + text + " ", names = [], orig = " " + text + " ";
+      Object.keys(STATES).forEach(function (f) { [norm(STATES[f][1]), norm(ST_ES[STATES[f][1]] || STATES[f][1])].forEach(function (n) { names.push([n, f]); }); });
+      names.sort(function (a, b) { return b[0].length - a[0].length; });
+      names.forEach(function (x) {
+        if (tt.indexOf(" " + x[0] + " ") >= 0) { tt = tt.replace(" " + x[0] + " ", " | "); if (!found.some(function (y) { return y.fips === x[1]; })) found.push({code: STATES[x[1]][0], fips: x[1], phrase: x[0]}); }
+      });
+      found.forEach(function (x) { x.at = orig.indexOf(" " + x.phrase + " "); });
+      found.sort(function (a, b) { return a.at - b.at; });
+      return found;
+    }
+    function stateCompare(sts, keys) {
+      var h = '<div class="table-wrap" tabindex="0" role="region" aria-label="' + tr("State comparison", "Comparación de estados") + '"><table class="qa-table"><caption>' +
+        tr("The typical district in each state (the median). Figures per 100 students in each group unless shown in dollars.", "El distrito típico de cada estado (la mediana). Cifras por cada 100 estudiantes de cada grupo, salvo las que están en dólares.") +
+        "</caption><thead><tr><th scope=\"col\">" + tr("Measure", "Medida") + "</th>" + sts.map(function (x) { return '<th scope="col">' + esc(stName(x.code)) + "</th>"; }).join("") + '<th scope="col">' + tr("Nationally", "En el país") + "</th></tr></thead><tbody>";
+      keys.forEach(function (k) {
+        var m = M(k); if (!m) return;
+        h += '<tr><th scope="row">' + esc(shortName(m)) + ' <span class="sub">(' + esc(year(m)) + ")</span></th>" +
+          sts.map(function (x) { var st = stateStats(x.code)[k]; return "<td>" + (st ? fmt(st.med, m.unit) : "—") + "</td>"; }).join("") + "<td>" + (m.national_median != null ? fmt(m.national_median, m.unit) : "—") + "</td></tr>";
+      });
+      return h + "</tbody></table></div>";
+    }
     function present(i, mi) { var c = DATA.codes[i].charAt(mi); return c === "0" || c === "1"; }
     function quant(arr, q) { var s = arr.slice().sort(function (a, b) { return a - b; }); if (!s.length) return null; var pos = (s.length - 1) * q, lo = Math.floor(pos), hi = Math.ceil(pos); return s[lo] + (s[hi] - s[lo]) * (pos - lo); }
     function stateStats(code) {
@@ -1456,6 +1545,14 @@
       return (STATE_CACHE[code] = out);
     }
     function M(key) { return DATA.measures.filter(function (m) { return m.key === key; })[0]; }
+    function enrollLine(i) {
+      var e = DATA.enrollment[i]; if (e == null) return "";
+      return "<li>" + tr(e.toLocaleString("en-US") + " students were enrolled (2024–25).", e.toLocaleString("en-US") + " estudiantes estaban inscritos (2024–25).") + "</li>";
+    }
+    function linkCard(title, body, links) {
+      return '<section class="qa-card"><h4>' + title + "</h4>" + (body ? "<p>" + body + "</p>" : "") +
+        (links && links.length ? '<ul class="qa-links">' + links.map(function (l) { return '<li><a href="' + l[0] + '"' + (l[2] ? ' hreflang="' + l[2] + '"' : "") + ">" + l[1] + "</a></li>"; }).join("") + "</ul>" : "") + "</section>";
+    }
     function year(m) { var p = m.source.split(", "); return p[p.length - 1]; }
     function valText(i, m) {
       var mi = DATA.measures.indexOf(m), code = DATA.codes[i].charAt(mi), v = DATA.values[i][mi];
@@ -1468,6 +1565,7 @@
     function districtSentences(i, keys) {
       var st = DATA.names[i][1], ss = stateStats(st), out = [];
       keys.forEach(function (k) {
+        if (k === "_enroll") { out.push(enrollLine(i)); return; }
         var m = M(k); if (!m) return;
         var v = valText(i, m), stt = ss[k], line;
         if (v == null) {
@@ -1496,6 +1594,8 @@
         tr("Side by side. Figures per 100 students in each group unless shown in dollars.", "Lado a lado. Cifras por cada 100 estudiantes de cada grupo, salvo las que están en dólares.") +
         "</caption><thead><tr><th scope=\"col\">" + tr("Measure", "Medida") + "</th>" + list.map(function (i) { return '<th scope="col">' + districtLink(i) + "</th>"; }).join("") +
         (same ? '<th scope="col">' + tr("Typical in ", "Típico en ") + esc(stName(st)) + "</th>" : "") + '<th scope="col">' + tr("Nationally", "En el país") + "</th></tr></thead><tbody>";
+      if (keys.indexOf("_enroll") >= 0) h += '<tr><th scope="row">' + tr("Students enrolled", "Estudiantes inscritos") + ' <span class="sub">(2024–25)</span></th>' +
+        list.map(function (i) { return "<td>" + (DATA.enrollment[i] != null ? DATA.enrollment[i].toLocaleString("en-US") : "—") + "</td>"; }).join("") + (same ? "<td>—</td>" : "") + "<td>—</td></tr>";
       keys.forEach(function (k) {
         var m = M(k); if (!m) return;
         h += '<tr><th scope="row">' + esc(shortName(m)) + " <span class=\"sub\">(" + esc(year(m)) + ")</span></th>" +
@@ -1608,8 +1708,25 @@
     }
     function answer(raw, pickId) {
       var text = norm(raw), parts = [], notes = [], summary = "", kind = "nomatch"; ALTS = [];
+      var both = function (o) { return o[0].concat(o[1]); };
+      // 0. nicknames of large districts ("NYC", "LAUSD", "Philly"), unless another state is named
+      var aliasList = [];
+      QA.aliases.slice().sort(function (a, b) { return Math.max.apply(null, b[0].map(function (x) { return x.length; })) - Math.max.apply(null, a[0].map(function (x) { return x.length; })); }).forEach(function (al) {
+        al[0].slice().sort(function (a, b) { return b.length - a.length; }).some(function (ph) {
+          if ((" " + text + " ").indexOf(" " + ph + " ") < 0) return false;
+          var tmp = strip(text, ph), st2 = findState(raw, tmp);
+          if (st2 && st2.code !== al[1]) return false;
+          for (var i = 0; i < DATA.ids.length; i++) if (DATA.names[i][1] === al[1] && DATA.names[i][0] === al[2]) { if (aliasList.indexOf(i) < 0) aliasList.push(i); break; }
+          text = tmp; return true;
+        });
+      });
+      var enroll = has(text, both(QA.enrollWords)), cat = has(text, both(QA.catWords)), unsup = has(text, both(QA.unsupported));
+      var intent = {}; Object.keys(QA.intents).forEach(function (k) { var h = has(text, both(QA.intents[k])); if (h) intent[k] = h; });
       // 1. what topics were asked about
       var keys = [], t = text;
+      if (enroll) t = strip(t, enroll);
+      if (cat) t = strip(t, cat);
+      if (unsup) t = strip(t, unsup);
       var phrases = [];
       Object.keys(QA.topics).forEach(function (k) { QA.topics[k][L].concat(L ? QA.topics[k][0] : QA.topics[k][1]).forEach(function (p) { phrases.push([p, "m", k]); }); });
       Object.keys(QA.groupWords).forEach(function (g) { QA.groupWords[g][L].concat(L ? QA.groupWords[g][0] : QA.groupWords[g][1]).forEach(function (p) { phrases.push([p, "g", g]); }); });
@@ -1624,7 +1741,9 @@
         }
       });
       groupsHit.forEach(function (g) { if (g !== "overview") QA.groups[g].forEach(function (k) { if (keys.indexOf(k) < 0) keys.push(k); }); });
-      var both = function (o) { return o[0].concat(o[1]); };
+      if (enroll) { keys.unshift("_enroll"); if (keys.indexOf("id_rate") < 0) keys.splice(1, 0, "id_rate"); }
+      if (cat && keys.indexOf("id_rate") < 0) keys.push("id_rate");
+      Object.keys(intent).forEach(function (k) { both(QA.intents[k]).forEach(function (ph) { if ((" " + t + " ").indexOf(" " + ph + " ") >= 0) t = strip(t, ph); }); });
       var rank = has(t, both(QA.rankWords)), legal = has(text, both(QA.legalWords)), trend = has(t, both(QA.trendWords)), nation = has(t, both(QA.nationWords));
       var defKey = "";
       Object.keys(QA.definitions).some(function (k) { if (has(text, both(QA.definitions[k]))) { defKey = k; return true; } return false; });
@@ -1633,17 +1752,18 @@
       }
       // 2. where: ZIP, state, districts
       var zips = text.match(/\b\d{5}\b/g) || [], zip = zips[0];
-      var stHit = findState(raw, text);
+      var stHit = findState(raw, text), allStates = findStates(text);
       var rest = t;
       zips.forEach(function (z) { rest = strip(rest, z); });
       if (stHit) rest = strip(rest, stHit.phrase);
+      allStates.forEach(function (x) { rest = strip(rest, x.phrase); });
       [rank, legal, trend, nation].forEach(function (x) { if (x) rest = strip(rest, x); });
       var stop = {}; QA.stop.forEach(function (w) { stop[w] = 1; });
       var words = rest.split(" ").filter(function (w) { return w && !/^\d+$/.test(w); });
       var zipP = zips.length ? Promise.all(zips.map(function (z) { return fetch(BASE + "data/zip/" + z.slice(0, 2) + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); }))
         .then(function (all) { var m = {}; all.forEach(function (o) { Object.keys(o).forEach(function (k) { m[k] = o[k]; }); }); return m; }) : Promise.resolve(null);
       return Promise.all([zipP, guides()]).then(function (res) {
-        var zl = res[0], list = [], ambiguous = null;
+        var zl = res[0], list = aliasList.slice(), ambiguous = null;
         if (pickId) list = [INDEX[pickId]];
         else {
           if (zl) zips.forEach(function (z) {
@@ -1663,7 +1783,8 @@
         if (/\b(send|sends|sending|sent|kick|kicks|kicking|kicked)\b.*\b(home|out)\b|\b(manda|mandan|envia|envian|sacan|saca)\b.*\b(casa|fuera)\b|\b(home|casa) (early|temprano)\b/.test(text)) {
           var dr = ES ? "disciplina" : "discipline"; if (hintRels.indexOf(dr) < 0) hintRels.unshift(dr);
         }
-        var gRes = ambiguous && !list.length ? [] : (legal || hintRels.length || (!list.length && !stHit && !nation && !keys.length && !defKey) || (keys.length && !list.length && !stHit && !nation && !defKey)) ? guideSearch(text, hintRels) : [];
+        var intentOnly = Object.keys(intent).length && !keys.length && !list.length && !stHit && !legal && !hintRels.length && !cat && !unsup;
+        var gRes = (ambiguous && !list.length) || intentOnly ? [] : (legal || hintRels.length || (!list.length && !stHit && !nation && !keys.length && !defKey) || (keys.length && !list.length && !stHit && !nation && !defKey)) ? guideSearch(text, hintRels) : [];
         var defP = defKey ? termBlock(defKey) : Promise.resolve("");
         return defP.then(function (defHTML) {
           if (defHTML) parts.push(defHTML);
@@ -1675,6 +1796,7 @@
             kind = "choose"; parts.push(chooseBlock(ambiguous, showKeys, raw)); summary = tr("Several districts match. Choose one.", "Varios distritos coinciden. Elija uno.");
           } else if (list.length >= 2) {
             if (ambiguous) notes.push(tr("One name matched several districts, so it was left out. Add the state to include it.", "Un nombre coincidió con varios distritos y se dejó fuera. Agregue el estado para incluirlo."));
+            if (list.length > 4) notes.push(tr("Up to four districts fit side by side, so the first four are shown.", "Caben hasta cuatro distritos lado a lado, así que se muestran los primeros cuatro."));
             kind = "compare"; parts.push(compareTable(list.slice(0, 4), showKeys));
             summary = tr("Comparison of ", "Comparación de ") + list.slice(0, 4).length + tr(" districts.", " distritos.");
           } else if (list.length === 1) {
@@ -1682,9 +1804,12 @@
             if (trend) parts.push('<p class="qa-more">' + tr("Trend lines for this district are on its profile, and national and state trends are on the ", "Las tendencias de este distrito están en su perfil, y las del país y los estados en la página de ") +
               '<a href="' + BASE + (ES ? "es/historia/" : "history/") + '">' + tr("History page", "Historia") + "</a>.</p>");
             summary = tr("Figures for ", "Cifras de ") + DATA.names[list[0]][0] + ".";
+          } else if (allStates.length >= 2) {
+            kind = "states"; parts.push('<section class="qa-card"><h4>' + (function (a) { return a.length > 1 ? a.slice(0, -1).join(", ") + tr(" and ", " y ") + a[a.length - 1] : a[0]; })(allStates.slice(0, 4).map(function (x) { return esc(stName(x.code)); })) + "</h4>" + stateCompare(allStates.slice(0, 4), showKeys) + "</section>");
+            summary = tr("State comparison.", "Comparación de estados.");
           } else if (stHit && (keys.length || !defKey)) {
             kind = "state"; parts.push(stateBlock(stHit.code, stHit.fips, showKeys)); summary = tr("Figures for ", "Cifras de ") + stName(stHit.code) + ".";
-          } else if (nation || (keys.length && !defKey && !legal && !hintRels.length)) {
+          } else if (nation || (keys.length && !defKey && !legal && !hintRels.length && !intent.history && !intent.report && !intent.download)) {
             kind = "nation"; parts.push(nationBlock(showKeys)); summary = tr("National figures.", "Cifras nacionales.");
             if (!nation) notes.push(tr("To see one district, add its name or ZIP code, for example “suspensions in 07042”.", "Para ver un distrito, agregue su nombre o código postal, por ejemplo «suspensiones en 07042»."));
           }
@@ -1696,7 +1821,49 @@
             parts.push('<p class="qa-more">' + tr("Other districts named like ", "Otros distritos con un nombre parecido a ") + esc(DATA.names[a.pick][0]) + ": " +
               a.alts.map(function (i) { return '<button type="button" class="link-btn" data-qa-pick="' + DATA.ids[i] + '">' + esc(DATA.names[i][0]) + " (" + esc(stName(DATA.names[i][1])) + ")</button>"; }).join(", ") + ".</p>");
           });
+          var H = function (en, es) { return tr(en, es); }, home = BASE + (ES ? "es/" : "");
+          if (cat) notes.push(H("Counts by disability category, such as autism or specific learning disabilities, are on each district's profile, in the section on federal categories.",
+                                "Las cifras por categoría de discapacidad, como autismo o discapacidades específicas de aprendizaje, están en el perfil de cada distrito, en la sección de categorías federales.") +
+            (list.length === 1 ? ' <a href="' + BASE + (ES ? "es/distrito/" : "district/") + DATA.ids[list[0]] + '/#categories">' + H("Open the categories for ", "Abrir las categorías de ") + esc(DATA.names[list[0]][0]) + "</a>." : ""));
+          if (unsup) notes.push(H("IDEA Atlas does not have figures on " + esc(unsup) + ". It covers who receives special education services, where students learn, graduation and dropping out, discipline, restraint and seclusion, Section 504 plans, spending, and child poverty.",
+                                  "IDEA Atlas no tiene cifras sobre " + esc(unsup) + ". Cubre quiénes reciben servicios de educación especial, dónde aprenden, la graduación y el abandono escolar, la disciplina, la sujeción y el aislamiento, los planes 504, el gasto y la pobreza infantil."));
+          var slugOf = function (fips) { return norm(ES ? (ST_ES[STATES[fips][1]] || STATES[fips][1]) : STATES[fips][1]).replace(/ /g, "-"); };
+          if (intent.about) parts.push(linkCard(H("Where the figures come from", "De dónde vienen las cifras"),
+            H("Every figure comes from public federal data: the IDEA reports states file each year, the Civil Rights Data Collection, the Census Bureau's finance and poverty estimates, and school district directories. Each figure shows its own school year. The atlas is checked monthly and rebuilt when agencies post new files.",
+              "Todas las cifras vienen de datos federales públicos: los informes de IDEA que presentan los estados cada año, la Recopilación de Datos de Derechos Civiles, las estimaciones de finanzas y pobreza de la Oficina del Censo y los directorios de distritos escolares. Cada cifra indica su año escolar. El atlas se revisa cada mes y se actualiza cuando las agencias publican archivos nuevos."),
+            [[BASE + (ES ? "es/acerca-de-los-datos/" : "methods/") + "#sources", H("Sources and school years", "Fuentes y años escolares")], [BASE + (ES ? "es/acerca-de-los-datos/" : "methods/"), H("How every figure is made", "Cómo se hace cada cifra")]]));
+          if (intent.error) parts.push(linkCard(H("Report a figure that looks wrong", "Informar una cifra que parece incorrecta"),
+            H("Figures are shown as the agencies reported them, and agencies sometimes revise files. If a figure looks wrong, please say which district and which figure.", "Las cifras se muestran tal como las informaron las agencias, que a veces corrigen sus archivos. Si una cifra parece incorrecta, diga qué distrito y qué cifra."),
+            [["https://www.sumanrath.org/contact/", H("Contact page", "Página de contacto")]]));
+          if (intent.contact && !intent.error) parts.push(linkCard(H("Get in touch", "Escríbame"), H("Questions, corrections, and ideas are welcome through the contact page.", "Las preguntas, correcciones e ideas son bienvenidas por la página de contacto."), [["https://www.sumanrath.org/contact/", H("Contact page", "Página de contacto")]]));
+          if (intent.who) parts.push(linkCard(H("Who made IDEA Atlas", "Quién hizo IDEA Atlas"), H("IDEA Atlas was built from public federal data by Dr. Suman Rath.", "IDEA Atlas fue creado con datos federales públicos por el Dr. Suman Rath."), [["https://www.sumanrath.org/", "sumanrath.org"], [BASE + (ES ? "es/acerca-de-los-datos/" : "methods/"), H("How every figure is made", "Cómo se hace cada cifra")]]));
+          if (intent.download) parts.push(linkCard(H("Download the data", "Descargar los datos"), H("The full file for every district, with a data dictionary, is free to download.", "El archivo completo de todos los distritos, con un diccionario de datos, se puede descargar gratis."),
+            [[BASE + "download/", H("Download page", "Página de descarga (en inglés)"), ES ? "en" : ""], [BASE + "table/", H("Sort a state's districts and download what you see", "Ordenar los distritos de un estado y descargar lo que ve (en inglés)"), ES ? "en" : ""]]));
+          if (intent.report) parts.push(linkCard(H("Make a printable report", "Crear un informe para imprimir"), H("Answer a few short questions and get a report about any district, written for a family, a school leader, or a researcher. Print it or save it as a PDF.",
+              "Responda unas preguntas cortas y obtenga un informe sobre cualquier distrito, escrito para una familia, un líder escolar o un investigador. Imprímalo o guárdelo como PDF."), [[BASE + (ES ? "es/informe/" : "report/"), H("Open the report assistant", "Abrir el asistente de informes")]]));
+          if (intent.history || (trend && !list.length)) parts.push(linkCard(H("Fifty years of special education", "Cincuenta años de educación especial"), H("See how the number of students served, where they learn, and how they leave school changed from 1975 to today, for the nation and every state.",
+              "Vea cómo cambiaron desde 1975 hasta hoy la cantidad de estudiantes atendidos, dónde aprenden y cómo terminan la escuela, para el país y cada estado."), [[BASE + (ES ? "es/historia/" : "history/"), H("Open the History page", "Abrir la página de Historia")]]));
+          if (intent.embed) parts.push(linkCard(H("Put a district on your website", "Poner un distrito en su sitio web"), H("Each district page has an “Embed this district” box with a short code to copy.", "Cada página de distrito tiene un cuadro «Insertar este distrito» con un código corto para copiar."),
+            list.length === 1 ? [[BASE + (ES ? "es/distrito/" : "district/") + DATA.ids[list[0]] + "/", esc(DATA.names[list[0]][0])]] : []));
+          if (intent.compare && list.length < 2 && !defKey && allStates.length < 2) parts.push(linkCard(H("Compare districts", "Comparar distritos"), H("Name two to four districts, for example “compare Montclair and Bloomfield, NJ”, or use the comparison tool.", "Nombre de dos a cuatro distritos, por ejemplo «comparar Montclair y Bloomfield, NJ», o use la herramienta de comparación."),
+            [[BASE + (ES ? "es/comparar/" : "compare/"), H("Open the comparison tool", "Abrir la herramienta de comparación")]]));
+          if (intent.spanish && !ES) parts.push(linkCard("IDEA Atlas en español", "Todas las páginas de distrito, las guías y el informe están en español.", [[BASE + "es/", "Ir a IDEA Atlas en español"]]));
+          if (intent.spanish && ES) parts.push(linkCard("IDEA Atlas in English", "", [[BASE, "Go to IDEA Atlas in English", "en"]]));
+          if (stHit && /\b(rating|ratings|rated|determination|determinations|meets? requirements|needs assistance|needs intervention|calificacion|calificado|cumple los requisitos|cumple con los requisitos|necesita ayuda)\b/.test(text))
+            parts.push(linkCard(H("The state's federal rating", "La calificación federal del estado"), H("Each year the U.S. Department of Education rates every state's special education system. The rating and the state's results on the federal indicators are on the state page.",
+              "Cada año el Departamento de Educación de EE. UU. califica el sistema de educación especial de cada estado. La calificación y los resultados del estado en los indicadores federales están en la página del estado."),
+              [[BASE + (ES ? "es/estado/" : "state/") + slugOf(stHit.fips) + "/", H("Open the page for ", "Abrir la página de ") + esc(stName(stHit.code))]]));
+          var fewWords = text.split(" ").length <= 5;
+          if (!parts.length && !gRes.length && intent.greet && fewWords) parts.push(linkCard(H("Hello!", "¡Hola!"), H("Ask about any school district, state, or the whole country, in your own words. For example: “graduation in Newark, NJ”, “compare Dallas ISD and Houston ISD”, or “what is a 504 plan?”",
+              "Pregunte sobre cualquier distrito escolar, estado o el país, con sus propias palabras. Por ejemplo: «graduación en Newark, NJ», «comparar Dallas ISD y Houston ISD» o «¿qué es un plan 504?»"), []));
+          if (!parts.length && !gRes.length && intent.thanks && fewWords) parts.push(/thank|thx|gracias/.test(text) ? linkCard(H("You're welcome", "De nada"), H("Ask another question any time.", "Haga otra pregunta cuando quiera."), [])
+            : linkCard(H("Anything else?", "¿Algo más?"), H("Ask about a district, a state, or a situation, in your own words.", "Pregunte sobre un distrito, un estado o una situación, con sus propias palabras."), []));
+          if (!parts.length && !gRes.length && intent.help) parts.push(linkCard(H("What you can ask", "Qué puede preguntar"),
+            H("Name a district, a ZIP code, a state, or “nationally”, and a topic: students with IEPs, 504 plans, general classes or separate settings, graduation, dropping out, suspensions, restraint and seclusion, police referrals, spending, or poverty. Or describe a situation, and the right guide sections will appear.",
+              "Nombre un distrito, un código postal, un estado o «todo el país», y un tema: estudiantes con IEP, planes 504, clase general o lugares separados, graduación, abandono escolar, suspensiones, sujeción y aislamiento, remisiones a la policía, gasto o pobreza. O describa una situación y aparecerán las secciones de las guías que corresponden."),
+            [[BASE + (ES ? "es/ayuda/" : "help/"), H("Help using the atlas", "Ayuda para usar el atlas")]]));
           if (defHTML && kind === "nomatch") kind = "definition";
+          if (parts.length && kind === "nomatch") kind = "info";
           if (gRes.length) { if (kind === "nomatch") kind = "guides"; parts.push(guideBlock(gRes)); if (!summary) summary = tr("Guide sections that may help.", "Secciones de las guías que pueden ayudar."); }
           if (!parts.length) {
             parts.push('<section class="qa-card"><h4>' + tr("I could not match that question", "No pude relacionar esa pregunta") + "</h4><p>" +
@@ -1760,5 +1927,56 @@
     expulsion_idea: "Expulsión, IEP", restraint_physical_idea: "Restricción física", restraint_mechanical_idea: "Restricción mecánica", seclusion_idea: "Aislamiento",
     referral_idea: "Remisión a la policía", arrest_idea: "Arresto relacionado con la escuela", spend_per_pupil: "Gasto por estudiante", idea_federal_per_student: "Fondos federales de IDEA por estudiante",
     child_poverty: "Pobreza infantil"};
-  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initDisplay(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initQA(); initLike(); });
+
+  /* Help bubble for the question box: grouped example questions and tips. Built here so every page with a box gets it. */
+  function initQAHelp() {
+    var h2 = document.getElementById("qa-title"), input = document.getElementById("qa-q"), form = document.getElementById("qa-form");
+    if (!h2 || !input || !form) return;
+    var guidesPage = /\/(guides|es\/guias)\/?$/.test(location.pathname);
+    var G = ES ? [
+      ["Un distrito", ["¿Cuántos estudiantes tienen IEP en 07042?", "Graduación en Houston ISD", "Suspensiones en Newark, NJ", "¿Qué tan grande es Miami-Dade?"]],
+      ["Comparar", ["Comparar Montclair, Bloomfield y Glen Ridge", "Dallas ISD y Houston ISD disciplina", "Comparar 10001 y 07042"]],
+      ["Estados y el país", ["Clase general en Virginia", "Abandono escolar en todo el país", "Planes 504 en Nueva Jersey"]],
+      ["Su situación", ["La escuela manda a mi hijo a casa temprano", "Quieren poner a mi hija en una escuela separada", "No estoy de acuerdo con el equipo del IEP", "Mi hijo cumple 3 años y está en intervención temprana"]],
+      ["Palabras y datos", ["¿Qué es un plan 504?", "¿Por qué falta una cifra?", "¿De dónde vienen los datos?"]]
+    ] : [
+      ["One district", ["How many students have IEPs in 07042?", "Graduation in Houston ISD", "Suspensions in Newark, NJ", "How big is Miami-Dade?"]],
+      ["Compare", ["Compare Montclair, Bloomfield and Glen Ridge", "Dallas ISD vs Houston ISD discipline", "Compare 10001 and 07042"]],
+      ["States and the nation", ["Inclusion in Virginia", "Dropout rate nationally", "504 plans in New Jersey"]],
+      ["Your situation", ["The school keeps sending my son home early", "They want to put my daughter in a separate school", "I disagree with the IEP team", "My child is turning 3 and in early intervention"]],
+      ["Words and data", ["What is a 504 plan?", "Why is a figure missing?", "Where does the data come from?"]]
+    ];
+    if (guidesPage) G = [G[3], G[4]];
+    var tips = ES ? ["Use el nombre del distrito o un código postal de 5 dígitos.", "Para nombres comunes, agregue el estado: «Springfield, Illinois».", "Puede escribir en español o en inglés."]
+                  : ["Use a district name or a 5-digit ZIP code.", "For common names, add the state: “Springfield, Illinois”.", "You can write in English or Spanish."];
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "qa-help-btn"; btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "qa-help");
+    btn.innerHTML = '<span class="qa-help-i" aria-hidden="true">?</span><span>' + tr("Examples and tips", "Ejemplos y consejos") + "</span>";
+    var pop = document.createElement("div");
+    pop.id = "qa-help"; pop.className = "qa-help"; pop.hidden = true; pop.setAttribute("role", "region"); pop.setAttribute("aria-labelledby", "qa-help-h");
+    pop.innerHTML = '<div class="qa-help-top"><h3 id="qa-help-h">' + tr("Questions you can ask", "Preguntas que puede hacer") + '</h3><button type="button" class="qa-help-x" aria-label="' + tr("Close examples", "Cerrar ejemplos") + '">×</button></div>' +
+      '<p class="qa-help-lede">' + tr("Choose one to try it, or use it as a pattern for your own.", "Elija una para probarla, o úsela como modelo para la suya.") + "</p>" +
+      '<div class="qa-help-grid">' + G.map(function (g) {
+        return '<div class="qa-help-group"><h4>' + esc(g[0]) + "</h4><ul>" + g[1].map(function (q) { return '<li><button type="button" class="qa-help-q">' + esc(q) + "</button></li>"; }).join("") + "</ul></div>";
+      }).join("") + "</div>" +
+      '<div class="qa-help-tips"><h4>' + tr("Tips", "Consejos") + "</h4><ul>" + tips.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>";
+    var row = document.createElement("div"); row.className = "qa-head";
+    h2.parentNode.insertBefore(row, h2); row.appendChild(h2); row.appendChild(btn);
+    form.parentNode.insertBefore(pop, form.nextSibling);
+    function open(v) {
+      pop.hidden = !v; btn.setAttribute("aria-expanded", v ? "true" : "false"); btn.classList.toggle("on", v);
+      if (v) pop.querySelector(".qa-help-q").focus();
+    }
+    btn.addEventListener("click", function () { open(pop.hidden); });
+    pop.querySelector(".qa-help-x").addEventListener("click", function () { open(false); btn.focus(); });
+    pop.addEventListener("keydown", function (e) { if (e.key === "Escape") { open(false); btn.focus(); } });
+    document.addEventListener("click", function (e) { if (!pop.hidden && !pop.contains(e.target) && !btn.contains(e.target)) open(false); });
+    Array.prototype.forEach.call(pop.querySelectorAll(".qa-help-q"), function (b) {
+      b.addEventListener("click", function () {
+        open(false); input.value = b.textContent;
+        if (form.requestSubmit) form.requestSubmit(); else form.dispatchEvent(new Event("submit", {cancelable: true}));
+      });
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initDisplay(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initQA(); initQAHelp(); initLike(); });
 })();

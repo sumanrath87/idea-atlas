@@ -834,3 +834,34 @@ button.link-btn:focus-visible { outline: 3px solid var(--focus); outline-offset:
 .qa-fb-q { margin: 0 0 .3rem; font-weight: 600; }
 .qa-fb-btns button { margin-right: .4rem; }
 @media print { .qa-fb, #qa-form, .qa-examples, #qa-examples-h { display: none; } }
+
+/* Ask a question: help bubble */
+.qa-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem 1rem; }
+.qa-head h2 { margin-bottom: .3rem; }
+button.qa-help-btn { display: inline-flex; align-items: center; gap: .5rem; background: transparent; color: var(--accent); border: 1px solid var(--rule); border-radius: 999px; padding: .35rem .9rem .35rem .4rem; min-height: 2.5rem; font-weight: 600; font-size: .95rem; }
+button.qa-help-btn:hover, button.qa-help-btn.on { background: color-mix(in srgb, var(--accent) 7%, transparent); color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+.qa-help-i { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--paper); font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-size: 1rem; line-height: 1; }
+.qa-help { position: relative; margin: .9rem 0 .4rem; padding: 1rem 1.2rem 1.1rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--panel);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px -12px rgba(0,0,0,.18); animation: qaPop .16s ease-out; }
+.qa-help::before { content: ""; position: absolute; top: -8px; right: 2.2rem; width: 14px; height: 14px; background: var(--panel); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); transform: rotate(45deg); }
+@keyframes qaPop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .qa-help { animation: none; } }
+.qa-help-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.qa-help-top h3 { margin: 0; font-size: 1.15rem; }
+button.qa-help-x { all: unset; cursor: pointer; width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 50%; font-size: 1.5rem; line-height: 1; color: var(--muted); }
+button.qa-help-x:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); color: var(--ink); }
+button.qa-help-x:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.qa-help-lede { color: var(--muted); font-size: .92rem; margin: .2rem 0 .6rem; }
+.qa-help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .4rem 1.4rem; }
+.qa-help-group h4, .qa-help-tips h4 { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: .6rem 0 .25rem; font-weight: 700; }
+.qa-help ul { list-style: none; margin: 0; padding: 0; }
+.qa-help li { margin: 0; }
+button.qa-help-q { all: unset; display: block; cursor: pointer; padding: .32rem .5rem; margin: 0 -.5rem; border-radius: 8px; color: var(--accent); line-height: 1.4; }
+button.qa-help-q:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); color: var(--accent-ink); }
+button.qa-help-q:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.qa-help-tips { border-top: 1px solid var(--rule); margin-top: .7rem; padding-top: .1rem; }
+.qa-help-tips li { color: var(--ink-2); font-size: .92rem; padding-left: 1rem; position: relative; margin: .2rem 0; }
+.qa-help-tips li::before { content: "·"; position: absolute; left: .2rem; color: var(--accent); font-weight: 700; }
+.qa-links { padding-left: 1.2rem; }
+@media print { .qa-help, .qa-help-btn { display: none !important; } }
+@media (max-width: 640px) { .qa-help::before { right: auto; left: 2rem; } .qa-head { align-items: flex-start; } }
