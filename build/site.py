@@ -423,7 +423,7 @@ def main() -> int:
         else:
             shutil.copy(f, OUT / "assets" / f.name)
     geo = Path(__file__).resolve().parent / "geo"
-    for f in ("base.json", "s.json", "states.json"):
+    for f in ("base.json", "base_lo.json", "s.json", "states.json"):
         shutil.copy(geo / f, OUT / "data" / f)
 
     # ---- values.json: everything the map, search, and table need, in compact form

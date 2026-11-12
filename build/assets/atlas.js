@@ -155,34 +155,64 @@
     map.getCanvas().setAttribute("aria-label", "Map of school districts. Use arrow keys to move and plus or minus to zoom. The table page lists the same figures.");
     var fill = ["match", ["coalesce", ["feature-state", "c"], -1], 0, COLORS[0], 1, COLORS[1], 2, COLORS[2], 3, COLORS[3], 4, COLORS[4], NODATA];
 
-    Promise.all([load(), new Promise(function (res) { map.on("load", res); })]).then(function () {
+    // Speed: the light national shapes (base_lo.json) start loading as soon as the map is ready, without waiting
+    // for the figures. Detailed shapes load only when someone zooms in, and high school districts only when shown.
+    var SPLIT = 6, states = null, applied = {};
+    function addLayers(src, suffix, minz, maxz, vis) {
+      var lay = {}; if (minz) lay.minzoom = minz; if (maxz) lay.maxzoom = maxz;
+      var before = suffix !== "hs" && map.getLayer("hs-fill") ? "hs-fill" : "state-line";   // high school districts stay on top
+      map.addLayer(Object.assign({id: suffix + "-fill", type: "fill", source: src, layout: {visibility: vis || "visible"}, paint: {"fill-color": fill, "fill-opacity": 0.92}}, lay), before);
+      map.addLayer(Object.assign({id: suffix + "-line", type: "line", source: src, layout: {visibility: vis || "visible"}, paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.15, 8, 1]}}, lay), before);
+      hoverOn(suffix + "-fill");
+    }
+    function applyStates(src) {
+      if (!states || !map.getSource(src) || !map.isSourceLoaded(src) || applied[src] === states) return;
+      DATA.ids.forEach(function (id, i) { try { map.setFeatureState({source: src, id: id}, {c: states[i]}); } catch (e) { /* no shape */ } });
+      applied[src] = states;
+    }
+    map.on("sourcedata", function (e) { if (e.sourceId && e.sourceId !== "states" && e.isSourceLoaded) applyStates(e.sourceId); });
+    function addDetail() {
+      if (map.getSource("base")) return;
+      map.addSource("base", {type: "geojson", data: BASE + "data/base.json", promoteId: "id", maxzoom: 12});
+      addLayers("base", "base", SPLIT);
+      map.addLayer({id: "hover", type: "line", source: "base", minzoom: SPLIT, paint: {"line-color": MAPDARK() ? "#ffffff" : "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
+    }
+    function addHS() {
+      if (map.getSource("hs")) return;
+      map.addSource("hs", {type: "geojson", data: BASE + "data/s.json", promoteId: "id", maxzoom: 12});
+      addLayers("hs", "hs", 0, 0, "none");
+    }
+    var mapReady = new Promise(function (res) { map.on("load", res); }).then(function () {
+      map.addSource("lo", {type: "geojson", data: BASE + "data/base_lo.json", promoteId: "id", maxzoom: SPLIT + 1, tolerance: 0.6});
+      map.addSource("states", {type: "geojson", data: BASE + "data/states.json"});
+      map.addLayer({id: "state-line", type: "line", source: "states", paint: {"line-color": MAPDARK() ? "#cdc8be" : "#474d55", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.6, 8, 1.6]}});
+      addLayers("lo", "lo", 0, SPLIT);
+      map.addLayer({id: "hover-lo", type: "line", source: "lo", maxzoom: SPLIT, paint: {"line-color": MAPDARK() ? "#ffffff" : "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
+      map.on("zoom", function () { if (map.getZoom() >= SPLIT - 0.5) addDetail(); });
+      if (map.getZoom() >= SPLIT - 0.5) addDetail();
+    });
+    Promise.all([load(), mapReady]).then(function () {
       DATA.measures.filter(function (m) { return m.map; }).reduce(function (groups, m) {
         var g = groups[m.group] || (groups[m.group] = document.createElement("optgroup"));
         g.label = m.group; var o = document.createElement("option"); o.value = m.key; o.textContent = m.short; g.appendChild(o);
         if (!g.parentNode) sel.appendChild(g); return groups;
       }, {});
-      map.addSource("base", {type: "geojson", data: BASE + "data/base.json", promoteId: "id"});
-      map.addSource("hs", {type: "geojson", data: BASE + "data/s.json", promoteId: "id"});
-      map.addSource("states", {type: "geojson", data: BASE + "data/states.json"});
-      map.addLayer({id: "base-fill", type: "fill", source: "base", paint: {"fill-color": fill, "fill-opacity": 0.92}});
-      map.addLayer({id: "hs-fill", type: "fill", source: "hs", layout: {visibility: "none"}, paint: {"fill-color": fill, "fill-opacity": 0.92}});
-      map.addLayer({id: "base-line", type: "line", source: "base", paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.15, 8, 1]}});
-      map.addLayer({id: "hs-line", type: "line", source: "hs", layout: {visibility: "none"}, paint: {"line-color": MAPLINE(), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.2, 8, 1]}});
-      map.addLayer({id: "state-line", type: "line", source: "states", paint: {"line-color": MAPDARK() ? "#cdc8be" : "#474d55", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.6, 8, 1.6]}});
-      map.addLayer({id: "hover", type: "line", source: "base", paint: {"line-color": MAPDARK() ? "#ffffff" : "#1d2126", "line-width": 2}, filter: ["==", ["get", "id"], ""]});
       // Colours follow Display settings when the visitor changes them.
       window.addEventListener("atlas:display", function () {
         map.setPaintProperty("bg", "background-color", MAPDARK() ? "#1d2024" : "#f3f1ea");
-        map.setPaintProperty("base-fill", "fill-color", fill.slice(0, -1).concat([NODATA_C()]));
-        map.setPaintProperty("base-line", "line-color", MAPLINE());
-        map.setPaintProperty("hs-line", "line-color", MAPLINE());
+        ["lo", "base", "hs"].forEach(function (s) {
+          if (!map.getLayer(s + "-fill")) return;
+          map.setPaintProperty(s + "-fill", "fill-color", fill.slice(0, -1).concat([NODATA_C()]));
+          map.setPaintProperty(s + "-line", "line-color", MAPLINE());
+        });
         map.setPaintProperty("state-line", "line-color", MAPDARK() ? "#cdc8be" : "#474d55");
-        map.setPaintProperty("hover", "line-color", MAPDARK() ? "#ffffff" : "#1d2126");
+        ["hover", "hover-lo"].forEach(function (h) { if (map.getLayer(h)) map.setPaintProperty(h, "line-color", MAPDARK() ? "#ffffff" : "#1d2126"); });
       });
-      map.once("idle", paint);
+      paint();
       sel.addEventListener("change", paint);
       hs.addEventListener("change", function () {
         var on = hs.checked;
+        if (on) addHS();
         map.setLayoutProperty("hs-fill", "visibility", on ? "visible" : "none");
         map.setLayoutProperty("hs-line", "visibility", on ? "visible" : "none");
         live.textContent = on ? "High school districts are shown on top." : "High school districts are hidden.";
@@ -193,13 +223,13 @@
     function measure() { return DATA.measures.filter(function (m) { return m.key === sel.value; })[0]; }
     function classOf(v, br) { if (v == null) return -1; var c = 0; for (var k = 0; k < br.length; k++) if (v > br[k]) c++; return Math.min(c, 4); }
     function paint() {
-      if (!DATA || !map.getSource("base")) return;
+      if (!DATA || !map.getSource("lo")) return;
       var m = measure(), mi = DATA.measures.indexOf(m), br = m.breaks;
-      DATA.ids.forEach(function (id, i) {
+      states = DATA.ids.map(function (id, i) {
         var code = DATA.codes[i].charAt(mi), v = code === "0" || code === "1" ? DATA.values[i][mi] : null;
-        var st = {c: classOf(v, br)};
-        try { map.setFeatureState({source: "base", id: id}, st); map.setFeatureState({source: "hs", id: id}, st); } catch (e) { /* no shape */ }
+        return classOf(v, br);
       });
+      ["lo", "base", "hs"].forEach(applyStates);
       var labels = [], lo = null;
       if (br[0] === 0) { labels.push("0"); for (var k = 1; k <= br.length; k++) labels.push(k < br.length ? "Above " + (k === 1 ? "0" : fmt(br[k - 1], m.unit)) + " to " + fmt(br[k], m.unit) : "Above " + fmt(br[k - 1], m.unit)); }
       else { for (var j = 0; j <= br.length; j++) labels.push(j === 0 ? fmt(br[0], m.unit) + " or less" : j < br.length ? "Above " + fmt(br[j - 1], m.unit) + " to " + fmt(br[j], m.unit) : "Above " + fmt(br[j - 1], m.unit)); }
@@ -216,21 +246,24 @@
       return "<strong>" + esc(DATA.names[i][0]) + "</strong>" + esc(m.short) + ": " + esc(cellText(i, m)) +
         (link ? "<br><a href=\"" + BASE + "district/" + id + "/\">Open district profile</a>" : "");
     }
-    ["base-fill", "hs-fill"].forEach(function (layer) {
+    function hoverOn(layer) {
       map.on("mousemove", layer, function (e) {
         var f = e.features && e.features[0]; if (!f) return;
         map.getCanvas().style.cursor = "pointer";
         var h = popupHTML(f.properties.id, false); if (!h) return;
         popup.setLngLat(e.lngLat).setHTML(h).addTo(map);
-        map.setFilter("hover", ["==", ["get", "id"], f.properties.id]);
+        ["hover", "hover-lo"].forEach(function (x) { if (map.getLayer(x)) map.setFilter(x, ["==", ["get", "id"], f.properties.id]); });
       });
-      map.on("mouseleave", layer, function () { map.getCanvas().style.cursor = ""; popup.remove(); map.setFilter("hover", ["==", ["get", "id"], ""]); });
+      map.on("mouseleave", layer, function () {
+        map.getCanvas().style.cursor = ""; popup.remove();
+        ["hover", "hover-lo"].forEach(function (x) { if (map.getLayer(x)) map.setFilter(x, ["==", ["get", "id"], ""]); });
+      });
       map.on("click", layer, function (e) {
         var f = e.features && e.features[0]; if (!f) return;
         var h = popupHTML(f.properties.id, true); if (!h) return;
         new maplibregl.Popup({offset: 8}).setLngLat(e.lngLat).setHTML(h).addTo(map);
       });
-    });
+    }
   }
   function zoomState(map, fips) {
     if (!fips) { map.flyTo({center: [-96, 38.5], zoom: 3.3}); return; }
