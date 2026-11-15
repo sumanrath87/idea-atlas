@@ -349,7 +349,7 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
     es_cd["cats"] = [[CAT_ES.get(a, a), b] for a, b in cd.get("cats", [])]
     data = json.dumps(es_cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{data}</script>' + body
-    return page(f"{name}, {state}", body,
+    return page(f"{name}, {state}", body, seo_title=f"{name}, {state}: datos de educación especial",
                 desc=f"Datos de educación especial de {name}, {state}, en palabras sencillas: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina, fondos y pobreza infantil.",
                 path=f"{BASE}es/distrito/{r.leaid}/", scripts=("atlas.js",), lang="es", alt=en,
                 crumbs=[("IDEA Atlas", f"{BASE}es/"), (state, STATE_PATHS.get(r.state, f"{BASE}es/estados/"))])

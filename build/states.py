@@ -336,7 +336,7 @@ def _page_en(name, path, alt, cd, ind_rows, drows, sm, *, BASE, page, fmt, figs,
     body = f'<script type="application/json" id="chart-data">{cdj}</script>' + body
     desc = (f"Special education in {name}: students with IEPs, where they learn, graduation, discipline, federal indicator results, "
             f"and every school district, from public federal data.")
-    return page(f"Special education in {name}", body, desc=desc[:300], path=BASE + path, scripts=("atlas.js",),
+    return page(f"Special education in {name}", body, seo_title=f"{name} Special Education Data by School District", desc=desc[:300], path=BASE + path, scripts=("atlas.js",),
                 crumbs=[("IDEA Atlas", BASE), ("States", BASE + "states/")], alt=BASE + alt)
 
 

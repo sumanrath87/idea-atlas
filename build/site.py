@@ -249,7 +249,7 @@ _SEC_H2 = re.compile(r"<section\b[^>]*>\s*<h2\b[^>]*\bid=")
 
 
 def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...] = (),
-         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "", og_image: str = "assets/og.png") -> str:
+         styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "", og_image: str = "assets/og.png", seo_title: str | None = None) -> str:
     """Page frame. alt is the same page in the other language, if there is one."""
     u = UI[lang]
     robots = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""
@@ -274,7 +274,8 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
         return f'<li><a href="{url}"{hl}>{E(text)}</a></li>'
     foot_cols = "".join(f'<div class="foot-col"><h2 class="foot-h">{E(h)}</h2><ul>' + "".join(_fl(a, t) for a, t in items) + "</ul></div>"
                         for h, items in u["foot_cols"])
-    og_text = "" if "og:title" in extra_head else (f'<meta property="og:title" content="{E(title)}">'
+    st = seo_title or title
+    og_text = "" if "og:title" in extra_head else (f'<meta property="og:title" content="{E(st)}">'
                                                    f'<meta property="og:description" content="{E(desc)}">')
     counter = (f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
                if GOATCOUNTER and not PREVIEW else "")
@@ -286,7 +287,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="{BASE}assets/icon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="{BASE}assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="{BASE}assets/icon-180.png"><meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#16181b" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
-<title>{E(title)} | {u["suffix"]}</title>
+<title>{E(st)} | {u["suffix"]}</title>
 <meta name="description" content="{E(desc)}">
 {robots}
 <link rel="canonical" href="{ATLAS_ORIGIN}{path}">{alt_head}
@@ -1326,7 +1327,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     chart_json = json.dumps(cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
     desc = f"Special education data for {name}, {st_full}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
-    return page(f"{name}, {st_full}", body, desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
+    return page(f"{name}, {st_full}", body, seo_title=f"{name}, {st_full}: Special Education Data", desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
                 crumbs=[("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)])
 
 
