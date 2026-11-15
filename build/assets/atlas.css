@@ -182,6 +182,26 @@ dl.facts dd { margin: 0; font-weight: 600; color: var(--ink); font-variant-numer
   font-size: .92rem; min-height: 2.5rem; padding: .4rem .95rem; border-radius: 999px; }
 .page-tools button:hover, .page-tools .button:hover { background: var(--wash); color: var(--ink); border-color: #d6cfbf; }
 
+/* share: a quiet pill beside Print, and under search results */
+.share { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+#results .share { margin: .2rem 0 .4rem; }
+button.share-btn, .page-tools button.share-btn { display: inline-flex; align-items: center; gap: .45rem; background: transparent; color: var(--ink-2);
+  border: 1px solid var(--rule); font-weight: 500; font-size: .92rem; min-height: 2.5rem; padding: .4rem .95rem; border-radius: 999px; cursor: pointer; }
+button.share-btn:hover { background: var(--wash); color: var(--ink); border-color: #d6cfbf; }
+button.share-btn svg { fill: none; stroke: currentColor; stroke-width: 1.6; }
+button.share-btn svg circle { fill: currentColor; stroke: none; }
+.share-menu { position: absolute; top: calc(100% + .35rem); left: 0; z-index: 30; min-width: 12rem; display: flex; flex-direction: column;
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: .3rem; box-shadow: 0 6px 24px rgba(20, 22, 26, .12); }
+.share-menu[hidden] { display: none; }
+.share-menu a, .share-menu button, .page-tools .share-menu button { all: unset; box-sizing: border-box; display: block; padding: .55rem .8rem; border-radius: 6px;
+  color: var(--ink); font-size: .95rem; cursor: pointer; text-decoration: none; }
+.share-menu a:hover, .share-menu button:hover, .share-menu a:focus-visible, .share-menu button:focus-visible { background: var(--wash); }
+.share-menu a:focus-visible, .share-menu button:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.share-status { margin: 0; font-size: .9rem; color: var(--muted); }
+.share-status:empty { display: none; }
+@media (forced-colors: active) { .share-menu { border: 1px solid CanvasText; } button.share-btn svg circle { fill: CanvasText; } }
+@media print { .share { display: none !important; } }
+
 /* plain words: the voice of the atlas, set like a letter */
 ul.plain, .glance ul { list-style: none; padding: 0; margin: .3rem 0 .9rem; max-width: var(--measure); }
 ul.plain li, .glance li { font-family: var(--serif); font-size: 1.22rem; line-height: 1.55; color: var(--ink); margin: 0 0 .75rem; text-wrap: pretty; }

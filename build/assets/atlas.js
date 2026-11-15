@@ -48,6 +48,64 @@
   function stName(code) { var n = ST_NAME[code] || code; return ES ? (ST_ES[n] || n) : n; }
   function place(i) { var n = DATA.names[i]; return (n[2] ? n[2] + ", " : "") + stName(n[1]); }
 
+  /* ------------------------------------------------------------ share */
+  // One share control: the phone's own share sheet where there is one, otherwise a small menu.
+  function shareButton(getUrl, getTitle, label) {
+    var wrap = document.createElement("span"); wrap.className = "share";
+    var b = document.createElement("button"); b.type = "button"; b.className = "share-btn";
+    b.setAttribute("aria-haspopup", "true"); b.setAttribute("aria-expanded", "false");
+    b.innerHTML = '<svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><circle cx="15" cy="4.5" r="2.5"/><circle cx="5" cy="10" r="2.5"/><circle cx="15" cy="15.5" r="2.5"/><path d="M7.2 8.9l5.6-3.2M7.2 11.1l5.6 3.2"/></svg><span>' + esc(label) + "</span>";
+    var menu = document.createElement("div"); menu.className = "share-menu"; menu.hidden = true;
+    var st = document.createElement("p"); st.className = "share-status"; st.setAttribute("aria-live", "polite");
+    wrap.appendChild(b); wrap.appendChild(menu); wrap.appendChild(st);
+    function close(focus) { if (menu.hidden) return; menu.hidden = true; b.setAttribute("aria-expanded", "false"); if (focus) b.focus(); }
+    function copy(url) {
+      var done = function () { st.textContent = tr("Link copied. Paste it anywhere to share.", "Enlace copiado. Péguelo donde quiera compartirlo."); setTimeout(function () { st.textContent = ""; }, 4000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { window.prompt(tr("Copy this link:", "Copie este enlace:"), url); });
+      else window.prompt(tr("Copy this link:", "Copie este enlace:"), url);
+    }
+    b.addEventListener("click", function () {
+      var url = getUrl(), title = getTitle();
+      if (navigator.share && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+        navigator.share({ title: title, text: title, url: url }).catch(function () {});
+        return;
+      }
+      if (!menu.hidden) { close(); return; }
+      var u = encodeURIComponent(url), t = encodeURIComponent(title);
+      var links = [
+        [tr("Email", "Correo electrónico"), "mailto:?subject=" + t + "&body=" + encodeURIComponent(title + "\n\n" + url)],
+        ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+        ["LinkedIn", "https://www.linkedin.com/sharing/share-offsite/?url=" + u],
+        ["Bluesky", "https://bsky.app/intent/compose?text=" + encodeURIComponent(title + " " + url)],
+        ["X", "https://x.com/intent/post?text=" + t + "&url=" + u]
+      ];
+      menu.innerHTML = '<button type="button" data-copy>' + tr("Copy link", "Copiar enlace") + "</button>" +
+        links.map(function (l) { return '<a href="' + esc(l[1]) + '"' + (l[1].indexOf("mailto:") === 0 ? "" : ' target="_blank" rel="noopener"') + ">" + esc(l[0]) + "</a>"; }).join("");
+      menu.querySelector("[data-copy]").addEventListener("click", function () { copy(url); close(true); });
+      Array.prototype.forEach.call(menu.querySelectorAll("a"), function (a) { a.addEventListener("click", function () { close(); }); });
+      menu.hidden = false; b.setAttribute("aria-expanded", "true");
+      menu.querySelector("[data-copy]").focus();
+    });
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { close(true); return; }
+      if (menu.hidden || (e.key !== "ArrowDown" && e.key !== "ArrowUp")) return;
+      var items = Array.prototype.slice.call(menu.querySelectorAll("button, a")), i = items.indexOf(document.activeElement);
+      e.preventDefault(); items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+    });
+    document.addEventListener("click", function (e) { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener("focusout", function (e) { if (e.relatedTarget && !wrap.contains(e.relatedTarget)) close(); });
+    return wrap;
+  }
+  // District, state, and comparison pages: a share button beside Print.
+  function initShare() {
+    var bar = document.querySelector("main .page-tools") || document.querySelector(".page-tools"); if (!bar || bar.querySelector(".share")) return;
+    var h1 = document.querySelector("h1");
+    bar.appendChild(shareButton(function () { return location.href.split("#")[0]; }, function () {
+      var n = h1 ? h1.textContent.trim() : document.title;
+      return tr("Special education data for " + n + " (IDEA Atlas)", "Datos de educación especial de " + n + " (IDEA Atlas)");
+    }, tr("Share this page", "Compartir esta página")));
+  }
+
   /* ------------------------------------------------------------ search */
   function initSearch() {
     var form = document.getElementById("search-form"); if (!form) return;
@@ -55,6 +113,11 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var text = q.value.trim();
+      if (text && window.history && history.replaceState) {
+        var sp = new URLSearchParams(location.search); sp.delete("zip"); sp.delete("q");
+        sp.set(/^\d{5}$/.test(text) ? "zip" : "q", text);
+        history.replaceState(null, "", location.pathname + "?" + sp.toString() + "#find-h");
+      }
       if (!text) { out.innerHTML = tr("<p>Please type a ZIP code or a district name.</p>", "<p>Escriba un código postal o el nombre de un distrito.</p>"); return; }
       out.innerHTML = tr("<p>Searching…</p>", "<p>Buscando…</p>");
       load().then(function () {
@@ -62,6 +125,18 @@
         nameSearch(text, out);
       }).catch(function () { out.innerHTML = tr("<p>Sorry, the data could not be loaded. Please try again.</p>", "<p>No se pudieron cargar los datos. Inténtelo de nuevo.</p>"); });
     });
+    // A shared link such as ?zip=07042 opens with that search already done.
+    var p0 = new URLSearchParams(location.search), start = (p0.get("zip") || p0.get("q") || "").trim().slice(0, 80);
+    if (start) {
+      q.value = start;
+      if (form.requestSubmit) form.requestSubmit(); else form.dispatchEvent(new Event("submit", { cancelable: true }));
+      var sec = document.getElementById("find-h"); if (sec) sec.scrollIntoView();
+    }
+  }
+  // Under a list of results: share a link that opens this same search.
+  function addResultsShare(out, title) {
+    out.appendChild(shareButton(function () { return location.href.split("#")[0]; }, function () { return title + " (IDEA Atlas)"; },
+      tr("Share these results", "Compartir estos resultados")));
   }
   function listHTML(items, intro) {
     return "<h3>" + esc(intro) + "</h3><ul>" + items.map(function (it) {
@@ -82,6 +157,7 @@
       });
       out.innerHTML = listHTML(items, items.length === 1 ? tr("1 district serves ZIP code " + zip, "1 distrito atiende el código postal " + zip) :
         tr(items.length + " districts serve parts of ZIP code " + zip, items.length + " distritos atienden partes del código postal " + zip));
+      addResultsShare(out, tr("Special education data for the school districts serving ZIP code " + zip, "Datos de educación especial de los distritos escolares del código postal " + zip));
     });
   }
   function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim(); }
@@ -136,6 +212,7 @@
     var shown = hits.slice(0, 25);
     out.innerHTML = listHTML(shown, hits.length > 25 ? tr(hits.length + " districts matched; showing the 25 largest", hits.length + " distritos coinciden; se muestran los 25 más grandes") :
       (hits.length === 1 ? tr("1 district matched", "1 distrito coincide") : tr(hits.length + " districts matched", hits.length + " distritos coinciden")));
+    addResultsShare(out, tr("Special education data for school districts matching “" + text + "”", "Datos de educación especial de los distritos que coinciden con «" + text + "»"));
   }
 
   /* ------------------------------------------------------------ map */
@@ -1978,5 +2055,5 @@
       });
     });
   }
-  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initDisplay(); initOnPage(); initFilters(); initTools(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initQA(); initQAHelp(); initLike(); });
+  document.addEventListener("DOMContentLoaded", function () { initShared(); initEmbed(); initMenu(); initDisplay(); initOnPage(); initFilters(); initTools(); initShare(); initTables(); initSearch(); initMap(); initTable(); initCompare(); initCharts(); initHistory(); initTimeline(); initHistoryCharts(); initHundred(); initAsk(); initQA(); initQAHelp(); initLike(); });
 })();
