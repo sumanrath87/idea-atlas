@@ -50,7 +50,7 @@
 
   /* ------------------------------------------------------------ share */
   // One share control: the phone's own share sheet where there is one, otherwise a small menu.
-  function shareButton(getUrl, getTitle, label) {
+  function shareButton(getUrl, getTitle, label, getText) {
     var wrap = document.createElement("span"); wrap.className = "share";
     var b = document.createElement("button"); b.type = "button"; b.className = "share-btn";
     b.setAttribute("aria-haspopup", "true"); b.setAttribute("aria-expanded", "false");
@@ -59,29 +59,31 @@
     var st = document.createElement("p"); st.className = "share-status"; st.setAttribute("aria-live", "polite");
     wrap.appendChild(b); wrap.appendChild(menu); wrap.appendChild(st);
     function close(focus) { if (menu.hidden) return; menu.hidden = true; b.setAttribute("aria-expanded", "false"); if (focus) b.focus(); }
-    function copy(url) {
-      var done = function () { st.textContent = tr("Link copied. Paste it anywhere to share.", "Enlace copiado. Péguelo donde quiera compartirlo."); setTimeout(function () { st.textContent = ""; }, 4000); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { window.prompt(tr("Copy this link:", "Copie este enlace:"), url); });
-      else window.prompt(tr("Copy this link:", "Copie este enlace:"), url);
+    function copy(val) {
+      var done = function () { st.textContent = tr("Copied. Paste it anywhere to share.", "Copiado. Péguelo donde quiera compartirlo."); setTimeout(function () { st.textContent = ""; }, 4000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(val).then(done, function () { window.prompt(tr("Copy this:", "Copie esto:"), val); });
+      else window.prompt(tr("Copy this:", "Copie esto:"), val);
     }
+    function clip(s, n) { return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s; }
     b.addEventListener("click", function () {
-      var url = getUrl(), title = getTitle();
+      var url = getUrl(), title = getTitle(), text = (getText && getText()) || title;
       if (navigator.share && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
-        navigator.share({ title: title, text: title, url: url }).catch(function () {});
+        navigator.share({ title: title, text: clip(text, 240), url: url }).catch(function () {});
         return;
       }
       if (!menu.hidden) { close(); return; }
       var u = encodeURIComponent(url), t = encodeURIComponent(title);
       var links = [
-        [tr("Email", "Correo electrónico"), "mailto:?subject=" + t + "&body=" + encodeURIComponent(title + "\n\n" + url)],
-        ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+        [tr("Email", "Correo electrónico"), "mailto:?subject=" + t + "&body=" + encodeURIComponent(text + "\n\n" + url)],
+        ["WhatsApp", "https://wa.me/?text=" + encodeURIComponent(clip(text, 400) + " " + url)],
         ["LinkedIn", "https://www.linkedin.com/sharing/share-offsite/?url=" + u],
-        ["Bluesky", "https://bsky.app/intent/compose?text=" + encodeURIComponent(title + " " + url)],
-        ["X", "https://x.com/intent/post?text=" + t + "&url=" + u]
+        ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + u],
+        ["Bluesky", "https://bsky.app/intent/compose?text=" + encodeURIComponent(clip(text, 270) + " " + url)],
+        ["X", "https://x.com/intent/post?text=" + encodeURIComponent(clip(text, 250)) + "&url=" + u]
       ];
-      menu.innerHTML = '<button type="button" data-copy>' + tr("Copy link", "Copiar enlace") + "</button>" +
+      menu.innerHTML = '<button type="button" data-copy>' + tr("Copy with link", "Copiar con enlace") + "</button>" +
         links.map(function (l) { return '<a href="' + esc(l[1]) + '"' + (l[1].indexOf("mailto:") === 0 ? "" : ' target="_blank" rel="noopener"') + ">" + esc(l[0]) + "</a>"; }).join("");
-      menu.querySelector("[data-copy]").addEventListener("click", function () { copy(url); close(true); });
+      menu.querySelector("[data-copy]").addEventListener("click", function () { copy(text === title ? url : text + "\n" + url); close(true); });
       Array.prototype.forEach.call(menu.querySelectorAll("a"), function (a) { a.addEventListener("click", function () { close(); }); });
       menu.hidden = false; b.setAttribute("aria-expanded", "true");
       menu.querySelector("[data-copy]").focus();
@@ -103,7 +105,10 @@
     bar.appendChild(shareButton(function () { return location.href.split("#")[0]; }, function () {
       var n = h1 ? h1.textContent.trim() : document.title;
       return tr("Special education data for " + n + " (IDEA Atlas)", "Datos de educación especial de " + n + " (IDEA Atlas)");
-    }, tr("Share this page", "Compartir esta página")));
+    }, tr("Share this page", "Compartir esta página"), function () {
+      var d = document.querySelector('meta[name="description"]');
+      return d && d.content ? d.content + tr(" (IDEA Atlas)", " (IDEA Atlas)") : "";
+    }));
   }
 
   /* ------------------------------------------------------------ search */
@@ -136,7 +141,13 @@
   // Under a list of results: share a link that opens this same search.
   function addResultsShare(out, title) {
     out.appendChild(shareButton(function () { return location.href.split("#")[0]; }, function () { return title + " (IDEA Atlas)"; },
-      tr("Share these results", "Compartir estos resultados")));
+      tr("Share these results", "Compartir estos resultados"), function () {
+        var seen = {}, names = [];
+        Array.prototype.forEach.call(out.querySelectorAll('a[href*="/district/"], a[href*="/distrito/"]'), function (a) {
+          var n = a.textContent.trim(); if (n && !seen[n] && names.length < 5) { seen[n] = 1; names.push(n); }
+        });
+        return names.length ? title + ": " + names.join("; ") + (names.length === 5 ? tr(", and more", ", y más") : "") + ". (IDEA Atlas)" : "";
+      }));
   }
   function listHTML(items, intro) {
     return "<h3>" + esc(intro) + "</h3><ul>" + items.map(function (it) {

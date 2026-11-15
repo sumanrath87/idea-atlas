@@ -639,6 +639,8 @@ def main() -> int:
         (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {ATLAS_ORIGIN}{BASE}sitemap.xml\n")
         # Google Search Console ownership file (keep, or verification lapses)
         (OUT / "googlef3b5977bf63b92cf.html").write_text("google-site-verification: googlef3b5977bf63b92cf.html")
+        # IndexNow key (Bing and other IndexNow engines). The publish workflow submits the sitemaps with it after each deploy.
+        (OUT / "062373af13cbbbdba391371504b0adc7.txt").write_text("062373af13cbbbdba391371504b0adc7")
     domain = ATLAS_ORIGIN.split("://", 1)[-1].rstrip("/")
     if BASE == "/" and domain != "www.sumanrath.org":
         write("CNAME", domain + "\n")       # custom address for GitHub Pages
@@ -1327,6 +1329,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     chart_json = json.dumps(cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{chart_json}</script>' + body
     desc = f"Special education data for {name}, {st_full}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
+    from measures import data_desc, STATUS as _ST
+    desc = data_desc(r, name, st_full, "en", fmt, _ST, pd) or desc
     return page(f"{name}, {st_full}", body, seo_title=f"{name}, {st_full}: Special Education Data", desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
                 crumbs=[("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)])
 

@@ -178,3 +178,38 @@ PLAIN = {
     "idea_federal_per_student": "It received about {v} in federal IDEA money for each student with an IEP.",
     "child_poverty": "About {v} of every 100 children ages 5 to 17 in the district's area live in poverty.",
 }
+
+
+def data_desc(r, name: str, state: str, lang: str, fmt, STATUS, pd) -> str:
+    """A one-line page description built from the district's own reported figures, for search results and share cards.
+    Uses only figures reported in full or as a minimum; returns "" when there are too few."""
+    def val(k):
+        v = r[k] if k in r else None
+        code = STATUS.get(str(r[k + "_status"]) if (k + "_status") in r else "", ("5", ""))[0]
+        if code not in ("0", "1") or v is None or pd.isna(v):
+            return None
+        s = fmt(v, "per100")
+        if s.endswith(".0"):
+            s = s[:-2]
+        return ("at least " + s if lang == "en" else "al menos " + s) if code == "1" else s
+    if lang == "en":
+        parts = [
+            ("id_rate", "{v} of every 100 students have an IEP"),
+            ("env_80plus", "{v} of 100 students with IEPs spend 80% or more of the day in general classes"),
+            ("grad_regular", "{v} of 100 leaving school earned a regular diploma"),
+            ("oos_idea", "{v} of 100 were suspended out of school"),
+        ]
+        tail = " Compare with the state, plus Section 504, funding and child poverty."
+    else:
+        parts = [
+            ("id_rate", "{v} de cada 100 estudiantes tienen un IEP"),
+            ("env_80plus", "{v} de cada 100 estudiantes con IEP pasan el 80 % o más del día en clases generales"),
+            ("grad_regular", "{v} de cada 100 que dejaron la escuela obtuvieron un diploma regular"),
+            ("oos_idea", "{v} de cada 100 fueron suspendidos fuera de la escuela"),
+        ]
+        tail = " Compare con el estado, además de la Sección 504, los fondos y la pobreza infantil."
+    got = [t.format(v=val(k)) for k, t in parts if val(k)]
+    if len(got) < 2:
+        return ""
+    out = f"{name}, {state}: " + "; ".join(got) + "."
+    return out + tail if len(out + tail) <= 300 else out
