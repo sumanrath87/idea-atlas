@@ -35,6 +35,9 @@ def display(raw: str) -> str:
     return FIX.get(t, t)
 
 
+COUNTY_SECTION = lambda code, lang: ""   # set by site.py: the "Districts by county" list
+
+
 def slug(name: str) -> str:
     a = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "-", a.lower()).strip("-")
@@ -291,7 +294,7 @@ def _page_en(name, path, alt, cd, ind_rows, drows, sm, *, BASE, page, fmt, figs,
 </section>""" if det else ""
 
     note_html = f'<p class="note">{E(note)}</p>' if note else ""
-    dl = f"""
+    dl = COUNTY_SECTION(code, "en") + f"""
 <section aria-labelledby="s-all">
   <h2 id="s-all">Every district in {E(name)}</h2>
   <p>{n:,} districts and other local education agencies, in alphabetical order. Open a district for its full page, or <a href="{BASE}table/?state={code}">sort and filter them in the table</a>.</p>
@@ -477,7 +480,7 @@ def _page_es(name, path, alt, cd, ind_rows, drows, sm, *, BASE, page, fmt, es_si
 </section>""" if det_es else ""
 
     note_html = f'<p class="note">{E(note)}</p>' if note else ""
-    dl = f"""
+    dl = COUNTY_SECTION(code, "es") + f"""
 <section aria-labelledby="s-all">
   <h2 id="s-all">Todos los distritos de {E(name)}</h2>
   <p>{n:,} distritos y otras agencias educativas locales, en orden alfabético.</p>

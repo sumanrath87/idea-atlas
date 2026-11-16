@@ -31,13 +31,19 @@ jobs:
   build:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pandas numpy markdown pillow fonttools brotli
+      - run: pip install pandas numpy markdown pillow fonttools brotli zipcodes
+      # District share images are cached by their contents, so a rebuild only draws the ones whose figures changed.
+      - uses: actions/cache@v4
+        with:
+          path: .ogcache
+          key: og-${{ hashFiles('build/og_district.py', 'build/enrich.py', 'build/extra_pages.py', 'clean/output/districts.csv') }}
+          restore-keys: og-
       - name: Build the site
         env:
           ATLAS_BASE: /
@@ -50,7 +56,9 @@ jobs:
           N=$(ls site/district | wc -l); echo "district pages: $N"; test "$N" -gt 15000
           # GitHub Pages sites should stay under 1 GB. Warn well before that.
           MB=$(du -sm --apparent-size site | cut -f1); echo "site size: ${MB} MB"
-          if [ "$MB" -gt 950 ]; then echo "::warning::The atlas is ${MB} MB, close to the 1 GB GitHub Pages limit."; fi
+          # GitHub checks the compressed upload against its 1 GB limit, so estimate that.
+          GZ=$(tar -cf - -C site . | gzip -1 | wc -c); GZ=$((GZ/1048576)); echo "compressed upload about ${GZ} MB"
+          if [ "$GZ" -gt 900 ]; then echo "::warning::The compressed atlas is ${GZ} MB, close to the 1 GB GitHub Pages limit."; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
@@ -98,7 +106,7 @@ jobs:
           HOST=atlas.sumanrath.org
           sleep 60
           test "$(curl -fsS https://$HOST/$KEY.txt)" = "$KEY" || { echo "::warning::IndexNow key file not live yet"; exit 0; }
-          for SM in sitemap-pages.xml sitemap-districts.xml sitemap-distritos.xml; do
+          for SM in sitemap-pages.xml sitemap-districts.xml sitemap-distritos.xml sitemap-counties.xml; do
             curl -fsS "https://$HOST/$SM" | grep -o '<loc>[^<]*</loc>' | sed 's#</\?loc>##g' >> urls.txt
           done
           echo "URLs: $(wc -l < urls.txt)"

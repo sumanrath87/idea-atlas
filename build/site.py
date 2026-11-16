@@ -561,6 +561,11 @@ def main() -> int:
     by_id = d.set_index("leaid")
     dpath = ROOT / "clean" / "output" / "detail.csv.gz"
     detail = pd.read_csv(dpath, dtype=str, index_col=0, keep_default_na=False) if dpath.exists() else pd.DataFrame()
+    import enrich, brief
+    brief.TRENDS = TRENDS
+    enrich.setup(d, BASE=BASE, ATLAS_ORIGIN=ATLAS_ORIGIN, SITE=SITE, STATE_NAMES=STATE_NAMES, fmt=fmt, STATUS=STATUS, pd=pd, VERSION=VERSION, DOI=DOI,
+                 states_mod=states_mod, es_state=lambda n: es_site.st_es(n))
+    states_mod.COUNTY_SECTION = enrich.state_counties_html
     n = 0
     fast = os.environ.get("ATLAS_FAST")   # testing only: write a few hundred district pages
     for _, r in (d[d.state.isin(["NJ", "AL"])] if fast else d).iterrows():
@@ -569,6 +574,14 @@ def main() -> int:
         write(f"es/distrito/{r.leaid}/index.html", es_site.district_es(r, LAST_CD, st_med, BASE=BASE, page=page, fmt=fmt, STATUS=STATUS, pd=pd,
                                                                        VERSION=VERSION, ATLAS_ORIGIN=ATLAS_ORIGIN))
         n += 1
+    import site_og
+    n_og, n_new = site_og.make_all(OUT, ROOT / ".ogcache")
+    print(f"Share images: {n_og:,} ({n_new:,} newly drawn)")
+    county_ids = enrich.county_keys()
+    for ck in county_ids:
+        write(enrich.county_path(ck, "en") + "index.html", enrich.county_page(ck, "en", page=page))
+        write(enrich.county_path(ck, "es") + "index.html", enrich.county_page(ck, "es", page=page))
+    print(f"County pages: {len(county_ids):,} in each language")
     (OUT / "data" / "labels.json").write_text(json.dumps(list(LABELS), ensure_ascii=False, separators=(",", ":")))
     hist_states = json.loads((Path(__file__).resolve().parent / "history" / "states.json").read_text())
     smp = Path(__file__).resolve().parent / "history" / "state_measures.json"
@@ -634,8 +647,9 @@ def main() -> int:
         (OUT / "sitemap-pages.xml").write_text(sm(stat + state_paths + guide_paths))
         (OUT / "sitemap-districts.xml").write_text(sm([f"district/{i}/" for i in ids]))
         (OUT / "sitemap-distritos.xml").write_text(sm([f"es/distrito/{i}/" for i in ids]))
+        (OUT / "sitemap-counties.xml").write_text(sm([enrich.county_path(k, l) for k in enrich.county_keys() for l in ("en", "es")]))
         (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-            + "".join(f"<sitemap><loc>{ATLAS_ORIGIN}{BASE}{f}</loc></sitemap>\n" for f in ("sitemap-pages.xml", "sitemap-districts.xml", "sitemap-distritos.xml")) + "</sitemapindex>\n")
+            + "".join(f"<sitemap><loc>{ATLAS_ORIGIN}{BASE}{f}</loc></sitemap>\n" for f in ("sitemap-pages.xml", "sitemap-districts.xml", "sitemap-distritos.xml", "sitemap-counties.xml")) + "</sitemapindex>\n")
         (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {ATLAS_ORIGIN}{BASE}sitemap.xml\n")
         # Google Search Console ownership file (keep, or verification lapses)
         (OUT / "googlef3b5977bf63b92cf.html").write_text("google-site-verification: googlef3b5977bf63b92cf.html")
@@ -1171,7 +1185,9 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
         glance.append(f"In 2023–24, {fmt(r.oos_idea, 'per100')} of every 100 students with IEPs received an out-of-school suspension, "
                       f"compared with {fmt(r.oos_nodis, 'per100')} of every 100 students without disabilities.")
     from brief import brief_html
+    import enrich
     brief_ = brief_html(r, name, st_full, st_med, "en", fmt, STATUS, pd)
+    faq_ = enrich.faq_items(r, name, st_full, "en", st_med)
     glance_html = ("<section aria-labelledby=\"g-h\" class=\"glance\"><h2 id=\"g-h\">At a glance</h2><ul>"
                    + "".join(f"<li>{figs(x)}</li>" for x in glance) + "</ul>" + explain("iep", "per100") + "</section>") if glance else ""
     howto = ('<p class="howto">Each topic below starts in plain words. Open <strong>The numbers</strong> to see this district beside the state and the nation, '
@@ -1279,6 +1295,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     body = f"""
 <h1>{E(name)}</h1>
 <dl class="facts">{''.join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in meta)}</dl>
+{enrich.byline_html("en")}
 <div class="page-tools"><button type="button" data-print>Print this page</button>
   <button type="button" data-expand>Show all detail</button>
   <a class="button secondary" href="{BASE}compare/?ids={r.leaid}">Compare with other districts</a></div>
@@ -1304,12 +1321,14 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
   <p>Find districts in {E(st_name)} with a similar number of students and a similar level of child poverty, then compare them side by side.</p>
   <button type="button" class="secondary" data-like>Find districts like this one</button>
   <div class="like-out" aria-live="polite"></div>
+  {enrich.links_html(r, "en")}
 </section>
 <section aria-labelledby="s-rpt" class="rpt-cta">
   <h2 id="s-rpt">Make a printable report</h2>
   <p>Answer a few questions and get a report about this district written for a family, a school leader, or a researcher, with charts, ready to print or save as a PDF.</p>
   <p><a class="button" href="{BASE}report/?id={r.leaid}">Make a report for this district</a></p>
 </section>
+{enrich.faq_html(faq_, "en")}
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Questions you could ask</h2>
   <div data-shared="ask"></div>
@@ -1334,8 +1353,16 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     desc = f"Special education data for {name}, {st_full}: students with IEPs, settings, graduation, discipline, Section 504, funding, and child poverty."
     from measures import data_desc, STATUS as _ST
     desc = data_desc(r, name, st_full, "en", fmt, _ST, pd) or desc
+    crumbs = [("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)]
+    ck = enrich.COUNTY.get(r.leaid)
+    if ck and enrich.has_county_page(ck):
+        crumbs.append((ck[1], BASE + enrich.county_path(ck, "en")))
+    job = enrich.og_job(r, name, st_full, "en")
+    if job:
+        __import__("site_og").JOBS.append((enrich.og_rel(r.leaid, "en"), job))
     return page(f"{name}, {st_full}", body, seo_title=f"{name}, {st_full}: Special Education Data", desc=desc, path=f"{BASE}district/{r.leaid}/", scripts=("atlas.js",), alt=f"{BASE}es/distrito/{r.leaid}/",
-                crumbs=[("IDEA Atlas", BASE), (STATE_NAMES[0].en[r.state], BASE + STATE_NAMES[0].path(r.state))] if STATE_NAMES[0] else [("IDEA Atlas", BASE)])
+                crumbs=crumbs, extra_head=enrich.district_ld(r, name, st_full, "en", desc, faq_),
+                og_image=enrich.og_rel(r.leaid, "en") if job else "assets/og.png")
 
 
 def methods_page() -> str:

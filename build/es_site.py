@@ -258,7 +258,9 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
                       f"comparado con {fmt(r.oos_nodis, 'per100')} de cada 100 estudiantes sin discapacidades.")
     glance = [g.replace(", o .", ".") for g in glance]
     from brief import brief_html
+    import enrich
     brief_ = brief_html(r, name, state, st_med, "es", fmt, STATUS, pd)
+    faq_ = enrich.faq_items(r, name, state, "es", st_med)
     g_html = ('<section aria-labelledby="g-h" class="glance"><h2 id="g-h">De un vistazo</h2><ul>' + "".join(f"<li>{figs_es(x)}</li>" for x in glance)
               + "</ul>" + explain_es(BASE, "iep", "per100") + "</section>") if glance else ""
     rng = lambda ks: chart_es("range", f"Dónde se ubica este distrito entre los distritos de {state}", ",".join(ks))
@@ -293,6 +295,7 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
     body = f"""
 <h1>{E(name)}</h1>
 <dl class="facts">{''.join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in facts)}</dl>
+{enrich.byline_html("es")}
 <div class="page-tools"><button type="button" data-print>Imprimir esta página</button>
   <a class="button secondary" href="{en}" hreflang="en">Ver todas las cifras y tablas (en inglés)</a></div>
 {parent_note}{nice_kids}
@@ -328,12 +331,14 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
   <p>Busque distritos de {E(state)} con un número parecido de estudiantes y un nivel parecido de pobreza infantil, y compárelos uno al lado del otro.</p>
   <button type="button" class="secondary" data-like>Buscar distritos parecidos</button>
   <div class="like-out" aria-live="polite"></div>
+  {enrich.links_html(r, "es")}
 </section>
 <section aria-labelledby="s-rpt" class="rpt-cta">
   <h2 id="s-rpt">Crear un informe para imprimir</h2>
   <p>Responda unas preguntas y reciba un informe sobre este distrito escrito para una familia, un líder escolar o un investigador, con gráficos, listo para imprimir o guardar como PDF.</p>
   <p><a class="button" href="{BASE}es/informe/?id={r.leaid}">Crear un informe de este distrito</a></p>
 </section>
+{enrich.faq_html(faq_, "es")}
 <section aria-labelledby="s-ask">
   <h2 id="s-ask">Preguntas que puede hacer</h2>
   <div data-shared="ask"></div>
@@ -352,10 +357,18 @@ Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">p
     es_cd["cats"] = [[CAT_ES.get(a, a), b] for a, b in cd.get("cats", [])]
     data = json.dumps(es_cd, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     body = f'<script type="application/json" id="chart-data">{data}</script>' + body
-    return page(f"{name}, {state}", body, seo_title=f"{name}, {state}: datos de educación especial",
-                desc=__import__("measures").data_desc(r, name, state, "es", fmt, STATUS, pd) or f"Datos de educación especial de {name}, {state}, en palabras sencillas: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina, fondos y pobreza infantil.",
-                path=f"{BASE}es/distrito/{r.leaid}/", scripts=("atlas.js",), lang="es", alt=en,
-                crumbs=[("IDEA Atlas", f"{BASE}es/"), (state, STATE_PATHS.get(r.state, f"{BASE}es/estados/"))])
+    desc = __import__("measures").data_desc(r, name, state, "es", fmt, STATUS, pd) or f"Datos de educación especial de {name}, {state}, en palabras sencillas: estudiantes con IEP, lugares de aprendizaje, graduación, disciplina, fondos y pobreza infantil."
+    crumbs = [("IDEA Atlas", f"{BASE}es/"), (state, STATE_PATHS.get(r.state, f"{BASE}es/estados/"))]
+    ck = enrich.COUNTY.get(r.leaid)
+    if ck and enrich.has_county_page(ck):
+        crumbs.append((ck[1], BASE + enrich.county_path(ck, "es")))
+    job = enrich.og_job(r, name, state, "es")
+    if job:
+        __import__("site_og").JOBS.append((enrich.og_rel(r.leaid, "es"), job))
+    return page(f"{name}, {state}", body, seo_title=f"{name}, {state}: datos de educación especial", desc=desc,
+                path=f"{BASE}es/distrito/{r.leaid}/", scripts=("atlas.js",), lang="es", alt=en, crumbs=crumbs,
+                extra_head=enrich.district_ld(r, name, state, "es", desc, faq_),
+                og_image=enrich.og_rel(r.leaid, "es") if job else "assets/og.png")
 
 
 def home_es(*, BASE, page, n: int) -> str:

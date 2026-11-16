@@ -44,10 +44,31 @@ WORDS = {
            "least": "al menos"},
 }
 ARROW = {"same": "≈", "higher": "↑", "lower": "↓"}
+TRENDS: dict = {}   # set by site.py: {leaid: {"i": {fall year: students with IEPs per 100 enrolled}}}
+
+
+def trend_sentence(r, fmt, pd, lang: str) -> str:
+    """How the share of students with IEPs changed over about ten years, from the same series as the page's chart."""
+    if str(r.get("id_rate_status")) != "ok" or pd.isna(r.id_rate):
+        return ""
+    pts = {int(y): v for y, v in ((TRENDS.get(r.leaid) or {}).get("i") or {}).items() if v is not None}
+    base = 2014 if 2014 in pts else min((y for y in pts if 2010 <= y <= 2016), default=None)
+    if base is None:
+        return ""
+    a, b = float(pts[base]), float(r.id_rate)
+    c = _compare(b, a)
+    A, B = _num(fmt(a, "per100")), _num(fmt(b, "per100"))
+    if lang == "es":
+        if c == "same":
+            return f"La proporción de estudiantes con IEP se ha mantenido parecida: {A} de cada 100 en el otoño de {base} y {B} en 2024–25."
+        return f"La proporción de estudiantes con IEP {'subió' if c == 'higher' else 'bajó'} de {A} de cada 100 en el otoño de {base} a {B} en 2024–25."
+    if c == "same":
+        return f"The share of students with IEPs has stayed about the same: {A} of every 100 in fall {base} and {B} in 2024–25."
+    return f"The share of students with IEPs {'rose' if c == 'higher' else 'fell'} from {A} of every 100 in fall {base} to {B} in 2024–25."
 
 
 def _num(s: str) -> str:
-    return s[:-2] if s.endswith(".0") else s
+    return s
 
 
 def _compare(v, sm):
@@ -92,12 +113,15 @@ def brief_html(r, name: str, state: str, st_med, lang: str, fmt, STATUS, pd) -> 
             s.append(f"{E(name)} serves students with IEPs at "
                      + {"same": "about the same rate as", "higher": "a higher rate than", "lower": "a lower rate than"}[c]
                      + f" the typical district in {E(state)}.")
+        t_ = trend_sentence(r, fmt, pd, "en")
+        if t_:
+            s.append(E(t_))
         if "env_80plus" in cmp:
             c, v, sm = cmp["env_80plus"]
             s.append({"same": "About as many", "higher": "More", "lower": "Fewer"}[c]
                      + f" of its students with IEPs spend 80% or more of the day in general classes ({_num(fmt(v, 'per100'))} of every 100, "
                      + f"against {_num(fmt(sm, 'per100'))} in the typical {E(state)} district).")
-        if "grad_regular" in cmp and len(s) < 2:
+        if "grad_regular" in cmp and len(s) < 3:
             c, v, sm = cmp["grad_regular"]
             s.append(f"{_num(fmt(v, 'per100'))} of every 100 students with IEPs who left school earned a regular diploma, "
                      + {"same": "close to", "higher": "above", "lower": "below"}[c] + f" the typical {E(state)} district.")
@@ -117,12 +141,15 @@ def brief_html(r, name: str, state: str, st_med, lang: str, fmt, STATUS, pd) -> 
             s.append(f"{E(name)} atiende a estudiantes con IEP en una proporción "
                      + {"same": "similar a la", "higher": "más alta que la", "lower": "más baja que la"}[c]
                      + f" del distrito típico de {E(state)}.")
+        t_ = trend_sentence(r, fmt, pd, "es")
+        if t_:
+            s.append(E(t_))
         if "env_80plus" in cmp:
             c, v, sm = cmp["env_80plus"]
             s.append({"same": "Una proporción similar", "higher": "Una proporción mayor", "lower": "Una proporción menor"}[c]
                      + f" de sus estudiantes con IEP pasa el 80 % o más del día en clases generales ({_num(fmt(v, 'per100'))} de cada 100, "
                      + f"frente a {_num(fmt(sm, 'per100'))} en el distrito típico de {E(state)}).")
-        if "grad_regular" in cmp and len(s) < 2:
+        if "grad_regular" in cmp and len(s) < 3:
             c, v, sm = cmp["grad_regular"]
             s.append(f"{_num(fmt(v, 'per100'))} de cada 100 estudiantes con IEP que dejaron la escuela obtuvieron un diploma regular, "
                      + {"same": "cerca del", "higher": "por encima del", "lower": "por debajo del"}[c] + f" distrito típico de {E(state)}.")
@@ -131,14 +158,14 @@ def brief_html(r, name: str, state: str, st_med, lang: str, fmt, STATUS, pd) -> 
             ratio = a / b
             if ratio >= 1.5:
                 s.append("Los estudiantes con IEP fueron suspendidos fuera de la escuela con una frecuencia unas "
-                         + f"{ratio:.1f}".replace(".", ",") + " veces mayor que la de los estudiantes sin discapacidades.")
+                         + f"{ratio:.1f}" + " veces mayor que la de los estudiantes sin discapacidades.")
             elif ratio <= 1.2:
                 s.append("Los estudiantes con IEP fueron suspendidos fuera de la escuela en una proporción similar o menor que los estudiantes sin discapacidades.")
         note = ("Estas cifras describen lo que se informó al Departamento de Educación de EE. UU. No son calificaciones: "
                 "las diferencias pueden reflejar a quién atiende un distrito, cómo identifica a los estudiantes y cómo informa.")
         head = f"Qué muestran los datos de {E(name)}"
     import re
-    lede_txt = re.sub(r"\b(\d+(?:[.,]\d)?)( of every| de cada| times| veces)", r'<span class="fig">\1</span>\2', " ".join(s[:3]))
+    lede_txt = re.sub(r"\b(\d+(?:[.,]\d)?)( of every| de cada| times| veces| in 2024| en 2024)", r'<span class="fig">\1</span>\2', " ".join(s[:4]))
     lede = f'<p class="brief-lede">{lede_txt}</p>' if s else ""
     return (f'<section aria-labelledby="b-h" class="brief"><h2 id="b-h">{head}</h2>{lede}'
             f'<div class="brief-grid">{"".join(cards)}</div><p class="brief-note">{note}</p></section>')
