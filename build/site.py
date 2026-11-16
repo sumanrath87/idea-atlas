@@ -1170,6 +1170,8 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
     if str(r.oos_idea_status) == "ok" and str(r.oos_nodis_status) == "ok":
         glance.append(f"In 2023–24, {fmt(r.oos_idea, 'per100')} of every 100 students with IEPs received an out-of-school suspension, "
                       f"compared with {fmt(r.oos_nodis, 'per100')} of every 100 students without disabilities.")
+    from brief import brief_html
+    brief_ = brief_html(r, name, st_full, st_med, "en", fmt, STATUS, pd)
     glance_html = ("<section aria-labelledby=\"g-h\" class=\"glance\"><h2 id=\"g-h\">At a glance</h2><ul>"
                    + "".join(f"<li>{figs(x)}</li>" for x in glance) + "</ul>" + explain("iep", "per100") + "</section>") if glance else ""
     howto = ('<p class="howto">Each topic below starts in plain words. Open <strong>The numbers</strong> to see this district beside the state and the nation, '
@@ -1281,6 +1283,7 @@ def district_page(r, st_med, nat_med, kids_of, by_id, dr=None, tr=None) -> str:
   <button type="button" data-expand>Show all detail</button>
   <a class="button secondary" href="{BASE}compare/?ids={r.leaid}">Compare with other districts</a></div>
 {parent}{kids}
+{brief_}
 {glance_html}
 {howto}
 {sec("Who is served", state_note, ["id_rate", "pct_504"], ["idea_cc", "ccd", "crdc"], "s-who", "per 100 students enrolled", full_who(dr) + grp_block("iep", cd), ("typical", "504", "categories"), trend=ot_iep, more=chart("cats", "Students with IEPs by federal category, per 100 school-age students with IEPs") + detail_table(*cats_args))}

@@ -257,6 +257,8 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
         glance.append(f"En 2023–24, {fmt(r.oos_idea, 'per100')} de cada 100 estudiantes con IEP recibieron una suspensión fuera de la escuela, "
                       f"comparado con {fmt(r.oos_nodis, 'per100')} de cada 100 estudiantes sin discapacidades.")
     glance = [g.replace(", o .", ".") for g in glance]
+    from brief import brief_html
+    brief_ = brief_html(r, name, state, st_med, "es", fmt, STATUS, pd)
     g_html = ('<section aria-labelledby="g-h" class="glance"><h2 id="g-h">De un vistazo</h2><ul>' + "".join(f"<li>{figs_es(x)}</li>" for x in glance)
               + "</ul>" + explain_es(BASE, "iep", "per100") + "</section>") if glance else ""
     rng = lambda ks: chart_es("range", f"Dónde se ubica este distrito entre los distritos de {state}", ",".join(ks))
@@ -294,6 +296,7 @@ def district_es(r, cd: dict, st_med, *, BASE, page, fmt, STATUS, pd, VERSION, AT
 <div class="page-tools"><button type="button" data-print>Imprimir esta página</button>
   <a class="button secondary" href="{en}" hreflang="en">Ver todas las cifras y tablas (en inglés)</a></div>
 {parent_note}{nice_kids}
+{brief_}
 {g_html}
 <p class="howto">Cada tema comienza con palabras sencillas y un gráfico. Las preguntas como <em>¿Qué es la mediana?</em> abren una explicación breve.
 Todas las cifras y tablas detalladas están en la <a href="{en}" hreflang="en">página en inglés</a>.</p>
