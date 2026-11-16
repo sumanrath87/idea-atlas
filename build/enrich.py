@@ -274,11 +274,11 @@ def byline_html(lang: str) -> str:
     t, B, S = C["today"], C["BASE"], C["SITE"]
     if lang == "es":
         when = f"{t.day} de {MONTHS_ES[t.month - 1]} de {t.year}"
-        return (f'<p class="byline">Por <a href="{S}/about/" hreflang="en">el Dr. Suman Rath</a>, Universidad Estatal de Montclair · '
+        return (f'<p class="byline">Por <a href="{S}/" hreflang="en">el Dr. Suman Rath</a>, Universidad Estatal de Montclair · '
                 f'Página actualizada el <time datetime="{t.isoformat()}">{when}</time> · '
                 f'Fuentes: <a href="{B}es/acerca-de-los-datos/">Departamento de Educación de EE. UU. y otros datos federales</a></p>')
     when = f"{t:%B} {t.day}, {t.year}"
-    return (f'<p class="byline">By <a href="{S}/about/">Dr. Suman Rath</a>, Montclair State University · '
+    return (f'<p class="byline">By <a href="{S}/">Dr. Suman Rath</a>, Montclair State University · '
             f'Page updated <time datetime="{t.isoformat()}">{when}</time> · '
             f'Sources: <a href="{B}methods/#sources">U.S. Department of Education and other federal data</a></p>')
 
