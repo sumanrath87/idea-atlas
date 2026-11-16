@@ -286,7 +286,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="{BASE}assets/icon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="{BASE}assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="{BASE}assets/icon-180.png"><meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#16181b" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
+<link rel="icon" href="{BASE}assets/icon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="{BASE}assets/icon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="{BASE}assets/icon-180.png"><meta name="theme-color" content="#faf6ee" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#12151c" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">
 <title>{E(st)} | {u["suffix"]}</title>
 <meta name="description" content="{E(desc)}">
 {robots}

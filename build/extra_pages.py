@@ -280,11 +280,12 @@ def og_state(out: Path, *, title: str, line1: str, line2: str, rate: float | Non
     """A 1200 x 630 share image in the style of the main one: brand, title, one key figure, and 100 dots with the rate shaded."""
     from PIL import Image, ImageDraw
     W, H = 1200, 630
-    bg, maroon, ink, muted, blue, grey = "#fbf9f5", "#8a2a2b", "#20232a", "#5c6370", "#2a5ea8", "#dcd8cf"
+    bg, maroon, ink, muted, blue, grey = "#faf6ee", "#26386b", "#1b2236", "#565c6b", "#26386b", "#e2d9c6"
     im = Image.new("RGB", (W, H), bg)
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, 18, H], fill=maroon)
     d.text((90, 88), "IDEA Atlas", font=_font("vollkorn", 58, 600), fill=maroon)
+    d.rectangle([90, 164, 150, 167], fill="#c98a1b")
     tf = _font("vollkorn", 50, 600)
     y = 190
     for ln in _wrap(d, title, tf, 680)[:3]:
@@ -316,7 +317,7 @@ def og_guide(out: Path, *, title: str, line: str, kind: str, footer: str) -> Non
     from typeset import typeset
     title, line = typeset(title), typeset(line)
     W, H = 1200, 630
-    bg, maroon, ink, muted, rule = "#fbf9f5", "#8a2a2b", "#20232a", "#5c6370", "#e2dfd6"
+    bg, maroon, ink, muted, rule = "#faf6ee", "#26386b", "#1b2236", "#565c6b", "#e7dfcd"
     im = Image.new("RGB", (W, H), bg)
     d = ImageDraw.Draw(im)
     lnum = {"features": ["lnum"]}
@@ -502,7 +503,7 @@ def embed_page(*, BASE: str, ATLAS_ORIGIN: str) -> str:
 <meta name="robots" content="noindex">
 <title>IDEA Atlas district card</title>
 <style>
-:root {{ --ink:#20232a; --muted:#5c6370; --rule:#e2ddd2; --accent:#8a2a2b; }}
+:root {{ --ink:#20232a; --muted:#5c6370; --rule:#e2ddd2; --accent:#26386b; }}
 * {{ box-sizing: border-box; }}
 body {{ margin: 0; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: #fbf9f5; }}
 .card {{ border: 1px solid var(--rule); border-top: 4px solid var(--accent); border-radius: 6px; padding: 14px 16px; background: #fff; }}

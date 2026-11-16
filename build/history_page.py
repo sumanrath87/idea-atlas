@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent / "history"
 
 # validated categorical order (dataviz reference palette, light)
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
-INK, INK2, MUTED, RULE, PAPER, ACCENT = "#1d2126", "#474d55", "#5b6168", "#e6e1d6", "#fbfaf6", "#8a2b2b"
+INK, INK2, MUTED, RULE, PAPER, ACCENT = "#1b2236", "#474d55", "#5b6168", "#e6e1d6", "#faf6ee", "#26386b"
 
 MILESTONES = [
     (1975, "1975", "Congress passes the Education for All Handicapped Children Act. For the first time, every child with a disability has a right to a free appropriate public education."),

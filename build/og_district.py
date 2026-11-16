@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 W, H = 1200, 630
-BG, MAROON, INK, MUTED, RULE = "#fbf9f5", "#8a2a2b", "#20232a", "#5c6370", "#e2dfd6"
+BG, MAROON, INK, MUTED, RULE = "#faf6ee", "#26386b", "#1b2236", "#565c6b", "#e7dfcd"
 
 
 def make(out: Path, *, name: str, place: str, figures: list[tuple[str, str]], footer: str, brand_note: str) -> None:
@@ -14,6 +14,7 @@ def make(out: Path, *, name: str, place: str, figures: list[tuple[str, str]], fo
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, 18, H], fill=MAROON)
     d.text((80, 58), "IDEA Atlas", font=xp._font("vollkorn", 40, 600), fill=MAROON)
+    d.rectangle([80, 108, 124, 111], fill="#c98a1b")
     d.text((80 + d.textlength("IDEA Atlas", font=xp._font("vollkorn", 40, 600)) + 22, 72), brand_note, font=xp._font("manrope", 22, 400), fill=MUTED)
     tf = xp._font("vollkorn", 54 if len(name) < 38 else 46, 600)
     y = 128
@@ -35,5 +36,9 @@ def make(out: Path, *, name: str, place: str, figures: list[tuple[str, str]], fo
     d.text((80, 560), "atlas.sumanrath.org", font=xp._font("manrope", 23, 700), fill=INK)
     d.text((80 + d.textlength("atlas.sumanrath.org", font=xp._font("manrope", 23, 700)) + 24, 560), footer, font=xp._font("manrope", 23, 400), fill=MUTED)
     out.parent.mkdir(parents=True, exist_ok=True)
-    im = im.quantize(colors=8, method=Image.Quantize.MEDIANCUT)
+    q = im.quantize(colors=15, method=Image.Quantize.MEDIANCUT)
+    pal = q.getpalette()[:45] + [201, 138, 27]          # keep the saffron rule exact
+    p_img = Image.new("P", (1, 1))
+    p_img.putpalette(pal + [0] * (768 - len(pal)))
+    im = im.quantize(palette=p_img, dither=Image.Dither.NONE)
     im.save(out, "PNG", optimize=True)
