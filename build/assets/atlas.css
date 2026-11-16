@@ -939,3 +939,6 @@ details.faq-q p { margin: 0 0 1rem; line-height: 1.6; color: var(--ink-2); font-
 table.county-t td.tl { text-align: left; white-space: normal; }
 table.county-t .least { color: var(--muted); margin-right: .1rem; }
 table.county-t .na { color: var(--muted); }
+
+/* Link from a guide to its essay on sumanrath.org */
+.essay-link { margin: .2rem 0 1.4rem; padding: .7rem 1rem; border-left: 3px solid var(--accent); background: var(--wash); font-size: .95rem; line-height: 1.5; max-width: var(--measure); }

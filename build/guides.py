@@ -108,6 +108,17 @@ def _date(s: str, lang: str) -> str:
     return f"{d.day} de {MONTHS_ES[d.month - 1]} de {d.year}" if lang == "es" else d.strftime("%B %-d, %Y")
 
 
+# Essays on sumanrath.org that read each guide "from the bottom up"; keyed by the English guide slug.
+ESSAYS = {
+    "how-to-read-district-data": ("Reading special education data from the bottom up", "2026/11/12/reading-special-education-data-bottom-up/"),
+    "least-restrictive-environment": ("Inclusion and the least restrictive environment", "2026/11/16/inclusion-least-restrictive-environment/"),
+    "discipline": ("Reading discipline data from the bottom up", "2026/11/16/reading-discipline-data-bottom-up/"),
+    "disproportionality": ("Who gets identified: reading disproportionality data from the bottom up", "2026/11/16/reading-disproportionality-data-bottom-up/"),
+    "iep-meeting-questions": ("The IEP meeting from the bottom up", "2026/11/16/iep-meeting-bottom-up/"),
+    "dispute-resolution": ("Complaints, mediation and due process: reading dispute data from the bottom up", "2026/11/16/reading-dispute-resolution-data-bottom-up/"),
+}
+
+
 def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page, extra_list: str = "", og_image: str = "assets/og.png") -> str:
     lang = g["lang"]
     body_md = g["body"].replace("{base}", BASE)
@@ -139,6 +150,14 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
         if g["rel"].startswith("indicadores/"):
             crumbs.append(("Los indicadores federales", BASE + "es/guias/indicadores/"))
         note = '<p class="hint">Referencias como 34 CFR 300.114 remiten al reglamento federal de educación especial: título 34 del Código de Regulaciones Federales (Code of Federal Regulations), parte 300, sección 114. Información general, no asesoría legal. Las reglas pueden variar según el estado; la agencia de educación de su estado y su Centro de Información y Capacitación para Padres pueden explicarle cómo se aplican donde usted vive.</p>'
+    essay_html = ""
+    key = g["rel"] if lang == "en" else str(g.get("pair", "")).rsplit("/", 1)[-1]
+    if key in ESSAYS:
+        et, eu = ESSAYS[key]
+        if lang == "en":
+            essay_html = f'<p class="essay-link">Read the essay: <a href="{SITE}/{eu}">{E(et)}</a>, part of the bottom-up series on sumanrath.org.</p>'
+        else:
+            essay_html = f'<p class="essay-link">Lea el ensayo (en inglés): <a href="{SITE}/{eu}" hreflang="en">{E(et)}</a>, de la serie sobre leer los datos desde abajo en sumanrath.org.</p>'
     related = [allg[r.strip()] for r in g.get("related", "").split(",") if r.strip() in allg]
     rel_html = ""
     if related:
@@ -162,6 +181,7 @@ def render(g: dict, allg: dict, *, BASE: str, ATLAS_ORIGIN: str, SITE: str, page
 <h1>{E(g["title"])}</h1>
 <p class="lede">{E(g.get("lede", ""))}</p>
 <p class="byline">{byline}</p>
+{essay_html}
 {h}
 {extra_list}
 {note}
