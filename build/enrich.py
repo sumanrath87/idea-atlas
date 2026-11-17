@@ -230,6 +230,10 @@ def faq_html(items, lang: str) -> str:
             f'<p class="faq-note">{note}</p>{qa}</section>')
 
 
+CREATOR = {"@type": "Person", "name": "Suman Rath", "url": "https://www.sumanrath.org/", "sameAs": "https://orcid.org/0000-0002-7497-6335",
+           "affiliation": {"@type": "Organization", "name": "Montclair State University"}}
+
+
 def _ld(obj) -> str:
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
 
@@ -248,9 +252,14 @@ def district_ld(r, name: str, state: str, lang: str, desc: str, faq) -> str:
           "dateModified": C["today"].isoformat(), "temporalCoverage": "2023/2025",
           "spatialCoverage": {"@type": "Place", "name": f"{name}, {state}"},
           "identifier": f"NCES LEAID {r.leaid}",
-          "isPartOf": {"@type": "Dataset", "name": "IDEA Atlas", "url": f"{o}{B}", "identifier": f"https://doi.org/{C['DOI']}"},
-          "creator": {"@type": "Person", "name": "Suman Rath", "url": C["SITE"] + "/", "sameAs": "https://orcid.org/0000-0002-7497-6335",
-                      "affiliation": {"@type": "Organization", "name": "Montclair State University"}},
+          # The parent atlas is itself a Dataset, so Google checks it for the same required fields.
+          "isPartOf": {"@type": "Dataset", "name": "IDEA Atlas", "url": f"{o}{B}", "identifier": f"https://doi.org/{C['DOI']}",
+                       "description": ("Datos federales públicos sobre educación especial para cada distrito escolar público de EE. UU., "
+                                       "explicados en palabras sencillas, en inglés y en español." if es else
+                                       "Public federal data on special education for every U.S. public school district, "
+                                       "explained in plain language, in English and Spanish."),
+                       "license": "https://creativecommons.org/licenses/by/4.0/", "creator": CREATOR},
+          "creator": CREATOR,
           "variableMeasured": (["Estudiantes con IEP por cada 100 inscritos", "Estudiantes con IEP en clases generales el 80 % o más del día",
                                 "Diploma regular", "Suspensión fuera de la escuela", "Gasto por estudiante", "Pobreza infantil"] if es else
                                ["Students with IEPs per 100 enrolled", "Students with IEPs in general classes 80% or more of the day",
