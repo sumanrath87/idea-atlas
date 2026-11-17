@@ -18,10 +18,15 @@ event names starting with `ask/`.
 
 1. Open the dashboard, filter to `ask/question`, and read the sent questions. Note the share of `not-helpful` answers by kind.
 2. For each missed question, add what was missing to `QA` in `build/assets/atlas.js`: a phrase for a topic (`topics`),
-   a phrase that points to a guide (`guideHints`), a definition trigger (`definitions`), or a common word that must not
-   be read as a district name (`generic` / `stop`).
+   a phrase that points to a guide (`guideHints`, or a word pattern in `hintRx`), a glossary alias (`glossAlias`), an
+   off-topic cue (`offtopic`), or a common word that must not be read as a district name (`generic` / `stop` / `filler`).
+   Definitions come from the bold terms in the glossary guides, so a new glossary entry is answered automatically.
 3. Add the question to `ops/ask_questions.json` so it stays answered in future.
-4. Build locally (`ATLAS_FAST=1 python build/site.py`), serve `site/`, and run `python ops/ask_test.py`. Read every answer.
-5. Commit and push; the site rebuilds and publishes.
+4. Build locally (`ATLAS_FAST=1 python build/site.py`), serve `site/` on port 8765, and run `python ops/ask_test.py`. Read every answer.
+5. Run the full check: `python ops/ask_corpus.py && python ops/ask_eval.py`. It grades about 20,000 generated questions in English and
+   Spanish (districts, ZIP codes, states, the nation, comparisons, definitions, family situations from `ops/ask_situations.json`,
+   data the atlas does not have, and off-topic questions) and lists what it gets wrong. As of November 2026 it answers 96% correctly.
+   Keep it at or above that before publishing.
+6. Commit and push; the site rebuilds and publishes.
 
 Never paste a sent question into the code if it contains anything that could identify a child or family.

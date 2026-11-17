@@ -213,7 +213,13 @@ def search_index(lang: str, BASE: str) -> list[dict]:
         for chunk in re.split(r"^## ", g["body"], flags=re.M)[1:]:
             head, _, rest = chunk.partition("\n")
             h = _plain(head)
-            secs.append({"id": _slugify(h), "h": h, "x": _plain(rest)[:1500]})
+            sec = {"id": _slugify(h), "h": h, "x": _plain(rest)[:1500]}
+            # Glossary-style entries ("**Term.** Definition."), so the box can answer "what is ..." with the whole definition.
+            ents = [[_plain(m.group(1)).rstrip(".").strip(), _plain(m.group(2))]
+                    for m in re.finditer(r"^\*\*(.+?)\*\*\s*(.+)$", rest, flags=re.M) if not m.group(1).rstrip().endswith(":")]
+            if ents:
+                sec["e"] = ents
+            secs.append(sec)
         out.append({"r": g["rel"], "t": g.get("title", ""), "u": url(g, BASE), "s": secs})
     return out
 

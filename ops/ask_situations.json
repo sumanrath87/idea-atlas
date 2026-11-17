@@ -1,0 +1,5077 @@
+{
+ "en": [
+  {
+   "q": "my son has an iep and keeps getting suspended what can i do",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "school keeps calling me to pick up my daughter early almost every day is that legal",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "how many days can a kid with an iep be suspended",
+   "rels": [
+    "discipline",
+    "indicators/4-suspension-and-expulsion"
+   ]
+  },
+  {
+   "q": "is sending my kid home early every day considered a suspension",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "whats a manifestation determination",
+   "rels": [
+    "discipline",
+    "glossary"
+   ]
+  },
+  {
+   "q": "they want to expel my son he has adhd and an iep what are my rights",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my 7 yr old was restrained by staff and came home with bruises who do i report this to",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "is seclusion legal for kids with autism",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they put my kid in a \"calm room\" by himself and locked the door is that allowed",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "school cop arrested my 12 year old who has an iep for throwing a chair",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "can the SRO handcuff a student with a disability",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "whats an FBA and do i have to ask for one",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "bip vs fba whats the difference",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "the behavior plan isnt working and hes getting written up every week",
+   "rels": [
+    "discipline",
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "my daughter is on a shortened school day only 2 hours a day since october. how long can they do this",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "school says he can only come half days until his behavior improves is that ok",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "does the 10 day rule count in school suspensions",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they keep calling it an \"informal removal\" not a suspension so it doesnt count?? my son misses half the week",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "suspension rates for students with disabilities in my district",
+   "rels": [
+    "discipline",
+    "indicators/4-suspension-and-expulsion"
+   ]
+  },
+  {
+   "q": "why are black boys with ieps suspended so much more",
+   "rels": [
+    "discipline",
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "how do i compare my districts suspension numbers to the state",
+   "rels": [
+    "discipline",
+    "indicators/4-suspension-and-expulsion",
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "my grandson is in kindergarten and has been suspended 4 times already",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "can preschoolers get suspended",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they sent my autistic son to an alternative school for 45 days for having a pocket knife can they do that",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what are special circumstances weapons drugs serious bodily injury 45 days",
+   "rels": [
+    "discipline",
+    "glossary"
+   ]
+  },
+  {
+   "q": "school wants to do a threat assessment on my son with an iep do i have to agree",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my kid got expelled and they stopped all his services is that legal",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "do they still have to provide services after 10 days of suspension",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "does in school suspension count toward the 10 days",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "bus suspension counts as suspension if busing is in his iep?",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "teacher here, what are the rules on restraint in my state? we were never trained",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "how often are students with disabilities restrained in my district",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "where can i see restraint and seclusion numbers for my sons school district",
+   "rels": [
+    "discipline",
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "is it normal for a school to call 911 on a 9 year old having a meltdown",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my child was referred to law enforcement at school how common is that for kids with ieps",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "the principal told me if i dont pick him up hell be suspended. i lose my job if i keep leaving work",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my daughter has an anxiety disorder and a 504 and keeps getting detention for leaving class",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "can a 504 student be suspended more than 10 days",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "manifestation determination meeting tomorrow what do i need to know",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they said the behavior was not a manifestation of his disability. i disagree what now",
+   "rels": [
+    "discipline",
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how do i appeal a manifestation determination",
+   "rels": [
+    "discipline",
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "hes been suspended 8 days this year and its only november what happens at 10",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "we got a call that he was put in a prone restraint is that even allowed anymore",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my non verbal son came home with marks and the school wont tell me what happened",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "can school make me sign something saying ill keep my kid home",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my kid's on \"homebound\" because the school says they cant handle him. he doesnt have a medical reason",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "school wants to move my son to a behavior school after a bunch of incidents",
+   "rels": [
+    "discipline",
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "asst principal here, how do other districts handle repeated behavior without suspending",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "discipline data for kids with disabilities",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what counts as a significant discrepancy in suspensions",
+   "rels": [
+    "discipline",
+    "indicators/4-suspension-and-expulsion"
+   ]
+  },
+  {
+   "q": "does the school have to tell me when they restrain my child",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "is a \"cool down\" in the office for 3 hours a removal",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they keep him in the office all day doing worksheets, is that in school suspension",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "kid with ieps getting expelled numbers",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my daughter was tasered by school police wtf. she has an iep for emotional disturbance",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what is a functional behavior assessment and who does it",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what should a good behavior intervention plan have in it",
+   "rels": [
+    "discipline",
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "can they suspend my kid for behaviors that are literally in his iep",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "zero tolerance policy and students with disabilities",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "son was sent home 3 times this week w/o any paperwork. no suspension letter nothing",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "do shortened days have to be in the iep",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "how many kids are removed to an interim alternative setting",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "hes in 2nd grade and they want to send him to a day treatment program for behavior",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "whats the difference between restraint and seclusion",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "are students of color with disabilities restrained more often",
+   "rels": [
+    "discipline",
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "my kid got arrested at school for a fight, does his iep matter in juvie court",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what is a removal under idea",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "pls help school keeps suspending my autistic son for elopement",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "teacher asking: can I send a student with an iep to the office for every outburst",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they told me he can't go on the field trip because of behavior, is that discipline",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "why does my district suspend sped kids so much more than other kids",
+   "rels": [
+    "discipline",
+    "indicators/4-suspension-and-expulsion"
+   ]
+  },
+  {
+   "q": "can school expel a student with an iep for vaping",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "seclusion room at my sons elementary school how do i find out how often its used",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my son is in a self contained class all day and never sees other kids, is that normal",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "what does inclusion mean in special ed",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "school wants to move my daughter to a separate school for autism, can i say no",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "what is least restrictive environment",
+   "rels": [
+    "least-restrictive-environment",
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats LRE mean",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "resource room vs inclusion which is better for dyslexia",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "can my kid get a 1 on 1 aide in general ed",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "how do i get my son more time in regular classes he's only in gen ed for lunch",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "what percent of kids with ieps are in general ed 80% of the day in my district",
+   "rels": [
+    "least-restrictive-environment",
+    "indicators/5-educational-environments"
+   ]
+  },
+  {
+   "q": "co-teaching class vs special ed class for 3rd grader",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "school says there is no room in the inclusion class",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "they put my daughter in a class with kids way more severe than her",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "my kid is in a sped classroom in a different building than his siblings, can they do that",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "is a para required if its in the iep",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "the aide in my sons iep was never hired, its been 2 months",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "school changed his placement without a meeting",
+   "rels": [
+    "least-restrictive-environment",
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "what is a continuum of placements",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "questions to ask about placement at iep meeting",
+   "rels": [
+    "least-restrictive-environment",
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "i want my son with down syndrome in a regular kindergarten class",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "district only offers a \"life skills\" class for my kid, is that the only option",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "self contained vs resource room",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "how many kids in my district are in separate schools",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "educational environments data",
+   "rels": [
+    "least-restrictive-environment",
+    "indicators/5-educational-environments"
+   ]
+  },
+  {
+   "q": "teacher here: my gen ed class has 6 kids with ieps and no support, is that allowed",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "can school put my kid in a private placement and pay for it",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "my daughter is pulled out for speech during math every week and is falling behind",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "pull out vs push in services",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "why does my state have so many kids in separate classes compared to others",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "is a residential placement the most restrictive",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "they want to send him to a special school 45 min away on the bus",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "whats a self-contained classroom",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "my kid is \"mainstreamed\" for specials only, how do i push for more",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "supplementary aids and services in a general class examples",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "school says he has to \"earn\" his way back into gen ed",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "is it legal to keep all the autistic kids in one class",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "how inclusive is my school district",
+   "rels": [
+    "least-restrictive-environment",
+    "indicators/5-educational-environments"
+   ]
+  },
+  {
+   "q": "can my son with an intellectual disability take regular science class",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "my daughter is deaf and they want to send her to the state school for the deaf",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "we moved and the new district wants a more restrictive placement than his old iep",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "placement decision who decides",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "the virtual school wont accept his iep",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "aide keeps getting pulled to cover other classes",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "ICT class what is that",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "the school is not following my sons iep what do i do",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how do i file a state complaint",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "my daughter hasnt gotten speech therapy in 3 months because they dont have a therapist",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "what is due process in special ed",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "mediation vs due process vs state complaint which one should i do",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "do i need a lawyer to fight the school district",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how much does a special ed advocate cost",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "school denied OT services even though the eval said she needs it",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "missed services can i get compensatory services",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "what is compensatory education",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "the iep team wont listen to me. i keep saying he needs more help and they say no",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "whats a resolution meeting",
+   "rels": [
+    "dispute-resolution",
+    "glossary"
+   ]
+  },
+  {
+   "q": "how often do resolution sessions end in agreement",
+   "rels": [
+    "dispute-resolution",
+    "indicators/15-resolution-sessions"
+   ]
+  },
+  {
+   "q": "does mediation actually work in special ed disputes",
+   "rels": [
+    "dispute-resolution",
+    "indicators/16-mediation"
+   ]
+  },
+  {
+   "q": "who do i complain to if the principal ignores me",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "can i record my sons iep meeting",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "school says they dont have to give him an aide because of budget",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "they changed his iep without me being there",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "teacher here, admin told me not to mention services the district doesnt offer at the iep. is that right",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how long does a state complaint take",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "who pays for the lawyer in due process if i win",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "what is stay put",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "they refused to put what i asked for in the iep and didnt give me anything in writing",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "i disagree with the iep can i refuse to sign",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how do i find a free advocate",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "what is a parent training and information center",
+   "rels": [
+    "dispute-resolution",
+    "glossary"
+   ]
+  },
+  {
+   "q": "my sons iep says 30 min of counseling a week, he gets it maybe once a month",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "the school lost my sons iep and is using an old one",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "can I file a complaint against a special ed teacher",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "ocr complaint vs state complaint",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how many due process complaints are filed in my state",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "the district is retaliating against me for advocating",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "bus doesnt come half the time and it's in his iep",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "dyslexia tutoring was promised verbally but not written in the iep",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how to write a letter to school disagreeing with iep",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "got a call they want to \"update\" the iep over the phone without a meeting",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "i want an independent evaluation can the school say no",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "school says my kid doesnt qualify for ESY",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "school wont give me copies of my sons records",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "is a facilitated iep meeting a thing",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how many mediations happen each year",
+   "rels": [
+    "dispute-resolution",
+    "indicators/16-mediation"
+   ]
+  },
+  {
+   "q": "filing due process against the school, what are my chances",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "they gave my kid a shortened day and didnt hold an iep meeting",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "the school keeps cancelling iep meetings",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "wont let me observe the classroom",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "disagree with eligibility decision what next",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "steps if school violates iep",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "special ed attorney or advocate whats better",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "resolution session data",
+   "rels": [
+    "dispute-resolution",
+    "indicators/15-resolution-sessions"
+   ]
+  },
+  {
+   "q": "questions to ask at an iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "first iep meeting next week what should i bring",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i prepare for my sons annual review",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what should i ask about my sons iep goals they seem the same as last year",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i know if my kid is actually making progress on his iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "iep mtg tmrw pls help what do i ask",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "my daughter is 14 what should i ask about transition at her iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "transition questions for iep high school",
+   "rels": [
+    "iep-meeting-questions",
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "can my kid attend her own iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "should i bring someone with me to the iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what is a parent concerns letter",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "iep progress report says \"progressing\" every time but he cant read",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how to ask for more speech minutes at iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what are good iep goals for reading",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "annual iep review checklist",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "we're doing a triennial, what should i ask",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "teacher here: how can I help parents feel prepared for iep meetings",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "should i sign the iep at the meeting or take it home",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what services should i ask for my autistic 5 yr old",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i bring up behavior at the iep without it turning into blaming my kid",
+   "rels": [
+    "iep-meeting-questions",
+    "discipline"
+   ]
+  },
+  {
+   "q": "they gave me a draft iep 10 min before the meeting is that normal",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what is a present levels section",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "iep meeting tips for parents",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what accommodations should i ask for adhd",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "my son is 17 and they never talked about life after school at his iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "can i ask for an iep meeting anytime",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how often should iep meetings happen",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i make sure the iep goals are measurable",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "grandma raising my grandkid what do i need to ask at her iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "im a foster parent can i go to the iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what to say at iep meeting when you disagree",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "first time sped mom feeling overwhelmed with the iep process",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what questions should I ask about related services",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how to ask about assistive technology in iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "should my kid take the alternate test, what do i ask",
+   "rels": [
+    "iep-meeting-questions",
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "my kid is in 8th, what should i ask about high school at the iep",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "questions for case manager",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "iep meeting in spanish can i get an interpreter",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how to ask for a behavior plan at the meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what does the gen ed teacher do at the iep meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what is an iep exactly and what should it include",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i ask the school to evaluate my child for special education",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "school says they will wait and see before testing my daughter",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "how long does the school have to do an evaluation after i ask",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "60 day timeline for evaluation does it include summer",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "school refuses to evaluate my son for adhd",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "can the school say no to an iep evaluation",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my 2nd grader cant read and the school keeps saying he'll catch up",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "request evaluation letter sample",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "does the school need my consent to evaluate",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "they say we have to do RTI first before testing is that true",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "its been 4 months since i signed consent and still no testing",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "what is child find",
+   "rels": [
+    "indicators/11-timely-evaluation",
+    "glossary"
+   ]
+  },
+  {
+   "q": "my kid goes to private school can the public school still evaluate him",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "what happens after the evaluation",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my son was found not eligible, can i ask again later",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "does the school test for dyslexia",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "how many evaluations in my district are late",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "percent of evaluations done on time in my state",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "teacher here: parent asked me verbally for an eval what do i do",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "evaluation for special ed vs 504 eval",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my daughter has anxiety and refuses school can she be evaluated",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "what tests do they do for an iep evaluation",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "homeschooled kid can i still get him evaluated",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "does a doctor's diagnosis of autism mean my kid automatically gets an iep",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "how do i request a reevaluation",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "we're in the eval process, do i get to see the reports before the meeting",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "eligibility categories for special ed",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "school psych said my son is \"too smart\" for an iep",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "eval timeline started over because we moved",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "what is an IEE and how do i get one",
+   "rels": [
+    "indicators/11-timely-evaluation",
+    "glossary"
+   ]
+  },
+  {
+   "q": "they want to evaluate my kid for special ed and i'm scared what does it mean",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "kid failing every class should i ask for testing",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "whats the difference between evaluation and assessment",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my 3 year old isnt talking who do i call for an evaluation",
+   "rels": [
+    "indicators/12-early-childhood-transition",
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "what does FAPE mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "fape stand for what",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats an IEE",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "explain prior written notice",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "define child find",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is IDEA",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does IEP stand for",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "504 vs iep",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats the difference between a 504 plan and an iep",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "who is on the iep team",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what are related services",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what are procedural safeguards",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "i got a procedural safeguards notice what is it",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what are supplementary aids and services",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does OSEP mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is the SPP/APR",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is a state determination",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "meets requirements vs needs assistance what does it mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is the CRDC",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats child count",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does \"per 100\" mean on your site",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is a median",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what are transition services",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "define seclusion",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what counts as restraint",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is significant disproportionality",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does PWN mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats a 504",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what are related services examples speech OT PT",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "prior written notice what is it and when do they have to give it",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "is a 504 plan part of special education",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "idea part b vs part c",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is mediation in special education",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "meaning of due process hearing",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "special ed terms glossary",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "sped acronyms help",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does continuum of placements mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "is FAPE the same as the best education possible",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is an independent educational evaluation",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "can you explain what \"LEA\" means",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is a state complaint",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is a resolution meeting before due process",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does manifestation determination review mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats an MDR",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is an evaluation under idea",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "definition of transition services",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "so many acronyms!! iep fape lre pwn what do they all mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what's OHI",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is \"specially designed instruction\"",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "the letter says \"procedural safeguards\" what does that mean for me",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is a PTI",
+   "rels": [
+    "glossary",
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "what is idea part b",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "504 plan definition",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "explain what the iep team is supposed to do",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "least restrictive environment definition",
+   "rels": [
+    "glossary",
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "evaluation vs reevaluation",
+   "rels": [
+    "glossary",
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my son is 16 what should the school be doing to plan for after high school",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "what is a transition plan",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "my daughter turns 18 next year, what happens to my rights",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "age of majority special ed",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "do i need guardianship when my son turns 18",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "when does special ed end, at 21?",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "aging out at 21 what services are there after",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "can my kid with an iep go to college",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "does the iep follow you to college",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "how do I connect my son to vocational rehab",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "transition services for job training",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "my 19 yr old is still in high school with an iep is that normal",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "school says he has to take a certificate not a diploma to stay till 21",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "whats an 18-21 program",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "transition plan must start at what age",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "son is 15 and nobody has mentioned transition at all",
+   "rels": [
+    "indicators/13-secondary-transition",
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "adult services for autism after high school",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "teacher: how do i write a good postsecondary goal",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "percentage of iep's with compliant transition plans in my state",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "my daughter wants to be a nurse but the school keeps saying she should do janitorial work training",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "what happens after special ed ends",
+   "rels": [
+    "indicators/13-secondary-transition",
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "what happens to kids with ieps after they graduate",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "how many students with disabilities go to college or get jobs",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "post school outcomes data",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "are students with disabilities employed after high school",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "my state survey asked about my son a year after he left school what is that for",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "percent of sped grads enrolled in higher ed in my state",
+   "rels": [
+    "indicators/14-post-school-outcomes"
+   ]
+  },
+  {
+   "q": "worried my son will just sit at home after he finishes school",
+   "rels": [
+    "indicators/14-post-school-outcomes",
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "my son is turning 3 and getting services from early intervention what happens now",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "early intervention ends at 3 what then",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "part c to part b transition",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "how do i get my toddler into preschool special ed",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "will my daughter's speech therapy stop when she turns 3",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "ei coordinator said we need a transition meeting, what is that",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "my sons birthday is in summer, will his preschool iep be ready by his 3rd birthday",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "is it common for kids to not have an iep by age 3",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "what is early intervention",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "ifsp vs iep",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "baby born premature, are there services before school",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "preschool special education options for 3 year olds",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "can my 4 year old with an iep go to a regular preschool",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "preschool inclusion",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "where do preschoolers with ieps get services",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "school wants my 3 yo in a sped only preschool class",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "does the district have to pay for head start if its in the iep",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "preschool special ed data for my state",
+   "rels": [
+    "indicators/6-preschool-environments",
+    "indicators/7-preschool-outcomes"
+   ]
+  },
+  {
+   "q": "does preschool special ed actually help",
+   "rels": [
+    "indicators/7-preschool-outcomes"
+   ]
+  },
+  {
+   "q": "preschool outcomes what do they measure",
+   "rels": [
+    "indicators/7-preschool-outcomes"
+   ]
+  },
+  {
+   "q": "how do they measure progress for preschoolers with disabilities",
+   "rels": [
+    "indicators/7-preschool-outcomes"
+   ]
+  },
+  {
+   "q": "will my 4 year old catch up by kindergarten with services",
+   "rels": [
+    "indicators/7-preschool-outcomes"
+   ]
+  },
+  {
+   "q": "how do schools involve parents of kids with disabilities",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "the school never asks for my input",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "parent survey special education what is it",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "percent of parents who say the school helped them be involved",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "i feel shut out of my sons education, does the state track this",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "teacher here, ideas to get more parents involved in special ed",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "i dont speak english well and school only sends papers in english",
+   "rels": [
+    "indicators/8-parent-involvement"
+   ]
+  },
+  {
+   "q": "does my kid with an iep have to take the state test",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "what is the alternate assessment",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "testing accommodations on state tests",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "can i opt my child out of state testing",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "how do students with ieps do on state reading tests",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "my daughter gets read aloud in class can she get it on the state test",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "whats the 1 percent cap on alternate tests",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "kids with disabilities proficiency rates in my district",
+   "rels": [
+    "indicators/3-assessment"
+   ]
+  },
+  {
+   "q": "if my son takes the alternate assessment can he still get a regular diploma",
+   "rels": [
+    "indicators/3-assessment",
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "graduation rate for students with disabilities",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "can my son with an iep get a regular diploma",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "what's the difference between a diploma and a certificate of completion",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "do students with ieps have to pass the same graduation requirements",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "my daughter is a senior and short on credits what happens",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "why is the graduation rate so low for special ed",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "if he graduates with a diploma does he lose services",
+   "rels": [
+    "indicators/1-graduation",
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "dropout rate for students with ieps",
+   "rels": [
+    "indicators/2-dropout"
+   ]
+  },
+  {
+   "q": "my 17 yr old wants to drop out and he has an iep",
+   "rels": [
+    "indicators/2-dropout"
+   ]
+  },
+  {
+   "q": "how many students with disabilities drop out in my state",
+   "rels": [
+    "indicators/2-dropout"
+   ]
+  },
+  {
+   "q": "can a kid with an iep be pushed out of school",
+   "rels": [
+    "indicators/2-dropout"
+   ]
+  },
+  {
+   "q": "graduation and dropout data for students with disabilities",
+   "rels": [
+    "indicators/2-dropout",
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "why are so many black students in special education",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "is my district overidentifying minority kids",
+   "rels": [
+    "disproportionality",
+    "indicators/9-disproportionate-representation"
+   ]
+  },
+  {
+   "q": "black students labeled emotional disturbance more often",
+   "rels": [
+    "disproportionality",
+    "indicators/10-disproportionate-representation-by-category"
+   ]
+  },
+  {
+   "q": "my district was flagged for significant disproportionality what does that mean",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "what is ceis",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "are english learners overrepresented in special ed",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "hispanic kids identified with learning disabilities more",
+   "rels": [
+    "disproportionality",
+    "indicators/10-disproportionate-representation-by-category"
+   ]
+  },
+  {
+   "q": "disproportionate representation data",
+   "rels": [
+    "disproportionality",
+    "indicators/9-disproportionate-representation"
+   ]
+  },
+  {
+   "q": "racial disparities in suspension of students with disabilities",
+   "rels": [
+    "disproportionality",
+    "discipline"
+   ]
+  },
+  {
+   "q": "risk ratio explained",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "are native american students over identified",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "underidentification of asian students in sped",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "what does per 100 mean",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "why is my districts number missing",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "what does it mean when data is withheld",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "how do i read the district data on this site",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "why is the median used instead of average",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "my small district shows no data why",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "whats the n size",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "how do i compare my district to others",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "the numbers dont add up, why",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "data says * what does that mean",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "is per 100 the same as a percent",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "where do these numbers come from",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "how old is the data",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "why does my school say 0 restraints when i know my kid was restrained",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "is the suspension data per student or per incident",
+   "rels": [
+    "how-to-read-district-data",
+    "discipline"
+   ]
+  },
+  {
+   "q": "how is my state doing in special education",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "what are the spp/apr indicators",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "state ratings for special education",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "does my state meet requirements under idea",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "what is needs intervention",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "how many indicators are there",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "which states are doing worst in special ed",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "what is the ssip",
+   "rels": [
+    "indicators/17-state-systemic-improvement-plan"
+   ]
+  },
+  {
+   "q": "state systemic improvement plan what does my state focus on",
+   "rels": [
+    "indicators/17-state-systemic-improvement-plan"
+   ]
+  },
+  {
+   "q": "what is the SiMR",
+   "rels": [
+    "indicators/17-state-systemic-improvement-plan"
+   ]
+  },
+  {
+   "q": "who monitors school districts for special ed compliance",
+   "rels": [
+    "indicators/18-general-supervision"
+   ]
+  },
+  {
+   "q": "does the state check if schools follow ieps",
+   "rels": [
+    "indicators/18-general-supervision"
+   ]
+  },
+  {
+   "q": "general supervision what is it",
+   "rels": [
+    "indicators/18-general-supervision"
+   ]
+  },
+  {
+   "q": "how fast does the state fix noncompliance",
+   "rels": [
+    "indicators/18-general-supervision"
+   ]
+  },
+  {
+   "q": "the state found my district out of compliance what happens now",
+   "rels": [
+    "indicators/18-general-supervision",
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "do the federal numbers tell me if my school is actually good for sped",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "compliance vs quality in special education",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "my school is 100% compliant but my son isnt learning anything",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "what dont the state indicators measure",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "how do i tell if services are any good not just on paper",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "the data says everything is fine but families are miserable",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "are the state ratings meaningful",
+   "rels": [
+    "beyond-compliance",
+    "indicators"
+   ]
+  },
+  {
+   "q": "teacher: our district hits every timeline but kids are still behind, why",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "what should i look for besides the official data",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "on time evaluations dont mean good evaluations right",
+   "rels": [
+    "beyond-compliance"
+   ]
+  },
+  {
+   "q": "hi my son is in 4th grade has autism and adhd and they have called me to come get him 11 times since school started. they never write it up as a suspension so i dont know if it counts. what can i do",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "teacher here. i have a 1st grader whose bip says to use a calm corner but admin keeps sending him home. is that ok",
+   "rels": [
+    "discipline",
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "the school wants me to sign a \"safety plan\" that says if he gets upset ill come get him within 30 min. i work 40 min away",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "u can't suspend a kid for something caused by his disability right??",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "5 yr old kinder kicked out of class every day and sits in office w/ secretary",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "what do i do if the school called the police on my daughter with autism",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "is it illegal to restrain a child in a chair",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "school took away recess as a punishment and its in his iep that he needs movement breaks",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "they are talking about expelling my son over a fight, he has an iep for emotional disability and this is his first time",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "why do schools still use seclusion rooms",
+   "rels": [
+    "discipline"
+   ]
+  },
+  {
+   "q": "my daughter has cerebral palsy and is very smart but they put her in the life skills room bc of her wheelchair",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "im a gen ed teacher and was told I'm not allowed to see my students ieps",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "do they have to try general ed with supports before moving him to a special class",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "son was in inclusion last year now they say self contained this year no explanation",
+   "rels": [
+    "least-restrictive-environment"
+   ]
+  },
+  {
+   "q": "they want to move my kid to a different school and i said no, what happens now",
+   "rels": [
+    "least-restrictive-environment",
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "ive emailed the case manager 6 times and no answer. his iep has a reading intervention he never started. who do i go over",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "we cant afford a lawyer and the school has one at every meeting",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "is there a time limit for filing due process",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "school promised a laptop for typing in the iep its december and nothing",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "how do i get help with a special ed dispute in spanish for my neighbor",
+   "rels": [
+    "dispute-resolution"
+   ]
+  },
+  {
+   "q": "im so nervous for my first iep meeting, my son is 6 and just diagnosed with autism. what do i even ask",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i make the iep team take my concerns seriously",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "they said his goals were \"met\" but he still cant do the thing, what do i ask",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "what questions should i ask at my kid's annual iep about behavior",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "how do i ask for a draft iep before the meeting",
+   "rels": [
+    "iep-meeting-questions"
+   ]
+  },
+  {
+   "q": "i asked for an evaluation in writing 3 weeks ago and the school says they need to \"meet first\" before they even give me a consent form",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "our pediatrician said ask the school for testing for speech, how",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "school tested my son but didnt test for autism even though i asked",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "can they refuse to test because his grades are ok",
+   "rels": [
+    "indicators/11-timely-evaluation"
+   ]
+  },
+  {
+   "q": "my son is a junior with an iep, the school hasnt done any career stuff with him. hes asking me what hes gonna do after",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "turning 18 do i still get invited to iep meetings",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "supported decision making vs guardianship",
+   "rels": [
+    "indicators/13-secondary-transition"
+   ]
+  },
+  {
+   "q": "our early intervention coordinator retired and nobody is helping us transition to preschool. my son turns 3 in 2 months",
+   "rels": [
+    "indicators/12-early-childhood-transition"
+   ]
+  },
+  {
+   "q": "is there free preschool for kids with speech delays",
+   "rels": [
+    "indicators/6-preschool-environments"
+   ]
+  },
+  {
+   "q": "will my sons iep diploma be accepted by colleges or the military",
+   "rels": [
+    "indicators/1-graduation"
+   ]
+  },
+  {
+   "q": "my daughter stopped going to school, shes 16 and has an iep. the school hasnt called",
+   "rels": [
+    "indicators/2-dropout"
+   ]
+  },
+  {
+   "q": "what does \"eligible\" mean for an iep",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what is an iep in simple words",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "explain fape like im 5",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "whats the difference between mediation and due process",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "is the iep team the same as the 504 team",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "what does ESY mean",
+   "rels": [
+    "glossary"
+   ]
+  },
+  {
+   "q": "teacher here: in my building almost all the kids in the ED class are black boys, is anyone tracking that",
+   "rels": [
+    "disproportionality"
+   ]
+  },
+  {
+   "q": "why are some numbers grayed out or blank",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "whats the difference between my districts number and the state median",
+   "rels": [
+    "how-to-read-district-data"
+   ]
+  },
+  {
+   "q": "what does it mean that my state \"needs assistance\" two years in a row",
+   "rels": [
+    "indicators"
+   ]
+  },
+  {
+   "q": "is there a way to see if kids are actually learning in special ed in my district",
+   "rels": [
+    "beyond-compliance"
+   ]
+  }
+ ],
+ "es": [
+  {
+   "q": "mi hijo tiene IEP y lo suspenden cada semana que puedo hacer",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la escuela me llama casi todos los dias para que recoja a mi hijo temprano es legal eso",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "cuantos dias pueden suspender a un niño con IEP",
+   "rels": [
+    "disciplina",
+    "indicadores/4-suspension-y-expulsion"
+   ]
+  },
+  {
+   "q": "mandarlo a la casa temprano cuenta como suspension?",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "que es una determinacion de manifestacion",
+   "rels": [
+    "disciplina",
+    "glosario"
+   ]
+  },
+  {
+   "q": "quieren expulsar a mi hijo y tiene un plan IEP cuales son mis derechos",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "a mi niño de 6 años lo sujetaron entre varios maestros y llego con moretones",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "es legal encerrar a un niño con autismo en un cuarto solo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "el policia de la escuela le puso esposas a mi hijo de 11 años",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "que es un FBA o evaluacion funcional de conducta",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "plan de conducta BIP no esta funcionando",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "a mi hija solo la dejan ir 2 horas al dia a la escuela desde hace meses",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la escuela dice que mi hijo solo puede ir medio dia hasta que se porte bien",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi nieto esta en kinder y ya lo suspendieron 3 veces",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "pueden suspender a un niño de preschool",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "lo mandaron a una escuela alternativa por 45 dias",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "despues de 10 dias de suspension tienen que seguir dando servicios?",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la suspension dentro de la escuela cuenta?",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "cuantas veces usan restriccion fisica en el distrito de mi hijo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "donde puedo ver los datos de restriccion y aislamiento",
+   "rels": [
+    "disciplina",
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "llamaron al 911 por mi hijo que tuvo una crisis, tiene 8 años",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "arrestaron a mi hijo en la escuela y tiene iep",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "el director me dijo que si no lo recojo lo suspenden y yo trabajo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "dijeron que la conducta no tenia que ver con su discapacidad, no estoy de acuerdo",
+   "rels": [
+    "disciplina",
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "cual es la diferencia entre restriccion y aislamiento",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "por que suspenden mas a los niños latinos y afroamericanos con discapacidad",
+   "rels": [
+    "disciplina",
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "lo tienen en la oficina todo el dia haciendo trabajos es suspension?",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "tienen que avisarme si sujetan a mi hijo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi hijo no habla y llego con marcas y no me dicen que paso",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "me quieren hacer firmar que yo vengo a recogerlo cada vez que se enoje",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "quieren mandar a mi hijo a una escuela de conducta",
+   "rels": [
+    "disciplina",
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "datos de disciplina para alumnos de educacion especial",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "lo suspendieron del bus y el transporte esta en su IEP",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "que es una remocion de la escuela",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "maestra aqui, la escuela no nos ha entrenado en restriccion que hago",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi hijo tiene 504 y lo castigan por salirse del salon por ansiedad",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la escuela no me da papeles de las suspensiones solo me llaman",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "expulsaron a mi hijo y le quitaron todos los servicios",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "tasa de suspension de estudiantes con discapacidades en mi distrito",
+   "rels": [
+    "disciplina",
+    "indicadores/4-suspension-y-expulsion"
+   ]
+  },
+  {
+   "q": "pueden suspender a mi hijo por cosas que estan en su iep",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "tengo junta de manifestacion mañana que necesito saber",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "me dijeron que va a ser \"homebound\" pero no esta enfermo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "por que todavia usan cuartos de aislamiento",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "que debe tener un buen plan de comportamiento",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi hijo esta en un salon de educacion especial todo el dia y no ve a otros niños",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que significa inclusion en educacion especial",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que es el ambiente menos restrictivo",
+   "rels": [
+    "ambiente-menos-restrictivo",
+    "glosario"
+   ]
+  },
+  {
+   "q": "quieren mandar a mi hija a otra escuela solo para niños con autismo puedo decir que no",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "mi hijo puede tener un asistente uno a uno en el salon regular",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "salon autocontenido vs salon de recursos",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "el asistente que dice el iep nunca llego",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "cambiaron la colocacion de mi hijo sin hacer junta",
+   "rels": [
+    "ambiente-menos-restrictivo",
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "quiero que mi hija con sindrome de down este en kinder regular",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que porcentaje de niños con iep estan en clases regulares",
+   "rels": [
+    "ambiente-menos-restrictivo",
+    "indicadores/5-ambientes-educativos"
+   ]
+  },
+  {
+   "q": "lo sacan de matematicas para terapia de lenguaje y se esta atrasando",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "dicen que se tiene que \"ganar\" volver a la clase regular",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "lo mandan en bus a una escuela lejos para special ed",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "quien decide donde va mi hijo",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que son ayudas y servicios suplementarios",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "clase co-teaching que es",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "es legal tener a todos los niños con autismo en un solo salon",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "el para ayuda a otros niños y no a mi hijo",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "nos mudamos y el nuevo distrito lo quiere poner en un salon mas restrictivo",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que tan inclusivo es mi distrito",
+   "rels": [
+    "ambiente-menos-restrictivo",
+    "indicadores/5-ambientes-educativos"
+   ]
+  },
+  {
+   "q": "mi hija es sorda y quieren mandarla a la escuela para sordos",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que es la continuidad de colocaciones",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "la escuela no esta cumpliendo el IEP de mi hijo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "como pongo una queja con el estado",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "mi hija no ha recibido terapia de habla en 3 meses porque no hay terapeuta",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "que es el debido proceso",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "mediacion o debido proceso cual es mejor",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "necesito abogado para pelear con el distrito",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "como encuentro un defensor gratis para educacion especial",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "le negaron terapia ocupacional aunque la evaluacion dice que la necesita",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "que son servicios compensatorios",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "no me hacen caso en las juntas del iep",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "la mediacion si funciona?",
+   "rels": [
+    "resolucion-de-disputas",
+    "indicadores/16-mediacion"
+   ]
+  },
+  {
+   "q": "que es una reunion de resolucion",
+   "rels": [
+    "resolucion-de-disputas",
+    "glosario"
+   ]
+  },
+  {
+   "q": "puedo grabar la junta del iep",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "dicen que no hay dinero para el asistente",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "no estoy de acuerdo con el IEP puedo no firmarlo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "cuanto tarda una queja estatal",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "que significa stay put",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "el autobus no llega y esta en el IEP",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "me prometieron tutoria pero no la pusieron por escrito",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "no me quieren dar copias del expediente de mi hijo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "quiero una evaluacion independiente y la escuela dice que no",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "me da miedo que se desquiten con mi hijo si me quejo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "como escribo una carta a la escuela diciendo que no estoy de acuerdo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "no me dieron interprete en la junta y no entendi nada",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "la escuela cancela las juntas una y otra vez",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "no tengo papeles, puedo poner una queja contra la escuela?",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "cuantas sesiones de resolucion terminan en acuerdo",
+   "rels": [
+    "resolucion-de-disputas",
+    "indicadores/15-sesiones-de-resolucion"
+   ]
+  },
+  {
+   "q": "no estoy de acuerdo con que mi hijo no califique, que hago",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "que es un centro de informacion y capacitacion para padres",
+   "rels": [
+    "resolucion-de-disputas",
+    "glosario"
+   ]
+  },
+  {
+   "q": "preguntas para la junta del IEP",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "tengo mi primera junta de iep la proxima semana que llevo",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como me preparo para la revision anual del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "las metas del iep de mi hijo son las mismas que el año pasado que pregunto",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como se si mi hijo esta progresando en su iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "junta de iep mañana ayuda que pregunto",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "mi hija tiene 14 que debo preguntar sobre el futuro en su iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "puede mi hijo ir a su propia junta del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "puedo llevar a alguien conmigo a la junta",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "el reporte de progreso siempre dice \"progresando\" pero no sabe leer",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como pido mas minutos de terapia de lenguaje",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "tengo derecho a un interprete en la junta del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "debo firmar el iep en la junta o llevarmelo a la casa",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "que servicios pido para mi niño con autismo de 5 años",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como hablo del comportamiento en la junta sin que culpen a mi hijo",
+   "rels": [
+    "preguntas-reunion-iep",
+    "disciplina"
+   ]
+  },
+  {
+   "q": "me dieron el iep en ingles y no lo entiendo",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "cada cuanto debe haber junta del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "soy abuela y estoy criando a mi nieta que pregunto en su iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "que acomodaciones pido para TDAH",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como pido tecnologia asistiva",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "mi hijo pasa a high school que pregunto",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "primera vez en special ed estoy muy perdida con el iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "que hace la maestra regular en la junta del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "que es la seccion de niveles actuales en el iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "puedo pedir una junta del iep cuando quiera",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "consejos para padres en juntas de iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "soy maestra como ayudo a los padres hispanos a prepararse para el iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como pido que evaluen a mi hijo para educacion especial",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "la escuela dice que hay que esperar para ver si mejora antes de evaluar",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "cuanto tiempo tiene la escuela para hacer la evaluacion",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "la escuela no quiere evaluar a mi hijo",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "mi niño de segundo grado no sabe leer y dicen que ya va a aprender",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "carta para pedir evaluacion de educacion especial",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "necesitan mi permiso para evaluar",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "ya firme el consentimiento hace 4 meses y nada",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "que es child find",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo",
+    "glosario"
+   ]
+  },
+  {
+   "q": "mi hijo va a escuela privada lo pueden evaluar",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "dijeron que mi hijo no califica, puedo pedir otra vez",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "evaluan para dislexia?",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "el doctor dice que tiene autismo eso quiere decir que le dan IEP",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "mi hija esta aprendiendo ingles y dicen que no la pueden evaluar por eso",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "pueden evaluar a mi hijo en español",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "que pruebas le hacen para el iep",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "como pido una reevaluacion",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "que es una IEE",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo",
+    "glosario"
+   ]
+  },
+  {
+   "q": "lo estan reprobando en todo debo pedir que lo evaluen",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "evaluaciones a tiempo en mi estado",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "50 dias y nada de evaluacion es normal?",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "cuales son las categorias de elegibilidad",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "que significa FAPE",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es IDEA",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que quiere decir IEP",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "504 o IEP cual es la diferencia",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es un plan 504",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "quienes forman el equipo del IEP",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que son servicios relacionados",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que son las garantias procesales",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "me dieron un papel de garantias procesales que significa",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la notificacion previa por escrito",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es PWN",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es OSEP",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa SPP/APR",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la determinacion del estado",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es CRDC",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es el child count o conteo de niños",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa \"por cada 100\"",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la mediana",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que son servicios de transicion",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es aislamiento o seclusion",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es restriccion fisica",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es desproporcionalidad significativa",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es una queja estatal",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa debido proceso",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la mediacion en educacion especial",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "palabras de educacion especial que no entiendo",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "tantas siglas iep fape lre que significan",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "FAPE es la mejor educacion posible?",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "explicame que es la evaluacion independiente",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es instruccion especialmente diseñada",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa ESY",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es MDR",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "parte B y parte C de IDEA",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la continuidad de colocaciones en palabras simples",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es un PTI",
+   "rels": [
+    "glosario",
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "significado de LRE",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "mi hijo tiene 16 que debe hacer la escuela para preparar despues de la prepa",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "que es un plan de transicion",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "mi hija cumple 18 que pasa con mis derechos",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "necesito tutela cuando mi hijo cumpla 18",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "hasta que edad hay educacion especial 21?",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "que servicios hay despues de los 21",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "mi hijo con iep puede ir al colegio o universidad",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "el iep sigue en la universidad",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "como conecto a mi hijo con rehabilitacion vocacional",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "programas de 18 a 21 años",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "a que edad empieza el plan de transicion",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "mi hijo tiene 15 y nadie ha hablado de transicion",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "mi hija quiere ser enfermera pero la escuela la manda a limpiar",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "toma de decisiones con apoyo o tutela",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "que pasa cuando termina la educacion especial",
+   "rels": [
+    "indicadores/13-transicion-secundaria",
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "que pasa con los alumnos con iep despues de graduarse",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "cuantos estudiantes con discapacidad trabajan o estudian despues",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "me llamaron del estado para preguntar que hace mi hijo un año despues de salir de la escuela",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "tengo miedo que mi hijo se quede en la casa sin hacer nada cuando termine",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela",
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "resultados despues de la escuela datos",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "mi hijo va a cumplir 3 años y recibe servicios de intervencion temprana que sigue",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "la intervencion temprana termina a los 3 y luego que",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "como meto a mi niño al preschool de educacion especial",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "se le va a quitar la terapia de lenguaje a mi hija cuando cumpla 3",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "que es la junta de transicion de early intervention",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "mi hijo cumple 3 en verano tendra iep a tiempo",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "que es intervencion temprana",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "IFSP vs IEP",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "mi niño de 2 años y medio no habla a quien le hablo",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia",
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "parte C a parte B que significa",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "mi bebe nacio prematuro hay servicios antes de la escuela",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "opciones de preescolar de educacion especial para niños de 3",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "mi hijo de 4 con iep puede ir a un preschool regular",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "inclusion en preescolar",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "quieren poner a mi niña de 3 en un salon solo de special ed",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "head start y iep",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "hay preschool gratis para niños con retraso del habla",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "el preescolar de educacion especial si ayuda",
+   "rels": [
+    "indicadores/7-resultados-preescolares"
+   ]
+  },
+  {
+   "q": "como miden el progreso de los niños de preescolar con discapacidad",
+   "rels": [
+    "indicadores/7-resultados-preescolares"
+   ]
+  },
+  {
+   "q": "mi niño de 4 va a alcanzar a los demas para kinder",
+   "rels": [
+    "indicadores/7-resultados-preescolares"
+   ]
+  },
+  {
+   "q": "datos de preescolar de educacion especial en mi estado",
+   "rels": [
+    "indicadores/6-ambientes-preescolares",
+    "indicadores/7-resultados-preescolares"
+   ]
+  },
+  {
+   "q": "como involucran las escuelas a los padres de niños con discapacidad",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "la escuela nunca me pregunta mi opinion",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "encuesta para padres de educacion especial que es",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "no hablo bien ingles y todo me lo mandan en ingles",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "me siento excluida de la educacion de mi hijo",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "porcentaje de padres que dicen que la escuela los involucra",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  },
+  {
+   "q": "mi hijo con iep tiene que tomar el examen del estado",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "que es la evaluacion alternativa",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "acomodaciones en los examenes estatales",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "puedo sacar a mi hijo del examen estatal",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "como salen los alumnos con iep en los examenes de lectura",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "si toma el examen alternativo puede tener diploma regular",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales",
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "mi hijo es aprendiz de ingles y tiene iep que acomodaciones le dan en el examen",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "tasa de graduacion de estudiantes con discapacidades",
+   "rels": [
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "mi hijo con iep puede tener un diploma normal",
+   "rels": [
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "diferencia entre diploma y certificado",
+   "rels": [
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "mi hija esta en el ultimo año y le faltan creditos",
+   "rels": [
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "si se gradua con diploma pierde los servicios",
+   "rels": [
+    "indicadores/1-graduacion",
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "por que se gradúan menos los de educacion especial",
+   "rels": [
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "tasa de abandono escolar de alumnos con iep",
+   "rels": [
+    "indicadores/2-abandono-escolar"
+   ]
+  },
+  {
+   "q": "mi hijo de 17 quiere dejar la escuela y tiene iep",
+   "rels": [
+    "indicadores/2-abandono-escolar"
+   ]
+  },
+  {
+   "q": "mi hija dejo de ir a la escuela tiene 16 y la escuela ni llama",
+   "rels": [
+    "indicadores/2-abandono-escolar"
+   ]
+  },
+  {
+   "q": "datos de graduacion y abandono",
+   "rels": [
+    "indicadores/2-abandono-escolar",
+    "indicadores/1-graduacion"
+   ]
+  },
+  {
+   "q": "por que hay tantos niños latinos en educacion especial",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "que es la desproporcionalidad significativa",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "mi distrito identifica de mas a los niños de minorias?",
+   "rels": [
+    "desproporcionalidad",
+    "indicadores/9-representacion-desproporcionada"
+   ]
+  },
+  {
+   "q": "a los niños afroamericanos los ponen mas en disturbio emocional",
+   "rels": [
+    "desproporcionalidad",
+    "indicadores/10-representacion-desproporcionada-por-categoria"
+   ]
+  },
+  {
+   "q": "mi distrito fue señalado por desproporcionalidad significativa que significa",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "los estudiantes que aprenden ingles estan sobrerrepresentados en educacion especial",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "niños hispanos con discapacidad de aprendizaje mas que otros",
+   "rels": [
+    "desproporcionalidad",
+    "indicadores/10-representacion-desproporcionada-por-categoria"
+   ]
+  },
+  {
+   "q": "que es CEIS",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "que es la razon de riesgo",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "diferencias por raza en suspensiones de alumnos con discapacidad",
+   "rels": [
+    "desproporcionalidad",
+    "disciplina"
+   ]
+  },
+  {
+   "q": "confunden aprender ingles con tener una discapacidad",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "que significa por cada 100",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "por que no aparecen los datos de mi distrito",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "que significa que los datos estan retenidos",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "como leo los datos del distrito",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "por que usan la mediana y no el promedio",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "mi distrito es chico y no sale nada",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "como comparo mi distrito con otros",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "de donde salen estos numeros",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "de que año son los datos",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "la escuela dice cero restricciones pero yo se que a mi hijo lo sujetaron",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "por cada 100 es lo mismo que porcentaje",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "los datos de suspension son por alumno o por incidente",
+   "rels": [
+    "como-leer-los-datos",
+    "disciplina"
+   ]
+  },
+  {
+   "q": "que significa el asterisco",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "mi hijo de 3er grado tiene autismo y TDAH y me han llamado 10 veces para recogerlo desde que empezaron las clases. nunca lo ponen como suspension asi que no se si cuenta. que hago",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "a mi hija la sujetaron boca abajo en el piso eso es permitido",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "le quitaron el recreo como castigo y en su iep dice que necesita descansos para moverse",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "soy maestra de special ed y el sub llamo a la policia por un alumno de 9 años",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la escuela quiere hacer una evaluacion de amenaza a mi hijo con iep",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "pueden expulsar a un alumno con iep por vapear",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "lo dejan sin excursion por su conducta es disciplina eso",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi hija tiene paralisis cerebral es muy inteligente pero la pusieron en el salon de habilidades para la vida por la silla de ruedas",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "tienen que intentar la clase regular con apoyos antes de mandarlo a un salon especial",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "el año pasado estaba en inclusion y ahora lo pusieron en self contained sin explicacion",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "soy maestra regular y tengo 7 niños con iep sin ayuda es permitido",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que es el salon de recursos",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "le he mandado 6 correos a la maestra de special ed y no contesta. el iep dice que le dan intervencion de lectura y nunca empezo. con quien hablo",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "el distrito trae abogado a cada junta y nosotros no tenemos dinero",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "la escuela prometio una computadora en el iep y ya es diciembre",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "hay limite de tiempo para pedir debido proceso",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "estoy muy nerviosa por mi primera junta, a mi hijo de 6 años le acaban de diagnosticar autismo. que pregunto",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como hago que el equipo del iep tome en serio lo que digo",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "dicen que cumplio sus metas pero todavia no puede hacerlo",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como pido un borrador del iep antes de la junta",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "no se que preguntar en la junta mi hijo tiene sindrome de down y tiene 10 años",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "pedi la evaluacion por escrito hace 3 semanas y dicen que primero tienen que reunirse",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "el pediatra me dijo que pida a la escuela que lo evaluen del habla como le hago",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "lo evaluaron pero no para autismo aunque yo lo pedi",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "no lo quieren evaluar porque saca buenas calificaciones",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "mi hijo esta en 11 grado con iep y no han hecho nada de carreras con el",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "cuando cumpla 18 me siguen invitando a las juntas",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "que quiere decir \"elegible\" para iep",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es un iep en palabras sencillas",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "diferencia entre mediacion y debido proceso",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "el equipo del iep es el mismo que el del 504?",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa \"special ed\"",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa LEA",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es la evaluacion bajo IDEA",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es OHI otro impedimento de salud",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es una discrepancia significativa en suspensiones",
+   "rels": [
+    "indicadores/4-suspension-y-expulsion"
+   ]
+  },
+  {
+   "q": "como comparo las suspensiones de mi distrito con el estado",
+   "rels": [
+    "indicadores/4-suspension-y-expulsion",
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "ambientes educativos datos de mi distrito",
+   "rels": [
+    "indicadores/5-ambientes-educativos"
+   ]
+  },
+  {
+   "q": "representacion desproporcionada que significa",
+   "rels": [
+    "indicadores/9-representacion-desproporcionada"
+   ]
+  },
+  {
+   "q": "representacion desproporcionada por categoria de discapacidad",
+   "rels": [
+    "indicadores/10-representacion-desproporcionada-por-categoria"
+   ]
+  },
+  {
+   "q": "que es una sesion de resolucion antes de la audiencia",
+   "rels": [
+    "indicadores/15-sesiones-de-resolucion"
+   ]
+  },
+  {
+   "q": "cuantas mediaciones hay cada año en mi estado",
+   "rels": [
+    "indicadores/16-mediacion"
+   ]
+  },
+  {
+   "q": "me ofrecieron mediacion debo aceptar",
+   "rels": [
+    "indicadores/16-mediacion",
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "tengo una reunion de resolucion la proxima semana que espero",
+   "rels": [
+    "indicadores/15-sesiones-de-resolucion",
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "como puedo participar mas en la educacion de mi hijo con iep",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres",
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "ayuda porfa a mi hijo lo suspendieron otra vez y ya van 9 dias este año",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "qué pasa cuando llegan a los 10 días de suspensión",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la maestra dice q mi hijo es \"peligroso\" y lo quieren sacar de la escuela, tiene 7 años y autismo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "mi hija se escapa del salón y la castigan cada vez, eso no deberia estar en su plan de conducta?",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "q es un plan de intervencion de conducta",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "lo encerraron en un cuarto y se orino del miedo",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "el oficial de la escuela le dio una multa a mi hijo de 13 con iep",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "lo mandan a la casa con \"dias cortos\" y no hubo junta",
+   "rels": [
+    "disciplina"
+   ]
+  },
+  {
+   "q": "la escuela quiere cambiar su horario a medio dia en la junta del iep que digo",
+   "rels": [
+    "disciplina",
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "en la junta me dijeron que mi hijo no puede estar en clase regular porque necesita mucha ayuda, es cierto?",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "mi hijo esta en una clase especial en otro edificio lejos de sus hermanos",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "q es inclusion total",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "la escuela virtual no acepta el iep de mi hija",
+   "rels": [
+    "ambiente-menos-restrictivo"
+   ]
+  },
+  {
+   "q": "que pregunto sobre la colocacion en la junta del iep",
+   "rels": [
+    "ambiente-menos-restrictivo",
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "la escuela no le da las horas de terapia que dice el iep, le dan como la mitad",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "como me quejo si el director no me hace caso",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "cambiaron el iep sin que yo estuviera",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "quien paga el abogado si gano el debido proceso",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "cómo encuentro un abogado de educación especial que hable español",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "la escuela dice que mi hijo no califica para ESY",
+   "rels": [
+    "resolucion-de-disputas"
+   ]
+  },
+  {
+   "q": "q le pregunto a la terapeuta de lenguaje en la junta",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "me mandaron el iep un dia antes y no me dio tiempo de leerlo",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "soy mamá de crianza puedo ir a las juntas del iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "que metas de lectura son buenas para el iep",
+   "rels": [
+    "preguntas-reunion-iep"
+   ]
+  },
+  {
+   "q": "como pido evaluacion si mi hijo esta en homeschool",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "el psicologo de la escuela dijo que mi hijo es \"muy listo\" para un iep",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "mi hija tiene ansiedad y no quiere ir a la escuela, la pueden evaluar",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "cuanto se tarda la escuela en evaluar despues que firmo",
+   "rels": [
+    "indicadores/11-evaluacion-a-tiempo"
+   ]
+  },
+  {
+   "q": "q significa iep y 504 en español",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es el comite del iep",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "qué significa \"colocación\"",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que es un defensor o advocate",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "que significa sped",
+   "rels": [
+    "glosario"
+   ]
+  },
+  {
+   "q": "mi hijo tiene autismo y cumple 21 que servicios para adultos hay",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "la escuela dice que si se queda hasta los 21 no le dan diploma",
+   "rels": [
+    "indicadores/13-transicion-secundaria"
+   ]
+  },
+  {
+   "q": "cuantos jovenes con discapacidad van a la universidad",
+   "rels": [
+    "indicadores/14-resultados-despues-de-la-escuela"
+   ]
+  },
+  {
+   "q": "la coordinadora de intervencion temprana ya no nos ayuda y mi hijo cumple 3 en dos meses",
+   "rels": [
+    "indicadores/12-transicion-de-la-primera-infancia"
+   ]
+  },
+  {
+   "q": "donde recibe servicios mi niño de preescolar con iep",
+   "rels": [
+    "indicadores/6-ambientes-preescolares"
+   ]
+  },
+  {
+   "q": "a mi hija le leen en voz alta en clase se lo pueden hacer en el examen del estado",
+   "rels": [
+    "indicadores/3-evaluaciones-estatales"
+   ]
+  },
+  {
+   "q": "pueden sacar de la escuela a un muchacho con iep porque ya tiene 18",
+   "rels": [
+    "indicadores/2-abandono-escolar"
+   ]
+  },
+  {
+   "q": "soy maestra y en el salon de conducta casi todos son niños morenos, alguien revisa eso",
+   "rels": [
+    "desproporcionalidad"
+   ]
+  },
+  {
+   "q": "que diferencia hay entre el numero de mi distrito y la mediana del estado",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "por que algunos numeros estan en blanco",
+   "rels": [
+    "como-leer-los-datos"
+   ]
+  },
+  {
+   "q": "la escuela solo hace juntas en horario de trabajo y no puedo ir",
+   "rels": [
+    "indicadores/8-participacion-de-los-padres"
+   ]
+  }
+ ]
+}

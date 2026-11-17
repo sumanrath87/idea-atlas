@@ -832,7 +832,7 @@ button.link-btn:focus-visible { outline: 3px solid var(--focus); outline-offset:
 .qa-examples button.link-btn { border: 1px solid var(--rule); border-radius: 999px; padding: .3rem .8rem; text-decoration: none; font-size: .95rem; }
 #qa-out h3 { margin-top: 1.2rem; }
 #qa-out h3:focus { outline: none; }
-#qa-out h3:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+#qa-out h3:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 4px; }
 .qa-asked { color: var(--muted); font-size: .92rem; margin-top: -.3rem; }
 .qa-note { border-left: 4px solid var(--accent); padding: .4rem .8rem; background: color-mix(in srgb, var(--accent) 6%, transparent); }
 .qa-card { border-top: 1px solid var(--rule); padding-top: .4rem; margin-top: .8rem; }
@@ -883,6 +883,39 @@ button.qa-help-q:focus-visible { outline: 3px solid var(--focus); outline-offset
 .qa-help-tips li { color: var(--ink-2); font-size: .92rem; padding-left: 1rem; position: relative; margin: .2rem 0; }
 .qa-help-tips li::before { content: "·"; position: absolute; left: .2rem; color: var(--accent); font-weight: 700; }
 .qa-links { padding-left: 1.2rem; }
+/* Answers: one calm panel, a plain-language opening line, then the figures or guides. */
+.qa-answer { margin-top: 1.1rem; padding: .3rem 1.3rem 1.1rem; border: 1px solid var(--rule); border-radius: 16px; background: var(--panel); box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent); }
+.qa-answer > h3 { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: .9rem 0 .1rem; }
+.qa-answer .qa-asked { font-family: Vollkorn, "Vollkorn Fallback", Georgia, serif; font-style: italic; font-size: 1.15rem; color: var(--ink); margin: 0 0 .5rem; }
+.qa-lead { font-size: 1.05rem; color: var(--ink-2); margin: .2rem 0 .7rem; padding-bottom: .7rem; border-bottom: 1px solid var(--rule); }
+.qa-lead::before { content: ""; display: block; width: 2.2rem; height: 3px; border-radius: 2px; background: var(--gold); margin: 0 0 .55rem; }
+.qa-answer .qa-note { border-radius: 0 10px 10px 0; font-size: .97rem; }
+.qa-answer .qa-card:first-of-type { border-top: 0; }
+.qa-answer .qa-card { padding-top: .5rem; margin-top: 1rem; }
+.qa-answer .qa-card h4 a { text-decoration-thickness: 1px; }
+.qa-answer .qa-card > .sub { color: var(--muted); font-size: .92rem; margin: 0 0 .3rem; }
+.qa-answer .qa-list { list-style: none; padding: 0; }
+.qa-answer .qa-list li { padding: .5rem 0 .5rem 1.1rem; margin: 0; border-bottom: 1px dashed color-mix(in srgb, var(--rule) 80%, transparent); position: relative; }
+.qa-answer .qa-list li:last-child { border-bottom: 0; }
+.qa-answer .qa-list li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: .42rem; height: .42rem; border-radius: 50%; background: var(--gold); }
+.qa-answer .qa-ctx { display: block; font-size: .92rem; margin-top: .1rem; }
+.qa-def h4 { font-size: 1.3rem !important; margin-top: .4rem !important; }
+.qa-def h4 + p { border-left: 3px solid var(--gold); padding: .1rem 0 .1rem .9rem; margin: .3rem 0 .8rem; font-size: 1.02rem; }
+.qa-soft h4 { color: var(--ink); }
+.qa-sub { margin: .7rem 0 .3rem; font-weight: 600; font-size: .95rem; }
+.qa-chips { list-style: none; padding: 0; margin: .2rem 0 .4rem; display: flex; flex-wrap: wrap; gap: .45rem; }
+.qa-chips li { margin: 0; }
+button.qa-chip { background: transparent; color: var(--accent); border: 1px solid var(--rule); border-radius: 999px; padding: .35rem .9rem; min-height: 2.5rem; font-weight: 500; font-size: .95rem; text-align: left; }
+button.qa-chip:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+button.qa-chip .sub { color: var(--muted); font-size: .85rem; }
+.qa-answer .qa-guides { list-style: none; padding: 0; }
+.qa-answer .qa-guides li { padding: .55rem 0; margin: 0; border-bottom: 1px dashed color-mix(in srgb, var(--rule) 80%, transparent); }
+.qa-answer .qa-guides li:last-child { border-bottom: 0; }
+.qa-answer .qa-guides a { font-weight: 600; }
+.qa-answer .qa-fb { margin-top: 1.1rem; }
+.qa-answer .qa-foot { margin-bottom: 0; }
+@media (max-width: 640px) { .qa-answer { padding: .2rem 1rem 1rem; border-radius: 12px; } }
+@media print { .qa-answer { border: 0; padding: 0; box-shadow: none; } }
 @media print { .qa-help, .qa-help-btn { display: none !important; } }
 @media (max-width: 640px) { .qa-help::before { right: auto; left: 2rem; } .qa-head { align-items: flex-start; } }
 

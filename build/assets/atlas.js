@@ -1279,35 +1279,35 @@
   var QA = {
     // measure key: [English phrases, Spanish phrases] (written without accents; text is normalized first)
     topics: {
-      id_rate: [["iep", "ieps", "special education", "special ed", "sped", "students with disabilities", "kids with disabilities", "children with disabilities", "with a disability", "disability", "disabilities", "identified", "eligible", "served", "receive services", "get services"],
-                ["iep", "educacion especial", "estudiantes con discapacidad", "estudiantes con discapacidades", "ninos con discapacidad", "ninos con discapacidades", "discapacidad", "discapacidades", "reciben servicios"]],
-      pct_504: [["504", "section 504", "504 plan", "504 plans"], ["504", "plan 504", "planes 504", "seccion 504"]],
-      env_80plus: [["general class", "general classes", "general education", "general ed", "gen ed", "regular class", "regular classroom", "regular classes", "inclusion", "included", "inclusive", "mainstream", "mainstreamed", "least restrictive", "lre", "with other kids", "with peers", "with classmates"],
-                   ["clase general", "clases generales", "educacion general", "aula regular", "clase regular", "inclusion", "incluidos", "inclusiva", "ambiente menos restrictivo", "con otros ninos", "con sus companeros"]],
-      env_lt40: [["less than 40", "under 40", "self contained", "self-contained", "separate class", "separate classes", "separate classroom", "resource room", "pulled out", "pull out"],
-                 ["menos del 40", "menos de 40", "clase separada", "clases separadas", "aula separada", "salon separado"]],
-      env_separate: [["separate school", "separate schools", "separate setting", "separate settings", "residential", "homebound", "hospital", "special school", "out of district", "out-of-district", "placement"],
-                     ["escuela separada", "escuelas separadas", "entorno separado", "lugares separados", "residencial", "en casa", "hospital", "escuela especial", "ubicacion"]],
-      grad_regular: [["graduate", "graduates", "graduation", "graduated", "graduating", "diploma", "diplomas", "finish high school", "finish school", "complete high school"],
-                     ["graduacion", "graduan", "graduarse", "se graduan", "graduados", "diploma", "diplomas", "terminan la secundaria", "terminar la escuela"]],
-      dropout: [["drop out", "dropout", "dropouts", "dropped out", "dropping out", "drop-out", "leave school", "left school", "quit school"],
-                ["abandono", "abandonan", "abandonaron", "abandono escolar", "dejan la escuela", "desercion", "desertan"]],
-      oos_idea: [["suspension", "suspensions", "suspended", "suspend", "out of school suspension", "sent home", "send home", "kicked out"],
-                 ["suspension", "suspensiones", "suspendido", "suspendidos", "suspendida", "suspenden", "mandan a casa", "enviado a casa"]],
-      expulsion_idea: [["expel", "expelled", "expulsion", "expulsions"], ["expulsion", "expulsiones", "expulsado", "expulsados", "expulsan"]],
-      restraint_physical_idea: [["restraint", "restraints", "restrained", "restrain", "held down", "physical restraint", "physically restrained"],
-                                ["restriccion fisica", "sujecion", "sujetado", "sujetados", "inmovilizado", "inmovilizacion", "restriccion"]],
+      id_rate: [["iep", "ieps", "special education", "special ed", "sped", "students with disabilities", "kids with disabilities", "children with disabilities", "with a disability", "disability", "disabilities", "identified", "eligible", "served", "receive services", "get services", "getting services", "students getting services", "special education rate", "disability rate", "kids in special ed", "in special ed", "share of students with disabilities", "special needs", "special needs kids", "ieps", "iep rate", "iep students", "students on ieps", "child count"],
+                ["iep", "educacion especial", "estudiantes con discapacidad", "estudiantes con discapacidades", "ninos con discapacidad", "ninos con discapacidades", "discapacidad", "discapacidades", "reciben servicios", "necesidades especiales", "estudiantes con iep", "ninos con iep", "special ed", "sped"]],
+      pct_504: [["504", "504s", "section 504", "504 plan", "504 plans", "on 504 plans", "a 504"], ["504", "plan 504", "planes 504", "seccion 504"]],
+      env_80plus: [["general class", "general classes", "general education", "general ed", "gen ed", "regular class", "regular classroom", "regular classes", "inclusion", "included", "inclusive", "mainstream", "mainstreamed", "mainstreaming", "least restrictive", "least restrictive environment", "lre", "with other kids", "with peers", "with classmates", "regular classroom", "regular classrooms", "general ed classes", "gen ed classes", "time in general ed", "general education classes", "inclusion rate", "how inclusive", "inclusive is"],
+                   ["clase general", "clases generales", "educacion general", "aula regular", "aulas regulares", "clase regular", "inclusion", "incluidos", "inclusiva", "ambiente menos restrictivo", "con otros ninos", "con sus companeros", "salon regular"]],
+      env_lt40: [["less than 40", "under 40", "self contained", "self-contained", "separate class", "separate classes", "separate classroom", "separate classrooms", "resource room", "resource rooms", "pulled out", "pull out", "self contained classes", "self contained classrooms", "pulled out most of the day"],
+                 ["menos del 40", "menos de 40", "clase separada", "clases separadas", "aula separada", "aulas separadas", "salon separado", "salones separados"]],
+      env_separate: [["separate school", "separate schools", "separate setting", "separate settings", "residential", "residential placements", "residential placement", "homebound", "hospital", "special school", "special schools", "out of district", "out-of-district", "out of district placements", "placement", "private placement", "private placements"],
+                     ["escuela separada", "escuelas separadas", "entorno separado", "lugares separados", "residencial", "en casa", "hospital", "escuela especial", "escuelas especiales", "ubicacion"]],
+      grad_regular: [["graduate", "graduates", "graduation", "graduated", "graduating", "diploma", "diplomas", "finish high school", "finish school", "complete high school", "grad rate", "graduation rate", "graduation rates", "how many graduate"],
+                     ["graduacion", "graduan", "graduarse", "se graduan", "graduados", "diploma", "diplomas", "terminan la secundaria", "terminar la escuela", "tasa de graduacion"]],
+      dropout: [["drop out", "dropout", "dropouts", "dropped out", "dropping out", "drop-out", "drop outs", "dropout rate", "leave school", "left school", "quit school", "quit school", "who quit school", "students who quit"],
+                ["abandono", "abandonan", "abandonaron", "abandono escolar", "dejan la escuela", "desercion", "desertan", "abandonan la escuela", "dejar la escuela"]],
+      oos_idea: [["suspension", "suspensions", "suspended", "suspend", "out of school suspension", "out of school suspensions", "oss", "sent home", "send home", "kicked out", "suspension rate", "suspension rates", "get suspended", "gets suspended"],
+                 ["suspension", "suspensiones", "suspendido", "suspendidos", "suspendida", "suspendidas", "suspenden", "mandan a casa", "enviado a casa"]],
+      expulsion_idea: [["expel", "expels", "expelled", "expulsion", "expulsions", "expelling"], ["expulsion", "expulsiones", "expulsado", "expulsados", "expulsan"]],
+      restraint_physical_idea: [["restraint", "restraints", "restrained", "restrain", "held down", "physical restraint", "physical restraints", "physically restrained", "being restrained", "restraining", "restrains", "prone restraint"],
+                                ["restriccion fisica", "sujecion", "sujetado", "sujetados", "sujetada", "inmovilizado", "inmovilizados", "inmovilizacion", "inmovilizacion fisica", "restriccion"]],
       restraint_mechanical_idea: [["mechanical restraint", "mechanically restrained", "straps", "strapped"], ["restriccion mecanica", "amarrado", "correas"]],
-      seclusion_idea: [["seclusion", "secluded", "isolation", "isolated", "quiet room", "isolation room", "locked in a room", "time out room", "timeout room"],
-                       ["aislamiento", "aislado", "aislados", "reclusion", "cuarto de aislamiento", "encerrado"]],
-      referral_idea: [["police", "law enforcement", "referral", "referrals", "referred", "cops", "school resource officer", "sro"],
-                      ["policia", "remitido", "remitidos", "remision", "agentes de la ley"]],
-      arrest_idea: [["arrest", "arrests", "arrested"], ["arresto", "arrestos", "arrestado", "arrestados", "detenido", "detenidos"]],
-      spend_per_pupil: [["spending", "spend", "spends", "money", "funding", "funded", "budget", "cost", "costs", "dollars", "per pupil", "how much money"],
-                        ["gasto", "gastos", "gasta", "dinero", "fondos", "financiamiento", "presupuesto", "costo", "dolares", "por estudiante"]],
-      idea_federal_per_student: [["federal money", "federal funds", "federal funding", "idea money", "idea funds", "idea funding", "federal idea"],
+      seclusion_idea: [["seclusion", "secluded", "isolation", "isolated", "quiet room", "isolation room", "isolation rooms", "seclusion room", "seclusion rooms", "locked in a room", "time out room", "timeout room", "time out rooms", "calm down room", "calming room", "padded room"],
+                       ["aislamiento", "aislado", "aislados", "aislada", "reclusion", "cuarto de aislamiento", "cuartos de aislamiento", "encerrado", "encerrada"]],
+      referral_idea: [["police", "law enforcement", "referral", "referrals", "referred", "cops", "school resource officer", "school resource officers", "sro", "sros", "school police", "police referrals", "referrals to law enforcement", "called the police", "call the police"],
+                      ["policia", "remitido", "remitidos", "remision", "remisiones", "agentes de la ley", "policia escolar", "remisiones a la policia"]],
+      arrest_idea: [["arrest", "arrests", "arrested", "school arrests", "school related arrests", "school-related arrests", "handcuffed"], ["arresto", "arrestos", "arrestado", "arrestados", "detenido", "detenidos"]],
+      spend_per_pupil: [["spending", "spend", "spends", "money", "funding", "funded", "budget", "cost", "costs", "dollars", "per pupil", "how much money", "per pupil spending", "spending per student", "spend per student", "expenditure", "expenditures", "per student spending", "how much they spend", "how much money they spend", "how much do they spend"],
+                        ["gasto", "gastos", "gasta", "gastan", "dinero", "fondos", "financiamiento", "presupuesto", "costo", "dolares", "por estudiante", "cuanto dinero", "cuanto gastan", "gasto por estudiante"]],
+      idea_federal_per_student: [["federal money", "federal funds", "federal funding", "idea money", "idea funds", "idea funding", "federal idea", "federal idea money", "federal special education funding", "part b funds", "part b money", "idea grant", "idea part b"],
                                  ["fondos federales", "dinero federal", "fondos de idea", "dinero de idea", "financiamiento federal"]],
-      child_poverty: [["poverty", "poor", "low income", "low-income", "income"], ["pobreza", "pobres", "bajos ingresos", "ingresos"]]
+      child_poverty: [["poverty", "poor", "low income", "low-income", "income", "poverty rate", "child poverty", "low income kids", "low income families", "kids in poverty", "children in poverty"], ["pobreza", "pobres", "bajos ingresos", "ingresos", "pobreza infantil", "ninos pobres", "ninos de bajos ingresos"]]
     },
     // Common nicknames and abbreviations for large districts: phrase -> [state, exact district name]
     aliases: [
@@ -1331,14 +1331,15 @@
       [["albuquerque", "aps albuquerque"], "NM", "Albuquerque"], [["milwaukee", "mps milwaukee"], "WI", "Milwaukee School District"], [["honolulu", "hawaii doe"], "HI", "Hawaii Department of Education"],
       [["puerto rico department of education", "departamento de educacion de puerto rico"], "PR", "Puerto Rico Department of Education"]
     ],
-    enrollWords: [["how big", "how large", "enrollment", "enrolled", "total students", "students attend", "kids attend", "how many students", "how many kids", "how many children", "size of", "number of students", "student population"],
-                  ["cuantos estudiantes", "cuantos alumnos", "cuantos ninos", "matricula", "inscritos", "tamano", "que tan grande", "numero de estudiantes", "poblacion estudiantil"]],
+    enrollWords: [["how big", "how large", "enrollment", "enrolled", "total students", "students attend", "kids attend", "how many students", "how many kids", "how many children", "size of", "number of students", "student population", "total students", "how big is it", "how many pupils", "total enrollment", "student count", "how many students are there", "how many students attend"],
+                  ["cuantos estudiantes", "cuantos alumnos", "cuantos ninos", "matricula", "inscritos", "tamano", "que tan grande", "que tan grande es", "numero de estudiantes", "poblacion estudiantil", "cuantos estudiantes hay"]],
     catWords: [["autism", "autistic", "dyslexia", "adhd", "add", "speech", "language impairment", "learning disability", "learning disabilities", "specific learning", "emotional disturbance", "emotional", "behavioral disorder",
                 "intellectual disability", "intellectual disabilities", "hearing", "deaf", "vision", "blind", "down syndrome", "developmental delay", "other health impairment", "ohi", "traumatic brain injury", "orthopedic", "multiple disabilities", "category", "categories", "type of disability", "types of disabilities", "kinds of disabilities"],
                ["autismo", "autista", "dislexia", "tdah", "habla", "lenguaje", "discapacidad de aprendizaje", "discapacidades de aprendizaje", "emocional", "discapacidad intelectual", "sordo", "sordera", "audicion", "vision", "ciego", "sindrome de down", "retraso del desarrollo", "categoria", "categorias", "tipo de discapacidad", "tipos de discapacidad"]],
     unsupported: [["test score", "test scores", "reading scores", "math scores", "state test", "proficiency", "teacher", "teachers", "staff", "staffing", "class size", "ratio", "aide ratio", "wait list", "waitlist", "wait time", "bus", "busing", "transportation",
-                   "therapy hours", "voucher", "vouchers", "private school", "tuition", "bullying", "attendance", "absent", "absenteeism", "chronic absence", "ranking", "rating of schools", "great schools", "greatschools", "reviews", "lunch", "covid"],
-                  ["calificaciones de examenes", "examen estatal", "maestros", "maestro", "personal", "tamano de la clase", "lista de espera", "autobus", "transporte", "horas de terapia", "escuela privada", "colegiatura", "acoso escolar", "bullying", "asistencia", "ausencias", "resenas", "almuerzo"]],
+                   "therapy hours", "voucher", "vouchers", "private school", "private school tuition", "tuition", "bullying", "bullied", "attendance", "absent", "absenteeism", "chronic absenteeism", "chronic absence", "ranking", "rating of schools", "school ratings", "school rating", "great schools", "greatschools", "reviews", "lunch", "lunch menu", "covid",
+                   "teacher salaries", "teacher salary", "teacher pay", "how many teachers", "teacher shortage", "start time", "school start time", "bell schedule", "graduation date", "graduation ceremony", "prom", "sports", "school calendar", "snow day", "snow days", "sat scores", "act scores", "college admissions", "dress code", "uniforms", "after school", "daycare", "homework", "report card", "grades"],
+                  ["calificaciones de examenes", "examen estatal", "maestros", "maestro", "personal", "tamano de la clase", "lista de espera", "autobus", "transporte", "transporte escolar", "horas de terapia", "escuela privada", "colegiatura", "acoso escolar", "bullying", "asistencia", "ausencias", "resenas", "almuerzo", "menu del almuerzo", "salario de maestros", "salarios", "calendario escolar", "horario de entrada", "fecha de graduacion", "uniformes", "tareas", "boleta de calificaciones"]],
     intents: {
       greet: [["hi", "hello", "hey", "good morning", "good afternoon", "good evening"], ["hola", "buenos dias", "buenas tardes", "buenas noches", "buenas"]],
       thanks: [["thank you", "thanks", "thank u", "thx", "great thanks", "awesome", "ok", "okay", "cool", "got it", "great", "perfect"], ["gracias", "muchas gracias", "mil gracias", "vale", "entendido", "perfecto", "listo"]],
@@ -1413,6 +1414,78 @@
       years: [["which year", "what year", "how old", "how recent", "when is the data", "school year"], ["que ano", "de que ano", "que tan reciente", "ano escolar"]],
       rating: [["state rating", "determination", "meets requirements", "needs assistance", "needs intervention"], ["calificacion del estado", "cumple los requisitos", "necesita ayuda", "necesita intervencion"]]
     },
+    // Questions about something else entirely. Answered with a friendly note, never with a district's figures.
+    offtopic: [["weather", "forecast", "temperature", "super bowl", "world series", "nba", "nfl", "football game", "basketball game", "game tonight", "score of the game", "sports scores",
+                "pizza", "restaurant", "restaurants", "recipe", "recipes", "how do i cook", "how to cook", "cooking", "joke", "jokes", "poem", "song", "lyrics", "movie", "movies", "netflix", "play music", "listen to music",
+                "stock price", "stock market", "bitcoin", "crypto", "capital of", "who is the president", "the president of", "election results", "hotel", "hotels", "flight", "flights", "airport", "traffic", "directions to",
+                "what time is it", "time is it", "how old are you", "are you a robot", "are you human", "are you ai", "chatgpt", "translate", "mount everest", "how tall is",
+                "my cat", "my dog", "horoscope", "lottery", "real estate", "houses for sale", "apartments for rent", "for rent", "mortgage", "buy a car", "uber", "doctor near me", "pharmacy"],
+               ["clima", "tiempo hace", "pronostico", "partido", "futbol", "receta", "recetas", "cocinar", "chiste", "chistes", "poema", "cancion", "pelicula", "peliculas", "musica", "pon musica",
+                "precio del dolar", "dolar", "capital de", "presidente", "elecciones", "hotel", "hoteles", "vuelo", "vuelos", "aeropuerto", "trafico", "que hora es", "cuantos anos tienes",
+                "eres un robot", "mi perro", "mi gato", "horoscopo", "loteria", "casas en venta", "apartamento", "renta", "hipoteca", "carro", "doctor cerca", "farmacia"]],
+    // Everyday words that carry no place or topic, so they never count against a district name.
+    filler: ("i im i m me my we us our you your u please pls plz thanks thank hi hello hey look looking like want wanted know need find see give get got can could would should " +
+             "info information stats statistics stat numbers number details detail profile doing do does going go goes live lives living moving move moved data figures report " +
+             "special education ed sped school schools district districts kids kid children child students student public here there just also really very much many now today " +
+             "yo mi mis nosotros usted tu quiero quisiera saber necesito busco buscar ver dar dame informacion estadisticas numeros detalles perfil vivo vivimos mudarnos hijos hijo hija " +
+             "escuela escuelas distrito distritos ninos nino estudiantes datos").split(" "),
+    glossAlias: [[["mdr", "manifestation determination review", "manifestation review", "manifestation hearing", "junta de manifestacion", "manifestacion"], "manifestation determination", "determinacion de manifestacion"],
+                 [["pwn", "written notice", "notice", "notificacion previa por escrito", "notificacion previa", "aviso previo"], "prior written notice", "aviso previo por escrito"], [["pti", "parent center", "parent training center", "parent training", "centro de padres"], "parent training and information center", "centro de informacion y capacitacion para padres"],
+                 [["resolution session", "resolution sessions"], "resolution meeting"], [["transition plan", "transition planning", "transition"], "transition services", "servicios de transicion"],
+                 [["state performance plan", "annual performance report", "spp", "apr", "spp apr"], "spp apr"], [["determination", "meets requirements", "needs assistance", "state rating", "rating", "determinacion del estado", "la determinacion del estado", "calificacion del estado"], "state determination", "calificacion estatal"],
+                 [["typical district", "typical", "the median", "median"], "median", "mediana"], [["restraint", "physical restraint", "mechanical restraint", "seclusion", "restraint and seclusion"], "physical restraint", "inmovilizacion fisica"],
+                 [["504", "a 504", "504 plan", "section 504", "section 504 plan", "a 504 plan", "un 504", "el 504", "plan 504", "un plan 504"], "section 504 plan", "plan de la seccion 504"], [["iep", "an iep", "individualized education program", "individualized education plan", "individual education plan", "un iep", "el iep"], "iep"],
+                 [["evaluation", "special education evaluation", "an evaluation", "initial evaluation", "eval", "testing"], "evaluation", "evaluacion"], [["idea", "idea law", "the idea law", "individuals with disabilities education act"], "idea"],
+                 [["due process", "due process hearing", "a due process complaint", "due process complaint"], "due process complaint", "queja de debido proceso"], [["state complaint", "a state complaint", "complaint"], "state complaint", "queja estatal"],
+                 [["lre", "least restrictive environment", "least restrictive"], "least restrictive environment", "ambiente menos restrictivo"], [["fape", "free appropriate public education", "free and appropriate public education", "educacion publica gratuita y apropiada"], "fape"],
+                 [["iee", "independent educational evaluation", "independent evaluation", "an iee", "outside evaluation"], "independent educational evaluation", "evaluacion educativa independiente"],
+                 [["crdc", "civil rights data collection", "the civil rights data collection"], "civil rights data collection", "recopilacion de datos de derechos civiles"], [["the iep team", "iep team", "quienes forman el equipo del iep", "equipo del iep"], "iep team", "equipo del iep"],
+                 [["child count", "the child count"], "child count", "conteo de ninos"], [["per 100", "per hundred", "out of 100"], "per 100"], [["significant disproportionality", "disproportionality"], "significant disproportionality", "desproporcionalidad significativa"],
+                 [["osep", "office of special education programs", "oficina de programas de educacion especial"], "osep"], [["ffy", "federal fiscal year"], "ffy"], [["supplementary aids", "supplementary aids and services", "supplementary services"], "supplementary aids and services"],
+                 [["related services", "related service"], "related services", "servicios relacionados"], [["continuum", "continuum of placements", "continuum of services"], "continuum of placements"],
+                 [["child find", "childfind"], "child find", "busqueda de ninos"], [["procedural safeguards", "safeguards", "parent rights", "procedural safeguards notice"], "procedural safeguards"],
+                 [["mediation"], "mediation", "mediacion"], [["middle half"], "middle half"],
+                 [["aviso previo", "aviso por escrito"], "aviso previo por escrito"], [["garantias procesales", "derechos de los padres"], "garantias procesales"],
+                 [["determinacion de manifestacion", "revision de manifestacion"], "determinacion de manifestacion"], [["busqueda de ninos"], "busqueda de ninos"],
+                 [["servicios relacionados"], "servicios relacionados"], [["servicios de transicion", "plan de transicion", "transicion"], "servicios de transicion"],
+                 [["queja estatal"], "queja estatal"], [["mediacion"], "mediacion"], [["debido proceso", "queja de debido proceso", "audiencia de debido proceso"], "queja de debido proceso"],
+                 [["reunion de resolucion", "sesion de resolucion"], "reunion de resolucion"], [["evaluacion educativa independiente", "evaluacion independiente"], "evaluacion educativa independiente"],
+                 [["ambiente menos restrictivo"], "ambiente menos restrictivo"], [["educacion publica gratuita y apropiada"], "fape"], [["inmovilizacion", "sujecion", "aislamiento", "restriccion fisica"], "inmovilizacion fisica"],
+                 [["mediana", "distrito tipico"], "mediana"], [["por cada 100", "de cada 100"], "por cada 100"], [["desproporcionalidad", "desproporcionalidad significativa"], "desproporcionalidad significativa"],
+                 [["plan 504", "un plan 504", "seccion 504", "la seccion 504", "plan de la seccion 504"], "plan de la seccion 504"], [["programa de educacion individualizado", "un iep"], "iep"],
+                 [["evaluacion", "una evaluacion"], "evaluacion"], [["la ley idea", "ley idea"], "idea"], [["conteo de ninos"], "conteo de ninos"],
+                 [["centro de informacion y capacitacion para padres", "centro de padres"], "centro de informacion y capacitacion para padres"], [["equipo del iep"], "equipo del iep"],
+                 [["calificacion estatal", "cumple los requisitos"], "calificacion estatal"], [["gama de ubicaciones"], "gama de ubicaciones"], [["ayudas y servicios complementarios"], "ayudas y servicios complementarios"]],
+    // Word patterns that point a described situation to the guides that answer it, most specific first: [pattern, English guides, Spanish guides].
+    hintRx: [
+      [/\b(complaint|complain|queja|quejarme|due process|debido proceso|mediat|mediacion|hearing officer|hearing|audiencia|lawyer|attorney|abogad|advocate|defensor|disagree|desacuerdo|no estoy de acuerdo|not following|isn t following|wont follow|won t follow|doesn t follow|dont follow|no cumpl|no sigue|no siguen|no le dan|no recibe|missed services|not providing|not getting (his|her|the|any) services|denied|negaron|se niegan|refus|ocr|office for civil rights|sue |demandar|stay put|compensatory|compensator|violat|violan|resolution session|sesion de resolucion|reunion de resolucion|supposed to (get|have|receive)|se supone|promis|prometi|lost (my|his|her|the) \w*\s*iep|perdieron|old iep|iep viejo|not in writing|por escrito|bus (doesn t|doesnt|does not|never|didn t|didnt|isn t|isnt)|autobus no|cancel|cancela|gets it (maybe|only|like)|once a month|una vez al mes|not implemented|no lo aplican|no lo implementan|ignor)/,
+       ["dispute-resolution", "indicators/15-resolution-sessions", "indicators/16-mediation"], ["resolucion-de-disputas", "indicadores/15-sesiones-de-resolucion", "indicadores/16-mediacion"]],
+      [/\b(suspen|expel|expuls|arrest|handcuff|esposas|911|police|policia|sro|cop |cops|restrain|restraint|sujet|sujec|inmoviliz|seclu|aisla|encerr|bruise|moreton|marcas|alternative school|escuela alternativa|45 day|45 dias|10 day|10 dias|ten day|ten school day|detention|detencion|castig|zero tolerance|elope|elopement|meltdown|crisis|threat assessment|behavior|behaviour|conducta|comportamiento|manifestation|manifestacion|fba|bip|functional behavior|plan de conducta|pick (him|her|them|my \w+) up|picked up early|come get|recoj|recoger|sent (him|her|my \w+) home|send (him|her|my \w+) home|sending (him|her|my \w+) home|sends (him|her) home|mandan a casa|mandaron a casa|manda a casa|a la casa|shortened|shorter day|short day|dias cortos|horario reducido|medio dia|removal|remocion|removed from class|kicked out|weapon|arma|drugs|drogas|knife|cuchillo|fight|pelea|threat|amenaza|discipline|disciplin|punish|outburst|to the office|a la oficina|interim alternative|alternative setting|restriccion\b|restriccion fisica)/,
+       ["discipline", "indicators/4-suspension-and-expulsion"], ["disciplina", "indicadores/4-suspension-y-expulsion"]],
+      [/\b(inclusion|inclus|self contained|self-contained|autocontenid|resource room|salon de recursos|separate (class|school|program|classroom|setting)|escuela separada|clase separada|salon separado|placement|colocacion|ubicacion|general ed|gen ed|general education|regular class|regular classroom|clase regular|salon regular|kinder regular|mainstream|lre|least restrictive|menos restrictivo|co ?teach|paraprofessional|paraprofesional|aide|asistente|ayudante|1 ?on ?1|one on one|uno a uno|pull ?out|push ?in|special school|escuela especial|out of district|private placement|residential|homebound|home instruction|instruccion en casa|with (other|typical) kids|con los otros ninos|more restrictive|mas restrictivo|ict\b|integrated co|cotaught|co taught)/,
+       ["least-restrictive-environment", "indicators/5-educational-environments"], ["ambiente-menos-restrictivo", "indicadores/5-ambientes-educativos"]],
+      [/\b(evaluat|evalua|eval |testing|tested|test (him|her|my)|get (him|her) tested|assess (him|her)|60 days|60 dias|sesenta dias|eligib|elegib|qualif|califica|referral for|refer (him|her)|referir|child find|busqueda de ninos|dyslexia|dislexia|suspect|sospecho|request an? (evaluation|eval)|pedir una evaluacion|reevaluat|reevalua|triennial|trienal|iee|consent|consentimiento|reprob|failing|cant read|can t read|no sabe leer|catch up|ponerse al dia|diagnos|doctor says|doctor dice|el doctor|autism diagnosis|does he qualify|does she qualify|le dan iep|get an iep|tener un iep)/,
+       ["indicators/11-timely-evaluation"], ["indicadores/11-evaluacion-a-tiempo"]],
+      [/\b(transition|transicion|after high school|after graduation|despues de la secundaria|despues de graduarse|college|universidad|job|jobs|trabajo|empleo|vocational|vocacional|turns? 18|turning 18|cumple 18|18 anos|18 years|age of majority|mayoria de edad|transfer of rights|transferencia de derechos|aging out|age out|18 ?21|adult services|servicios para adultos|guardianship|tutela|post ?secondary|postsecundari|life after school|vida despues de la escuela|despues de la prepa|after the prepa|hasta que edad|until what age|how long can|21\b|despues de los 21|after 21|cuando termine|when (he|she) finishes|after (he|she) leaves|work or study|trabajan o estudian)/,
+       ["indicators/13-secondary-transition", "indicators/14-post-school-outcomes"], ["indicadores/13-transicion-secundaria", "indicadores/14-resultados-despues-de-la-escuela"]],
+      [/\b(turning 3|turns 3|turn 3|turning three|cumple 3|cumple tres|3 years old|three years old|3 anos|tres anos|early intervention|intervencion temprana|part c|birth to three|toddler|preschool|preescolar|pre ?k|prek|pre kinder|prekinder|daycare|guarderia|ifsp|parte c|bebe|baby|infant|2 anos|2 years old|two years old|cuando cumpla 3)/,
+       ["indicators/12-early-childhood-transition", "indicators/6-preschool-environments", "indicators/7-preschool-outcomes"], ["indicadores/12-transicion-de-la-primera-infancia", "indicadores/6-ambientes-preescolares", "indicadores/7-resultados-preescolares"]],
+      [/\b(race|racial|raza|black|negros|afro|hispanic|hispanos|latino|latinos|latina|native american|indigena|students of color|de color|minorit|overrepresent|over represented|sobrerrepresent|disproportion|desproporcion|english learner|ells?|aprendices de ingles|bias|sesgo|discriminat|discrimin)/,
+       ["disproportionality", "indicators/9-disproportionate-representation", "indicators/10-disproportionate-representation-by-category"], ["desproporcionalidad", "indicadores/9-representacion-desproporcionada", "indicadores/10-representacion-desproporcionada-por-categoria"]],
+      [/\b(iep meeting|iep mtg|reunion del iep|junta del iep|junta de iep|annual review|annual iep|revision anual|goals|metas|objetivos|progress report|progress|progreso|prepare|preparar|preparo|bring to|llevar a|what (should|do|can) i ask|que (debo |puedo )?pregunt|first iep|primer iep|present levels|niveles actuales|sign the iep|firmar el iep|draft|borrador|parent concerns|preocupaciones|services should i|what services|que servicios|case manager|administrador de caso|assistive tech|tecnologia asistiva|speech therapy|terapia de lenguaje|terapia del habla|minutes of|minutos de|counseling|consejeria|first time|primera vez|overwhelmed|perdida|perdido|abrumad|interpreter|interprete|translat|traduc|en ingles y no|iep process|proceso del iep|what should it include|que debe incluir|grandma|abuela|accommodation|acomodacion|modification|modificacion|que pido|what (should|can) i (ask|request) for|consejos para|tips for)/,
+       ["iep-meeting-questions"], ["preguntas-reunion-iep"]],
+      [/\b(state test|state tests|statewide test|standardized test|examen estatal|examenes estatales|alternate assessment|evaluacion alternativa|alternate test|testing accommodation|accommodations on (the )?test|acomodaciones en (el )?examen|opt out|staar|regents|parcc|map test|end of year test)/,
+       ["indicators/3-assessment"], ["indicadores/3-evaluaciones-estatales"]],
+      [/\b(involve|involucr|parent involvement|participacion de los padres|parent survey|encuesta de padres|don t include me|dont include me|no me incluyen|no me toman en cuenta|ignore me|ignoran|left out of decisions)/,
+       ["indicators/8-parent-involvement", "iep-meeting-questions"], ["indicadores/8-participacion-de-los-padres", "preguntas-reunion-iep"]],
+      [/\b(graduat|diploma|gradua|certificate of completion|certificado)/, ["indicators/1-graduation", "indicators/13-secondary-transition"], ["indicadores/1-graduacion", "indicadores/13-transicion-secundaria"]],
+      [/\b(drop ?out|dropping out|abandon|desercion|dejar la escuela|quit school)/, ["indicators/2-dropout"], ["indicadores/2-abandono-escolar"]],
+      [/\b(per 100|por cada 100|median|mediana|typical district|distrito tipico|middle half|mitad central|withheld|retenid|missing|falta|faltan|blank|en blanco|how (do|to|should) (i |we )?read|como leer|what do (the|these) numbers mean|que significan|at least)/,
+       ["how-to-read-district-data"], ["como-leer-los-datos"]],
+      [/\b(state rating|determination|meets requirements|needs assistance|needs intervention|spp|apr|indicator|indicador|monitoring|monitoreo|supervision|supervis|oversight|ssip|systemic improvement|mejora sistemica)/,
+       ["indicators", "indicators/18-general-supervision", "indicators/17-state-systemic-improvement-plan"], ["indicadores", "indicadores/18-supervision-general", "indicadores/17-plan-estatal-de-mejora-sistemica"]],
+      [/\b(compliance|cumplimiento|quality of services|calidad de los servicios|is my district good|actually help|really working|beyond the numbers)/, ["beyond-compliance"], []]
+    ],
     rankWords: [["best", "worst", "rank", "ranking", "ranked", "top", "highest", "lowest", "most", "least", "better", "good", "bad", "quality", "should i move", "which district is"],
                 ["mejor", "mejores", "peor", "peores", "ranking", "clasificacion", "mas alto", "mas baja", "mas bajo", "mas alta", "buena", "bueno", "mala", "malo", "calidad", "deberia mudarme"]],
     legalWords: [["can they", "can the school", "can a school", "is it legal", "legal", "allowed", "illegal", "rights", "my rights", "lawyer", "attorney", "sue", "complaint", "due process", "refuse", "refused", "denied", "won t", "wont", "not following", "violat", "my child", "my son", "my daughter", "my kid", "help me", "what should i do", "what can i do"],
@@ -1528,6 +1601,7 @@
             if (stateFilter && DATA.names[i][1] !== stateFilter) return;
             // A common word on its own ("early", "ask", "casa") is only read as a district name when typed with a capital letter or asked alone.
             if (core.length === 1 && (skip[f] || common[f]) && !(words.length <= 2 || capitalized(f))) return;
+            if (core.length === 1 && f.length <= 3 && QA.stop.indexOf(f) >= 0 && !capitalized(f)) return;
             var full = idx.full[i];
             var extra = full.filter(function (x) { return core.indexOf(x) < 0 && words.indexOf(x) >= 0; }).length;
             var pen = full.some(function (x) { return choice[x] && words.indexOf(x) < 0; }) ? 4 : 0;
@@ -1559,6 +1633,8 @@
         for (var u = p; u < p + group[0].span; u++) used[u] = 1;
         mentions.push(group.map(function (c) { return c.i; }));
       }
+      var fill = {}; QA.filler.forEach(function (x) { fill[x] = 1; });
+      LEFT = words.filter(function (w, k) { return !used[k] && !skip[w] && !fill[w] && w.length > 2 && !/^\d+$/.test(w); });
       // Settle names that match several districts: use the state named, or the state of the other districts mentioned,
       // and when all remaining matches are in one state, take the largest.
       var known = {};
@@ -1584,15 +1660,42 @@
       });
     }
     function findState(raw, text) {
-      var hit = null;
+      var hit = null, toks = text.split(" ");
       Object.keys(STATES).forEach(function (f) {
         var en = norm(STATES[f][1]), es = norm(ST_ES[STATES[f][1]] || STATES[f][1]);
         [en, es].forEach(function (n) {
           if ((" " + text + " ").indexOf(" " + n + " ") >= 0 && (!hit || n.length > hit.len)) hit = {code: STATES[f][0], fips: f, len: n.length, phrase: n};
         });
       });
-      // "Washington" alone is usually the state; "Washington D C" is handled by its own name.
+      // A state name typed with one wrong letter ("Illinoois", "Carrolina del Sur").
+      if (!hit) Object.keys(STATES).forEach(function (f) {
+        [norm(STATES[f][1]), norm(ST_ES[STATES[f][1]] || STATES[f][1])].forEach(function (n) {
+          var nw = n.split(" "), L2 = nw.length; if (n.length < 6) return;
+          for (var a = 0; a + L2 <= toks.length; a++) {
+            var ph = toks.slice(a, a + L2).join(" ");
+            if (ph !== n && ph.charAt(0) === n.charAt(0) && editsWithin(ph, n, n.length >= 9 ? 2 : 1) && !hit && !(DATA && nameIndex().byTok[ph.split(" ")[0]])) hit = {code: STATES[f][0], fips: f, len: n.length, phrase: ph};
+          }
+        });
+      });
+      // "Newark, nj" or "Fremont, ca": a two-letter code after a comma.
       if (!hit) {
+        var cm = raw.match(/,\s*([A-Za-z]{2})(?=$|[\s,.)?!;:])/g) || [];
+        cm.forEach(function (x) { var c = x.replace(/[^A-Za-z]/g, "").toUpperCase(); if (ABBR[c]) { var f = Object.keys(STATES).filter(function (k) { return STATES[k][0] === c; })[0]; hit = {code: c, fips: f, len: 2, phrase: c.toLowerCase()}; } });
+      }
+      // "expulsions in co", "ne seclusion": a lowercase code at the end after "in"/"for"/"of", or first, before only topic words.
+      if (!hit && !ES) {
+        var last = toks[toks.length - 1], prev = toks[toks.length - 2], first = toks[0];
+        var codeOf = function (w) { var c = (w || "").toUpperCase(); return w && w.length === 2 && ABBR[c] ? c : ""; };
+        var c1 = codeOf(last); if (c1 && /^(in|for|of|across|throughout)$/.test(prev || "")) hit = {code: c1, len: 2, phrase: last};
+        var hd = text.match(/\bhow (?:does|is|do) ([a-z]{2}) (?:do|doing|compare|rank|look)\b/) || text.match(/\b(?:in|for|of|across|throughout) ([a-z]{2})\b/);
+        if (!hit && hd && codeOf(hd[1]) && ["in", "or", "me", "ok", "hi", "id", "oh", "de", "la"].indexOf(hd[1]) < 0) hit = {code: codeOf(hd[1]), len: 2, phrase: hd[1]};
+        if (!hit && hd && codeOf(hd[1]) && new RegExp("\\b(how (does|is|do)|in|for|of) " + hd[1].toUpperCase() + "\\b").test(raw)) hit = {code: codeOf(hd[1]), len: 2, phrase: hd[1]};
+        var c2 = codeOf(first); if (!hit && c2 && first !== "in" && first !== "me" && toks.length >= 2 && toks.length <= 6) hit = {code: c2, len: 2, phrase: first, weak: true};
+        if (hit) hit.fips = Object.keys(STATES).filter(function (k) { return STATES[k][0] === hit.code; })[0];
+      }
+      // "Washington" alone is usually the state; "Washington D C" is handled by its own name.
+      // Capital codes ("Paterson NJ"); not when the whole question is in capitals, where "LA" or "IN" are just words.
+      if (!hit && /[a-z]/.test(raw)) {
         var m = raw.match(/(?:^|[\s,(])([A-Z]{2})(?=$|[\s,.)?!])/g) || [];
         m.forEach(function (x) { var c = x.replace(/[^A-Z]/g, ""); if (ABBR[c] && c !== "IN" && c !== "OR" && c !== "ME" && c !== "OK" && c !== "ID" && c !== "HI" || (ABBR[c] && /,\s*[A-Z]{2}\b/.test(raw))) { var f = Object.keys(STATES).filter(function (k) { return STATES[k][0] === c; })[0]; hit = {code: c, fips: f, len: 2, phrase: c.toLowerCase()}; } });
       }
@@ -1766,7 +1869,7 @@
     function guideBlock(res) {
       if (!res.length) return "";
       return '<section class="qa-card"><h4>' + tr("From the guides", "De las guías") + "</h4><ul class=\"qa-guides\">" + res.map(function (d) {
-        var snip = (d.s.x.match(/^[^.!?]*[.!?]/) || [d.s.x])[0]; if (snip.length > 220) snip = snip.slice(0, 217).replace(/\s\S*$/, "") + "…";
+        var snip = (d.s.x.match(/^.*?(?:[^A-Z.][.!?]|[a-z]{2}[.!?])(?=\s+[A-Z(“"]|$)/) || [d.s.x])[0]; if (snip.length > 220) snip = snip.slice(0, 217).replace(/\s\S*$/, "") + "…";
         return '<li><a href="' + d.g.u + (d.s.id ? "#" + d.s.id : "") + '">' + esc(d.g.t) + (d.s.id ? " — " + esc(d.s.h) : "") + "</a><p>" + esc(snip) + "</p></li>";
       }).join("") + "</ul></section>";
     }
@@ -1778,13 +1881,123 @@
         });
       }).catch(function () { return ""; });
     }
+    function offCard(list, raw) {
+      var c0 = list.length === 1 ? ((nameIndex().core[list[0]] || [])[0] || "") : "";
+      var link = list.length === 1 && c0 && new RegExp("\\b(in|near|en|at|around)\\s+(the\\s+)?" + c0, "i").test(norm(raw)) ? '<li><a href="' + BASE + (ES ? "es/distrito/" : "district/") + DATA.ids[list[0]] + '/">' + tr("Special education figures for ", "Cifras de educación especial de ") + esc(DATA.names[list[0]][0]) + "</a></li>" : "";
+      return '<section class="qa-card qa-soft"><h4>' + tr("That one is outside what I can answer", "Eso queda fuera de lo que puedo responder") + "</h4><p>" +
+        tr("IDEA Atlas only knows about special education: the students it serves, where they learn, how they leave school, discipline, spending, and the guides for families. Here is what you can ask instead:",
+           "IDEA Atlas solo sabe de educación especial: los estudiantes que atiende, dónde aprenden, cómo terminan la escuela, la disciplina, el gasto y las guías para familias. Esto es lo que puede preguntar:") +
+        '</p>' + (link ? '<ul class="qa-links">' + link + "</ul>" : "") + '<ul class="qa-chips">' + tryList(true) + "</ul></section>";
+    }
+    function tryList(chips) {
+      var ex = ES ? ["Graduación en Houston ISD", "¿Qué es un plan 504?", "La escuela manda a mi hijo a casa temprano", "Comparar Dallas ISD y Houston ISD"] : ["Graduation in Houston ISD", "What is a 504 plan?", "The school keeps sending my son home early", "Compare Dallas ISD and Houston ISD"];
+      return ex.map(function (q) { return '<li><button type="button" class="' + (chips ? "qa-chip" : "link-btn") + '" data-qa-try>' + esc(q) + "</button></li>"; }).join("");
+    }
+    function suggestCard(i, left) {
+      return '<section class="qa-card qa-soft"><h4>' + tr("Did you mean the school district ", "¿Quiso decir el distrito escolar ") + esc(DATA.names[i][0]) + tr("?", "?") + "</h4><p>" +
+        tr("I found a district by that name in ", "Encontré un distrito con ese nombre en ") + esc(place(i)) + tr(", but I am not sure that is what you asked about", ", pero no estoy seguro de que sea lo que preguntó") +
+        (left.length ? tr(" (I don't know the word “", " (no conozco la palabra «") + esc(left.slice(0, 2).join(" ")) + tr("”)", "»)") : "") + ".</p>" +
+        '<p><button type="button" class="secondary" data-qa-pick="' + DATA.ids[i] + '">' + tr("Show figures for ", "Ver las cifras de ") + esc(DATA.names[i][0]) + "</button></p></section>";
+    }
     function chooseBlock(group, keys, question) {
-      return '<section class="qa-card"><h4>' + tr("Which district did you mean?", "¿Qué distrito quiso decir?") + "</h4><ul class=\"qa-choices\">" +
+      return '<section class="qa-card"><h4>' + tr("Choose a district", "Elija un distrito") + "</h4><ul class=\"qa-choices\">" +
         group.slice(0, 10).map(function (i) {
           return '<li><button type="button" class="link-btn" data-qa-pick="' + DATA.ids[i] + '">' + esc(DATA.names[i][0]) + "</button> <span class=\"sub\">" + esc(place(i)) + "</span></li>";
         }).join("") + "</ul>" + (group.length > 10 ? "<p class=\"hint\">" + tr("Add the state to narrow it down, for example “Springfield, Illinois”.", "Agregue el estado para precisar, por ejemplo «Springfield, Illinois».") + "</p>" : "") + "</section>";
     }
-    var lastKeys = null, lastNation = false, ALTS = [], LAST = null;
+    var lastKeys = null, lastNation = false, ALTS = [], LAST = null, LEFT = [], ALLPH = null;
+    // Every phrase that names a topic, an intent, or a kind of question: removed before looking for place names.
+    function allPhrases() {
+      if (ALLPH) return ALLPH;
+      var out = [], walk = function (o) { if (typeof o === "string") out.push(norm(o)); else if (Array.isArray(o)) o.forEach(walk); else if (o && typeof o === "object") Object.keys(o).forEach(function (k) { walk(o[k]); }); };
+      [QA.topics, QA.groupWords, QA.enrollWords, QA.catWords, QA.unsupported, QA.intents, QA.rankWords, QA.trendWords, QA.nationWords, QA.offtopic].forEach(walk);
+      ALLPH = out.filter(function (x) { return x; }).sort(function (a, b) { return b.length - a.length; });
+      return ALLPH;
+    }
+    function placeWords(nt) {
+      var t2 = nt; allPhrases().forEach(function (ph) { while ((" " + t2 + " ").indexOf(" " + ph + " ") >= 0) t2 = strip(t2, ph); });
+      return t2.split(" ").filter(function (w) { return w && !/^\d+$/.test(w); });
+    }
+    // "Plano, TX vs Arlington, TN": read each named place with its own state.
+    var CSPLIT = /\s*(?:;|&|\+|\bvs\.?|\bversus\b|\bcompared (?:to|with)\b|\bcompare(?:d)? to\b|\bagainst\b|\band\b|\bor\b|\bcomparado con\b|\bcomparar con\b|\bcontra\b|\bfrente a\b|\by\b|\bo\b|,)\s*/i;
+    function chunkPlaces(raw) {
+      var r = " " + raw + " ";
+      // keep "Name, ST" and "Name, State" together
+      r = r.replace(/,\s*([A-Za-z]{2})(?=$|[\s,.)?!;:])/g, function (m0, c) { return ABBR[c.toUpperCase()] ? " @" + c.toUpperCase() : m0; });
+      Object.keys(STATES).forEach(function (f) { [STATES[f][1], ST_ES[STATES[f][1]] || STATES[f][1]].forEach(function (n) {
+        r = r.replace(new RegExp(",\\s*(" + n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?=$|[\\s,.)?!;:])", "gi"), " @" + STATES[f][0]);
+      }); });
+      r = r.replace(/(@[A-Z]{2})\s+(?=\S)/g, "$1 ; ");
+      var chunks = r.split(CSPLIT).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
+      var found = [];
+      chunks.forEach(function (c) {
+        var code = (c.match(/@([A-Z]{2})/) || [])[1] || "", c2 = c.replace(/@[A-Z]{2}/g, " ");
+        var nt = norm(c2);
+        if (!code) { var sh = findState(c2, nt); if (sh && !sh.weak) { code = sh.code; nt = strip(nt, sh.phrase); } }
+        findStates(nt).forEach(function (x) { nt = strip(nt, x.phrase); });
+        var w = placeWords(nt); if (!w.length) return;
+        var ms = findDistricts(w, code, c2);
+        if (!ms.length && code) ms = findDistricts(w, "", c2);
+        ms.forEach(function (g) { found.push(g); });
+      });
+      return found;
+    }
+    // Glossary entries from the guides, with the guide and section they come from.
+    var GLOSS = null;
+    function glossary() {
+      if (GLOSS) return GLOSS;
+      GLOSS = [];
+      (GUIDES || []).forEach(function (g) { g.s.forEach(function (s) { (s.e || []).forEach(function (e) {
+        var term = e[0], keys = [], main = norm(term.replace(/\([^)]*\)/g, " ")), inner = (term.match(/\(([^)]*)\)/) || [])[1];
+        keys.push(main); if (inner) inner.split(/,\s*/).forEach(function (x) { keys.push(norm(x)); });
+        keys.push(norm(term.replace(/^(a|an|the|el|la|los|las|un|una)\s+/i, "")));
+        GLOSS.push({t: term, d: e[1], u: g.u + (s.id ? "#" + s.id : ""), g: g.t, keys: keys.filter(function (x) { return x; }), gl: /^(glossary|glosario)$/.test(g.r)});
+      }); }); });
+      return GLOSS;
+    }
+    function glossFind(x) {
+      x = norm(x).replace(/^(a|an|the|el|la|los|las|un|una|about|sobre)\s+/, "").trim(); if (!x) return null;
+      var tries = [x];
+      QA.glossAlias.forEach(function (al) { if (al[0].indexOf(x) >= 0) tries = tries.concat(al.slice(1)); });
+      var best = null;
+      tries.forEach(function (x) {
+      glossary().forEach(function (e) {
+        var sc = 0;
+        e.keys.forEach(function (k) {
+          if (k === x) sc = Math.max(sc, 10);
+          else if (k.split(" ").length > 1 && (" " + x + " ").indexOf(" " + k + " ") >= 0) sc = Math.max(sc, 6);
+          else if (x.split(" ").length > 1 && (" " + k + " ").indexOf(" " + x + " ") >= 0) sc = Math.max(sc, 5);
+        });
+        if (sc && e.gl) sc += 1;
+        if (sc && (!best || sc > best.sc)) best = {e: e, sc: sc};
+      });
+      });
+      return best ? best.e : null;
+    }
+    // "what is FAPE", "define child find", "IEE meaning", "difference between an IEP and a 504"
+    function glossQuestion(text) {
+      var m, hits = [];
+      if ((m = text.match(/\b(?:difference between|differences between|diferencia entre|diferencias entre)\s+(.+?)\s+(?:and|y|vs|versus)\s+(.+)$/)) ||
+          (m = text.match(/^(?:what is |whats |what s )?(?:an? |the )?(.{2,40}?)\s+(?:vs|versus)\s+(?:an? |the )?(.{2,40}?)(?: difference| differences)?$/)) ||
+          (m = text.match(/^(?:is )?(?:an? |the )?(.{2,30}?)\s+the same (?:thing )?as\s+(?:an? |the )?(.{2,30})$/)) ||
+          (m = text.match(/^(?:es lo mismo )?(?:un |una |el |la )?(.{2,30}?)\s+(?:que|o)\s+(?:un |una |el |la )?(.{2,30})$/))) {
+        var a = glossFind(m[1].replace(/\b(difference|differences|which is better|cual es mejor|es lo mismo)\b/g, "")), b = glossFind(m[2].replace(/\b(difference|differences|which is better|which one|cual es mejor|diferencia)\b/g, ""));
+        if (a && b && a !== b) return [a, b];
+      }
+      text = text.replace(/^(?:i got an? |i got the |i received an? |the letter says |the school sent (?:me )?an? |they gave me an? |me dieron una? |recibi una? )/, "");
+      var tail = text.match(/^(.+?)\s+(?:what is it|what is that|what s that|whats that|what does it mean|what does that mean(?: for me)?|is what|que es eso|que es|que significa eso|que significa)$/);
+      if (tail) { var et = glossFind(tail[1]); if (et) return [et]; }
+      var pats = [/^(?:what is|what s|whats|what are|what was|what does|what do|who is on|who s on|who are|what counts as|what is considered|quienes forman|quien forma|quienes estan en|que cuenta como|define|definition of|meaning of|explain|can you explain|please explain|tell me what|i don t understand|i dont understand|what exactly is|what s the meaning of|que es|que son|que significa|significado de|definicion de|explique|expliqueme|explicame|no entiendo|que quiere decir)\s+(.+?)(?:\s+(?:mean|means|stand for|stands for|significa|quiere decir|is|in special education|en educacion especial))?$/,
+                  /^(.+?)\s+(?:meaning|definition|definicion|significado|mean|means|stand for|stands for|explained)$/];
+      for (var k = 0; k < pats.length; k++) { if ((m = text.match(pats[k]))) { var e = glossFind(m[1]); if (e) hits.push(e); break; } }
+      if (!hits.length && text.split(" ").length <= 4) { var e2 = glossFind(text); if (e2 && e2.keys.some(function (x) { return x.split(" ").length > 1 || x.length <= 5; })) hits.push(e2); }
+      return hits;
+    }
+    function glossCard(list) {
+      return '<section class="qa-card qa-def">' + list.map(function (e) {
+        return '<h4>' + esc(e.t) + '</h4><p>' + esc(e.d) + '</p>';
+      }).join("") + '<p class="qa-more"><a href="' + list[0].u + '">' + tr("More words like this in “", "Más palabras como esta en «") + esc(list[0].g) + tr("”", "»") + "</a></p></section>";
+    }
     // Learning loop: counts carry only the kind of answer and the button pressed. A question's words are sent only when the
     // visitor presses "Send this question", and obvious personal details (emails, phone numbers, long numbers) are removed first.
     function count(path, title) {
@@ -1794,8 +2007,8 @@
     function scrub(q) {
       return q.replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, "[email]").replace(/\+?\d[\d\s().-]{7,}\d/g, "[number]").replace(/\b\d{6,}\b/g, "[number]").slice(0, 200);
     }
-    function answer(raw, pickId) {
-      var text = norm(raw), parts = [], notes = [], summary = "", kind = "nomatch"; ALTS = [];
+    function answer(raw, pickId, dry) {
+      var text = norm(raw), parts = [], notes = [], summary = "", kind = "nomatch"; ALTS = []; LEFT = [];
       var both = function (o) { return o[0].concat(o[1]); };
       // 0. nicknames of large districts ("NYC", "LAUSD", "Philly"), unless another state is named
       var aliasList = [];
@@ -1833,6 +2046,7 @@
       if (cat && keys.indexOf("id_rate") < 0) keys.push("id_rate");
       Object.keys(intent).forEach(function (k) { both(QA.intents[k]).forEach(function (ph) { if ((" " + t + " ").indexOf(" " + ph + " ") >= 0) t = strip(t, ph); }); });
       var rank = has(t, both(QA.rankWords)), legal = has(text, both(QA.legalWords)), trend = has(t, both(QA.trendWords)), nation = has(t, both(QA.nationWords));
+      var off = has(text, both(QA.offtopic)); if (off) t = strip(t, off);
       var defKey = "";
       Object.keys(QA.definitions).some(function (k) { if (has(text, both(QA.definitions[k]))) { defKey = k; return true; } return false; });
       if (!defKey && /^(what is|what s|whats|what are|what does|define|que es|que son|que significa)\b/.test(text)) {
@@ -1848,6 +2062,10 @@
       [rank, legal, trend, nation].forEach(function (x) { if (x) rest = strip(rest, x); });
       var stop = {}; QA.stop.forEach(function (w) { stop[w] = 1; });
       var words = rest.split(" ").filter(function (w) { return w && !/^\d+$/.test(w); });
+      if (stHit && stHit.weak) {
+        var fl = {}; QA.filler.concat(QA.stop).forEach(function (x) { fl[x] = 1; });
+        if (!keys.length || words.some(function (w) { return !fl[w]; })) { words = (stHit.phrase + " " + words.join(" ")).trim().split(" "); stHit = null; }
+      }
       var zipP = zips.length ? Promise.all(zips.map(function (z) { return fetch(BASE + "data/zip/" + z.slice(0, 2) + ".json").then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }); }))
         .then(function (all) { var m = {}; all.forEach(function (o) { Object.keys(o).forEach(function (k) { m[k] = o[k]; }); }); return m; }) : Promise.resolve(null);
       return Promise.all([zipP, guides()]).then(function (res) {
@@ -1858,36 +2076,89 @@
             (zl[z] || []).filter(function (x) { return x[0] in INDEX; }).slice(0, zips.length > 1 ? 1 : 4).forEach(function (x) { if (list.indexOf(INDEX[x[0]]) < 0) list.push(INDEX[x[0]]); });
           });
           var ments = words.length ? findDistricts(words, stHit && stHit.code, raw) : [];
+          if (!ments.length && words.length && stHit && stHit.len === 2) ments = findDistricts(words, "", raw);
+          var left = LEFT.slice();
+          var multi = CSPLIT.test(" " + raw + " ") && (allStates.length >= 2 || /,\s*[A-Za-z]{2}\b/.test(raw) || intent.compare || /\b(vs|versus|contra|compar)/i.test(raw) || ments.length >= 2 || ments.some(function (g) { return g.length > 1; }));
+          if (multi) {
+            ALTS = [];
+            var cm = chunkPlaces(raw), singles = cm.filter(function (g) { return g.length === 1; }).length;
+            if (singles >= 2 || (cm.length >= 2 && singles > ments.filter(function (g) { return g.length === 1; }).length)) { ments = cm; left = []; }
+          }
           ments.forEach(function (g) {
             if (g.length === 1) { if (list.indexOf(g[0]) < 0) list.push(g[0]); }
             else if (!ambiguous) ambiguous = g;
           });
         }
+        var first = norm(raw.split(/[.?!;]\s+|\s+\(|\s+-\s+/)[0] || raw);
+        var gloss = (!list.length && !zips.length) || first !== text || /^(what is|whats|what s|what are|what does|who is|who are|define|meaning|explain|can you explain|que es|que son|que significa|que quiere decir|quienes)/.test(first) ? glossQuestion(first !== text ? first : text) : [];
+        if (!gloss.length && first !== text && !zips.length) gloss = glossQuestion(text);
+        if (gloss.length && (stHit || allStates.length) && !/^(what is|whats|what s|what does|define|meaning|explain|que es|que significa)/.test(text)) gloss = [];
+        if (gloss.length) { if (!pickId) { list = list.filter(function (i) { return aliasList.indexOf(i) >= 0; }); ambiguous = null; } if (!/\b(in|en)\b/.test(text)) { keys = []; nation = ""; } }
+        // A place name with words the atlas does not know ("how do I cook rice"): ask before showing a district's figures.
+        var suggest = !pickId && list.length === 1 && aliasList.indexOf(list[0]) < 0 && !zips.length && !keys.length && !stHit && !Object.keys(intent).length && !legal && !cat && !unsup && !rank && !trend && !gloss.length && left.length >= 1;
+        if (off && !keys.length && !legal && !gloss.length && !cat) { kind = "offtopic"; }
         if (!keys.length && pickId && lastKeys) keys = lastKeys;
         lastKeys = keys.slice();
         var showKeys = keys.length ? keys : QA.groups.overview;
-        var hintRels = [];
-        QA.guideHints.forEach(function (h) { if (has(text, h[0].concat(h[1]))) { var r = ES ? h[3] : h[2]; if (r) hintRels.push(r); } });
+        var hintRels = [], rxRels = [];
+        QA.hintRx.forEach(function (h) { if (h[0].test(" " + text + " ")) (ES ? h[2] : h[1]).forEach(function (r) { if (rxRels.indexOf(r) < 0) rxRels.push(r); }); });
+        QA.guideHints.forEach(function (h) { if (has(text, h[0].concat(h[1]))) { var r = ES ? h[3] : h[2]; if (r && hintRels.indexOf(r) < 0) hintRels.push(r); } });
+        var listHints = hintRels.slice();
+        rxRels.concat(listHints).forEach(function (r) { if (hintRels.indexOf(r) < 0) hintRels.push(r); });
+        hintRels.sort(function (a, b) { return (rxRels.indexOf(a) < 0 ? 99 : rxRels.indexOf(a)) - (rxRels.indexOf(b) < 0 ? 99 : rxRels.indexOf(b)); });
+        // Someone describing their own situation: the guides come first, and a place name only counts when it is clearly named.
+        var fl2 = {}; QA.filler.concat(QA.stop, QA.generic).forEach(function (x) { fl2[x] = 1; });
+        var odd = text.split(" ").filter(function (w) { return w.length > 2 && !fl2[w] && !/^\d+$/.test(w); }).length;
+        var story = (!!legal && (hintRels.length > 0 || odd >= 3)) || (text.split(" ").length >= 7 && hintRels.length > 0 && odd >= 4 &&
+          /\b(my|our|i|we|im|mi|mis|nuestro|nuestra|nuestros|yo|they|ellos|the school|la escuela|could|should|do i|is it|pueden|puede|debo|tengo|es legal|nos|teacher|maestra|maestro)\b/.test(text.replace(/\b(give|show|tell|send) me\b|\b(can|could) you\b|\bi (live|am) in\b|\bmy kids (go|attend)\b|\bwe (live|are) in\b/g, " ")));
+        if (story && !pickId) {
+          var named = function (i) {
+            var c = (nameIndex().core[i] || [])[0] || ""; if (!c) return false;
+            var rx = new RegExp("\\b(in|en|at|from|de|near|to|a|for|about|of|district|distrito|county|condado)\\s+(the\\s+)?" + c, "i");
+            return rx.test(norm(raw)) || new RegExp("(^|[^A-Za-z])" + c.charAt(0).toUpperCase() + c.slice(1)).test(raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || /,\s*[A-Z]{2}\b/.test(raw);
+          };
+          list = list.filter(function (i) { return aliasList.indexOf(i) >= 0 || zips.length || named(i); });
+          if (ambiguous && !ambiguous.some(named)) ambiguous = null;
+        }
+        if (story || hintRels.length) suggest = false;
+        if (defKey && (stHit || allStates.length || list.length || zips.length) && !/^(what is|whats|what s|what does|define|meaning|explain|que es|que significa)/.test(text)) defKey = "";
+        if (cat && hintRels.length && !list.length && !stHit && !nation && keys.length === 1 && keys[0] === "id_rate") keys = [];
+        if (kind === "offtopic" && (story && hintRels.length)) kind = "nomatch";
         if (/\b(send|sends|sending|sent|kick|kicks|kicking|kicked)\b.*\b(home|out)\b|\b(manda|mandan|envia|envian|sacan|saca)\b.*\b(casa|fuera)\b|\b(home|casa) (early|temprano)\b/.test(text)) {
           var dr = ES ? "disciplina" : "discipline"; if (hintRels.indexOf(dr) < 0) hintRels.unshift(dr);
         }
         var intentOnly = Object.keys(intent).length && !keys.length && !list.length && !stHit && !legal && !hintRels.length && !cat && !unsup;
-        var gRes = (ambiguous && !list.length) || intentOnly ? [] : (legal || hintRels.length || (!list.length && !stHit && !nation && !keys.length && !defKey) || (keys.length && !list.length && !stHit && !nation && !defKey)) ? guideSearch(text, hintRels) : [];
-        var defP = defKey ? termBlock(defKey) : Promise.resolve("");
+        if (gloss.length) hintRels = hintRels.filter(function (r) { return !/^(glossary|glosario)$/.test(r); });
+        var quiet = kind === "offtopic" || suggest || (gloss.length && !legal && !hintRels.length);
+        var placeAnswer = list.length || stHit || allStates.length || nation;
+        // Words beyond a place and a topic ("handcuff", "45 days", "alternative school") mean the person is asking about a situation.
+        var nameToks = {}; list.forEach(function (i) { (nameIndex().full[i] || []).forEach(function (w) { nameToks[w] = 1; }); });
+        var stWords = {}; Object.keys(STATES).forEach(function (f) { norm(STATES[f][1] + " " + (ST_ES[STATES[f][1]] || "")).split(" ").forEach(function (w) { stWords[w] = 1; }); });
+        var extra = placeWords(text).filter(function (w) { return w.length > 2 && !fl2[w] && !nameToks[w] && !stWords[w] && (!stHit || w !== stHit.phrase); });
+        var situational = story || (rxRels.length > 0 && extra.length >= 1 && text.split(" ").length >= 6);
+        var gRes = (ambiguous && !list.length && !story) || intentOnly || quiet ? [] : (legal || situational || listHints.length || (hintRels.length && !placeAnswer) || (!list.length && !stHit && !nation && !keys.length && !defKey && text.split(" ").length > 4) || (keys.length && !list.length && !stHit && !nation && !defKey)) ? guideSearch(text, hintRels) : [];
+        var defP = defKey && !gloss.length && kind !== "offtopic" ? termBlock(defKey) : Promise.resolve("");
         return defP.then(function (defHTML) {
           if (defHTML) parts.push(defHTML);
-          if (rank) notes.push(tr("IDEA Atlas does not rank or grade districts. The figures describe what was reported, not the quality of a district's services, so the closest answer is to show where a district sits next to the typical district.",
+          if (gloss.length) parts.push(glossCard(gloss));
+          if (rank && kind !== "offtopic") notes.push(tr("IDEA Atlas does not rank or grade districts. The figures describe what was reported, not the quality of a district's services, so the closest answer is to show where a district sits next to the typical district.",
                                    "IDEA Atlas no clasifica ni califica a los distritos. Las cifras describen lo que se informó, no la calidad de los servicios, así que la respuesta más cercana es mostrar dónde está un distrito junto al distrito típico."));
           if (legal) notes.push(tr("This is general information, not legal advice. The guides below explain what the law requires and the steps families can take.",
                                     "Esto es información general, no asesoría legal. Las guías de abajo explican lo que exige la ley y los pasos que pueden tomar las familias."));
-          if (ambiguous && !list.length) {
+          if (kind === "offtopic") {
+            parts.push(offCard(list, raw));
+            summary = tr("That question is outside what IDEA Atlas covers.", "Esa pregunta está fuera de lo que cubre IDEA Atlas.");
+          } else if (suggest) {
+            kind = "suggest"; parts.push(suggestCard(list[0], left));
+            summary = tr("Did you mean " + DATA.names[list[0]][0] + "?", "¿Quiso decir " + DATA.names[list[0]][0] + "?");
+          } else if (ambiguous && !list.length) {
             kind = "choose"; parts.push(chooseBlock(ambiguous, showKeys, raw)); summary = tr("Several districts match. Choose one.", "Varios distritos coinciden. Elija uno.");
           } else if (list.length >= 2) {
             if (ambiguous) notes.push(tr("One name matched several districts, so it was left out. Add the state to include it.", "Un nombre coincidió con varios distritos y se dejó fuera. Agregue el estado para incluirlo."));
             if (list.length > 4) notes.push(tr("Up to four districts fit side by side, so the first four are shown.", "Caben hasta cuatro distritos lado a lado, así que se muestran los primeros cuatro."));
             kind = "compare"; parts.push(compareTable(list.slice(0, 4), showKeys));
             summary = tr("Comparison of ", "Comparación de ") + list.slice(0, 4).length + tr(" districts.", " distritos.");
-          } else if (list.length === 1) {
+          } else if (list.length === 1 && !(allStates.length >= 2 && !pickId)) {
             kind = "district"; parts.push(districtBlock(list[0], showKeys));
             if (trend) parts.push('<p class="qa-more">' + tr("Trend lines for this district are on its profile, and national and state trends are on the ", "Las tendencias de este distrito están en su perfil, y las del país y los estados en la página de ") +
               '<a href="' + BASE + (ES ? "es/historia/" : "history/") + '">' + tr("History page", "Historia") + "</a>.</p>");
@@ -1897,7 +2168,7 @@
             summary = tr("State comparison.", "Comparación de estados.");
           } else if (stHit && (keys.length || !defKey)) {
             kind = "state"; parts.push(stateBlock(stHit.code, stHit.fips, showKeys)); summary = tr("Figures for ", "Cifras de ") + stName(stHit.code) + ".";
-          } else if (nation || (keys.length && !defKey && !legal && !hintRels.length && !intent.history && !intent.report && !intent.download)) {
+          } else if (nation || (keys.length && !defKey && !gloss.length && !legal && !hintRels.length && !intent.history && !intent.report && !intent.download)) {
             kind = "nation"; parts.push(nationBlock(showKeys)); summary = tr("National figures.", "Cifras nacionales.");
             if (!nation) notes.push(tr("To see one district, add its name or ZIP code, for example “suspensions in 07042”.", "Para ver un distrito, agregue su nombre o código postal, por ejemplo «suspensiones en 07042»."));
           }
@@ -1950,25 +2221,54 @@
             H("Name a district, a ZIP code, a state, or “nationally”, and a topic: students with IEPs, 504 plans, general classes or separate settings, graduation, dropping out, suspensions, restraint and seclusion, police referrals, spending, or poverty. Or describe a situation, and the right guide sections will appear.",
               "Nombre un distrito, un código postal, un estado o «todo el país», y un tema: estudiantes con IEP, planes 504, clase general o lugares separados, graduación, abandono escolar, suspensiones, sujeción y aislamiento, remisiones a la policía, gasto o pobreza. O describa una situación y aparecerán las secciones de las guías que corresponden."),
             [[BASE + (ES ? "es/ayuda/" : "help/"), H("Help using the atlas", "Ayuda para usar el atlas")]]));
-          if (defHTML && kind === "nomatch") kind = "definition";
+          if ((defHTML || gloss.length) && kind === "nomatch") kind = "definition";
           if (parts.length && kind === "nomatch") kind = "info";
-          if (gRes.length) { if (kind === "nomatch") kind = "guides"; parts.push(guideBlock(gRes)); if (!summary) summary = tr("Guide sections that may help.", "Secciones de las guías que pueden ayudar."); }
+          if (gRes.length) { if (kind === "nomatch") kind = "guides"; if (situational && parts.length) parts.unshift(guideBlock(gRes)); else parts.push(guideBlock(gRes)); if (!summary) summary = tr("Guide sections that may help.", "Secciones de las guías que pueden ayudar."); }
           if (!parts.length) {
-            parts.push('<section class="qa-card"><h4>' + tr("I could not match that question", "No pude relacionar esa pregunta") + "</h4><p>" +
-              tr("Try a district name or ZIP code with a topic, such as “graduation in Newark, NJ”, “compare Montclair and Bloomfield”, or describe a situation, such as “the school keeps sending my son home”. You can also browse the ",
-                 "Pruebe con el nombre de un distrito o un código postal y un tema, como «graduación en Newark, NJ», «comparar Montclair y Bloomfield», o describa una situación, como «la escuela manda a mi hijo a casa». También puede ver las ") +
-              '<a href="' + BASE + (ES ? "es/guias/" : "guides/") + '">' + tr("guides", "guías") + "</a>.</p></section>");
-            summary = tr("No match. Suggestions below.", "Sin coincidencias. Sugerencias abajo.");
+            // Close spellings of district names, offered as buttons ("Montclare" → Montclair).
+            var near = [], idx2 = nameIndex();
+            (left.length ? left : words).filter(function (w) { return w.length >= 4; }).slice(0, 3).forEach(function (w) {
+              idx2.vocab.forEach(function (tk) { if (near.length < 12 && tk.charAt(0) === w.charAt(0) && tk !== w && editsWithin(w, tk, w.length >= 7 ? 2 : 1)) idx2.byTok[tk].forEach(function (i) { if (near.indexOf(i) < 0 && (!stHit || DATA.names[i][1] === stHit.code)) near.push(i); }); });
+            });
+            near.sort(function (a, b) { return (DATA.enrollment[b] || 0) - (DATA.enrollment[a] || 0); }); near = near.slice(0, 4);
+            var nearHTML = near.length ? '<p class="qa-sub">' + tr("Did you mean one of these districts?", "¿Quiso decir uno de estos distritos?") + '</p><ul class="qa-chips">' + near.map(function (i) {
+              return '<li><button type="button" class="qa-chip" data-qa-pick="' + DATA.ids[i] + '">' + esc(DATA.names[i][0]) + ' <span class="sub">' + esc(stName(DATA.names[i][1])) + "</span></button></li>"; }).join("") + "</ul>" : "";
+            var placeLike = (left.length || words.length) && !near.length;
+            parts.push('<section class="qa-card qa-soft qa-nomatch"><h4>' + tr("I’m not sure I understood that yet", "Todavía no estoy seguro de haber entendido") + "</h4><p>" +
+              (placeLike ? tr("I couldn’t find a school district called “" + esc((left.length ? left : words).slice(0, 3).join(" ")) + "”. Check the spelling, add the state (for example “Springfield, Illinois”), or try a 5-digit ZIP code.",
+                              "No encontré un distrito escolar llamado «" + esc((left.length ? left : words).slice(0, 3).join(" ")) + "». Revise la ortografía, agregue el estado (por ejemplo «Springfield, Illinois») o pruebe con un código postal de 5 dígitos.")
+                         : tr("I answer from IDEA Atlas’s own figures and guides, so I work best with a place and a topic, a special education word, or a short description of what is happening.",
+                              "Respondo con las cifras y las guías de IDEA Atlas, así que funciono mejor con un lugar y un tema, una palabra de educación especial o una descripción corta de lo que pasa.")) + "</p>" + nearHTML +
+              '<p class="qa-sub">' + tr("Or try one of these:", "O pruebe una de estas:") + '</p><ul class="qa-chips">' + tryList(true) + "</ul>" +
+              '<p class="qa-more"><a href="' + BASE + (ES ? "es/guias/" : "guides/") + '">' + tr("Browse all the guides", "Ver todas las guías") + "</a></p></section>");
+            summary = tr("I’m not sure I understood. Suggestions below.", "No estoy seguro de haber entendido. Sugerencias abajo.");
           }
-          var head = '<h3 id="qa-h" tabindex="-1">' + tr("Answer", "Respuesta") + '</h3><p class="qa-asked">' + tr("You asked: ", "Usted preguntó: ") + "“" + esc(raw) + "”</p>";
+          var head = '<h3 id="qa-h" tabindex="-1">' + tr("Answer", "Respuesta") + '</h3><p class="qa-asked"><span class="visually-hidden">' + tr("You asked: ", "Usted preguntó: ") + "</span>“" + esc(raw) + "”</p>";
           var foot = '<p class="hint qa-foot">' + tr("Answers come only from the figures and guides in IDEA Atlas. Figures describe what was reported, not the quality of services. General information, not legal advice.",
                                                       "Las respuestas vienen solo de las cifras y las guías de IDEA Atlas. Las cifras describen lo que se informó, no la calidad de los servicios. Información general, no asesoría legal.") + "</p>";
-          var fb = '<div class="qa-fb" data-kind="' + kind + '"><p class="qa-fb-q" id="qa-fb-q">' + tr("Did this answer help?", "¿Le sirvió esta respuesta?") + "</p>" +
+          var fb = '<div class="qa-fb" data-kind="' + kind + '"><p class="qa-fb-q" id="qa-fb-q">' + tr("Was this helpful?", "¿Le fue útil?") + "</p>" +
             '<div class="qa-fb-btns" role="group" aria-labelledby="qa-fb-q"><button type="button" class="secondary" data-qa-fb="yes">' + tr("Yes", "Sí") + '</button> <button type="button" class="secondary" data-qa-fb="no">' + tr("No", "No") + "</button></div>" +
             '<div class="qa-fb-more" hidden><p>' + tr("Help the atlas learn to answer questions like this. If you choose, your question is sent without your name, so it can be reviewed and added to what the atlas understands. Please leave out names and personal details.",
                                                       "Ayude al atlas a aprender a responder preguntas como esta. Si usted lo elige, su pregunta se envía sin su nombre para revisarla y agregarla a lo que el atlas entiende. Por favor, no incluya nombres ni datos personales.") +
             '</p><button type="button" data-qa-fb="send">' + tr("Send this question", "Enviar esta pregunta") + '</button></div><p class="hint qa-fb-status" aria-live="polite"></p></div>';
-          out.innerHTML = head + notes.map(function (n) { return '<p class="qa-note">' + n + "</p>"; }).join("") + parts.join("") + fb + foot;
+          var lead = "";
+          var stFull = stHit ? stName(stHit.code) : "";
+          if (situational && gRes.length) lead = /\b(restrain|restraint|seclu|suspend|expel|arrest|police|bruise|hurt|scared|afraid|crying|cry|overwhelmed|sujet|aisla|suspend|expuls|policia|moreton|miedo|llora|abrumad|perdida)/.test(text)
+            ? tr("I’m sorry you’re dealing with this. These parts of the guides explain what the law requires and the steps you can take.", "Siento mucho que esté pasando por esto. Estas partes de las guías explican lo que exige la ley y los pasos que puede tomar.")
+            : tr("Here is what the guides say about situations like yours.", "Esto es lo que dicen las guías sobre situaciones como la suya.");
+          else if (kind === "district") lead = tr("Here’s what the federal figures show for " + esc(DATA.names[list[0]][0]) + ".", "Esto es lo que muestran las cifras federales de " + esc(DATA.names[list[0]][0]) + ".");
+          else if (kind === "compare") lead = tr("Here are the " + Math.min(list.length, 4) + " districts side by side.", "Aquí están los " + Math.min(list.length, 4) + " distritos lado a lado.");
+          else if (kind === "state") lead = tr("Here’s the typical district in " + esc(stFull) + ", and the range across its districts.", "Este es el distrito típico de " + esc(stFull) + " y el rango entre sus distritos.");
+          else if (kind === "states") lead = tr("Here’s how the typical district compares across these states.", "Así se compara el distrito típico entre estos estados.");
+          else if (kind === "nation") lead = tr("Here’s the picture across the United States.", "Este es el panorama en todo Estados Unidos.");
+          else if (kind === "definition") lead = tr("Here’s what that means, in plain language.", "Esto es lo que significa, en palabras sencillas.");
+          else if (kind === "choose") lead = tr("A few districts share that name. Which one did you mean?", "Varios distritos tienen ese nombre. ¿Cuál quiso decir?");
+          else if (kind === "guides") lead = tr("These parts of the guides should help.", "Estas partes de las guías pueden ayudar.");
+          var bodyHTML = (lead ? '<p class="qa-lead">' + lead + "</p>" : "") + notes.map(function (n) { return '<p class="qa-note">' + n + "</p>"; }).join("") + parts.join("");
+          if (dry) return {kind: kind, lead: lead, html: bodyHTML, summary: summary, n: list.length, ids: list.map(function (i) { return DATA.ids[i]; }), amb: ambiguous ? ambiguous.length : 0,
+            guides: gRes.map(function (d) { return d.g.r; }), st: stHit ? stHit.code : "", sts: allStates.map(function (x) { return x.code; }), unsup: unsup || "", def: defKey || "", defn: gloss.map(function (e) { return e.t; }).join(" | "),
+            intents: Object.keys(intent), rank: !!rank, legal: !!legal};
+          out.innerHTML = '<div class="qa-answer">' + head + bodyHTML + fb + foot + "</div>";
           LAST = {q: raw, kind: kind};
           count("ask/answered/" + kind, "Ask a question: answered");
           if (kind === "nomatch") { var more = out.querySelector(".qa-fb-more"); if (more) more.hidden = false; }
@@ -2002,6 +2302,7 @@
         else st.textContent = tr("Thank you.", "Gracias.");
         return;
       }
+      var tq = e.target.closest("[data-qa-try]"); if (tq) { input.value = tq.textContent; run(input.value); return; }
       var b = e.target.closest("[data-qa-pick]"); if (!b) return;
       run(input.value.trim(), b.getAttribute("data-qa-pick"));
     });
@@ -2009,6 +2310,8 @@
       b.addEventListener("click", function () { input.value = b.textContent.replace(/^[“"]|[”"]$/g, ""); run(input.value); });
     });
     var params = new URLSearchParams(location.search); if (params.get("ask")) { input.value = params.get("ask"); run(input.value); }
+    // Test hook for ops/ask_test.py: answers without touching the page or counting anything.
+    if (params.get("qatest")) window.__ideaQA = function (q, pick) { return load().then(function () { return answer(q, pick, true); }); };
   }
   QA.es = {id_rate: "Estudiantes con IEP", pct_504: "Planes 504", env_80plus: "Clase general 80%+", env_lt40: "Clase general menos del 40%", env_separate: "Lugares separados",
     grad_regular: "Diploma regular", dropout: "Abandonaron", oos_idea: "Suspensión, IEP", oos_nodis: "Suspensión, sin discapacidad", oos_504: "Suspensión, 504",
