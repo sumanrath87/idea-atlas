@@ -248,10 +248,44 @@ UI = {
 _SEC_H2 = re.compile(r"<section\b[^>]*>\s*<h2\b[^>]*\bid=")
 
 
+def ask_box(lang: str, path: str) -> str:
+    """The "Ask a question" box, on every page. On a district or state page it answers about that place by default."""
+    es = lang == "es"
+    if re.search(r"/(district|distrito)/[^/]+/$", path):
+        head = "Pregunte sobre este distrito" if es else "Ask about this district"
+        ex = (["¿Cuántos estudiantes tienen IEP aquí?", "Graduación y abandono escolar", "Disciplina aquí", "Comparar con Newark, NJ"] if es else
+              ["How many students have IEPs here?", "Graduation and dropping out", "Discipline here", "What is an IEP?"])
+    elif re.search(r"/(state|estado)/[^/]+/$", path):
+        head = "Pregunte sobre este estado" if es else "Ask about this state"
+        ex = (["Inclusión en el distrito típico", "Suspensiones aquí", "Sujeción y aislamiento", "¿Qué significa por cada 100?"] if es else
+              ["Inclusion in the typical district", "Suspensions here", "Restraint and seclusion", "What does per 100 mean?"])
+    else:
+        head = "Haga una pregunta" if es else "Ask a question"
+        ex = (["Graduación en Houston ISD", "¿Qué es un plan 504?", "La escuela manda a mi hijo a casa temprano"] if es else
+              ["Graduation in Houston ISD", "What is a 504 plan?", "The school keeps sending my son home early"])
+    hint = ("Pregunte con sus propias palabras: un distrito, un estado, una palabra o lo que está pasando. Las respuestas vienen solo de las cifras y las guías del atlas, y lo que escribe no se guarda."
+            if es else "Ask in your own words: a district, a state, a word, or what is happening. Answers come only from the atlas's figures and guides, and nothing you type is saved.")
+    chips = "".join(f'<li><button type="button" class="link-btn" data-qa-example>{E(q)}</button></li>' for q in ex)
+    return (f'<section id="ask" aria-labelledby="qa-title" class="panel qa qa-compact"><h2 id="qa-title">{E(head)}</h2><p class="hint">{E(hint)}</p>'
+            f'<form id="qa-form" role="search" aria-label="{E(head)}" novalidate><label for="qa-q">{"Su pregunta" if es else "Your question"}</label><div class="row">'
+            f'<input id="qa-q" name="ask" type="search" autocomplete="off" spellcheck="true" aria-describedby="qa-examples-h">'
+            f'<button type="submit">{"Preguntar" if es else "Ask"}</button></div></form>'
+            f'<p class="hint" id="qa-examples-h">{"Pruebe una de estas:" if es else "Try one of these:"}</p><ul class="qa-examples">{chips}</ul>'
+            f'<p id="qa-live" class="visually-hidden" aria-live="polite"></p><div id="qa-out"></div></section>')
+
+
 def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...] = (),
          styles: tuple[str, ...] = (), crumbs: list[tuple[str, str]] | None = None, lang: str = "en", alt: str | None = None, extra_head: str = "", og_image: str = "assets/og.png", seo_title: str | None = None) -> str:
     """Page frame. alt is the same page in the other language, if there is one."""
     u = UI[lang]
+    # The question box on every page (one per page; the home page and the guides hub have their own).
+    if "/embed/" not in path:
+        if 'id="qa-form"' in body:
+            body = body.replace('<section aria-labelledby="qa-title"', '<section id="ask" aria-labelledby="qa-title"', 1)
+        else:
+            body = body + ask_box(lang, path)
+        if "atlas.js" not in scripts:
+            scripts = tuple(scripts) + ("atlas.js",)
     robots = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else ""
     css = "".join(f'<link rel="stylesheet" href="{BASE}assets/{s}">' for s in styles)
     js = "".join(f'<script src="{BASE}assets/{s}" defer></script>' for s in scripts)
@@ -265,6 +299,7 @@ def page(title: str, body: str, *, desc: str, path: str, scripts: tuple[str, ...
     switch = (f'<li class="lang"><a href="{alt}" hreflang="{other}" lang="{other}" aria-label="{E(u["other_label"])}">{u["other"]}</a></li>') if alt else ""
     links = "".join(f'<li><a href="{BASE}{p_}">{E(t)}</a></li>' for p_, t in u["nav"] if GUIDES_LIVE[0] or "guide" not in p_ and "guias" not in p_)
     tools = f'<li><a href="{SITE}/tools/">{u["all_tools"]}</a></li>' if u["all_tools"] else ""
+    tools = (f'<li class="nav-ask"><a href="#ask">{"Preguntar" if lang == "es" else "Ask"}</a></li>' if "/embed/" not in path else "") + tools
     home = BASE + ("es/" if lang == "es" else "")
     def _fl(href, text):
         hl = ""

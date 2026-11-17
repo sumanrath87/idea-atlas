@@ -252,18 +252,25 @@ TERMS = {
         "rm": ["a resolution meeting", "resolution session"], "team": ["the IEP team"], "pti": ["a parent training and information center", "PTI"],
         "crdc": ["CRDC", "the civil rights data collection"], "cc": ["child count"], "restr": ["restraint", "physical restraint"], "secl": ["seclusion"],
         "per100": ["per 100"], "median": ["the median", "typical district"], "sig": ["significant disproportionality"], "det": ["a state determination", "meets requirements"],
-        "spp": ["SPP/APR", "the state performance plan"], "osep": ["OSEP"], "eval": ["an evaluation", "a special education evaluation"]},
+        "spp": ["SPP/APR", "the state performance plan"], "osep": ["OSEP"], "eval": ["an evaluation", "a special education evaluation"],
+        "esy": ["ESY", "extended school year", "summer services"], "fba": ["an FBA", "functional behavioral assessment", "a behavior assessment"],
+        "bip": ["a BIP", "a behavior plan", "behavioral intervention plan"], "iaes": ["an interim alternative educational setting", "IAES"],
+        "stay": ["stay put", "the stay put rule"], "acc": ["accommodations", "an accommodation"], "mod": ["modifications", "a modified curriculum"],
+        "at": ["assistive technology", "assistive tech"], "sdi": ["specially designed instruction", "SDI"], "ifsp": ["an IFSP", "individualized family service plan"],
+        "lea": ["LEA", "the LEA representative"], "para": ["a paraprofessional", "a para"], "ohi": ["OHI", "other health impairment"], "pl": ["present levels", "PLAAFP"]},
  "es": {"iep": ["IEP", "un IEP", "programa de educación individualizado"], "504": ["un plan 504", "504", "la sección 504"], "idea": ["IDEA", "la ley IDEA"],
         "fape": ["FAPE", "educación pública gratuita y apropiada"], "lre": ["LRE", "ambiente menos restrictivo"], "iee": ["una evaluación educativa independiente", "IEE"],
         "pwn": ["aviso previo por escrito"], "ps": ["garantías procesales"], "md": ["determinación de manifestación"], "cf": ["búsqueda de niños", "child find"],
         "rs": ["servicios relacionados"], "ts": ["servicios de transición"], "sc": ["una queja estatal"], "med": ["mediación"], "dp": ["debido proceso", "una queja de debido proceso"],
         "rm": ["una reunión de resolución"], "pti": ["centro de información y capacitación para padres"], "crdc": ["CRDC"], "restr": ["inmovilización física", "sujeción"],
         "secl": ["aislamiento"], "per100": ["por cada 100"], "median": ["la mediana", "distrito típico"], "sig": ["desproporcionalidad significativa"], "osep": ["OSEP"],
-        "eval": ["una evaluación"]}}
+        "eval": ["una evaluación"], "esy": ["ESY", "año escolar extendido", "servicios de verano"], "fba": ["una FBA", "evaluación funcional de la conducta"],
+        "bip": ["un BIP", "un plan de conducta"], "acc": ["adaptaciones", "acomodaciones"], "mod": ["modificaciones"], "at": ["tecnología de asistencia", "tecnología asistiva"],
+        "ifsp": ["un IFSP"], "para": ["un paraprofesional"], "ohi": ["otro impedimento de salud"], "pl": ["niveles actuales"], "stay": ["stay put"]}}
 T_DEF = {"en": ["what is {x}", "what is {x}?", "what's {x}", "whats {x}", "what does {x} mean", "define {x}", "{x} meaning", "explain {x}", "{x} definition",
                 "can you explain {x}", "what does {x} stand for", "i dont understand {x}", "meaning of {x}", "what exactly is {x}"],
          "es": ["¿qué es {x}?", "que es {x}", "¿qué significa {x}?", "que significa {x}", "definición de {x}", "explíqueme {x}", "no entiendo {x}", "significado de {x}"]}
-for lang, n in (("en", 1100), ("es", 700)):
+for lang, n in (("en", 1600), ("es", 1000)):
     for _ in range(n):
         key = R.choice(list(TERMS[lang])); x = R.choice(TERMS[lang][key])
         add(lang, R.choice(T_DEF[lang]).format(x=x), "definition", term=key)

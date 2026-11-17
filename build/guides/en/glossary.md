@@ -1,12 +1,12 @@
 ---
 title: Special education words, explained
-description: Plain-language definitions of special education terms used in IDEA Atlas and in IEP meetings, from child find to significant disproportionality.
+description: Plain-language definitions of special education terms used in IDEA Atlas and in IEP meetings, from child find to extended school year, behavior plans, and significant disproportionality.
 lede: Special education has a vocabulary of its own. Here are the words you will meet most often in the atlas, in IEP meetings, and in state reports, in plain language.
 group: start
 order: 30
 pair: es/guias/glosario
 related: how-to-read-district-data, iep-meeting-questions, indicators
-reviewed: 2026-11-10
+reviewed: 2026-11-17
 ---
 
 ## People and documents
@@ -21,6 +21,14 @@ reviewed: 2026-11-10
 
 **Parent Training and Information Center.** A federally funded organization in every state that helps families of children with disabilities understand their rights and take part in decisions, at no cost.
 
+**Present levels.** The part of the IEP that describes how the student is doing now, in school subjects and in everyday skills, and how the disability affects the student's progress in the general curriculum. The goals and services are built from it.
+
+**IFSP (Individualized Family Service Plan).** A written plan for early intervention services for an infant or toddler with a disability and the child's family, under Part C of IDEA. Before the child turns 3, the family and the team plan the move to preschool special education or other services.
+
+**LEA (local educational agency).** The legal term for a public school district, or another public body that runs public schools, such as a charter school that is its own district. At an IEP meeting, the district representative must know the general curriculum and what the district can provide.
+
+**Paraprofessional.** A staff member, often called an aide or a para, who helps provide special education and related services under the supervision of a teacher or another professional. States must make sure paraprofessionals are trained for the work.
+
 ## Services and settings
 
 **FAPE (free appropriate public education).** Special education and related services, at no cost to families, that meet state standards and follow the student's IEP.
@@ -28,6 +36,16 @@ reviewed: 2026-11-10
 **Related services.** Supports a student needs to benefit from special education, such as speech-language therapy, occupational therapy, counseling, or transportation.
 
 **Supplementary aids and services.** Supports that help a student learn in general classes, such as a co-teacher, adapted materials, or assistive technology.
+
+**Specially designed instruction.** The heart of special education: adapting what is taught, how it is taught, or how it is delivered, to meet the needs that come from a student's disability while keeping the student in the general curriculum.
+
+**Accommodations.** Changes in how a student learns or shows what they know, such as extra time, a quiet room for tests, or text read aloud, without changing what the student is expected to learn. The IEP lists the accommodations a student needs on state and district tests.
+
+**Modifications.** Changes in what a student is expected to learn or how the work is judged, such as shorter assignments or different standards. The IEP lists the program modifications and supports the school will provide.
+
+**Assistive technology.** Any item, piece of equipment, or system, bought off the shelf, adapted, or custom-made, that helps a student with a disability do things they otherwise could not, along with the services to choose it, get it, and learn to use it. Surgically implanted medical devices are not included. The IEP team must consider whether the student needs it.
+
+**Extended school year (ESY).** Special education and related services provided beyond the regular school year, usually in summer, as set out in the IEP and at no cost to the family. The IEP team decides for each student whether ESY is needed for a free appropriate public education. A district may not offer it only to certain disabilities or limit its type, amount, or length on its own.
 
 **Least restrictive environment (LRE).** IDEA's rule that students with disabilities learn with students without disabilities to the maximum extent appropriate. See the [guide to LRE]({base}guides/least-restrictive-environment/).
 
@@ -49,6 +67,14 @@ reviewed: 2026-11-10
 
 **Manifestation determination.** A review, within 10 school days of deciding to change a student's placement for discipline, of whether the behavior was caused by the disability or by a failure to carry out the IEP.
 
+**Functional behavioral assessment (FBA).** A close look at a student's behavior: what it is, when and where it happens, and what it does for the student, so the team can plan support. When a disciplinary change of placement involves behavior caused by the disability, the school must do one if it has not already.
+
+**Behavioral intervention plan (BIP).** A written plan of positive supports and strategies to address a student's behavior, usually built from an FBA. When behavior that led to a disciplinary change of placement is found to be caused by the disability, the school must put a plan in place, or review and adjust the one the student has.
+
+**Interim alternative educational setting (IAES).** A temporary placement, chosen by the IEP team, where a student keeps receiving services after a disciplinary removal. For weapons, illegal drugs, or serious bodily injury, school staff may move a student to one for up to 45 school days, even when the behavior was caused by the disability.
+
+**Other health impairment (OHI).** One of IDEA's disability categories: limited strength, energy, or alertness, including heightened alertness to the surroundings that limits attention to schoolwork, caused by a chronic or acute health problem such as ADHD, asthma, diabetes, or epilepsy, that hurts the student's performance in school.
+
 ## Settling disagreements
 
 **State complaint.** A written complaint to the state education agency that a school or district broke an IDEA rule. The state must decide within 60 days.
@@ -58,6 +84,8 @@ reviewed: 2026-11-10
 **Due process complaint.** A request for a hearing before an impartial hearing officer about a child's identification, evaluation, placement, or education.
 
 **Resolution meeting.** A meeting the district must hold within 15 days after a parent files a due process complaint, to try to settle it before a hearing.
+
+**Stay put.** The rule that a student remains in the current educational placement while a due process complaint is pending, unless the family and the school agree otherwise. Some discipline cases follow different rules.
 
 ## Data and reporting
 
@@ -85,5 +113,6 @@ reviewed: 2026-11-10
 
 ## Sources
 
-- 34 CFR Part 300 (IDEA Part B regulations).
+- 34 CFR Part 300 (IDEA Part B regulations), including §§ 300.5–300.6, 300.8, 300.28, 300.39, 300.106, 300.156, 300.320, 300.518, and 300.530–300.531.
+- 34 CFR Part 303 (IDEA Part C regulations), § 303.20.
 - U.S. Department of Education, Office for Civil Rights, Civil Rights Data Collection definitions.
